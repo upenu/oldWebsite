@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'website',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -59,7 +60,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'website',
-        'USER': 'marvin',
+        'USER': 'briansu',
         'PASSWORD': 'hithere',
         'HOST': '127.0.0.1',
         'PORT': '5432',
