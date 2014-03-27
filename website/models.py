@@ -14,9 +14,6 @@ class Candidate(models.Model):
         return self.user.first_name + ' ' + self.user.last_name
 
 
-
-# Create your models here.
-
 class Officer(User):
     YEAR_IN_SCHOOL_CHOICES = (
         ('FR', 'Freshman'),
