@@ -40,16 +40,13 @@ class OfficerClass(models.Model):
 
 class OfficeHour(models.Model):
     DAY_OF_WEEK_CHOICES = (
-        (0, 'Sunday'),
         (1, 'Monday'),
         (2, 'Tuesday'),
         (3, 'Wednesday'),
         (4, 'Thursday'),
         (5, 'Friday'),
-        (6, 'Saturday'),
     )
     TIME_OF_DAY_CHOICES = (
-        (10, '10 AM'),
         (11, '11 AM'),
         (12, '12 PM'),
         (13, '1 PM'),
@@ -57,15 +54,12 @@ class OfficeHour(models.Model):
         (15, '3 PM'),
         (16, '4 PM'),
         (17, '5 PM'),
-        (18, '6 PM'),
-        (19, '7 PM'),
-        (20, '8 PM'),
     )
     day_dict = dict(DAY_OF_WEEK_CHOICES)
     time_dict = dict(TIME_OF_DAY_CHOICES)
 
     day_of_week = models.IntegerField(max_length=1, choices=DAY_OF_WEEK_CHOICES, default=1)
-    hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=10)
+    hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=11)
     officers = models.ManyToManyField('Officer', through='OfficerHour')
 
     def __str__(self):
