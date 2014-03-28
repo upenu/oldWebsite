@@ -1,5 +1,5 @@
 from django.contrib import admin
-from website.models import Officer, OfficerHour, OfficerClass, OfficeHour, BerkeleyClass
+from website.models import *
 
 # Register your models here.
 
@@ -24,3 +24,4 @@ class OfficerAdmin(admin.ModelAdmin):
 admin.site.register(Officer, OfficerAdmin)
 admin.site.register(OfficeHour)
 admin.site.register(BerkeleyClass)
+admin.site.register(Candidate)
