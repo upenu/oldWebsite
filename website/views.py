@@ -28,7 +28,7 @@ def officehours(request):
                 if len(classes) > 0:
                     str += classes[0].name()
                     for j in range(1, len(classes)):
-                        str += " ," + classes[j].name()
+                        str += ", " + classes[j].name()
                 str += "</div>\n</div>\n"
             result.append(str)
         return result
