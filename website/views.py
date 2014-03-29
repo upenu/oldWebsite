@@ -13,7 +13,22 @@ def index(request):
 
 def officehours(request):
     def slot(x):
-        return [x, x+1, x+2, x+3, x+4]
+        result = []
+        for day in range(1, 6):
+            slots = OfficeHour.objects.filter(day_of_week=day, hour=x)
+            str = ""
+            if len(slots) == 0:
+                str += "No scheduled officer"
+            for i in range(len(slots)):
+                person = Officer.objects.filter(username=slots[i].officer_username)[0]
+                str += "\n<div class=\"slot\">\n<div class=\"name\">"
+                str += person.name()
+                str += "</div>\n<div class=\"classes\">"
+#                 classes = person.classes_taken
+#                 str += classes
+                str += "</div>\n</div>\n"
+            result.append(str)
+        return result
     template = loader.get_template('website/officehours.html')
     context = RequestContext(request, {
         'slot_11': slot(11),

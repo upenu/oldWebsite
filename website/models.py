@@ -24,15 +24,14 @@ class Officer(User):
     )
     year_in_school = models.CharField(max_length=2, choices=YEAR_IN_SCHOOL_CHOICES, default='FR')
     phone_number = models.IntegerField(max_length=10)
-    office_hours = models.ManyToManyField('OfficeHour', through='OfficerHour')
+    office_hours = models.ManyToManyField('OfficeHour')
     classes_taken = models.ManyToManyField('BerkeleyClass', through='OfficerClass')
 
     def __str__(self):
         return self.username
 
-class OfficerHour(models.Model):
-    office_hour = models.ForeignKey('OfficeHour')
-    officer = models.ForeignKey('Officer')
+    def name(self):
+        return self.first_name + " " + self.last_name
 
 class OfficerClass(models.Model):
     berkeley_class = models.ForeignKey('BerkeleyClass')
@@ -60,10 +59,11 @@ class OfficeHour(models.Model):
 
     day_of_week = models.IntegerField(max_length=1, choices=DAY_OF_WEEK_CHOICES, default=1)
     hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=11)
-    officers = models.ManyToManyField('Officer', through='OfficerHour')
+    officer_username = models.CharField(max_length=30,
+        help_text='Please enter a valid officer username as this is used for website queries.')
 
     def __str__(self):
-        return self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour]
+        return self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour] + " " + self.officer_username
 
 class BerkeleyClass(models.Model):
     CLASS_CHOICES = (
