@@ -21,15 +21,22 @@ def officehours(request):
                 str += "No scheduled officer"
             for i in range(len(slots)):
                 person = Officer.objects.filter(username=slots[i].officer_username)[0]
-                str += "\n<div class=\"slot\">\n<div class=\"name\">"
-                str += person.name()
-                str += "</div>\n<div class=\"classes\">"
-                classes = sorted(person.classes_taken.all(), key=lambda x: x.class_name)
-                if len(classes) > 0:
-                    str += classes[0].name()
-                    for j in range(1, len(classes)):
-                        str += ", " + classes[j].name()
-                str += "</div>\n</div>\n"
+                str += "<div class=\"slot\"><div class=\"name\">" + person.name() + "</div>"
+                str += "<div class=\"classes\">" + person.experience() + "</div></div>"
+            result.append(str)
+        return result
+
+    def group(x):
+        result = []
+        for i in range(10*x, 10*x+10):
+            id = BerkeleyClass.CLASS_CHOICES[i]
+            str = "<div class=\"group\"><div class=\"title\">" + id[1] + "</div><div class=\"tutors\">"
+            found_class = BerkeleyClass.objects.filter(class_name=id[0])
+            if len(found_class) > 0:
+                tutors = found_class[0].officers.all()
+                for j in range(len(tutors)):
+                    str += "<div class=\"tutorname\">" + tutors[j].name() + "</div>"
+                    str += "<div class=\"tutorschedule\">" + tutors[j].schedule() + "</div></div>"
             result.append(str)
         return result
 
@@ -42,5 +49,11 @@ def officehours(request):
         'slot_15': slot(15),
         'slot_16': slot(16),
         'slot_17': slot(17),
+        'group_0': group(0),
+        'group_1': group(1),
+        'group_2': group(2),
+        'group_3': group(3),
+        'group_4': group(4),
+        'group_5': group(5),
     })
     return HttpResponse(template.render(context))

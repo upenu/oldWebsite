@@ -33,6 +33,24 @@ class Officer(User):
     def name(self):
         return self.first_name + " " + self.last_name
 
+    def schedule(self):
+        slots = sorted(self.office_hours.all(), key=lambda x: x.day_of_week * 100 + x.hour)
+        str = ""
+        if len(slots) > 0:
+            str += slots[0].name()
+        for i in range(1, len(slots)):
+            str += ", " + slots[i].name()
+        return str
+
+    def experience(self):
+        classes = sorted(self.classes_taken.all(), key=lambda x: x.class_name)
+        str = ""
+        if len(classes) > 0:
+            str += classes[0].name()
+        for i in range(1, len(classes)):
+            str += ", " + classes[i].name()
+        return str
+
 class OfficerClass(models.Model):
     berkeley_class = models.ForeignKey('BerkeleyClass')
     officer = models.ForeignKey('Officer')
@@ -63,7 +81,10 @@ class OfficeHour(models.Model):
         help_text='Please enter a valid officer username as this is used for website queries.')
 
     def __str__(self):
-        return self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour] + " " + self.officer_username
+        return self.name() + " " + self.officer_username
+
+    def name(self):
+        return self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour]
 
 class BerkeleyClass(models.Model):
     CLASS_CHOICES = (
@@ -92,14 +113,13 @@ class BerkeleyClass(models.Model):
         (11948, 'CS 194-8'),
         (11950, 'CS 195'),
         (20200, 'EE 20'),
-        (20240, 'EE 24'),
         (20400, 'EE 40'),
-        (20840, 'EE 84'),
         (21050, 'EE 105'),
         (21170, 'EE 117'),
         (21180, 'EE 118'),
         (21200, 'EE 120'),
         (21210, 'EE 121'),
+        (21220, 'EE 122'),
         (21230, 'EE 123'),
         (21250, 'EE 125'),
         (21260, 'EE 126'),
