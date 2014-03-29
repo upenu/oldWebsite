@@ -24,7 +24,7 @@ def officehours(request):
                 str += "\n<div class=\"slot\">\n<div class=\"name\">"
                 str += person.name()
                 str += "</div>\n<div class=\"classes\">"
-                classes = person.classes_taken.all()
+                classes = sorted(person.classes_taken.all(), key=lambda x: x.class_name)
                 if len(classes) > 0:
                     str += classes[0].name()
                     for j in range(1, len(classes)):
