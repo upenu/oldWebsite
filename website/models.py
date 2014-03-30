@@ -157,11 +157,7 @@ class BerkeleyClass(models.Model):
     def __str__(self):
         return self.class_dict[self.class_name]
 
-
-
-
-class Requirement(models.Model):
-    
+class Requirement(models.Model):    
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=500, blank=True, null=True)
     requirements = models.ManyToManyField('Candidate', through='Completion')
@@ -180,14 +176,9 @@ class Requirement(models.Model):
     def __str__(self):
         return self.req_dict[self.req_type]
 
-
-
-
 class Completion(models.Model):
     candidate = models.ForeignKey(Candidate)
     requirement = models.ForeignKey(Requirement)
     completed = models.BooleanField(default=False)
     date_completed = models.DateField()
-
     
-
