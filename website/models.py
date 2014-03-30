@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 class Candidate(models.Model):
     user = models.OneToOneField(User)
     family = models.CharField(max_length=200)
@@ -12,7 +11,6 @@ class Candidate(models.Model):
     
     def __str__(self):
         return self.user.first_name + ' ' + self.user.last_name
-
 
 class Officer(User):
     YEAR_IN_SCHOOL_CHOICES = (
@@ -26,15 +24,32 @@ class Officer(User):
     )
     year_in_school = models.CharField(max_length=2, choices=YEAR_IN_SCHOOL_CHOICES, default='FR')
     phone_number = models.IntegerField(max_length=10)
-    office_hours = models.ManyToManyField('OfficeHour', through='OfficerHour')
+    office_hours = models.ManyToManyField('OfficeHour')
     classes_taken = models.ManyToManyField('BerkeleyClass', through='OfficerClass')
 
     def __str__(self):
         return self.username
 
-class OfficerHour(models.Model):
-    office_hour = models.ForeignKey('OfficeHour')
-    officer = models.ForeignKey('Officer')
+    def name(self):
+        return self.first_name + " " + self.last_name
+
+    def schedule(self):
+        slots = sorted(self.office_hours.all(), key=lambda x: x.day_of_week * 100 + x.hour)
+        str = ""
+        if len(slots) > 0:
+            str += slots[0].name()
+        for i in range(1, len(slots)):
+            str += ", " + slots[i].name()
+        return str
+
+    def experience(self):
+        classes = sorted(self.classes_taken.all(), key=lambda x: x.class_name)
+        str = ""
+        if len(classes) > 0:
+            str += classes[0].name()
+        for i in range(1, len(classes)):
+            str += ", " + classes[i].name()
+        return str
 
 class OfficerClass(models.Model):
     berkeley_class = models.ForeignKey('BerkeleyClass')
@@ -42,16 +57,13 @@ class OfficerClass(models.Model):
 
 class OfficeHour(models.Model):
     DAY_OF_WEEK_CHOICES = (
-        (0, 'Sunday'),
         (1, 'Monday'),
         (2, 'Tuesday'),
         (3, 'Wednesday'),
         (4, 'Thursday'),
         (5, 'Friday'),
-        (6, 'Saturday'),
     )
     TIME_OF_DAY_CHOICES = (
-        (10, '10 AM'),
         (11, '11 AM'),
         (12, '12 PM'),
         (13, '1 PM'),
@@ -59,18 +71,19 @@ class OfficeHour(models.Model):
         (15, '3 PM'),
         (16, '4 PM'),
         (17, '5 PM'),
-        (18, '6 PM'),
-        (19, '7 PM'),
-        (20, '8 PM'),
     )
     day_dict = dict(DAY_OF_WEEK_CHOICES)
     time_dict = dict(TIME_OF_DAY_CHOICES)
 
     day_of_week = models.IntegerField(max_length=1, choices=DAY_OF_WEEK_CHOICES, default=1)
-    hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=10)
-    officers = models.ManyToManyField('Officer', through='OfficerHour')
+    hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=11)
+    officer_username = models.CharField(max_length=30,
+        help_text='Please enter a valid officer username as this is used for website queries.')
 
     def __str__(self):
+        return self.name() + " " + self.officer_username
+
+    def name(self):
         return self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour]
 
 class BerkeleyClass(models.Model):
@@ -100,14 +113,13 @@ class BerkeleyClass(models.Model):
         (11948, 'CS 194-8'),
         (11950, 'CS 195'),
         (20200, 'EE 20'),
-        (20240, 'EE 24'),
         (20400, 'EE 40'),
-        (20840, 'EE 84'),
         (21050, 'EE 105'),
         (21170, 'EE 117'),
         (21180, 'EE 118'),
         (21200, 'EE 120'),
         (21210, 'EE 121'),
+        (21220, 'EE 122'),
         (21230, 'EE 123'),
         (21250, 'EE 125'),
         (21260, 'EE 126'),
@@ -143,4 +155,7 @@ class BerkeleyClass(models.Model):
     officers = models.ManyToManyField('Officer', through='OfficerClass')
 
     def __str__(self):
+        return self.class_dict[self.class_name]
+
+    def name(self):
         return self.class_dict[self.class_name]
