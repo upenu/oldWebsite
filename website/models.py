@@ -157,5 +157,28 @@ class BerkeleyClass(models.Model):
     def __str__(self):
         return self.class_dict[self.class_name]
 
-    def name(self):
-        return self.class_dict[self.class_name]
+class Requirement(models.Model):    
+    name = models.CharField(max_length=100)
+    description = models.TextField(max_length=500, blank=True, null=True)
+    requirements = models.ManyToManyField('Candidate', through='Completion')
+    REQUIREMENT_TYPE = (
+        ('SOC', 'Social'),
+        ('PRO', 'Professional'),
+        ('IND', 'Individual'),
+        ('FAM', 'Family'),
+        ('ACM', 'ACM Payment'),
+        ('INI', 'Initiation Attendance'),
+        ('GM', 'General Meetings')
+    )
+    req_dict = dict(REQUIREMENT_TYPE)
+    req_type = models.CharField(max_length=3, choices=REQUIREMENT_TYPE, default='SOC')
+
+    def __str__(self):
+        return self.req_dict[self.req_type]
+
+class Completion(models.Model):
+    candidate = models.ForeignKey(Candidate)
+    requirement = models.ForeignKey(Requirement)
+    completed = models.BooleanField(default=False)
+    date_completed = models.DateField()
+    
