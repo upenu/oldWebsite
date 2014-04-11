@@ -1,11 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 
 class Candidate(models.Model):
     user = models.OneToOneField(User)
     family = models.CharField(max_length=200)
     committee = models.CharField(max_length=200)
-
+    
     def get_progress(self):
         pass
     
@@ -160,7 +161,7 @@ class BerkeleyClass(models.Model):
 class Requirement(models.Model):    
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=500, blank=True, null=True)
-    requirements = models.ManyToManyField('Candidate', through='Completion')
+    candidates = models.ManyToManyField('Candidate', through='Completion')
     REQUIREMENT_TYPE = (
         ('SOC', 'Social'),
         ('PRO', 'Professional'),
@@ -180,5 +181,5 @@ class Completion(models.Model):
     candidate = models.ForeignKey(Candidate)
     requirement = models.ForeignKey(Requirement)
     completed = models.BooleanField(default=False)
-    date_completed = models.DateField()
+    date_completed = models.DateField(default = date.today)
     
