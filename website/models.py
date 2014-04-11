@@ -157,6 +157,9 @@ class BerkeleyClass(models.Model):
     def __str__(self):
         return self.class_dict[self.class_name]
 
+    def name(self):
+        return self.class_dict[self.class_name]
+
 class Requirement(models.Model):    
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=500, blank=True, null=True)
