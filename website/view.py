@@ -3,9 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
 from website.models import *
 
-
-
-from django.utils import *
+#from django.utils.dateformat import Dateformat
 from forms import CompletionForm
 # Create your views here.
 
@@ -62,34 +60,17 @@ def officehours(request):
     })
     return HttpResponse(template.render(context))
 
-
-
-from django.forms import ModelForm
-#each view need to return a httpresponse type 
 def requirements(request):
-    #template = loader.get_template('website/requirements.html')
+    template = loader.get_template('website/requirements.html')
     if request.method == "POST":
-        form = CompletionForm(request.POST) #
+        form = CompletionForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
             can = cd['candidates']
             req = cd['requirements']
-            newbie = Completion.objects.create(candidate = can, requirement = req, completed = true, date_completed = datetime.now) 
+            newbie = Completion.objects.create(candidate = can, requirement = req, completed = True) 
             newbie.save()
-
-            return HttpResponseRedirect('/marked/')
+            return HttpResponseRedirect('')
     else:
-        form = CompletionForm('a')
-
-    return render(request, 'website/requirements.html', {'form':form})
-
-
-
-
-def CompletionForm(ModelForm):
-
-    class Meta:
-        model = Completion
-        fields = '__all__'
-
-
+        form = CompletionForm()
+    return render(request, 'website/requirements.html',{'form': form,})

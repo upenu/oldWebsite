@@ -74,6 +74,3 @@ def requirements(request):
     else:
         form = CompletionForm()
     return render(request, 'website/requirements.html',{'form': form,})
-
-
-
