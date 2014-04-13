@@ -68,7 +68,7 @@ def requirements(request):
             cd = form.cleaned_data
             can = cd['candidates']
             req = cd['requirements']
-            newbie = Completion.objects.create(candidate = can, requirement = req, completed = True) 
+            newbie = Completion.objects.create(candidate=can, requirement=req, completed=True) 
             newbie.save()
             return HttpResponseRedirect('')
     else:
