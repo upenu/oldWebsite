@@ -57,3 +57,21 @@ def officehours(request):
         'group_5': group(5),
     })
     return HttpResponse(template.render(context))
+
+def currentofficers(request):
+    def officer(x):
+        return ['Officer TBA']
+
+    template = loader.get_template('website/currentofficers.html')
+    context = RequestContext(request, {
+        'officer_1': officer(1),
+        'officer_2': officer(2),
+        'officer_3': officer(3),
+        'officer_4': officer(4),
+        'officer_5': officer(5),
+        'officer_6': officer(6),
+        'officer_7': officer(7),
+        'officer_8': officer(8),
+        'officer_9': officer(9),
+    })
+    return HttpResponse(template.render(context))
