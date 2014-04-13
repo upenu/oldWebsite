@@ -10,5 +10,6 @@ urlpatterns = patterns('',
 
     url(r'^$', 'website.views.index', name='index'),
     url(r'^officehours/$', 'website.views.officehours', name='officehours'),
+    url(r'^requirements/$', 'website.views.requirements', name='requirements'),
     url(r'^admin/', include(admin.site.urls)),
 )
