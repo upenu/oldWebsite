@@ -22,8 +22,22 @@ class Officer(User):
         ('MA', 'Masters Student'),
         ('PH', 'Ph.D. Student'),
     )
+    OFFICER_POSITION_CHOICES = (
+        (1, 'President'),
+        (2, 'Vice President'),
+        (3, 'Secretary'),
+        (4, 'Treasurer'),
+        (5, 'Professional Development'),
+        (6, 'Industrial Relations'),
+        (7, 'Social'),
+        (8, 'Publicity'),
+        (9, 'Technology'),
+    )
+
     year_in_school = models.CharField(max_length=2, choices=YEAR_IN_SCHOOL_CHOICES, default='FR')
     phone_number = models.IntegerField(max_length=10)
+    position = models.IntegerField(max_length=1, choices=OFFICER_POSITION_CHOICES, default=1)
+    photo = models.ImageField(upload_to='media/officers')
     office_hours = models.ManyToManyField('OfficeHour')
     classes_taken = models.ManyToManyField('BerkeleyClass', through='OfficerClass')
 
@@ -72,6 +86,7 @@ class OfficeHour(models.Model):
         (16, '4 PM'),
         (17, '5 PM'),
     )
+
     day_dict = dict(DAY_OF_WEEK_CHOICES)
     time_dict = dict(TIME_OF_DAY_CHOICES)
 
