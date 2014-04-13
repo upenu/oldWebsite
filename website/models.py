@@ -12,6 +12,10 @@ class Candidate(models.Model):
     def __str__(self):
         return self.user.first_name + ' ' + self.user.last_name
 
+class Unapproved(User):
+    def approve(self):
+        pass
+
 class Officer(User):
     YEAR_IN_SCHOOL_CHOICES = (
         ('FR', 'Freshman'),

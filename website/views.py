@@ -1,7 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
+from django.views.generic.edit import FormView
+from django.contrib import messages
+
 from website.models import *
+from website.forms import *
 
 # Create your views here.
 
@@ -57,3 +61,36 @@ def officehours(request):
         'group_5': group(5),
     })
     return HttpResponse(template.render(context))
+
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            return HttpResponseRedirect("/thanks/")
+    else:
+        form = RegisterForm()
+    return render(request, "website/register.html", {
+    'form': form,
+    })
+
+def login(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active and type(user) != Unapproved:
+            login(request, user)
+            return HttpResponseRedirect("/thanks/")
+        else:
+            # Return a 'disabled account' error message
+            messages.add_message(request, messages.INFO, 'Disabled account.')
+    else:
+        # Return an 'invalid login' error message.
+        messages.add_message(request, messages.INFO, 'invalid login.')
+
+def register_thanks(request):
+    template = loader.get_template('website/register_thanks.html')
+    context = RequestContext(request, { })
+    return HttpResponse(template.render(context))
+    
