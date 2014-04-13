@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
 from website.models import *
 
+#from django.utils.dateformat import Dateformat
+from forms import CompletionForm
 # Create your views here.
 
 def index(request):
@@ -75,3 +77,18 @@ def currentofficers(request):
         'officer_9': officer(9),
     })
     return HttpResponse(template.render(context))
+
+def requirements(request):
+    template = loader.get_template('website/requirements.html')
+    if request.method == "POST":
+        form = CompletionForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            can = cd['candidates']
+            req = cd['requirements']
+            newbie = Completion.objects.create(candidate=can, requirement=req, completed=True) 
+            newbie.save()
+            return HttpResponseRedirect('')
+    else:
+        form = CompletionForm()
+    return render(request, 'website/requirements.html',{'form': form,})

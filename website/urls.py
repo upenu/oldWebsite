@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     url(r'^$', 'website.views.index', name='index'),
     url(r'^officehours/$', 'website.views.officehours', name='officehours'),
     url(r'^currentofficers/$', 'website.views.currentofficers', name='currentofficers'),
+    url(r'^requirements/$', 'website.views.requirements', name='requirements'),
 )
