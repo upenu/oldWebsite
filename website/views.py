@@ -62,7 +62,16 @@ def officehours(request):
 
 def currentofficers(request):
     def officer(x):
-        return ['Officer TBA']
+        result = []
+        found_officers = Officer.objects.filter(position=x)
+        for person in found_officers:
+            str = "<div class=\"officer\"><img src=\""
+            str += person.photo.url + "\"/><div class=\"officername\">"
+            str += person.name() + "</div><div class=\"officerposition\">"
+            str += person.positionname() + "</div><div class=\"officeremail\">"
+            str += person.email + "</div></div>"
+            result.append(str)
+        return result
 
     template = loader.get_template('website/currentofficers.html')
     context = RequestContext(request, {
