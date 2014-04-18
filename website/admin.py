@@ -14,7 +14,7 @@ class OfficerAdmin(admin.ModelAdmin):
         ('Authentification',    {'fields': ['password']}),
         ('Permissions',         {'fields': ['groups', 'user_permissions', 'is_staff', 'is_superuser']}),
         ('Activity',            {'fields': ['is_active', 'last_login', 'date_joined']}),
-        ('Officer Information', {'fields': ['office_hours']}),
+        ('Officer Information', {'fields': ['position', 'office_hours', 'photo']}),
     ]
     inlines = (ClassesTakenInline,)
 

@@ -60,6 +60,33 @@ def officehours(request):
     })
     return HttpResponse(template.render(context))
 
+def currentofficers(request):
+    def officer(x):
+        result = []
+        found_officers = Officer.objects.filter(position=x)
+        for person in found_officers:
+            str = "<div class=\"officer\"><img src=\""
+            str += person.photo.url + "\"/><div class=\"officername\">"
+            str += person.name() + "</div><div class=\"officerposition\">"
+            str += person.positionname() + "</div><div class=\"officeremail\">"
+            str += person.email + "</div></div>"
+            result.append(str)
+        return result
+
+    template = loader.get_template('website/currentofficers.html')
+    context = RequestContext(request, {
+        'officer_1': officer(1),
+        'officer_2': officer(2),
+        'officer_3': officer(3),
+        'officer_4': officer(4),
+        'officer_5': officer(5),
+        'officer_6': officer(6),
+        'officer_7': officer(7),
+        'officer_8': officer(8),
+        'officer_9': officer(9),
+    })
+    return HttpResponse(template.render(context))
+
 def requirements(request):
     template = loader.get_template('website/requirements.html')
     if request.method == "POST":
