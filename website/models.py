@@ -2,27 +2,35 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
 
-class Candidate(models.Model):
+class UserProfile(models.Model):
+    USER_TYPES = (
+        (1, 'Candidate'),
+        (2, 'Member'),
+        (3, 'Officer'),
+        (4, 'Alumni'),
+    )
+
+    user = models.ForeignKey(User)
+    type = models.IntegerField(max_length=1, choices=USER_TYPES, default=1)
+    approved = models.BooleanField(default=False)
+    candidate_profile = models.ForeignKey('CandidateProfile')
+    officer_profile = models.ForeignKey('OfficerProfile')
+
+    def __str__(self):
+        return self.user.first_name + " " + self.user.last_name
+
+class CandidateProfile(models.Model):
     user = models.OneToOneField(User)
     family = models.CharField(max_length=200)
     committee = models.CharField(max_length=200)
-    
+
     def get_progress(self):
         pass
     
     def __str__(self):
-        return self.user.first_name + ' ' + self.user.last_name
+        return self.user.first_name + " " + self.user.last_name
 
-class Officer(User):
-    YEAR_IN_SCHOOL_CHOICES = (
-        ('FR', 'Freshman'),
-        ('SO', 'Sophomore'),
-        ('JR', 'Junior'),
-        ('SR', 'Senior'),
-        ('FH', 'Fifth Year'),
-        ('MA', 'Masters Student'),
-        ('PH', 'Ph.D. Student'),
-    )
+class OfficerProfile(models.Model):
     OFFICER_POSITION_CHOICES = (
         (1, 'President'),
         (2, 'Vice President'),
@@ -35,20 +43,15 @@ class Officer(User):
         (9, 'Technology'),
     )
 
+    user = models.OneToOneField(User)
     position_dict = dict(OFFICER_POSITION_CHOICES)
-
-    year_in_school = models.CharField(max_length=2, choices=YEAR_IN_SCHOOL_CHOICES, default='FR')
-    phone_number = models.IntegerField(max_length=10)
     position = models.IntegerField(max_length=1, choices=OFFICER_POSITION_CHOICES, default=1)
     photo = models.ImageField(upload_to='images/officers/')
     office_hours = models.ManyToManyField('OfficeHour')
     classes_taken = models.ManyToManyField('BerkeleyClass', through='OfficerClass')
 
     def __str__(self):
-        return self.username
-
-    def name(self):
-        return self.first_name + " " + self.last_name
+        return self.user.first_name + " " + self.user.last_name
 
     def positionname(self):
         return self.position_dict[self.position]
@@ -73,7 +76,7 @@ class Officer(User):
 
 class OfficerClass(models.Model):
     berkeley_class = models.ForeignKey('BerkeleyClass')
-    officer = models.ForeignKey('Officer')
+    officer = models.ForeignKey('OfficerProfile')
 
 class OfficeHour(models.Model):
     DAY_OF_WEEK_CHOICES = (
@@ -173,18 +176,15 @@ class BerkeleyClass(models.Model):
 
     class_dict = dict(CLASS_CHOICES)
     class_name = models.IntegerField(max_length=5, choices=CLASS_CHOICES)
-    officers = models.ManyToManyField('Officer', through='OfficerClass')
+    officers = models.ManyToManyField('OfficerProfile', through='OfficerClass')
 
     def __str__(self):
         return self.class_dict[self.class_name]
 
-    def name(self):
-        return self.class_dict[self.class_name]
-
-class Requirement(models.Model):    
+class Requirement(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=500, blank=True, null=True)
-    candidates = models.ManyToManyField('Candidate', through='Completion')
+    candidates = models.ManyToManyField('CandidateProfile', through='Completion')
     REQUIREMENT_TYPE = (
         ('SOC', 'Social'),
         ('PRO', 'Professional'),
@@ -201,8 +201,7 @@ class Requirement(models.Model):
         return self.req_dict[self.req_type]
 
 class Completion(models.Model):
-    candidate = models.ForeignKey(Candidate)
-    requirement = models.ForeignKey(Requirement)
+    candidate = models.ForeignKey('CandidateProfile')
+    requirement = models.ForeignKey('Requirement')
     completed = models.BooleanField(default=False)
-    date_completed = models.DateField(default = date.today)
-    
+    date_completed = models.DateField(default=date.today)
