@@ -22,9 +22,10 @@ def officehours(request):
             if len(slots) == 0:
                 str += "No scheduled officer"
             for i in range(len(slots)):
-                person = Officer.objects.filter(username=slots[i].officer_username)[0]
-                str += "<div class=\"slot\"><div class=\"name\">" + person.name() + "</div>"
-                str += "<div class=\"classes\">" + person.experience() + "</div></div>"
+                person = User.objects.filter(username=slots[i].officer_username)[0]
+                officer_profile = OfficerProfile.objects.filter(user=person)[0]
+                str += "<div class=\"slot\"><div class=\"name\">" + officer_profile.name() + "</div>"
+                str += "<div class=\"classes\">" + officer_profile.experience() + "</div></div>"
             result.append(str)
         return result
 
@@ -63,13 +64,13 @@ def officehours(request):
 def currentofficers(request):
     def officer(x):
         result = []
-        found_officers = Officer.objects.filter(position=x)
+        found_officers = OfficerProfile.objects.filter(position=x)
         for person in found_officers:
             str = "<div class=\"officer\"><img src=\""
             str += person.photo.url + "\"/><div class=\"officername\">"
             str += person.name() + "</div><div class=\"officerposition\">"
             str += person.positionname() + "</div><div class=\"officeremail\">"
-            str += person.email + "</div></div>"
+            str += person.user.email + "</div></div>"
             result.append(str)
         return result
 

@@ -53,6 +53,9 @@ class OfficerProfile(models.Model):
     def __str__(self):
         return self.user.first_name + " " + self.user.last_name
 
+    def name(self):
+        return self.user.first_name + " " + self.user.last_name
+
     def positionname(self):
         return self.position_dict[self.position]
 
@@ -179,6 +182,9 @@ class BerkeleyClass(models.Model):
     officers = models.ManyToManyField('OfficerProfile', through='OfficerClass')
 
     def __str__(self):
+        return self.class_dict[self.class_name]
+
+    def name(self):
         return self.class_dict[self.class_name]
 
 class Requirement(models.Model):
