@@ -8,19 +8,13 @@ class ClassesTakenInline(admin.TabularInline):
     extra = 1
 
 class OfficerAdmin(admin.ModelAdmin):
-    fieldsets = [
-        ('Identification',      {'fields': ['username', 'first_name', 'last_name', 'year_in_school']}),
-        ('Contact Information', {'fields': ['email', 'phone_number']}),
-        ('Authentification',    {'fields': ['password']}),
-        ('Permissions',         {'fields': ['groups', 'user_permissions', 'is_staff', 'is_superuser']}),
-        ('Activity',            {'fields': ['is_active', 'last_login', 'date_joined']}),
-        ('Officer Information', {'fields': ['position', 'office_hours', 'photo']}),
-    ]
+    fields = ('user', 'position', 'photo', 'office_hours',)
     inlines = (ClassesTakenInline,)
 
-admin.site.register(Officer, OfficerAdmin)
+admin.site.register(UserProfile)
+admin.site.register(OfficerProfile, OfficerAdmin)
 admin.site.register(OfficeHour)
 admin.site.register(BerkeleyClass)
-admin.site.register(Candidate)
+admin.site.register(CandidateProfile)
 admin.site.register(Requirement)
 admin.site.register(Completion)
