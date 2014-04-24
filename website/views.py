@@ -182,12 +182,15 @@ def user_login(request):
         # If we have a User object, the details are correct.
         # If None (Python's way of representing the absence of a value), no user
         # with matching credentials was found.
-        if user is not None:
+        if user is not None and user != 'unapproved':
             user.backend = 'website.backends.CustomBackend'
             # Is the account active? It could have been disabled.
             login(request, user)
             print("Login successful")
-            return HttpResponseRedirect('/')
+            return HttpResponse('User {0} login successful'.format(username))
+        elif user == 'unapproved':
+            print("Unapproved user: {0}".format(username))
+            return HttpResponse("Your account has not been approved yet.")
             
         else:
             # Bad login details were provided. So we can't log the user in.
