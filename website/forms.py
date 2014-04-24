@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from website.models import *
 
 class CompletionForm(forms.Form):
-	pass
+    pass
     #requirements = forms.ModelChoiceField(queryset= models.Requirement.objects.all()) 
     #candidates = forms.ModelChoiceField(queryset = models.CandidateProfile.objects.all())
 
