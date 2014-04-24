@@ -12,4 +12,7 @@ urlpatterns = patterns('',
     url(r'^officehours/$', 'website.views.officehours', name='officehours'),
     url(r'^currentofficers/$', 'website.views.currentofficers', name='currentofficers'),
     url(r'^requirements/$', 'website.views.requirements', name='requirements'),
+    url(r'^register/$', 'website.views.register', name='register'),
+    url(r'^thanks/$', 'website.views.register_thanks', name='register_thanks'),
+    url(r'^login/$', 'website.views.user_login', name='login'),
 )
