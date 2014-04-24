@@ -183,8 +183,9 @@ def user_login(request):
         # If None (Python's way of representing the absence of a value), no user
         # with matching credentials was found.
         if user is not None:
+            user.backend = 'website.backends.CustomBackend'
             # Is the account active? It could have been disabled.
-            #login(request, user)
+            login(request, user)
             print("Login successful")
             return HttpResponseRedirect('/')
             
