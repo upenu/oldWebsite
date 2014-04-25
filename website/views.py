@@ -191,7 +191,6 @@ def user_login(request):
         elif user == 'unapproved':
             print("Unapproved user: {0}".format(username))
             return HttpResponse("Your account has not been approved yet.")
-            
         else:
             # Bad login details were provided. So we can't log the user in.
             print("Invalid login details: {0}, {1}".format(username, password))
