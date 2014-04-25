@@ -3,9 +3,8 @@ from django.contrib.auth.models import User
 from website.models import *
 
 class CompletionForm(forms.Form):
-    pass
-#requirements = forms.ModelChoiceField(queryset= models.Requirement.objects.all()) 
-    #candidates = forms.ModelChoiceField(queryset = models.CandidateProfile.objects.all())
+    requirements = forms.ModelChoiceField(queryset=Requirement.objects.all()) 
+    candidates = forms.ModelChoiceField(queryset=CandidateProfile.objects.all())
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
