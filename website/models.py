@@ -10,11 +10,11 @@ class UserProfile(models.Model):
         (4, 'Alumni'),
     )
 
-    user = models.ForeignKey(User)
+    user = models.OneToOneField(User)
     type = models.IntegerField(max_length=1, choices=USER_TYPES, default=1)
     approved = models.BooleanField(default=False)
-    candidate_profile = models.ForeignKey('CandidateProfile')
-    officer_profile = models.ForeignKey('OfficerProfile')
+    candidate_profile = models.ForeignKey('CandidateProfile', blank=True, null=True)
+    officer_profile = models.ForeignKey('OfficerProfile', blank=True, null=True)
 
     def __str__(self):
         return self.user.first_name + " " + self.user.last_name
