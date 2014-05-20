@@ -1,14 +1,392 @@
-<html>
-    <head>
-    </head>
-    <body>
-        Welcome to the UPE website! Currently nothing is here yay!
-        <p>
-        <a href="/login">Login</a>
-        </p>
-        <p>
-        <a href="/register">Register</a>
-        </p>
-    </body>
-</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    {% load staticfiles %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Upsilon Pi Epsilon</title>
 
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="{% static "assets/img/icons/favicon_whale.png" %}"/>
+    <link rel="stylesheet" href="{% static "assets/css/book.css" %}">
+    <!-- ENDS FAVICON -->
+
+    <!-- CSS LINKS -->
+    <link rel="stylesheet" href="{% static "assets/css/full_style.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "assets/css/header_style.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "assets/css/banner_style.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "assets/css/main_style.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "assets/css/footer_style.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "assets/css/slider-custom.css" %}" type="text/css" media="screen" />
+    <!-- END CSS LINKS -->
+
+    <!-- GOOGLE FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
+    <!-- END GOOGLE FONTS -->
+
+    <!-- JS LINKS -->
+      <!-- JQUERY -->
+      <script src="{% static "assets/js/jquery-1.11.0.min.js" %}"></script>
+      <!-- ENDS JQUERY -->
+      <script src="{% static "assets/js/header_script.js" %}"></script>
+      <script src="{% static "assets/js/thumbnail_script.js" %}"></script>
+      <script src="{% static "assets/js/modernizr.custom.79639.js" %}"></script>
+      <script src="{% static "assets/js/ba-cond.min.js" %}"></script>
+      <script src="{% static "assets/js/slitslider.js" %}"></script>
+      <script src="{% static "assets/js/slitslider-custom.js" %}"></script>
+      <script src="{% static "assets/js/landingpage.banner.custom.js" %}"></script>
+      <script src="{% static "assets/js/landingpage.main.custom.js" %}"></script>
+      <script src="{% static "assets/js/footer_script.js" %}"></script>
+    <!-- ENDS JS LINKS -->
+
+  </head>
+  <body>
+    <!-- HEADER -->
+    <div id="header-wrapper">
+      <!-- SIGNIN MODAL -->
+      <div id="modal-container">
+        <div id="modal-overlay"></div>
+        <div id="modal-box-wrapper">
+          <div id="modal-box">
+            <div id="modal-header">
+              Login
+            </div>
+            <div id="modal-content">
+              <input type="text" id="inputbox" placeholder="Enter username" />
+              <input type="password" id="inputbox" placeholder="Enter password" />
+            </div>
+            <div class="button">
+              Submit
+            </div>
+            <div class="button">
+              Cancel
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END OF SIGNIN MODAL -->
+      <div id="header-content">
+        <div id="title">UPE</div>
+        <img id="header-icon" src="{% static "assets/images/layout/header/upe_whale.png" %}" alt="Workshop">
+        <ul id="nav">
+          <li class="nav-right" id="signin">Sign in</li>
+          <li class="nav-right"><img class="icons" id="rssi" src="{% static "assets/images/icons/g_rss.png" %}"></li>
+          <li class="nav-right"><img class="icons" id="twi" src="{% static "assets/images/icons/g_tw.png" %}"></li>
+          <li class="nav-right"><img class="icons" id="fbi" src="{% static "assets/images/icons/g_fb.png" %}"></li>
+          <!-- SEARCH BAR -->
+          <li class="nav-right" id="search-bar">
+            <form method="get" role="search">
+              <img class="icons" id="searchi" src="{% static "assets/images/icons/g_search.png" %}">
+              <input id="search-box-h" type="Search" placeholder="Search..." src="{% static "assets/images/icons/g_search.png" %}">
+            </form>
+          </li>
+          <!-- END OF SEARCH BAR -->
+          <li class="nav-left" id="about">About UPE
+            <ul class="tab" id="drop-about">
+              <li class="drop-op">Foshizzle</li>
+              <li class="drop-op">Foshizzle</li>
+              <li class="drop-op">Foshizzle</li>
+            </ul>
+          </li>
+          <li class="nav-left" id="ss">Student Services
+            <ul class="tab" id="drop-ss">
+              <li class="drop-op">Foshizzle</li>
+              <li class="drop-op">Foshizzle</li>
+              <li class="drop-op">Foshizzle</li>
+            </ul>
+          </li>
+          <li class="nav-left" id="ir">Industrial Relations
+            <ul class="tab"id="drop-ir">
+              <li class="drop-op">Foshizzle</li>
+              <li class="drop-op">Foshizzle</li>
+              <li class="drop-op">Foshizzle</li>
+            </ul>
+          </li>
+          <li class="nav-left" id="cal">Calendar
+            <ul class="tab" id="drop-cal">
+              <li class="drop-op">Foshizzle</li>
+              <li class="drop-op">Foshizzle</li>
+              <li class="drop-op">Foshizzle</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- MENU -->
+      <!-- ENDS MENU -->
+
+    </div>
+    <!-- ENDS HEADER -->
+
+    <!-- BANNER -->
+    <div id="banner-wrapper">
+      <div id="slider" class="sl-slider-wrapper">
+        <div class="sl-slider">
+          <div class="sl-slide slide1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+            <div class="sl-slide-inner">
+              <div class="bg-img bg-img-1"></div>
+              <h2 class="fadeInMoveDown">Upsilon Pi Epsilon (UPE), Nu Chapter</h2>
+              <blockquote class="fadeInMoveUp"><p>The premiere Computer Science Honors Society at UC Berkeley.</cite></blockquote>
+            </div>
+          </div>
+
+          <div class="sl-slide slide2" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
+            <div class="sl-slide-inner">
+              <div class="bg-img bg-img-2"></div>
+              <h2 class="fadeInMoveDown">We help you get stuff done.</h2>
+              <blockquote class="fadeInMoveRight">
+                <span>In the past we've hosted:</span>
+                <ul>
+                  <li>Google, Apple, Amazon Infosessions</li>
+                  <li>Super Awesome Tech Talks</li>
+                  <li>Guest Lecturers such as Elon Musk, Eric Schmidt, etc.</li>
+                  <li>Guest Lecturers such as Elon Musk, Eric Schmidt, etc.</li>
+                  <li>Guest Lecturers such as Elon Musk, Eric Schmidt, etc.</li>
+                </ul>
+              </blockquote>
+            </div>
+          </div>
+
+          <div class="sl-slide slide3" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+            <div class="sl-slide-inner">
+              <div class="bg-img bg-img-3"></div>
+              <h2 class="fadeInMoveDown">We are looking to extend membership to all prospective majors!</h2>
+              <blockquote class="fadeInMoveLeft">
+                <span>In order to qualify, you must:</span>
+                <ul>
+                  <li>Be a prospective Computer Science major in the College of Letters and Sciences</li>
+                  <li>Have taken at least 2 CS major requirement courses with letter grade B or higher</li>
+                  <li>Have taken or currently enrolled in a total of 4 CS major requirement courses</li>
+                  <li>Have a CS GPA of at least 3.5</li>
+                </ul>
+              </blockquote>
+            </div>
+          </div>
+        </div><!-- /sl-slider -->
+
+        <nav id="nav-dots" class="nav-dots">
+          <span class="nav-dot-current"></span>
+          <span></span>
+          <span></span>
+        </nav>
+
+      </div><!-- /slider-wrapper -->
+    </div>
+    <!-- ENDS BANNER -->
+
+    <!-- MAIN -->
+    <div id="main-wrapper">
+      <div id="main-inner-wrapper">
+        <div id="content-wrapper">
+          <div id="content-header-wrapper">
+            <h1>Upholding academic excellence.</h1>
+            <p>Upsilon Pi Epsilon is the first and only international honor society for the Computing Sciences. The UC Berkeley chapter, launched in 1995, honors the top tier of Computer Science students on campus.</p>
+          </div>
+          <div id="content-studentservices-wrapper">
+            <img src="{% static "assets/images/content/wozniak1.jpg" %}" height="150px">
+            <div id="content-studentservices-text">
+              <h1>We help others.</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+            <img src="{% static "assets/images/content/hackathon1.png" %}" height="200px">
+          </div>
+          <div id="content-members-wrapper">
+            <div id="content-members-text">
+              <h1>Connections and Opportunities.</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+            <img src="{% static "assets/images/content/officers1.jpg" %}" height="180px">
+            <div id="content-members-comment">"I wouldn't be working at Google today without the help of UPE."</div>
+          </div>
+        </div>
+        <div id="events-OH-wrapper">
+          <div id="events-wrapper">
+            <div id="events-title-wrapper"><div id="events-title">Upcoming Events</div></div>
+            <div id="events-content-wrapper">
+              <div class="events-list-description"></div>
+              <div id="events-list-wrapper">
+                <div class="events-list-item">
+                    <img src="">
+                    <h1>General Meeting #1</h1>
+                    <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Location:</span> Wozniak Lounge</br>430-8 Soda Hall, Berkeley</p>
+                    <div class="description">
+                      <img src="">
+                      <h1>General Meeting #1</h1>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+                <div class="events-list-item">
+                    <img src="">
+                    <h1>General Meeting #2</h1>
+                    <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Location:</span> Wozniak Lounge</br>430-8 Soda Hall, Berkeley</p>
+                    <div class="description">
+                      <img src="">
+                      <h1>General Meeting #2</h1>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+                <div class="events-list-item">
+                    <img src="">
+                    <h1>General Meeting #3</h1>
+                    <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Location:</span> Wozniak Lounge</br>430-8 Soda Hall, Berkeley</p>
+                    <div class="description">
+                      <img src="">
+                      <h1>General Meeting #3</h1>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+                <div class="events-list-item">
+                    <img src="">
+                    <h1>General Meeting #4</h1>
+                    <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Location:</span> Wozniak Lounge</br>430-8 Soda Hall, Berkeley</p>
+                    <div class="description">
+                      <img src="">
+                      <h1>General Meeting #4</h1>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="business-wrapper">
+          <div class="partners-wrapper">
+            <div class="title-wrapper">
+              <div class="title">
+                Who we've <span>worked</span> with
+              </div>
+            </div>
+            <div class="companies-background">
+              <div class="companies-wrapper">
+                <img src="{% static "assets/images/content/partner-logos/datastax.png" %}" width="150px">
+                <img src="{% static "assets/images/content/partner-logos/ea.png" %}" width="75px">
+                <img src="{% static "assets/images/content/partner-logos/google.png" %}" width="150px">
+                <img src="{% static "assets/images/content/partner-logos/chevron.png" %}" width="45px">
+                <img src="{% static "assets/images/content/partner-logos/factset.png" %}" width="120px" style="margin-top: 30px;">
+                <img src="{% static "assets/images/content/partner-logos/netapp.png" %}" width="50px">
+                <img src="{% static "assets/images/content/partner-logos/salesforce.png" %}" width="115px">
+                <img src="{% static "assets/images/content/partner-logos/rockmelt.png" %}" width="60px">
+                <img src="{% static "assets/images/content/partner-logos/sequoiacapital.png" %}" width="150px">
+                <img src="{% static "assets/images/content/partner-logos/arista.png" %}" width="115px">
+                <img src="{% static "assets/images/content/partner-logos/zynga.png" %}" width="115px">
+                <img src="{% static "assets/images/content/partner-logos/tableau.png" %}" width="115px">
+                <img src="{% static "assets/images/content/partner-logos/groupon.png" %}" width="115px">
+                <img src="{% static "assets/images/content/partner-logos/linkedin.png" %}" width="115px">
+                <img src="{% static "assets/images/content/partner-logos/more.png" %}" width="60px" style="margin-top: 10px;">
+              </div>
+            </div>
+          </div>
+          <div id="indrel-wrapper">
+            <div class="indrel-column">
+              <div class="icon-box">
+                <h2>Résumé Book</h2>
+                <img src="">
+                <p>Companies can purchase a UPE Résumé Book from our organization, a portfolio of résumés with nearly 30 résumés of Berkeley's highest-achieving computer science students. You can use our résumés as a starting point for your company's recruiting process.</p>
+                <p><a href="#">Purchase a UPE Résumé Book</a></p>
+              </div>
+            </div>
+            <div class="indrel-column">
+              <div class="icon-box">
+                <h2>Information Sessions</h2>
+                <img src="">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p><a href="#">Host an info-session with us</a></p>
+              </div>
+            </div>
+            <div class="indrel-column">
+              <div class="icon-box">
+                <h2>Workshops</h2>
+                <img src="">
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud.</p>
+                <p><a href="#">Host a workshop with us</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENDS MAIN -->
+
+    <!-- FOOTER -->
+    <div id="footer-wrapper">
+      <div id="footer-content">
+        <div id="footer-sponsor">
+          <h1>Our Sponsors</h1>
+          <div id="sponsor-images">
+            <div class="img-col"><img class="sponsor-icon" src="{% static "assets/images/layout/footer/sponsors/asuc-logo.png" %}" alt="Sponsor"></div>
+          </div>
+        </div>
+        <div id="footer-top-wrapper">
+          <div id="footer-top">
+            <div class="top-col">
+              <div class="top-col-title"><span>About Us</span></div>
+              <div class="top-col-info">
+                Lorem black dolizzle sheezy bow wow wow, own yo' adipiscing dawg. Yo mamma crunk velizzle, aliquet volutpizzle, fo gangster, gravida vizzle, fo shizzle. Lorem black dolizzle sheezy.
+                <br>Lorem black dolizzle sheezy bow wow wow, own yo' adipiscing dawg. Yo mamma crunk velizzle. Yo mamma crunk velizzle.
+              </div>
+              </div>
+            <div class="top-col">
+              <div class="top-col-title"><span>Recent Events</span></div>
+              <div class="top-col-info">
+                <img class="event-logo" src="http://placehold.it/45x45">
+                <div class="events-footer">Google Infosession<br>09/11/14<br><br>
+                </div>
+                <img class="event-logo" src="http://placehold.it/45x45">
+                <div class="events-footer">Google Infosession<br>09/11/14<br><br>
+                </div>
+                <img class="event-logo" src="http://placehold.it/45x45">
+                <div class="events-footer">Google Infosession<br>09/11/14<br><br>
+                </div>
+            </div>
+            </div>
+            <div class="top-col">
+              <div class="top-col-title"><span>Contact Us</span></div>
+              <div class="top-col-info">
+                <div id="name">UPE Office</div>346 Soda Hall<br> Berkeley, CA 94704 <br><br>
+                <div id="name">Open Tutoring Hours</div>Weekdays 11am-5pm <br><br>
+                <div id="name">Email</div>officers@upe.berkeley.edu
+            </div>
+            </div>
+            <div class="top-col">
+              <div class="top-col-title"><span>Follow Us</span></div> 
+              <div class="top-col-info">
+                <div id="name">Social Media</div>
+                  <ul id="footer-icons">
+                    <li class="icon-bar"><img id="icons1" src="{% static "assets/images/icons/rss2.png" %}"></li>
+                    <li class="icon-bar"><img id="icons2" src="{% static "assets/images/icons/twitter.png" %}"></li>
+                    <li class="icon-bar"><img id="icons3" src="{% static "assets/images/icons/fb.png" %}"></li>
+                  </ul>
+                <div id="name">Subscribe to our newsletter</div>
+                <div id='search-box'>
+                  <form action='/search' id='search-form' method='get' target='_top'>
+                  <input id='search-text' name='q' placeholder='Your e-mail...' type='text'/>
+                  <button id='search-button' type='submit'>Sign Up</button>
+                  </form>
+                </div>
+              </div>
+              </div>
+          </div>
+        </div>
+        <div id="footer-bottom-wrapper">
+          <div id="footer-bottom">
+            <img id="footer-icon" src="{% static "assets/images/layout/header/upe_whale.png" %}" alt="Workshop">
+            <div id="mini-menu">
+              <div class="mini-menu-item"><a href="links">FAQ</a></div> 
+              <div class="mini-menu-item">&middot</div>
+              <div class="mini-menu-item"><a href="links">Privacy</a></div> 
+              <div class="mini-menu-item">&middot</div>
+              <div class="mini-menu-item"><a href="links">Terms of Service</a></div> 
+            </div>
+            <div id="copyright">
+               Copyright © 2014 Upsilon Pi Epsilon at the University of California Berkeley
+            </div>       
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ENDS FOOTER -->
+  </body>
+</html>

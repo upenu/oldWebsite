@@ -1,0 +1,260 @@
+/* CSS RESET
+   http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+#header-wrapper {
+    background: #242424;
+    font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
+    color: #C9C9C9;
+    z-index: 10;
+    width: 100%;
+    height: 50px;
+    font-size: 12px;
+    overflow: hidden;
+}
+#header-content {
+    width: 1180px;
+    margin: 0px auto;
+    height: 50px;
+}
+#title {
+    float: left;
+    font-size: 25px;
+    font-weight: 700;
+    padding-left: 0px;
+    margin-top: 12px;
+    padding-right: 20px;
+}
+.nav-left {
+    float: left;
+    font-weight: 300;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 18px;
+    padding-top: 20px;
+    border-left-width: 1px;
+    border-color: #6F7480;
+    border-style: dotted;
+}
+#header-icon {
+    height: 30px;
+    float: left;
+    display: block;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.nav-right {
+    float: right;
+    padding-right: 6px;
+    padding-top: 10px;
+    padding-left: 6px;
+    color: white;
+}
+
+#signin {
+    background: #FF7D40;
+    margin-top: 10px;
+    text-align: center;
+    padding: 8px 13px 8px 13px;
+    border: 1px;
+    border-radius: 2px;
+    margin-left: 5px;
+}
+
+.icons {
+    height: 20px;
+    display: block;
+    margin-top: 5px;
+}
+
+img#searchi {
+    float: right;
+    margin-right: 7px;
+    margin-left: 7px;
+}
+
+li#search-bar {
+    width: 210px;
+    border-right-width: 1px;
+    border-color: #6F7480;
+    border-style: dotted;
+    padding-bottom: 12px;
+}
+
+#searchform {
+    float: right;
+    width: 50px;
+    height: 50px;
+}
+
+#search-box-h {
+    float: right;
+    width: 40px;
+    height:25px;
+    margin-top: 3px;
+    margin-right: 10px;
+    background-color: #808080;
+    padding: 0px;
+    border: 0px;
+    border-radius: 4px;
+    outline: none;
+    display: none;
+}
+
+*::-webkit-input-placeholder {
+  color: black;
+}
+*:-moz-placeholder {
+  color: black;
+}
+*:-ms-input-placeholder {
+  color: black;
+}
+*:-o-input-placeholder {
+  color: black;
+}
+*:-ktml-input-placeholder {
+  color: black;
+}
+
+
+.tab {
+    position: absolute;
+    display: none;
+    float: left;
+    width: 180px;
+    padding: 10px 0 10px 0;   
+    z-index: 10;
+    background: #242424;
+    margin-left: -16px;
+    margin-top: 13px;
+    border: 1px;
+    border-radius: 2px;
+    line-height: 20px;
+    color: #C9C9C9;
+}
+
+li.drop-op {
+    padding-left: 16px;
+}
+
+#modal-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1010;
+    display: none;
+}
+
+#modal-box-wrapper {
+    height: 260px;
+    width: 500px;
+    margin: auto;
+    z-index: 1010;
+    position: relative;
+    top: 250px;
+}
+#modal-overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 50;
+    display: none;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#modal-box {
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1010;
+    width: 500px;
+    height: 260px;
+    background-color: #242424;
+    /*background-color: #2490AB;*/
+}
+
+#inputbox {
+    border: 5px solid white;
+    padding: 10px;
+    background: transparent;
+    margin: 0px;
+    margin-bottom: 20px;
+    width: 430px;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    margin-left: 20px;
+    }
+#inputbox::-webkit-input-placeholder {
+    color: white;
+}
+#modal-header {
+    color: white;
+    font-size: 25px;
+    font-weight: 200;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+}
+
+.button {
+    display: inline-block;
+    background: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #5485bb;
+    float: right;
+    margin-right: 20px;
+    cursor: pointer;
+}

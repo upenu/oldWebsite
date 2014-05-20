@@ -1,0 +1,428 @@
+/* CSS RESET
+   http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Main Styles */
+
+#main-wrapper {
+	font-size: 14px;
+  line-height: 18px;
+  font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
+  color: #555;
+  overflow: hidden;
+}
+
+#main-inner-wrapper {
+	width: 990px;
+  margin: 0px auto 30px auto;
+}
+
+#content-wrapper {
+  background-color: #fff;
+  margin: 20px auto;
+  height: 600px;
+  box-shadow: 0 0 10px #bfbeba;
+  -moz-box-shadow: 0 0 10px #bfbeba;
+  -webkit-box-shadow: 0 0 10px #bfbeba;
+  -o-box-shadow: 0 0 10px #bfbeba;
+  -ktml-box-shadow: 0 0 10px #bfbeba;
+  -ms-box-shadow: 0 0 10px #bfbeba;
+}
+
+#content-header-wrapper {
+  padding: 10px 0px 30px 0px;
+}
+
+#content-header-wrapper h1 {
+  width: 600px;
+  margin: 20px auto 10px auto;
+  font-weight: 700;
+  text-align: center;
+  font-size: 24px;
+}
+
+#content-header-wrapper p {
+  width: 750px;
+  margin: 20px auto 10px auto;
+  text-align: center;
+  font-size: 16px;
+  line-height: 20px;
+  color: #888;
+}
+
+#content-studentservices-wrapper {
+  height: 200px;
+}
+
+#content-studentservices-wrapper img {
+  float: left;
+  margin: 0px 43px;
+}
+
+#content-studentservices-text {
+  width: 350px;
+  float: left;
+}
+
+#content-studentservices-text h1 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+#content-studentservices-text p {
+  line-height: 20px;
+}
+
+#content-members-wrapper {
+  margin-top: 40px;
+  height: 200px;
+}
+
+#content-members-wrapper img {
+  float: left;
+  margin: 0px 43px;
+}
+
+#content-members-text {
+  width: 350px;
+  float: left;
+  margin-left: 43px;
+}
+
+#content-members-text h1 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+#content-members-text p {
+  line-height: 20px;
+}
+
+#content-members-comment {
+  float: left;
+  width: 190px;
+  margin-top: 40px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 20px;
+  color: #888;
+}
+
+#events-OH-wrapper {
+  margin: 10px 0px;
+	width: 990px;
+  background: #fff;
+  box-shadow: 0 0 10px #bfbeba;
+  -moz-box-shadow: 0 0 10px #bfbeba;
+  -webkit-box-shadow: 0 0 10px #bfbeba;
+  -o-box-shadow: 0 0 10px #bfbeba;
+  -ktml-box-shadow: 0 0 10px #bfbeba;
+  -ms-box-shadow: 0 0 10px #bfbeba;
+}
+
+#events-wrapper {
+  margin: 0px 30px;
+  padding-top: 10px;
+	width: 930px;
+  height: 600px;
+}
+
+#events-title-wrapper {
+  height: 50px;
+  margin: 0px auto;
+	width: 990px;
+}
+
+#events-title {
+  width: 310px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 45px;
+  border-bottom: 2px solid #3eacc7;
+}
+
+#events-content-wrapper {
+  width: 990px;
+  height: 400px;
+}
+
+#events-list-wrapper {
+  width: 310px;
+}
+
+.events-list-item  {
+  color: #555;
+  margin: 10px 0px;
+  height: 120px;
+  width: 310px;
+  cursor: pointer;
+  box-shadow: 0 0 5px #bfbeba;
+  -moz-box-shadow: 0 0 5px #bfbeba;
+  -webkit-box-shadow: 0 0 5px #bfbeba;
+  -o-box-shadow: 0 0 5px #bfbeba;
+  -ktml-box-shadow: 0 0 5px #bfbeba;
+  -ms-box-shadow: 0 0 5px #bfbeba;
+}
+
+.events-list-item img {
+  margin: 10px;
+  height: 100px;
+  width: 100px;
+  float: left;
+}
+
+.events-list-item h1 {
+  margin: 5px auto auto 70px;
+  padding-top: 10px;
+  font-weight: 700;
+  width: 200px;
+}
+
+.events-list-item p {
+  margin: 0px auto 5px 70px;
+  line-height: 20px;
+  width: 250px;
+}
+
+.events-list-item p span {
+  font-weight: 700;
+}
+
+.events-list-item .description {
+  display: none;
+}
+
+.events-list-description {
+  width: 590px;
+  height: 510px;
+  margin-right: 60px;
+  float: right;
+}
+
+.events-list-description img {
+  width: 590px;
+  height: 218px;
+}
+
+.events-list-description h1 {
+  width: 590px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 30px;
+}
+
+.events-list-description p {
+  width: 590px;
+  line-height: 20px;
+  margin: 10px 0px;
+}
+
+/*
+#OH-today-wrapper {
+  margin: 10px auto;
+	width: 990px;
+  height: 500px;
+}
+
+#OH-today-title-wrapper {
+  height: 50px;
+  margin: 0px auto;
+	width: 930px;
+}
+
+#OH-today-title {
+  width: 600px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 45px;
+  border-bottom: 2px solid #3eacc7;
+}
+
+#OH-today-content-wrapper {
+  width: 930px;
+  margin: 20px auto;
+  height: 570px;
+}
+
+.OH-today-item {
+  float: left;
+  font-size: 12px;
+  margin-right: 15px;
+  width: 150px;
+  height: 250px;
+  box-shadow: 0 0 5px #bfbeba;
+  -moz-box-shadow: 0 0 5px #bfbeba;
+  -webkit-box-shadow: 0 0 5px #bfbeba;
+  -o-box-shadow: 0 0 5px #bfbeba;
+  -ktml-box-shadow: 0 0 5px #bfbeba;
+  -ms-box-shadow: 0 0 5px #bfbeba;
+}
+
+.OH-today-item img {
+  width: 140px;
+  height: 140px;
+  margin: 5px;
+}
+
+.OH-today-item p {
+  width: 140px;
+  margin: 0px 5px;
+}
+
+.OH-today-item p  span{
+  font-weight: 700;
+}
+
+*/
+
+#business-wrapper {
+  margin: 20px 0px;
+  width: 990px;
+  height: 700px;
+  background: #fff;
+  box-shadow: 0 0 5px #bfbeba;
+  -moz-box-shadow: 0 0 5px #bfbeba;
+  -webkit-box-shadow: 0 0 5px #bfbeba;
+  -o-box-shadow: 0 0 5px #bfbeba;
+  -ktml-box-shadow: 0 0 5px #bfbeba;
+  -ms-box-shadow: 0 0 5px #bfbeba;
+}
+
+.partners-wrapper {
+  height: 320px;
+  width: 990px;
+  background-image: url("../images/layout/backgrounds/bg-box.png");
+}
+
+.partners-wrapper .title-wrapper {
+  width: 990px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.partners-wrapper .title {
+  text-align: center;
+  font-size: 28px;
+  color: #fff;
+  line-height: 100px;
+}
+
+.partners-wrapper .title span {
+  font-weight: 700;
+}
+
+.partners-wrapper .companies-background {
+  background-color: rgba(255,255,255,0.4);
+}
+
+.partners-wrapper .companies-wrapper {
+  width: 930px;
+  height: 170px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.partners-wrapper .companies-wrapper img {
+  margin: 10px;
+  float: left;
+}
+
+.partners-wrapper .company-img {
+  margin: 20px 40px;
+  height: 170px;
+  height: 70px;
+  float: left;
+}
+
+#indrel-wrapper {
+  width: 960px;
+  margin: 15px auto;
+}
+
+.indrel-column {
+  width: 290px;
+  height: 330px;
+  float: left;
+  margin: 0px 15px;
+}
+
+.icon-box {
+  position: relative;
+  margin-bottom: 56px;
+  text-align: justify;
+}
+
+.icon-box  img{
+  margin: 0px auto;
+  height: 150px;
+  width: 290px;
+}
+
+.icon-box h2 {
+  font-size: 16px;
+  margin: 10px 0px;
+  font-weight: 700;
+}
+
+.icon-box p {
+  margin: 10px 0px;
+}
+
+.icon-box a {
+  font-weight: 700;
+  text-decoration: none;
+  color: #3EACC7;
+}
+
+.icon-box a:hover {
+  text-decoration: underline;
+}

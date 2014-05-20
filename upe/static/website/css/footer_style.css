@@ -1,0 +1,256 @@
+/* CSS RESET
+   http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Footer Styles */
+a {
+/*  color: #777;*/
+  color: white;
+}
+a:link {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+#footer-wrapper {
+    color: white;
+    z-index: 10;
+    width: 100%;
+    font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+#footer-sponsor {
+  background: #616161;
+    overflow: hidden;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#footer-sponsor h1 {
+  text-align: center;
+  font-weight: 700;
+}
+.sponsor-icon {
+  width: 120px;
+}
+#sponsor-images {
+  width: 120px;
+  height: 40px;
+  margin: 10px auto;
+}
+.img-col {
+  float: left;
+  display: inline;
+  #width: 250px;
+  #padding: 10px;
+  #padding-left: 30px;
+}
+#footer-top-wrapper {
+  background: #3A3A3A;
+  overflow: hidden;
+  padding-top: 5px;
+  line-height: 18px;
+  color: #D3D3D3;
+  height: 250px;
+  font-size: 12px;
+}
+#footer-top {
+  width: 990px;
+  margin: 0px auto;
+}
+.top-col {
+  float: left;
+  display: inline;
+  width: 210px;
+  padding: 15px;
+  height: 240px;
+}
+.top-col-title {
+  color: white;
+  border-bottom: 2px solid #666666;
+  font-size: 14px;
+}
+.top-col-info {
+    margin-top: 10px;
+}
+.top-col-title span {
+  padding: 0 20px 10px 0;
+  border-bottom: 2px solid #3EACC7;
+  display: inline-block;
+  margin-bottom: -1px;
+}
+#contact-list li:before {
+    content: "+";
+    color: white;
+}
+/*#footer-middle {
+  background: #3A3A3A;
+  line-height: 30px;
+  overflow: hidden;
+  text-align: center;
+}*/
+#footer-bottom-wrapper {
+    background: #242424;
+  overflow: hidden;
+    font-size: 12px;
+    color: #999;
+}
+#footer-bottom {
+  width: 990px;
+  margin: 0px auto;
+}
+#footer-icon {
+    height: 20px;
+    float: left;
+    display: block;
+    padding-top: 10px;
+}
+#copyright {
+    float: right;
+    line-height: 40px;
+}
+#mini-menu {
+  margin-left: 40px;
+}
+.mini-menu-item {
+  float: left;
+  padding: 0px 2px;
+    line-height: 40px;
+}
+.mini-menu-item a {
+    color: #999;
+}
+#name {
+  font-weight: bold;
+}
+.event-logo {
+  float: left;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+}
+.events-footer {
+  padding: 5px;
+}
+#icons1 {
+  height: 40px;
+  display: block;
+}
+#icons2 {
+  height: 40px;
+  display: block;
+}
+#icons3 {
+  height: 40px;
+  display: block;
+}
+.icon-bar {
+  float: left;
+  padding: 12px;
+}
+#search-box {
+    position: relative;
+    width: 100%;
+    margin: 0;
+}
+#search-form {
+    height: 20px;
+    border: 1px solid #999;
+    border-radius: 3px;
+    background-color: #fff;
+    overflow: hidden;
+    margin-top: 10px;
+}
+#search-text {
+    font-size: 12px;
+    color: #ddd;
+    border-width: 0;
+    background: transparent;
+}
+#search-box input[type="text"] {
+    width: 90%;
+    padding-left: 12px;
+    color: #333;
+    outline: none;
+}
+#search-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 21px;
+    width: 60px;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+    border-width: 0;
+    background-color: #999;
+    border-radius: 0px 3px 3px 0px;
+    cursor: pointer;
+}
+/*.footer-column {
+  width: 33%;
+  float: left;
+  line-height: 24px;
+}
+#links {
+    color: white; 
+}
+.column-content {
+  color: #777;
+}
+.column-title {
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+ul li:before {
+    content: "+";
+    padding-right: 5px;
+    color: #3EACC7;
+}*/
