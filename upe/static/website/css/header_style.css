@@ -1,52 +1,3 @@
-/* CSS RESET
-   http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-    display: block;
-}
-body {
-    line-height: 1;
-}
-ol, ul {
-    list-style: none;
-}
-blockquote, q {
-    quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content: '';
-    content: none;
-}
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
 #header-wrapper {
     background: #242424;
     font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
@@ -55,12 +6,15 @@ table {
     width: 100%;
     height: 50px;
     font-size: 12px;
-    overflow: hidden;
+    position: fixed;
+    top: 0px;
 }
 #header-content {
-    width: 1180px;
-    margin: 0px auto;
+    background: #242424;
+    padding: 0% 6%;
     height: 50px;
+    width: 990px;
+    margin: 0 auto;
 }
 #title {
     float: left;
@@ -70,17 +24,6 @@ table {
     margin-top: 12px;
     padding-right: 20px;
 }
-.nav-left {
-    float: left;
-    font-weight: 300;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 18px;
-    padding-top: 20px;
-    border-left-width: 1px;
-    border-color: #6F7480;
-    border-style: dotted;
-}
 #header-icon {
     height: 30px;
     float: left;
@@ -89,160 +32,6 @@ table {
     padding-right: 10px;
 }
 
-.nav-right {
-    float: right;
-    padding-right: 6px;
-    padding-top: 10px;
-    padding-left: 6px;
-    color: white;
-}
-
-#signin {
-    background: #FF7D40;
-    margin-top: 10px;
-    text-align: center;
-    padding: 8px 13px 8px 13px;
-    border: 1px;
-    border-radius: 2px;
-    margin-left: 5px;
-}
-
-.icons {
-    height: 20px;
-    display: block;
-    margin-top: 5px;
-}
-
-img#searchi {
-    float: right;
-    margin-right: 7px;
-    margin-left: 7px;
-}
-
-li#search-bar {
-    width: 210px;
-    border-right-width: 1px;
-    border-color: #6F7480;
-    border-style: dotted;
-    padding-bottom: 12px;
-}
-
-#searchform {
-    float: right;
-    width: 50px;
-    height: 50px;
-}
-
-#search-box-h {
-    float: right;
-    width: 40px;
-    height:25px;
-    margin-top: 3px;
-    margin-right: 10px;
-    background-color: #808080;
-    padding: 0px;
-    border: 0px;
-    border-radius: 4px;
-    outline: none;
-    display: none;
-}
-
-*::-webkit-input-placeholder {
-  color: black;
-}
-*:-moz-placeholder {
-  color: black;
-}
-*:-ms-input-placeholder {
-  color: black;
-}
-*:-o-input-placeholder {
-  color: black;
-}
-*:-ktml-input-placeholder {
-  color: black;
-}
-
-
-.tab {
-    position: absolute;
-    display: none;
-    float: left;
-    width: 180px;
-    padding: 10px 0 10px 0;   
-    z-index: 10;
-    background: #242424;
-    margin-left: -16px;
-    margin-top: 13px;
-    border: 1px;
-    border-radius: 2px;
-    line-height: 20px;
-    color: #C9C9C9;
-}
-
-li.drop-op {
-    padding-left: 16px;
-}
-
-#modal-container {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    z-index: 1010;
-    display: none;
-}
-
-#modal-box-wrapper {
-    height: 260px;
-    width: 500px;
-    margin: auto;
-    z-index: 1010;
-    position: relative;
-    top: 250px;
-}
-#modal-overlay {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    z-index: 50;
-    display: none;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-#modal-box {
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 1010;
-    width: 500px;
-    height: 260px;
-    background-color: #242424;
-    /*background-color: #2490AB;*/
-}
-
-#inputbox {
-    border: 5px solid white;
-    padding: 10px;
-    background: transparent;
-    margin: 0px;
-    margin-bottom: 20px;
-    width: 430px;
-    font-size: 12px;
-    font-weight: 700;
-    color: white;
-    cursor: pointer;
-    margin-left: 20px;
-    }
-#inputbox::-webkit-input-placeholder {
-    color: white;
-}
-#modal-header {
-    color: white;
-    font-size: 25px;
-    font-weight: 200;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    padding-top: 20px;
-}
 
 .button {
     display: inline-block;
@@ -257,4 +46,145 @@ li.drop-op {
     float: right;
     margin-right: 20px;
     cursor: pointer;
+}
+
+.nav {
+  background: #242424;
+  height: 50px;
+  display: inline-block;
+  width: 100%;
+}
+
+.nav li {
+  float: left;
+  list-style-type: none;
+  position: relative;
+}
+
+.nav li a {
+    font-size: 14px;
+    color: #fefefa;
+    display: block;
+    line-height: 50px;
+    padding: 0 12px;
+    text-decoration: none;
+    border-left: 1px solid #2e2e2e;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+}
+
+.nav li a:hover {
+  background-color: #2e2e2e;
+}
+#brand-section {
+    width: 96px;
+}
+#upe-brand {
+    display: inline-block;
+    float: right;
+    width: 45px;
+    font-size: 18px;
+    margin-top: 16px;
+    color: #fefefa;
+}
+
+#search_text {
+  width: 297px;
+  padding: 15px 0 15px 20px;
+  font-size: 16px;
+  font-family: Montserrat, sans-serif;
+  border: 0 none;
+  height: 52px;
+  margin-right: 0px;
+  color: white;
+  outline: none;
+  background: #1f7f5c;
+  float: left;
+  box-sizing: border-box;
+  transition: all 0.15s;
+}
+::-webkit-input-placeholder {
+  color:white;
+}
+:-moz-placeholder {
+  color:white;
+}
+::-moz-placeholder {
+  color:white;
+}
+:-ms-input-placeholder {
+  color:white;
+}
+#search_text:focus{
+  background: rgb(64, 151, 119);
+}
+#search_button{
+  border: 0 none;
+  background: #1f7f5c url(http://designmodo.com/demo/dropdown-menu-search/search.png) center no-repeat;
+  width: 60px;
+  float: left;
+  padding: 0;
+  text-align: center;
+  height: 52px;
+  cursor: pointer;
+}
+
+#options a{
+  border-left: 0 none;
+}
+
+#options>a {
+  background-image: url(http://designmodo.com/demo/dropdown-menu-search/triangle.png);
+  background-position: 85% center;
+  background-repeat: no-repeat;
+  padding-right: 42px;
+}
+
+.subnav {
+  visibility: hidden;
+  position: absolute;
+  top:110%;
+  right: -80px;
+  width: 200px;
+  height: auto;
+  opacity: 0;
+  transition: all 0.1s;
+  background: #232323;
+}
+
+.subnav li {
+  float: none;
+}
+
+.subnav li a {
+  border-bottom: 1px solid #2e2e2e;
+}
+
+#options:hover .subnav{
+  visibility: visible;
+  top:100%;
+  opacity: 1;
+}
+
+.header-section a {
+    border-left: 0 none;
+    color: #999;
+}
+
+.header-section:hover .subnav{
+  visibility: visible;
+  top:100%;
+  opacity: 1;
+}
+
+#subnav-1 {
+    right: -138px;
+}
+
+#subnav-2 {
+    right: -68px;
+}
+
+#subnav-3 {
+    right: -54px;
 }

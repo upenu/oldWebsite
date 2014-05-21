@@ -137,9 +137,9 @@ a:hover {
 }*/
 #footer-bottom-wrapper {
     background: #242424;
-  overflow: hidden;
+    overflow: hidden;
     font-size: 12px;
-    color: #999;
+    color: #fefefa;
 }
 #footer-bottom {
   width: 990px;
@@ -162,9 +162,7 @@ a:hover {
   float: left;
   padding: 0px 2px;
     line-height: 40px;
-}
-.mini-menu-item a {
-    color: #999;
+    color: #fefefa;
 }
 #name {
   font-weight: bold;

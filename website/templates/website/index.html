@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{% static "assets/css/main_style.css" %}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{% static "assets/css/footer_style.css" %}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{% static "assets/css/slider-custom.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "assets/css/header_dropdown.css" %}" type="text/css" media="screen" />
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- END CSS LINKS -->
 
     <!-- GOOGLE FONTS -->
@@ -36,83 +38,68 @@
       <script src="{% static "assets/js/landingpage.banner.custom.js" %}"></script>
       <script src="{% static "assets/js/landingpage.main.custom.js" %}"></script>
       <script src="{% static "assets/js/footer_script.js" %}"></script>
+      <script src="{% static "assets/js/header_script.js" %}"></script>
     <!-- ENDS JS LINKS -->
 
   </head>
   <body>
+
+
+
+
+
+
+
+
+
+
+
     <!-- HEADER -->
     <div id="header-wrapper">
-      <!-- SIGNIN MODAL -->
-      <div id="modal-container">
-        <div id="modal-overlay"></div>
-        <div id="modal-box-wrapper">
-          <div id="modal-box">
-            <div id="modal-header">
-              Login
-            </div>
-            <div id="modal-content">
-              <input type="text" id="inputbox" placeholder="Enter username" />
-              <input type="password" id="inputbox" placeholder="Enter password" />
-            </div>
-            <div class="button">
-              Submit
-            </div>
-            <div class="button">
-              Cancel
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- END OF SIGNIN MODAL -->
       <div id="header-content">
-        <div id="title">UPE</div>
-        <img id="header-icon" src="{% static "assets/images/layout/header/upe_whale.png" %}" alt="Workshop">
-        <ul id="nav">
-          <li class="nav-right" id="signin">Sign in</li>
-          <li class="nav-right"><img class="icons" id="rssi" src="{% static "assets/images/icons/g_rss.png" %}"></li>
-          <li class="nav-right"><img class="icons" id="twi" src="{% static "assets/images/icons/g_tw.png" %}"></li>
-          <li class="nav-right"><img class="icons" id="fbi" src="{% static "assets/images/icons/g_fb.png" %}"></li>
-          <!-- SEARCH BAR -->
-          <li class="nav-right" id="search-bar">
-            <form method="get" role="search">
-              <img class="icons" id="searchi" src="{% static "assets/images/icons/g_search.png" %}">
-              <input id="search-box-h" type="Search" placeholder="Search..." src="{% static "assets/images/icons/g_search.png" %}">
-            </form>
+        <ul class="nav">
+          <li id="brand-section">
+             <img id="header-icon" src="{% static "assets/images/layout/header/upe_whale.png" %}" alt="Workshop"><span id="upe-brand">UPE</span>
           </li>
-          <!-- END OF SEARCH BAR -->
-          <li class="nav-left" id="about">About UPE
-            <ul class="tab" id="drop-about">
-              <li class="drop-op">Foshizzle</li>
-              <li class="drop-op">Foshizzle</li>
-              <li class="drop-op">Foshizzle</li>
+          <li class="header-section">
+            <a href="#">About</a>
+            <ul id="subnav-1" class="subnav">
+                <li><a href="#">Board</a></li>
+                <li><a href="#">Options</a></li>
             </ul>
           </li>
-          <li class="nav-left" id="ss">Student Services
-            <ul class="tab" id="drop-ss">
-              <li class="drop-op">Foshizzle</li>
-              <li class="drop-op">Foshizzle</li>
-              <li class="drop-op">Foshizzle</li>
+          <li class="header-section">
+            <a href="#">Student Services</a>
+            <ul id="subnav-2" class="subnav">
+                <li><a href="#">Board</a></li>
+                <li><a href="#">Options</a></li>
             </ul>
           </li>
-          <li class="nav-left" id="ir">Industrial Relations
-            <ul class="tab"id="drop-ir">
-              <li class="drop-op">Foshizzle</li>
-              <li class="drop-op">Foshizzle</li>
-              <li class="drop-op">Foshizzle</li>
+          <li class="header-section">
+            <a href="#">Industrial Relations</a>
+            <ul id="subnav-3" class="subnav">
+                <li><a href="#">Board</a></li>
+                <li><a href="#">Options</a></li>
             </ul>
           </li>
-          <li class="nav-left" id="cal">Calendar
-            <ul class="tab" id="drop-cal">
-              <li class="drop-op">Foshizzle</li>
-              <li class="drop-op">Foshizzle</li>
-              <li class="drop-op">Foshizzle</li>
-            </ul>
+          <li class="header-section pull-right">
+            <a href=""><i class="icons fa fa-rss"></i></a>
+          </li>
+          <li class="header-section pull-right">
+            <a href=""><i class="icons fa fa-twitter"></i></a>
+          </li>
+          <li class="header-section">
+            <a href="#">Calendar</a>
+          </li>
+          <li class="header-section pull-right">
+            <a href=""><i class="icons fa fa-facebook"></i></a>
           </li>
         </ul>
+
+
       </div>
       <!-- MENU -->
       <!-- ENDS MENU -->
-
     </div>
     <!-- ENDS HEADER -->
 

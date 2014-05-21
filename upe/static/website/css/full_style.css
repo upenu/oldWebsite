@@ -31,6 +31,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-image: url(http://subtlepatterns.com/patterns/pw_maze_white.png);
 }
 ol, ul {
 	list-style: none;
@@ -56,17 +57,17 @@ body {
 }
 
 #main-wrapper {
-	font-size: 14px;
+  font-size: 14px;
   line-height: 18px;
   font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
   color: #333;
 }
 
 .pull-left {
-	float: left;
+	float: left !important;
 }
 
 .pull-right {
-	float: right;
+	float: right !important;
 }
 

@@ -73,6 +73,7 @@ table {
   -o-box-shadow: 0 0 10px #bfbeba;
   -ktml-box-shadow: 0 0 10px #bfbeba;
   -ms-box-shadow: 0 0 10px #bfbeba;
+  background-image: url(http://subtlepatterns.com/patterns/swirl.png);
 }
 
 #content-header-wrapper {
@@ -166,6 +167,7 @@ table {
   -o-box-shadow: 0 0 10px #bfbeba;
   -ktml-box-shadow: 0 0 10px #bfbeba;
   -ms-box-shadow: 0 0 10px #bfbeba;
+  background-image: url(http://subtlepatterns.com/patterns/brillant.png);
 }
 
 #events-wrapper {
@@ -340,7 +342,7 @@ table {
 .partners-wrapper {
   height: 320px;
   width: 990px;
-  background-image: url("../images/layout/backgrounds/bg-box.png");
+  background: linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5)), url(http://subtlepatterns.com/patterns/gplaypattern.png) repeat;
 }
 
 .partners-wrapper .title-wrapper {
