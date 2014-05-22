@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{% static "assets/css/slider-custom.css" %}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{% static "assets/css/header_dropdown.css" %}" type="text/css" media="screen" />
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "assets/css/hover.css" %}" type="text/css" media="screen" />
     <!-- END CSS LINKS -->
 
     <!-- GOOGLE FONTS -->
@@ -32,9 +33,9 @@
       <script src="{% static "assets/js/header_script.js" %}"></script>
       <script src="{% static "assets/js/thumbnail_script.js" %}"></script>
       <script src="{% static "assets/js/modernizr.custom.79639.js" %}"></script>
-      <script src="{% static "assets/js/ba-cond.min.js" %}"></script>
+      <script src="{% static "assets/js/ba_cond.min.js" %}"></script>
       <script src="{% static "assets/js/slitslider.js" %}"></script>
-      <script src="{% static "assets/js/slitslider-custom.js" %}"></script>
+      <script src="{% static "assets/js/slitslider_custom.js" %}"></script>
       <script src="{% static "assets/js/landingpage.banner.custom.js" %}"></script>
       <script src="{% static "assets/js/landingpage.main.custom.js" %}"></script>
       <script src="{% static "assets/js/footer_script.js" %}"></script>
@@ -43,17 +44,6 @@
 
   </head>
   <body>
-
-
-
-
-
-
-
-
-
-
-
     <!-- HEADER -->
     <div id="header-wrapper">
       <div id="header-content">
@@ -173,29 +163,33 @@
             <p>Upsilon Pi Epsilon is the first and only international honor society for the Computing Sciences. The UC Berkeley chapter, launched in 1995, honors the top tier of Computer Science students on campus.</p>
           </div>
           <div id="content-studentservices-wrapper">
-            <img src="{% static "assets/images/content/wozniak1.jpg" %}" height="150px">
+            <div class="circle pull-left">
+              <img src="{% static "assets/images/content/wozniak1.jpg" %}">
+            </div>
             <div id="content-studentservices-text">
               <h1>We help others.</h1>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
             </div>
-            <img src="{% static "assets/images/content/hackathon1.png" %}" height="200px">
           </div>
           <div id="content-members-wrapper">
+            <div class="circle">
+              <img class="pull-right" src="{% static "assets/images/content/hackathon1.png" %}" height="200px">
+            </div>
             <div id="content-members-text">
               <h1>Connections and Opportunities.</h1>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
             </div>
-            <img src="{% static "assets/images/content/officers1.jpg" %}" height="180px">
-            <div id="content-members-comment">"I wouldn't be working at Google today without the help of UPE."</div>
           </div>
         </div>
         <div id="events-OH-wrapper">
           <div id="events-wrapper">
-            <div id="events-title-wrapper"><div id="events-title">Upcoming Events</div></div>
+            <div id="events-title-wrapper">
+              <div id="events-title">Upcoming Events</div>
+            </div>
             <div id="events-content-wrapper">
               <div class="events-list-description"></div>
               <div id="events-list-wrapper">
-                <div class="events-list-item">
+                <div class="events-list-item float">
                     <img src="">
                     <h1>General Meeting #1</h1>
                     <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Location:</span> Wozniak Lounge</br>430-8 Soda Hall, Berkeley</p>
@@ -206,7 +200,7 @@
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
                 </div>
-                <div class="events-list-item">
+                <div class="events-list-item float">
                     <img src="">
                     <h1>General Meeting #2</h1>
                     <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Location:</span> Wozniak Lounge</br>430-8 Soda Hall, Berkeley</p>
@@ -217,7 +211,7 @@
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
                 </div>
-                <div class="events-list-item">
+                <div class="events-list-item float">
                     <img src="">
                     <h1>General Meeting #3</h1>
                     <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Location:</span> Wozniak Lounge</br>430-8 Soda Hall, Berkeley</p>
@@ -228,7 +222,7 @@
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
                 </div>
-                <div class="events-list-item">
+                <div class="events-list-item float">
                     <img src="">
                     <h1>General Meeting #4</h1>
                     <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Location:</span> Wozniak Lounge</br>430-8 Soda Hall, Berkeley</p>
@@ -238,6 +232,38 @@
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="oh-wrapper">
+          <div id="oh-content">
+            <div id="oh-title-wrapper">
+              <div id="oh-title">Office Hours</div>
+            </div>
+            <div id="oh-content-wrapper">
+              <div id="oh-list-wrapper">
+                <div class="oh-list-item float">
+                    <img src="">
+                    <h1>John Doe</h1>
+                    <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Classes:</span> CS 61A</p>
+                </div>
+                <div class="oh-list-item float">
+                    <img src="">
+                    <h1>John Doe</h1>
+                    <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Classes:</span> CS 61A</p>
+                </div>
+                <div class="oh-list-item float">
+                    <img src="">
+                    <h1>John Doe</h1>
+                    <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Classes:</span> CS 61A</p>
+                </div>
+                <div class="oh-list-item float">
+                    <img src="">
+                    <h1>John Doe</h1>
+                    <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Classes:</span> CS 61A</p>
                 </div>
               </div>
             </div>
