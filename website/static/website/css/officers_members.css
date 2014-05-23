@@ -1,0 +1,138 @@
+#officer-container {
+	width: 772px;
+	margin: 0 auto;
+	min-height: 300px;
+}
+
+.officer {
+	width: 180px;
+	min-height: 350px;
+	background-color: white;
+	position: relative;
+	display: inline-block;
+	margin-right: 10px;
+	margin-bottom: 20px;
+	-moz-box-shadow: 0 0 5px #bfbeba !important;
+	-webkit-box-shadow: 0 0 5px #bfbeba !important;
+	-o-box-shadow: 0 0 5px #bfbeba !important;
+	-ktml-box-shadow: 0 0 5px #bfbeba !important;
+	-ms-box-shadow: 0 0 5px #bfbeba !important;
+}
+
+.officer-picture {
+	width: 100%;
+	height: 180px;
+	margin-bottom: 5px;
+}
+
+.officer span {
+	display: block;
+}
+
+.social {
+	position: absolute;
+	bottom: 0px;
+	display: block;
+	padding: 5px;
+	font-size: 20px;
+}
+
+.social li {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.social i {
+	color: #3eacc7 !important;;
+}
+
+.social i:hover {
+	color: #78c5d8 !important;;
+}
+
+
+.officer-info {
+	padding: 5px;
+	font-size: 13px;
+	line-height: 1.2;
+	font-weight: 500;
+}
+
+.content-container {
+	width: 900px;
+	margin: 72px auto 20px auto;
+	background-image: url(http://subtlepatterns.com/patterns/brillant.png);
+	padding: 35px;
+	min-height: 500px;
+}
+
+.content-container *{
+	font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
+}
+
+.content-sidebar {
+	margin-bottom: 35px;
+	width: 180px;
+	float: left;
+	height: 680px;
+}
+
+.content-sidebar h1 {
+	font-size: 25px;
+	font-weight: 700;
+	color: #555;
+	border-bottom: 2px solid #3eacc7;
+	width: 115px;
+	line-height: 45px;
+	position: relative;
+	top: -15px;
+}
+
+#archive li {
+	margin-bottom: 7px;
+}
+
+#archive li a {
+	color: #555;
+	font-weight: 400;
+}
+
+#member-container {
+	width: 772px;
+	margin: 0 auto;
+	min-height: 300px;
+}
+
+.member {
+	width: 316px;
+	height: 150px;
+	background-color: white;
+	position: relative;
+	display: inline-block;
+	margin-right: 10px;
+	margin-bottom: 20px;
+	-moz-box-shadow: 0 0 5px #bfbeba !important;
+	-webkit-box-shadow: 0 0 5px #bfbeba !important;
+	-o-box-shadow: 0 0 5px #bfbeba !important;
+	-ktml-box-shadow: 0 0 5px #bfbeba !important;
+	-ms-box-shadow: 0 0 5px #bfbeba !important;
+}
+
+.member-picture {
+	width: 150px;
+	height: 150px;
+	margin-bottom: 5px;
+	float: left;
+}
+
+.member span {
+	display: block;
+}
+
+.member-info {
+	padding: 5px;
+	font-size: 12px;
+	line-height: 1.2;
+	font-weight: 500;
+	float: left;
+}
