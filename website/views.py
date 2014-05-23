@@ -16,6 +16,10 @@ def index(request):
     })
     return HttpResponse(template.render(context))
 
+def calendar(request):
+    return render(request, 'website/calendar.html', {})
+
+
 def officehours(request):
     def slot(x):
         result = []
