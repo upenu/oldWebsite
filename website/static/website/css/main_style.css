@@ -63,6 +63,10 @@ table {
   margin: 0px auto 30px auto;
 }
 
+#main-content-wrapper {
+  margin-top: 50px;
+}
+
 #content-wrapper {
   background-color: #fff;
   margin: 20px auto;

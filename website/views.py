@@ -17,8 +17,9 @@ def index(request):
     return HttpResponse(template.render(context))
 
 def calendar(request):
-    return render(request, 'website/calendar.html', {})
-
+    template = loader.get_template('website/calendar.html')
+    context = RequestContext(request, {})
+    return HttpResponse(template.render(context))
 
 def officehours(request):
     def slot(x):

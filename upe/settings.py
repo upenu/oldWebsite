@@ -60,7 +60,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'website',
-        'USER': 'briansu',
+        'USER': 'Mari',
         'PASSWORD': 'hithere',
         'HOST': '127.0.0.1',
         'PORT': '5432',
@@ -91,8 +91,8 @@ USE_TZ = True
 
 AUTHENTICATION_BACKENDS = ('website.backends.CustomBackend',)
 
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+# import dj_database_url
+# DATABASES['default'] =  dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

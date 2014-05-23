@@ -1,395 +1,221 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
-
-        {% load staticfiles %}
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Upsilon Pi Epsilon</title>
-
-        <!-- FAVICON -->
-        <link rel="icon" type="image/png" href="{% static "website/images/icons/favicon_whale.png" %}"/>
-        <!-- ENDS FAVICON -->
-
-        <!-- CSS LINKS -->
-        <link rel="stylesheet" href="{% static "website/css/full_style.css" %}" type="text/css" media="screen" />
-        <link rel="stylesheet" href="{% static "website/css/header_style.css" %}" type="text/css" media="screen" />
-        <link rel="stylesheet" href="{% static "website/css/footer_style.css" %}" type="text/css" media="screen" />
-        <link rel="stylesheet" href="{% static "website/css/calendar_style.css" %}" type="text/css" media="screen" />
-        <!-- END CSS LINKS -->
-
-        <!-- GOOGLE FONTS -->
-        <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
-        <!-- END GOOGLE FONTS -->
-
-        <!-- END CSS LINKS -->
-
-        <!-- GOOGLE FONTS -->
-
-        <!-- END GOOGLE FONTS -->
-
-        <!-- JS LINKS -->
-        <!-- JQUERY -->
-        <script src="{% static "website/js/jquery-1.11.0.min.js" %}"></script>
-        <!-- ENDS JQUERY -->
-        <script src="{% static "website/js/footer_script.js" %}"></script>
-        <script src="{% static "website/js/header_script.js" %}"></script>
-        <!-- ENDS JS LINKS -->
-
-    </head>
-    <body>
-        <!-- HEADER -->
-        <div id="header-wrapper">
-            <div id="header-content">
-                <ul class="nav">
-                    <li id="brand-section">
-                    <a href="/">
-                    <img id="header-icon" src="{% static "website/images/layout/header/upe_whale.png" %}" alt="Workshop"></a><span id="upe-brand">UPE</span>
-                    </li>
-                    <li class="header-section">
-                    <a href="#">About</a>
-                    <ul id="subnav-1" class="subnav">
-                        <li><a href="#">General Information</a></li>
-                        <li><a href="#">Officers</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                    </li>
-                    <li class="header-section">
-                    <a href="#">Student Services</a>
-                    <ul id="subnav-2" class="subnav">
-                        <li><a href="#">Main</a></li>
-                        <li><a href="#">Interview Questions</a></li>
-                        <li><a href="#">Mock Interviews</a></li>
-                        <li><a href="#">Office Hours</a></li>
-                        <li><a href="#">Early Applicants</a></li>
-                    </ul>
-                    </li>
-                    <li class="header-section">
-                    <a href="#">Industrial Relations</a>
-                    <ul id="subnav-3" class="subnav">
-                        <li><a href="#">Main</a></li>
-                        <li><a href="#">Infosessions</a></li>
-                        <li><a href="#">Resume Book</a></li>
-                    </ul>
-                    </li>
-                    <li class="header-section pull-right">
-                    <a href=""><i class="icons fa fa-rss"></i></a>
-                    </li>
-                    <li class="header-section pull-right">
-                    <a href=""><i class="icons fa fa-twitter"></i></a>
-                    </li>
-                    <li class="header-section">
-                    <a href="#">Calendar</a>
-                    </li>
-                    <li class="header-section pull-right">
-                    <a href=""><i class="icons fa fa-facebook"></i></a>
-                    </li>
-                </ul>
-
-
-            </div>
-            <!-- MENU -->
-            <!-- ENDS MENU -->
-        </div>
-        <!-- ENDS HEADER -->
-        <hr>
-        <hr>
-
-        <!-- OFFICE HOURS -->
-        <div id="calendar-wrapper">
-            <div id="calendar-title">April 2014</div>
-            <table id="days-wrapper">
-                <tr id="days">
-                    <td class="day-row">Sunday</td>
-                    <td class="day-row">Monday</td>
-                    <td class="day-row">Tuesday</td>
-                    <td class="day-row">Wednesday</td>
-                    <td class="day-row">Thursday</td>
-                    <td class="day-row">Friday</td>
-                    <td class="day-row">Saturday</td>
-                </tr>
-            </table>
-            <table id="week1-wrapper">
-                <tr id="week1">
-                    <td class="calendar-day">
-                        <div class="date">1</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">2</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">3</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">4</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">5</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">6</div>
-                        <ul id="events">
-                            <li class="event-info">General Meeting #3</li>
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">7</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-            <table id="week2-wrapper">
-                <tr id="week2">
-                    <td class="calendar-day">
-                        <div class="date">8</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">9</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">10</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">11</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">12</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">13</div>
-                        <ul id="events">
-                            <li class="event-info">Internship Panel</li>
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">14</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-            <table id="week3-wrapper">
-                <tr id="week3">
-                    <td class="calendar-day">
-                        <div class="date">15</div>
-                        <ul id="events">
-                            <li class="event-info">Capture the Flag</li>
-                        </ul>  
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">16</div>
-                        <ul id="events">
-                            <li class="event-info">Google Infosession</li>
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">17</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">18</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">19</div>
-                        <ul id="events">
-                            <li class="event-info">Ice Cream Social</li>
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">20</div>
-                        <ul id="events">
-                            <li class="event-info">"420 WOOO"</li>
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">21</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-            <table id="week4-wrapper">
-                <tr id="week4">
-                    <td class="calendar-day">
-                        <div class="date">22</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">23</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">24</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">25</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">26</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">27</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">28</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-            <table id="week5-wrapper">
-                <tr id="week5">
-                    <td class="calendar-day">
-                        <div class="date">29</div>
-                        <ul id="events">
-                            <li class="event-info">Initiation</li>
-                            <li class="event-info">KickBack Round 2</li>
-                        </ul>  
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">30</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day">
-                        <div class="date">31</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day next-month">
-                        <div class="date">1</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day next-month">
-                        <div class="date">2</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day next-month">
-                        <div class="date">3</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                    <td class="calendar-day next-month">
-                        <div class="date">4</div>
-                        <ul id="events">
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <!-- ENDS OFFICE HOURS -->
-
-        <!-- FOOTER -->
-        <div id="footer-wrapper">
-            <div id="footer-content">
-                <div id="footer-sponsor">
-                    <h1>Our Sponsors</h1>
-                    <div id="sponsor-images">
-                        <div class="img-col"><img class="sponsor-icon" src="{% static "website/images/layout/footer/sponsors/asuc-logo.png" %}" alt="Sponsor"></div>
-                    </div>
-                </div>
-                <div id="footer-top-wrapper">
-                    <div id="footer-top">
-                        <div class="top-col">
-                            <div class="top-col-title"><span>About Us</span></div>
-                            <div class="top-col-info">
-                                Lorem black dolizzle sheezy bow wow wow, own yo' adipiscing dawg. Yo mamma crunk velizzle, aliquet volutpizzle, fo gangster, gravida vizzle, fo shizzle. Lorem black dolizzle sheezy.
-                                <br>Lorem black dolizzle sheezy bow wow wow, own yo' adipiscing dawg. Yo mamma crunk velizzle. Yo mamma crunk velizzle.
-                            </div>
-                        </div>
-                        <div class="top-col">
-                            <div class="top-col-title"><span>Recent Events</span></div>
-                            <div class="top-col-info">
-                                <img class="event-logo" src="http://placehold.it/45x45">
-                                <div class="events-footer">Google Infosession<br>09/11/14<br><br>
-                                </div>
-                                <img class="event-logo" src="http://placehold.it/45x45">
-                                <div class="events-footer">Google Infosession<br>09/11/14<br><br>
-                                </div>
-                                <img class="event-logo" src="http://placehold.it/45x45">
-                                <div class="events-footer">Google Infosession<br>09/11/14<br><br>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="top-col">
-                            <div class="top-col-title"><span>Contact Us</span></div>
-                            <div class="top-col-info">
-                                <div id="name">UPE Office</div>346 Soda Hall<br> Berkeley, CA 94704 <br><br>
-                                <div id="name">Open Tutoring Hours</div>Weekdays 11am-5pm <br><br>
-                                <div id="name">Email</div>officers@upe.berkeley.edu
-                            </div>
-                        </div>
-                        <div class="top-col">
-                            <div class="top-col-title"><span>Follow Us</span></div> 
-                            <div class="top-col-info">
-                                <div id="name">Social Media</div>
-                                <ul id="footer-icons">
-                                    <li class="icon-bar"><img id="icons1" src="{% static "website/images/icons/rss2.png" %}"></li>
-                                    <li class="icon-bar"><img id="icons2" src="{% static "website/images/icons/twitter.png" %}"></li>
-                                    <li class="icon-bar"><img id="icons3" src="{% static "website/images/icons/fb.png" %}"></li>
-                                </ul>
-                                <div id="name">Subscribe to our newsletter</div>
-                                <div id='search-box'>
-                                    <form action='/search' id='search-form' method='get' target='_top'>
-                                        <input id='search-text' name='q' placeholder='Your e-mail...' type='text'/>
-                                        <button id='search-button' type='submit'>Sign Up</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="footer-bottom-wrapper">
-                    <div id="footer-bottom">
-                        <img id="footer-icon" src="{% static "website/images/layout/header/upe_whale.png" %}" alt="Workshop">
-                        <div id="mini-menu">
-                            <div class="mini-menu-item"><a href="links">FAQ</a></div> 
-                            <div class="mini-menu-item">&middot</div>
-                            <div class="mini-menu-item"><a href="links">Privacy</a></div> 
-                            <div class="mini-menu-item">&middot</div>
-                            <div class="mini-menu-item"><a href="links">Terms of Service</a></div> 
-                        </div>
-                        <div id="copyright">
-                            Copyright © 2014 Upsilon Pi Epsilon at the University of California Berkeley
-                        </div>       
-                    </div>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+{% extends "website/header-footer.html" %}
+{% load staticfiles %}
+{% block content %}
+<div id="calendar-wrapper">
+    <div id="calendar-title">April 2014</div>
+    <table id="days-wrapper">
+      <tr id="days">
+        <td class="day-row">Sunday</td>
+        <td class="day-row">Monday</td>
+        <td class="day-row">Tuesday</td>
+        <td class="day-row">Wednesday</td>
+        <td class="day-row">Thursday</td>
+        <td class="day-row">Friday</td>
+        <td class="day-row">Saturday</td>
+      </tr>
+    </table>
+    <table id="week1-wrapper">
+      <tr id="week1">
+        <td class="calendar-day">
+          <div class="date">1</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">2</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">3</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">4</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">5</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">6</div>
+          <ul id="events">
+            <li class="event-info">General Meeting #3</li>
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">7</div>
+          <ul id="events">
+          </ul>
+        </td>
+      </tr>
+    </table>
+    <table id="week2-wrapper">
+      <tr id="week2">
+        <td class="calendar-day">
+          <div class="date">8</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">9</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">10</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">11</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">12</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">13</div>
+          <ul id="events">
+            <li class="event-info">Internship Panel</li>
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">14</div>
+          <ul id="events">
+          </ul>
+        </td>
+      </tr>
+    </table>
+    <table id="week3-wrapper">
+      <tr id="week3">
+        <td class="calendar-day">
+          <div class="date">15</div>
+          <ul id="events">
+            <li class="event-info">Capture the Flag</li>
+          </ul>  
+        </td>
+        <td class="calendar-day">
+          <div class="date">16</div>
+          <ul id="events">
+            <li class="event-info">Google Infosession</li>
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">17</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">18</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">19</div>
+          <ul id="events">
+            <li class="event-info">Ice Cream Social</li>
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">20</div>
+          <ul id="events">
+            <li class="event-info">"420 WOOO"</li>
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">21</div>
+          <ul id="events">
+          </ul>
+        </td>
+      </tr>
+    </table>
+    <table id="week4-wrapper">
+      <tr id="week4">
+        <td class="calendar-day">
+          <div class="date">22</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">23</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">24</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">25</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">26</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">27</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">28</div>
+          <ul id="events">
+          </ul>
+        </td>
+      </tr>
+    </table>
+    <table id="week5-wrapper">
+      <tr id="week5">
+        <td class="calendar-day">
+          <div class="date">29</div>
+          <ul id="events">
+            <li class="event-info">Initiation</li>
+            <li class="event-info">KickBack Round 2</li>
+          </ul>  
+        </td>
+        <td class="calendar-day">
+          <div class="date">30</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day">
+          <div class="date">31</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day next-month">
+          <div class="date">1</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day next-month">
+          <div class="date">2</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day next-month">
+          <div class="date">3</div>
+          <ul id="events">
+          </ul>
+        </td>
+        <td class="calendar-day next-month">
+          <div class="date">4</div>
+          <ul id="events">
+          </ul>
+        </td>
+      </tr>
+    </table>
+	</div>
+{% endblock %}
