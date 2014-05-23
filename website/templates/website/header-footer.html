@@ -6,20 +6,21 @@
     <title>Upsilon Pi Epsilon</title>
 
     <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="{% static "assets/img/icons/favicon_whale.png" %}"/>
-    <link rel="stylesheet" href="{% static "assets/css/book.css" %}">
+    <link rel="icon" type="image/png" href="{% static "website/img/icons/favicon_whale.png" %}"/>
+    <link rel="stylesheet" href="{% static "website/css/book.css" %}">
     <!-- ENDS FAVICON -->
 
     <!-- CSS LINKS -->
-    <link rel="stylesheet" href="{% static "assets/css/full_style.css" %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static "assets/css/header_style.css" %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static "assets/css/banner_style.css" %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static "assets/css/main_style.css" %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static "assets/css/footer_style.css" %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static "assets/css/slider_custom.css" %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static "assets/css/header_dropdown.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "website/css/full_style.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "website/css/header_style.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "website/css/calendar_style.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "website/css/banner_style.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "website/css/main_style.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "website/css/footer_style.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "website/css/slider_custom.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "website/css/header_dropdown.css" %}" type="text/css" media="screen" />
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static "assets/css/hover.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "website/css/hover.css" %}" type="text/css" media="screen" />
     <!-- END CSS LINKS -->
 
     <!-- GOOGLE FONTS -->
@@ -28,18 +29,18 @@
 
     <!-- JS LINKS -->
       <!-- JQUERY -->
-      <script src="{% static "assets/js/jquery-1.11.0.min.js" %}"></script>
+      <script src="{% static "website/js/jquery-1.11.0.min.js" %}"></script>
       <!-- ENDS JQUERY -->
-      <script src="{% static "assets/js/header_script.js" %}"></script>
-      <script src="{% static "assets/js/thumbnail_script.js" %}"></script>
-      <script src="{% static "assets/js/modernizr.custom.79639.js" %}"></script>
-      <script src="{% static "assets/js/ba_cond.min.js" %}"></script>
-      <script src="{% static "assets/js/slitslider.js" %}"></script>
-      <script src="{% static "assets/js/slitslider_custom.js" %}"></script>
-      <script src="{% static "assets/js/landingpage.banner.custom.js" %}"></script>
-      <script src="{% static "assets/js/landingpage.main.custom.js" %}"></script>
-      <script src="{% static "assets/js/footer_script.js" %}"></script>
-      <script src="{% static "assets/js/header_script.js" %}"></script>
+      <script src="{% static "website/js/header_script.js" %}"></script>
+      <script src="{% static "website/js/thumbnail_script.js" %}"></script>
+      <script src="{% static "website/js/modernizr.custom.79639.js" %}"></script>
+      <script src="{% static "website/js/ba_cond.min.js" %}"></script>
+      <script src="{% static "website/js/slitslider.js" %}"></script>
+      <script src="{% static "website/js/slitslider_custom.js" %}"></script>
+      <script src="{% static "website/js/landingpage.banner.custom.js" %}"></script>
+      <script src="{% static "website/js/landingpage.main.custom.js" %}"></script>
+      <script src="{% static "website/js/footer_script.js" %}"></script>
+      <script src="{% static "website/js/header_script.js" %}"></script>
     <!-- ENDS JS LINKS -->
 
   </head>
@@ -49,7 +50,7 @@
       <div id="header-content">
         <ul class="nav">
           <li id="brand-section">
-             <img id="header-icon" src="{% static "assets/images/layout/header/upe_whale.png" %}" alt="Workshop"><span id="upe-brand">UPE</span>
+             <img id="header-icon" src="{% static "website/images/layout/header/upe_whale.png" %}" alt="Workshop"><span id="upe-brand">UPE</span>
           </li>
           <li class="header-section">
             <a href="#">About</a>
@@ -95,8 +96,9 @@
       <!-- ENDS MENU -->
     </div>
     <!-- ENDS HEADER -->
-
-  {% block content %} {% endblock %}
+  <div id="main-content-wrapper">
+    {% block content %} {% endblock %}
+  </div>
 
     <!-- FOOTER -->
     <div id="footer-wrapper">
@@ -104,7 +106,7 @@
         <div id="footer-sponsor">
           <h1>Our Sponsors</h1>
           <div id="sponsor-images">
-            <div class="img-col"><img class="sponsor-icon" src="{% static "assets/images/layout/footer/sponsors/asuc-logo.png" %}" alt="Sponsor"></div>
+            <div class="img-col"><img class="sponsor-icon" src="{% static "website/images/layout/footer/sponsors/asuc-logo.png" %}" alt="Sponsor"></div>
           </div>
         </div>
         <div id="footer-top-wrapper">
@@ -142,9 +144,9 @@
               <div class="top-col-info">
                 <div id="name">Social Media</div>
                   <ul id="footer-icons">
-                    <li class="icon-bar"><img id="icons1" src="{% static "assets/images/icons/rss2.png" %}"></li>
-                    <li class="icon-bar"><img id="icons2" src="{% static "assets/images/icons/twitter.png" %}"></li>
-                    <li class="icon-bar"><img id="icons3" src="{% static "assets/images/icons/fb.png" %}"></li>
+                    <li class="icon-bar"><img id="icons1" src="{% static "website/images/icons/rss2.png" %}"></li>
+                    <li class="icon-bar"><img id="icons2" src="{% static "website/images/icons/twitter.png" %}"></li>
+                    <li class="icon-bar"><img id="icons3" src="{% static "website/images/icons/fb.png" %}"></li>
                   </ul>
                 <div id="name">Subscribe to our newsletter</div>
                 <div id='search-box'>
@@ -159,7 +161,7 @@
         </div>
         <div id="footer-bottom-wrapper">
           <div id="footer-bottom">
-            <img id="footer-icon" src="{% static "assets/images/layout/header/upe_whale.png" %}" alt="Workshop">
+            <img id="footer-icon" src="{% static "website/images/layout/header/upe_whale.png" %}" alt="Workshop">
             <div id="mini-menu">
               <div class="mini-menu-item"><a href="links">FAQ</a></div> 
               <div class="mini-menu-item">&middot</div>
