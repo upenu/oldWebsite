@@ -1,0 +1,4 @@
+Django==1.6.5
+Pillow==2.4.0
+psycopg2==2.5.3
+virtualenv==1.11.6
