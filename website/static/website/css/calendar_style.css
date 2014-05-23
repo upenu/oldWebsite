@@ -53,8 +53,7 @@ table {
 	padding: 30px;
 	width: 1024px;
 	color: #242424;
-	background-color: white;
- 	
+	background-image: url(http://subtlepatterns.com/patterns/brillant.png);
 	margin: auto;
 	font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
 }
