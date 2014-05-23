@@ -59,6 +59,7 @@
   float: left;
   list-style-type: none;
   position: relative;
+  border-left: 1px solid #2e2e2e;
 }
 
 .nav li a {
@@ -68,7 +69,6 @@
     line-height: 50px;
     padding: 0 12px;
     text-decoration: none;
-    border-left: 1px solid #2e2e2e;
     text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
     font-weight: 400;
 }
@@ -77,14 +77,13 @@
   background-color: #2e2e2e;
 }
 #brand-section {
-    width: 96px;
+    width: 120px;
 }
 #upe-brand {
     display: inline-block;
     float: right;
     width: 45px;
     font-size: 18px;
-    margin-top: 16px;
     color: #fefefa;
 }
 
