@@ -1,0 +1,337 @@
+<<<<<<< HEAD
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        {% load staticfiles %}
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Upsilon Pi Epsilon</title>
+
+        <!-- FAVICON -->
+        <link rel="icon" type="image/png" href="{% static "website/img/icons/favicon_whale.png" %}"/>
+        <link rel="stylesheet" href="{% static "website/css/book.css" %}">
+        <!-- ENDS FAVICON -->
+
+        <!-- CSS LINKS -->
+        <link rel="stylesheet" href="{% static "website/css/full_style.css" %}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{% static "website/css/header_style.css" %}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{% static "website/css/banner_style.css" %}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{% static "website/css/main_style.css" %}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{% static "website/css/footer_style.css" %}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{% static "website/css/slider-custom.css" %}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{% static "website/css/header_dropdown.css" %}" type="text/css" media="screen" />
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static "website/css/hover.css" %}" type="text/css" media="screen" />
+        <!-- END CSS LINKS -->
+
+        <!-- GOOGLE FONTS -->
+        <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
+        <!-- END GOOGLE FONTS -->
+
+        <!-- JS LINKS -->
+        <!-- JQUERY -->
+        <script src="{% static "website/js/jquery-1.11.0.min.js" %}"></script>
+        <!-- ENDS JQUERY -->
+        <script src="{% static "website/js/header_script.js" %}"></script>
+        <script src="{% static "website/js/thumbnail_script.js" %}"></script>
+        <script src="{% static "website/js/modernizr.custom.79639.js" %}"></script>
+        <script src="{% static "website/js/ba_cond.min.js" %}"></script>
+        <script src="{% static "website/js/slitslider.js" %}"></script>
+        <script src="{% static "website/js/slitslider_custom.js" %}"></script>
+        <script src="{% static "website/js/landingpage.banner.custom.js" %}"></script>
+        <script src="{% static "website/js/landingpage.main.custom.js" %}"></script>
+        <script src="{% static "website/js/footer_script.js" %}"></script>
+        <script src="{% static "website/js/header_script.js" %}"></script>
+        <!-- ENDS JS LINKS -->
+
+    </head>
+    <body>
+        <!-- HEADER -->
+        <div id="header-wrapper">
+            <div id="header-content">
+                <ul class="nav">
+                    <li id="brand-section">
+                    <img id="header-icon" src="{% static "website/images/layout/header/upe_whale.png" %}" alt="Workshop"><span id="upe-brand">UPE</span>
+                    </li>
+                    <li class="header-section">
+                    <a href="#">About</a>
+                    <ul id="subnav-1" class="subnav">
+                        <li><a href="#">General Information</a></li>
+                        <li><a href="#">Officers</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                    </li>
+                    <li class="header-section">
+                    <a href="#">Student Services</a>
+                    <ul id="subnav-2" class="subnav">
+                        <li><a href="#">Main</a></li>
+                        <li><a href="#">Interview Questions</a></li>
+                        <li><a href="#">Mock Interviews</a></li>
+                        <li><a href="#">Office Hours</a></li>
+                        <li><a href="#">Early Applicants</a></li>
+                    </ul>
+                    </li>
+                    <li class="header-section">
+                    <a href="#">Industrial Relations</a>
+                    <ul id="subnav-3" class="subnav">
+                        <li><a href="#">Main</a></li>
+                        <li><a href="#">Infosessions</a></li>
+                        <li><a href="#">Resume Book</a></li>
+                    </ul>
+                    </li>
+                    <li class="header-section pull-right">
+                    <a href=""><i class="icons fa fa-rss"></i></a>
+                    </li>
+                    <li class="header-section pull-right">
+                    <a href=""><i class="icons fa fa-twitter"></i></a>
+                    </li>
+                    <li class="header-section">
+                    <a href="/calendar">Calendar</a>
+                    </li>
+                    <li class="header-section pull-right">
+                    <a href=""><i class="icons fa fa-facebook"></i></a>
+                    </li>
+                </ul>
+
+
+            </div>
+            <!-- MENU -->
+            <!-- ENDS MENU -->
+=======
+{% extends "website/header-footer.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<!-- BANNER -->
+<div id="banner-wrapper">
+  <div id="slider" class="sl-slider-wrapper">
+    <div class="sl-slider">
+      <div class="sl-slide slide1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+        <div class="sl-slide-inner">
+          <div class="bg-img bg-img-1"></div>
+          <h2 class="fadeInMoveDown">Upsilon Pi Epsilon (UPE), Nu Chapter</h2>
+          <blockquote class="fadeInMoveUp"><p>The premiere Computer Science Honors Society at UC Berkeley.</cite></blockquote>
+>>>>>>> 9059b9a1f778d0dc489616be226ae1430df528cd
+        </div>
+      </div>
+
+      <div class="sl-slide slide2" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
+        <div class="sl-slide-inner">
+          <div class="bg-img bg-img-2"></div>
+          <h2 class="fadeInMoveDown">We help you get stuff done.</h2>
+          <blockquote class="fadeInMoveRight">
+            <span>In the past we've hosted:</span>
+            <ul>
+              <li>Google, Apple, Amazon Infosessions</li>
+              <li>Super Awesome Tech Talks</li>
+              <li>Guest Lecturers such as Elon Musk, Eric Schmidt, etc.</li>
+              <li>Guest Lecturers such as Elon Musk, Eric Schmidt, etc.</li>
+              <li>Guest Lecturers such as Elon Musk, Eric Schmidt, etc.</li>
+            </ul>
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="sl-slide slide3" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+        <div class="sl-slide-inner">
+          <div class="bg-img bg-img-3"></div>
+          <h2 class="fadeInMoveDown">We are looking to extend membership to all prospective majors!</h2>
+          <blockquote class="fadeInMoveLeft">
+            <span>In order to qualify, you must:</span>
+            <ul>
+              <li>Be a prospective Computer Science major in the College of Letters and Sciences</li>
+              <li>Have taken at least 2 CS major requirement courses with letter grade B or higher</li>
+              <li>Have taken or currently enrolled in a total of 4 CS major requirement courses</li>
+              <li>Have a CS GPA of at least 3.5</li>
+            </ul>
+          </blockquote>
+        </div>
+      </div>
+    </div><!-- /sl-slider -->
+
+    <nav id="nav-dots" class="nav-dots">
+      <span class="nav-dot-current"></span>
+      <span></span>
+      <span></span>
+    </nav>
+
+  </div><!-- /slider-wrapper -->
+</div>
+<!-- ENDS BANNER -->
+
+<!-- MAIN -->
+<div id="main-wrapper">
+  <div id="main-inner-wrapper">
+    <div id="content-wrapper">
+      <div id="content-header-wrapper">
+        <h1>Upholding academic excellence</h1>
+        <p>Upsilon Pi Epsilon is the first and only international honor society for the Computing Sciences. The UC Berkeley chapter, launched in 1995, honors the top tier of Computer Science students on campus.</p>
+      </div>
+      <div id="content-studentservices-wrapper">
+        <div class="circle pull-left">
+          <img src="{% static "website/images/content/wozniak1.jpg" %}">
+        </div>
+        <div id="content-studentservices-text">
+          <h1>We help others</h1>
+          <p>UPE keeps all students from Berkeley's technical disciplines well-informed of our student activities through intensive marketing over the web and e-mail, print posters, and in-class announcements to the student body. UPE engages students with our many activities, making us renowned for our service to the university community. We not only reach out to computer science students and faculty, but also the EECS, math, and other engineering majors.</p>
+        </div>
+      </div>
+      <div id="content-members-wrapper">
+        <div class="circle">
+          <img class="pull-right" src="{% static "website/images/content/hackathon1.png" %}" height="200px">
+        </div>
+        <div id="content-members-text">
+          <h1>Connections and Opportunities</h1>
+          <p>We have worked closely with major corporations, organizing brief one-hour info-sessions about companies and recruiting opportunities, to full-scale day-long sessions to showcase their research and product development. Our resumé books are filled with PDF files of our members' resumés, making it easier for companies to target the top 30% Berkeley CS students.</p>
+        </div>
+      </div>
+    </div>
+    <div id="events-OH-wrapper">
+      <div id="events-wrapper">
+        <div id="events-title-wrapper">
+          <div id="events-title">Upcoming Events</div>
+        </div>
+        <div id="events-content-wrapper">
+          <div class="events-list-description"></div>
+          <div id="events-list-wrapper">
+            <div class="events-list-item float">
+                <img src="">
+                <h1>Yelp @ Berkeley</h1>
+                <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Location:</span> Wozniak Lounge</br>430-8 Soda Hall, Berkeley</p>
+                <div class="description">
+                  <img src="">
+                  <h1>Yelp @ Berkeley</h1>
+                  <p>Yelp will be checking in at Berkeley to meet the best and brightest computer science and engineering students. You’re invited to come and to learn more about Yelp tech and culture from a few members of our engineering team. Stick around for presentations from not one, but TWO of Berkeley's very own! We'll kick things off with a quick Q+A with former Yelp intern, Mark M. as he speaks about his experiences at Yelp and what he's learned along the way. Then, join Berkeley alum Steven M. as he dives deep into Yelp's log processes.</p>
+                </div>
+            </div>
+            <div class="events-list-item float">
+                <img src="">
+                <h1>John DeNero's Big...</h1>
+                <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Location:</span> Wozniak Lounge</br>430-8 Soda Hall, Berkeley</p>
+                <div class="description">
+                  <img src="">
+                  <h1>John DeNero's Big Ideas Talk</h1>
+                  <p>EECS Lecturer PSOE Candidate John DeNero is swinging by this week. He'll be giving a talk on Monday at 1PM in the Woz. Come if you're interested in seeing what John has to offer as a potential CS lecturer. You may give your opinion (good and/or bad) by posting on this event.
+Some explanation: Because some of our lecturers (Clancy, Harvey) have retired, the CS department is looking into hiring new ones. There are two candidates, Josh Hug and John DeNero. Josh came in last week and gave a talk on Monday. If you went to it and have thoughts good or bad, please post them on the event page (https://www.facebook.com/events/1378156932449980/) or PM me. John is coming in this Monday, so you can go to that if you'd like. Please keep in mind that the Woz can seat 100 and a lot of Professors will be in attendance, so if things fill up, they have priority.</p>
+                </div>
+            </div>
+            <div class="events-list-item float">
+                <img src="">
+                <h1>Galileo Hackathon</h1>
+                <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Location:</span> Wozniak Lounge</br>430-8 Soda Hall, Berkeley</p>
+                <div class="description">
+                  <img src="">
+                  <h1>Galileo Hackathon</h1>
+                  <p>CSUA is partnering with Intel for an exciting 24-hour hardware + software hackathon revolving around the exciting new Intel Galileo Development board! Intel will be providing Berkeley students with 10 Galileo boards, complete with dev kits (cables, Arduino Uno R3 sensors, and more). Each team of 4-5 students will be able to work with their own board. A link with more info about the board is below.
+Register at http://bit.ly/1behwHc. Space is limited!
+
+The Intel development boards are compatible with Arduino hardware, so they can be programmed using the Arduino IDE. More details will be coming shortly!
+
+This hackathon is for both CS and EE majors, and a great opportunity for both hardware + software students to work on the same team. Both undergraduate and graduate students are welcome! Registration will be limited to ~50 students due to limited numbers of boards. So please register as soon as possible.</p>
+                </div>
+            </div>
+            <div class="events-list-item float">
+                <img src="">
+                <h1>General Meeting #4</h1>
+                <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Location:</span> Wozniak Lounge</br>430-8 Soda Hall, Berkeley</p>
+                <div class="description">
+                  <img src="">
+                  <h1>General Meeting #4</h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="oh-wrapper">
+      <div id="oh-content">
+        <div id="oh-title-wrapper">
+          <div id="oh-title">Office Hours</div>
+        </div>
+        <div id="oh-content-wrapper">
+          <div id="oh-list-wrapper">
+            <div class="oh-list-item float">
+                <img src="">
+                <h1>John Doe</h1>
+                <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Classes:</span> CS 61A</p>
+            </div>
+            <div class="oh-list-item float">
+                <img src="">
+                <h1>John Doe</h1>
+                <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Classes:</span> CS 61A</p>
+            </div>
+            <div class="oh-list-item float">
+                <img src="">
+                <h1>John Doe</h1>
+                <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Classes:</span> CS 61A</p>
+            </div>
+            <div class="oh-list-item float">
+                <img src="">
+                <h1>John Doe</h1>
+                <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Classes:</span> CS 61A</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="business-wrapper">
+      <div class="partners-wrapper">
+        <div class="title-wrapper">
+          <div class="title">
+            Who we've <span>worked</span> with
+          </div>
+        </div>
+        <div class="companies-background">
+          <div class="companies-wrapper">
+            <img src="{% static "website/images/content/partner-logos/datastax.png" %}" width="150px">
+            <img src="{% static "website/images/content/partner-logos/ea.png" %}" width="75px">
+            <img src="{% static "website/images/content/partner-logos/google.png" %}" width="150px">
+            <img src="{% static "website/images/content/partner-logos/chevron.png" %}" width="45px">
+            <img src="{% static "website/images/content/partner-logos/factset.png" %}" width="120px" style="margin-top: 30px;">
+            <img src="{% static "website/images/content/partner-logos/netapp.png" %}" width="50px">
+            <img src="{% static "website/images/content/partner-logos/salesforce.png" %}" width="115px">
+            <img src="{% static "website/images/content/partner-logos/rockmelt.png" %}" width="60px">
+            <img src="{% static "website/images/content/partner-logos/sequoiacapital.png" %}" width="150px">
+            <img src="{% static "website/images/content/partner-logos/arista.png" %}" width="115px">
+            <img src="{% static "website/images/content/partner-logos/zynga.png" %}" width="115px">
+            <img src="{% static "website/images/content/partner-logos/tableau.png" %}" width="115px">
+            <img src="{% static "website/images/content/partner-logos/groupon.png" %}" width="115px">
+            <img src="{% static "website/images/content/partner-logos/linkedin.png" %}" width="115px">
+            <img src="{% static "website/images/content/partner-logos/more.png" %}" width="60px" style="margin-top: 10px;">
+          </div>
+        </div>
+      </div>
+      <div id="indrel-wrapper">
+        <div class="indrel-column">
+          <div class="icon-box">
+            <h2>Résumé Book</h2>
+            <img src="">
+            <p>Companies can purchase a UPE Résumé Book from our organization, a portfolio of résumés with nearly 30 résumés of Berkeley's highest-achieving computer science students. You can use our résumés as a starting point for your company's recruiting process.</p>
+            <p><a href="#">Purchase a UPE Résumé Book</a></p>
+          </div>
+        </div>
+        <div class="indrel-column">
+          <div class="icon-box">
+            <h2>Information Sessions</h2>
+            <img src="">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p><a href="#">Host an info-session with us</a></p>
+          </div>
+        </div>
+        <div class="indrel-column">
+          <div class="icon-box">
+            <h2>Workshops</h2>
+            <img src="">
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud.</p>
+            <p><a href="#">Host a workshop with us</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ENDS MAIN -->
+
+{% endblock %}
