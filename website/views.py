@@ -26,6 +26,11 @@ def officers(request):
     context = RequestContext(request, {})
     return HttpResponse(template.render(context))
 
+def members(request):
+    template = loader.get_template('website/members.html')
+    context = RequestContext(request, {})
+    return HttpResponse(template.render(context))
+
 def officehours(request):
     def slot(x):
         result = []
