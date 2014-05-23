@@ -21,6 +21,11 @@ def calendar(request):
     context = RequestContext(request, {})
     return HttpResponse(template.render(context))
 
+def officers(request):
+    template = loader.get_template('website/officers.html')
+    context = RequestContext(request, {})
+    return HttpResponse(template.render(context))
+
 def officehours(request):
     def slot(x):
         result = []

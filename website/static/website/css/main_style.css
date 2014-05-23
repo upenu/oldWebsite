@@ -65,6 +65,7 @@ table {
 
 #main-content-wrapper {
   margin-top: 50px;
+  min-height: 500px;
 }
 
 #content-wrapper {
