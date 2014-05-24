@@ -11,7 +11,7 @@ class UserProfile(models.Model):
     )
 
     user = models.OneToOneField(User)
-    type = models.IntegerField(max_length=1, choices=USER_TYPES, default=1)
+    user_type = models.IntegerField(max_length=1, choices=USER_TYPES, default=1)
     approved = models.BooleanField(default=False)
     candidate_profile = models.ForeignKey('CandidateProfile', blank=True, null=True)
     officer_profile = models.ForeignKey('OfficerProfile', blank=True, null=True)
