@@ -5,6 +5,7 @@ from website.models import *
 from website.forms import *
 from website.backends import CustomBackend
 from django.contrib.auth import login
+from django.template import Context, Template
 
 #from django.utils.dateformat import Dateformat
 from django.forms import * 
@@ -22,13 +23,13 @@ def calendar(request):
     return HttpResponse(template.render(context))
 
 def officers(request):
-    template = loader.get_template('website/officers.html')
-    context = RequestContext(request, {})
+    template = loader.get_template('website/officers_members.html')
+    context = Context({'title': 'Officers'} )
     return HttpResponse(template.render(context))
 
 def members(request):
-    template = loader.get_template('website/members.html')
-    context = RequestContext(request, {})
+    template = loader.get_template('website/officers_members.html')
+    context = Context({'title': 'Members'})
     return HttpResponse(template.render(context))
 
 def officehours(request):
