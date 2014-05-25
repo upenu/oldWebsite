@@ -202,7 +202,10 @@ def user_login(request):
             # Is the account active? It could have been disabled.
             login(request, user)
             print("Login successful")
-            return HttpResponse('User {0} login successful'.format(username))
+            template = loader.get_template('website/index.html')
+            context = RequestContext(request, {
+            })
+            return HttpResponse(template.render(context))
         elif user == 'unapproved':
             print("Unapproved user: {0}".format(username))
             return HttpResponse("Your account has not been approved yet.")

@@ -18,4 +18,6 @@ urlpatterns = patterns('',
     url(r'^register/$', 'website.views.register', name='register'),
     url(r'^thanks/$', 'website.views.register_thanks', name='register_thanks'),
     url(r'^login/$', 'website.views.user_login', name='login'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout',
+                                  {'next_page': '/'}),
 )
