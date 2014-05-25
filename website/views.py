@@ -182,6 +182,7 @@ def register(request):
 def user_login(request):
     # Like before, obtain the context for the user's request.
     context = RequestContext(request)
+    incorrect_log_in = False
 
     # If the request is a HTTP POST, try to pull out the relevant information.
     if request.method == 'POST':
@@ -202,6 +203,7 @@ def user_login(request):
             user.backend = 'website.backends.CustomBackend'
             # Is the account active? It could have been disabled.
             login(request, user)
+            logged_in = True
             print("Login successful")
             template = loader.get_template('website/index.html')
             context = RequestContext(request, {
@@ -212,15 +214,17 @@ def user_login(request):
             return HttpResponse("Your account has not been approved yet.")
         else:
             # Bad login details were provided. So we can't log the user in.
-            print("Invalid login details: {0}, {1}".format(username, password))
-            return HttpResponse("Invalid login details supplied.")
+            incorrect_log_in = True
+            return render_to_response('website/login.html', 
+                context_instance=RequestContext(request,{'incorrect_log_in': incorrect_log_in}))
 
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
     else:
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
-        return render_to_response('website/login.html', {}, context)
+        return render_to_response('website/login.html', 
+                    context_instance=RequestContext(request,{'incorrect_log_in': incorrect_log_in}))
 
 @login_required
 def myprofile(request):
