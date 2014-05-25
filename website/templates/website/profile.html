@@ -13,27 +13,18 @@
 {% endblock %}
 {% block content %}
 <div class="content-container">
-
-    {% if registered %}
-    <strong>Thanks for registering!</strong>
-    <a href="/">Return to the homepage.</a><br />
-    {% else %}
-    <strong>REGISTER</strong><br />
-
-    <form id="user_form" method="post" action="/register/"
-        enctype="multipart/form-data">
-        {% csrf_token %}
-        <!-- Display each form. The as_p method wraps each element in a paragraph
-        (<p>) element. This ensures each element appears on a new line,
-        making everything look neater. -->
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
-        <!-- Provide a button to click to submit the form. -->
-        <input type="submit" name="submit" value="Register" />
-    </form>
-    {% endif %}
-    <p>
-    <a href="/login">Login</a>
-    </p>
+	<div id="content-header-wrapper">
+    <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+    <p><img src="/media/{{ up.picture }}"></p>
+    <p>{{ up.get_user_type_display }}</p>
+    
+    <p>{{ user.email }}</p>
+    <p>Graduation Year: {{ up.get_grad_year_display }}</p>
+    <p>Joined in {{ up.get_year_joined_display }}</p>
+    <p>Personal Website: {{ up.personal_website }}</p>
+    <p>Resume: <a href="/media/{{ up.resume }}">resume</a></p>
+    <p>Github: {{ up.github }}</p>
+    <p>Linkedin: {{ up.linkedin }}</p>
+	</div>
 </div>
 {% endblock %}

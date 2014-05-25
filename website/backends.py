@@ -6,6 +6,7 @@ class CustomBackend(object):
 
     def authenticate(self, username=None, password=None):
         try:
+            user = None
             user = User.objects.get(username=username)
             up = UserProfile.objects.get(user=user)
             if up.approved and user.check_password(password):
@@ -17,7 +18,7 @@ class CustomBackend(object):
         except (UserProfile.DoesNotExist, User.DoesNotExist):
             if user and user.is_staff:
             	return user
-            print("User does not exist.")
+            print("User + " + str(user) + " does not exist.")
             return None
 
 

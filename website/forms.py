@@ -9,11 +9,14 @@ class CompletionForm(forms.Form):
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
 
+    def __init__(self, *args, **kwargs):
+        super(forms.ModelForm, self).__init__(*args, **kwargs)
+        self.fields['username'].help_text = None
     class Meta:
         model = User
-        fields = ('username', 'email', 'password')
+        fields = ('first_name', 'last_name', 'username', 'email', 'password')
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('approved', 'type') 
+        fields = ('user_type',) 

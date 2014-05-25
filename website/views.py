@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
@@ -182,6 +183,7 @@ def register(request):
 def user_login(request):
     # Like before, obtain the context for the user's request.
     context = RequestContext(request)
+    incorrect_log_in = False
 
     # If the request is a HTTP POST, try to pull out the relevant information.
     if request.method == 'POST':
@@ -202,24 +204,36 @@ def user_login(request):
             user.backend = 'website.backends.CustomBackend'
             # Is the account active? It could have been disabled.
             login(request, user)
+            logged_in = True
             print("Login successful")
-            return HttpResponse('User {0} login successful'.format(username))
+            template = loader.get_template('website/index.html')
+            context = RequestContext(request, {
+            })
+            return HttpResponse(template.render(context))
         elif user == 'unapproved':
             print("Unapproved user: {0}".format(username))
             return HttpResponse("Your account has not been approved yet.")
         else:
             # Bad login details were provided. So we can't log the user in.
-            print("Invalid login details: {0}, {1}".format(username, password))
-            return HttpResponse("Invalid login details supplied.")
+            incorrect_log_in = True
+            return render_to_response('website/login.html', 
+                context_instance=RequestContext(request,{'incorrect_log_in': incorrect_log_in}))
 
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
     else:
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
-        return render_to_response('website/login.html', {}, context)
+        return render_to_response('website/login.html', 
+                    context_instance=RequestContext(request,{'incorrect_log_in': incorrect_log_in}))
 
-def register_thanks(request):
-    template = loader.get_template('website/register_thanks.html')
-    context = RequestContext(request, { })
-    return HttpResponse(template.render(context))
+@login_required
+def myprofile(request):
+    user = request.user
+    up = UserProfile.objects.get(user=user)
+    return render_to_response('website/profile.html', 
+            context_instance=RequestContext(request,{'up': up}))
+
+
+
+

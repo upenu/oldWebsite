@@ -78,16 +78,21 @@
             </ul>
           </li>
           <li class="header-section pull-right">
-            <a href=""><i class="icons fa fa-rss"></i></a>
+            {% if user.is_authenticated %}
+            <a href="/logout">Logout</a>
+            {% else %}
+            <a href="/register">Register</a>
+            {% endif %}
           </li>
           <li class="header-section pull-right">
-            <a href=""><i class="icons fa fa-twitter"></i></a>
+            {% if user.is_authenticated %}
+            <a href="/myprofile">{{ user.first_name }} {{ user.last_name }}</a>
+            {% else %}
+            <a href="/login">Login</a>
+            {% endif %}
           </li>
           <li class="header-section">
             <a href="/calendar">Calendar</a>
-          </li>
-          <li class="header-section pull-right">
-            <a href=""><i class="icons fa fa-facebook"></i></a>
           </li>
         </ul>
 
