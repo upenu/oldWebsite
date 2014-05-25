@@ -15,8 +15,10 @@
 <div class="content-container">
 	<div id="content-header-wrapper">
     <h1>{{ user.first_name }} {{ user.last_name }}</h1>
-    <h3>{{ up.get_user_type_display }}</h3>
-    <h2>{{ user.email }}</h2>
-</div>
+    
+    <p>{{ up.get_user_type_display }}</p>
+    
+    <p>{{ user.email }}</p>
+	</div>
 </div>
 {% endblock %}
