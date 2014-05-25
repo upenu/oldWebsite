@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
@@ -221,7 +222,13 @@ def user_login(request):
         # blank dictionary object...
         return render_to_response('website/login.html', {}, context)
 
-def register_thanks(request):
-    template = loader.get_template('website/register_thanks.html')
-    context = RequestContext(request, { })
-    return HttpResponse(template.render(context))
+@login_required
+def myprofile(request):
+    user = request.user
+    up = UserProfile.objects.get(user=user)
+    return render_to_response('website/profile.html', 
+            context_instance=RequestContext(request,{'up': up}))
+
+
+
+

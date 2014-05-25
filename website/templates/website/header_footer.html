@@ -86,7 +86,7 @@
           </li>
           <li class="header-section pull-right">
             {% if user.is_authenticated %}
-            <a href="#">{{ user.first_name }} {{ user.last_name }}</a>
+            <a href="/myprofile">{{ user.first_name }} {{ user.last_name }}</a>
             {% else %}
             <a href="/login">Login</a>
             {% endif %}

@@ -1,0 +1,22 @@
+{% extends "website/header_footer.html" %}
+{% load staticfiles %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static "website/css/full_style.css" %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static "website/css/main_style.css" %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static "website/css/header_style.css" %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static "website/css/footer_style.css" %}" type="text/css" media="screen" />
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static "website/css/hover.css" %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static "website/css/officers_members.css" %}" type="text/css" media="screen" />
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
+{% endblock %}
+{% block content %}
+<div class="content-container">
+	<div id="content-header-wrapper">
+    <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+    <h3>{{ up.get_user_type_display }}</h3>
+    <h2>{{ user.email }}</h2>
+</div>
+</div>
+{% endblock %}
