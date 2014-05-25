@@ -15,10 +15,16 @@
 <div class="content-container">
 	<div id="content-header-wrapper">
     <h1>{{ user.first_name }} {{ user.last_name }}</h1>
-    
+    <p><img src="/media/{{ up.picture }}"></p>
     <p>{{ up.get_user_type_display }}</p>
     
     <p>{{ user.email }}</p>
+    <p>Graduation Year: {{ up.get_grad_year_display }}</p>
+    <p>Joined in {{ up.get_year_joined_display }}</p>
+    <p>Personal Website: {{ up.personal_website }}</p>
+    <p>Resume: <a href="/media/{{ up.resume }}">resume</a></p>
+    <p>Github: {{ up.github }}</p>
+    <p>Linkedin: {{ up.linkedin }}</p>
 	</div>
 </div>
 {% endblock %}

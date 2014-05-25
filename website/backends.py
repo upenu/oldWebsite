@@ -16,10 +16,9 @@ class CustomBackend(object):
                 print("User " + username + " has not been approved. ")
                 return 'unapproved' 
         except (UserProfile.DoesNotExist, User.DoesNotExist):
-            print("============" + str(user))
             if user and user.is_staff:
             	return user
-            print("User does not exist.")
+            print("User + " + str(user) + " does not exist.")
             return None
 
 
