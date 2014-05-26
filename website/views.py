@@ -14,8 +14,8 @@ from django.forms import *
 
 def index(request):
     template = loader.get_template('website/index.html')
-    context = RequestContext(request, {
-        })
+    events = Event.objects.all()
+    context = RequestContext(request, {'events': events})
     return HttpResponse(template.render(context))
 
 def calendar(request):

@@ -253,5 +253,8 @@ class Event(models.Model):
     end_time = models.DateTimeField()
     description = models.TextField(max_length=500, blank=True, null=True)
     location = models.CharField(max_length=100)
-    photo = models.ImageField(upload_to='images/events/')
+    thumbnail = models.ImageField(upload_to='images/events/thumbnails')
+    banner = models.ImageField(upload_to='images/events/banners')
+    def __str__(self):
+        return self.name
 
