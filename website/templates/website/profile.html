@@ -15,7 +15,13 @@
 <div class="content-container">
 	<div id="content-header-wrapper">
     <h1>{{ user.first_name }} {{ user.last_name }}</h1>
-    <p><img src="/media/{{ up.picture }}"></p>
+    <p><img src="/media/{{ up.picture }}" height="180px" width="180px"></p>
+    <form action="{% url "myprofile" %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ profile_pic.as_p }}
+        <p><input type="submit" value="Upload" /></p>
+    </form></p>
+    <hr>
     <p>{{ up.get_user_type_display }}</p>
     
     <p>{{ user.email }}</p>
@@ -23,12 +29,15 @@
     <p>Joined in {{ up.get_year_joined_display }}</p>
     <p>Personal Website: {{ up.personal_website }}</p>
     <hr>
+    {% if up.resume %}
     <p>Resume: <a href="/media/{{ up.resume }}" style="color: blue;">resume</a>
+    {% else %}
+    <p>Resume: </p>
+    {% endif %}
     <form action="{% url "myprofile" %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ resume_upload.as_p }}
         <p><input type="submit" value="Upload" /></p>
-
     </form></p>
     <hr>
     <p>Github: {{ up.github }}</p>

@@ -27,7 +27,7 @@ def officers(request):
     template = loader.get_template('website/officers_members.html')
     officers = UserProfile.objects.filter(user_type=3)
     positions = ['President', 'Vice President', 'Secretary', 'Treasurer',
-    'Professional Development', 'Industrial Relations', 'Social', 'Publicity', 'Technology']
+            'Professional Development', 'Industrial Relations', 'Social', 'Publicity', 'Technology']
 
     for officer in officers:
         officer_profile = OfficerProfile.objects.filter(user=officer.user)
@@ -45,6 +45,7 @@ def members(request):
 
     for member in members:
         setattr(member, 'position', 'Member')
+        setattr(member, 'photo', member.picture)
 
     context = RequestContext(request, {'users': members, 'title': 'Members'})
     return HttpResponse(template.render(context))
@@ -106,17 +107,26 @@ def myprofile(request):
     user = request.user
     up = UserProfile.objects.get(user=user)
     if request.method == 'POST':
-        form = ResumeUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            up.resume = request.FILES['resume']
-            up.save()
+        if 'resume' in request.FILES:
+            resume_form = ResumeUploadForm(request.POST, request.FILES)
+            profile_pic_form = ProfilePicChangeForm()
+            if resume_form.is_valid():
+                up.resume = request.FILES['resume']
+                up.save()
+        elif 'picture' in request.FILES:
+            resume_form = ResumeUploadForm()
+            profile_pic_form = ProfilePicChangeForm(request.POST, request.FILES)
+            if profile_pic_form.is_valid():
+                up.picture = request.FILES['picture']
+                up.save()
     else:
-    	form = ResumeUploadForm()
+        resume_form = ResumeUploadForm()
+        profile_pic_form = ProfilePicChangeForm()
     return render_to_response('website/profile.html', 
-            context_instance=RequestContext(request,{'up': up, 'resume_upload': form}))
+            context_instance=RequestContext(request,{'up': up, 'resume_upload': resume_form, 'profile_pic': profile_pic_form}))
 
 
-# STUFF FOR LATER
+    # STUFF FOR LATER
 
 def officehours(request):
     def slot(x):

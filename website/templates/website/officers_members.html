@@ -29,7 +29,7 @@
 						<img class="officer-member-picture" src="/media/{{user.photo}}">
 					{% else %}
 						{% if not user.photo %}
-						<img class="officer-member-picture" src="/media/profile_images/spock_2.jpg">
+						<img class="officer-member-picture" src="/media/profile_images/spock.jpg">
 						{% endif %}
 					{% endif %}
 					<div class="officer-member-info">
@@ -37,7 +37,7 @@
 						<span class="year">Computer Science, 20{{ user.grad_year }}</span>
 						<span class="position">{{ user.position }}</span>
 						<span class="joined">{{ user.joined }}</span>
-						<span class="email">john.doe@berkeley.edu</span>
+						<span class="email">{{ user.user.email }}</span>
 						<ul class="social">
 							{% if user.linkedin %}
 								<li><a href="http://linkedin.com/in/{{ user.linkedin }}"><i class="fa fa-linkedin"></i></a></li>
@@ -45,7 +45,7 @@
 							{% if user.github %}
 								<li><a href="http://github.com/{{ user.github }}"><i class="fa fa-github"></i></a></li>
 							{% endif %}
-							{% if user.email %}
+							{% if user.user.email %}
 								<li><a href="#"><i class="fa fa-envelope"></i></a></li>
 							{% endif %}
 							{% if user.personal_website %}
