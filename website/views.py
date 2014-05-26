@@ -34,6 +34,7 @@ def officers(request):
     'Professional Development', 'Industrial Relations', 'Social', 'Publicity', 'Technology']
 
     for officer in officers:
+        print officer.user.email
         officer_profile = OfficerProfile.objects.filter(user=officer.user)
         if len(officer_profile) != 0:
             for c_officer in officer_profile:

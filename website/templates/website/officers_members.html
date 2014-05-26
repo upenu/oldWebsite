@@ -37,7 +37,7 @@
 						<span class="year">Computer Science, 20{{ user.grad_year }}</span>
 						<span class="position">{{ user.position }}</span>
 						<span class="joined">{{ user.joined }}</span>
-						<span class="email">john.doe@berkeley.edu</span>
+						<span class="email">{{ user.user.email }}</span>
 						<ul class="social">
 							{% if user.linkedin %}
 								<li><a href="http://linkedin.com/in/{{ user.linkedin }}"><i class="fa fa-linkedin"></i></a></li>

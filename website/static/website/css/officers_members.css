@@ -94,6 +94,10 @@
 	top: -15px;
 }
 
+.email {
+	font-weight: 400;
+}
+
 #archive li {
 	margin-bottom: 7px;
 }
