@@ -93,8 +93,8 @@ USE_TZ = True
 AUTHENTICATION_BACKENDS = ('website.backends.CustomBackend',)
 
 import dj_database_url
-# DATABASES['default'] =  dj_database_url.config( \
-#         default='postgres://ubdyevsrhidvzy:1CkBW8X2w8l8WgXL74rE-pbnHH@ec2-54-83-14-68.compute-1.amazonaws.com:5432/d172rbc0tne9ov')
+DATABASES['default'] =  dj_database_url.config( \
+        default='postgres://ubdyevsrhidvzy:1CkBW8X2w8l8WgXL74rE-pbnHH@ec2-54-83-14-68.compute-1.amazonaws.com:5432/d172rbc0tne9ov')
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
