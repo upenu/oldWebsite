@@ -178,6 +178,7 @@ table {
 #events-OH-wrapper, #oh-wrapper {
   margin: 10px 0px;
 	width: 990px;
+  min-height: 500px;
   background: #fff;
   box-shadow: 0 0 10px #bfbeba;
   -moz-box-shadow: 0 0 10px #bfbeba;
