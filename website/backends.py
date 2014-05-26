@@ -12,6 +12,8 @@ class CustomBackend(object):
             if up.approved and user.check_password(password):
                 print("Approved user " + username + " logged in.") 
                 return user
+            elif up.approved:
+                return None
             else:
                 print("User " + username + " has not been approved. ")
                 return 'unapproved' 

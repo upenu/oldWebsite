@@ -22,7 +22,15 @@
     <p>Graduation Year: {{ up.get_grad_year_display }}</p>
     <p>Joined in {{ up.get_year_joined_display }}</p>
     <p>Personal Website: {{ up.personal_website }}</p>
-    <p>Resume: <a href="/media/{{ up.resume }}">resume</a></p>
+    <hr>
+    <p>Resume: <a href="/media/{{ up.resume }}" style="color: blue;">resume</a>
+    <form action="{% url "myprofile" %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ resume_upload.as_p }}
+        <p><input type="submit" value="Upload" /></p>
+
+    </form></p>
+    <hr>
     <p>Github: {{ up.github }}</p>
     <p>Linkedin: {{ up.linkedin }}</p>
 	</div>
