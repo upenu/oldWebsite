@@ -126,15 +126,11 @@
             <div class="top-col">
               <div class="top-col-title"><span>Upcoming Events</span></div>
               <div class="top-col-info">
-                <img class="event-logo" src="http://placehold.it/45x45">
-                <div class="events-footer">Google Infosession<br>09/11/14<br><br>
+                {% for event in events %}
+                <img class="event-logo" src="/media/{{ event.thumbnail }}">
+                <div class="events-footer">{{ event.name }}<br>{{ event.start_time|date:"m/d/y" }}<br><br>
                 </div>
-                <img class="event-logo" src="http://placehold.it/45x45">
-                <div class="events-footer">Google Infosession<br>09/11/14<br><br>
-                </div>
-                <img class="event-logo" src="http://placehold.it/45x45">
-                <div class="events-footer">Google Infosession<br>09/11/14<br><br>
-                </div>
+                {% endfor %}
             </div>
             </div>
             <div class="top-col">

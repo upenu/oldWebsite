@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
+from django.forms.fields import MultipleChoiceField
 
 class UserProfile(models.Model):
     USER_TYPES = (
@@ -61,7 +62,7 @@ class CandidateProfile(models.Model):
 
     def get_progress(self):
         pass
-    
+
     def __str__(self):
         return self.user.first_name + " " + self.user.last_name
 
@@ -82,7 +83,7 @@ class OfficerProfile(models.Model):
     position_dict = dict(OFFICER_POSITION_CHOICES)
     position = models.IntegerField(max_length=1, choices=OFFICER_POSITION_CHOICES, default=1)
     photo = models.ImageField(upload_to='images/officers/')
-    office_hours = models.ManyToManyField('OfficeHour', null=True)
+    office_hours = models.ManyToManyField('OfficeHour', blank=True)
     classes_taken = models.ManyToManyField('BerkeleyClass', through='OfficerClass')
 
     def __str__(self):
@@ -257,4 +258,7 @@ class Event(models.Model):
     banner = models.ImageField(upload_to='images/events/banners')
     def __str__(self):
         return self.name
+
+class Tutor(models.Model):
+    user = models.ForeignKey('UserProfile')
 
