@@ -246,3 +246,12 @@ class Completion(models.Model):
     requirement = models.ForeignKey('Requirement')
     completed = models.BooleanField(default=False)
     date_completed = models.DateField(default=date.today)
+
+class Event(models.Model):
+    name = models.CharField(max_length=100)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    description = models.TextField(max_length=500, blank=True, null=True)
+    location = models.CharField(max_length=100)
+    photo = models.ImageField(upload_to='images/events/')
+
