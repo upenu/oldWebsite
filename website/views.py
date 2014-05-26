@@ -28,26 +28,26 @@ def calendar(request):
 def officers(request):
     template = loader.get_template('website/officers_members.html')
     officers = UserProfile.objects.filter(user_type=3)
-    # A list of officers with their positions
-    officers_position = []
     positions = ['President', 'Vice President', 'Secretary', 'Treasurer',
     'Professional Development', 'Industrial Relations', 'Social', 'Publicity', 'Technology']
 
     for officer in officers:
-        print officer.user.email
         officer_profile = OfficerProfile.objects.filter(user=officer.user)
         if len(officer_profile) != 0:
             for c_officer in officer_profile:
                 setattr(officer, 'position', positions[c_officer.position-1])
                 setattr(officer, 'photo', c_officer.photo)
-                officers_position.append(officer)
 
-    context = Context({'users': officers_position, 'title': 'Officers'})
+    context = Context({'users': officers, 'title': 'Officers'})
     return HttpResponse(template.render(context))
 
 def members(request):
     template = loader.get_template('website/officers_members.html')
     members = UserProfile.objects.filter(user_type=2)
+
+    for member in members:
+        setattr(member, 'position', 'Member')
+
     context = Context({'users': members, 'title': 'Members'})
     return HttpResponse(template.render(context))
 
