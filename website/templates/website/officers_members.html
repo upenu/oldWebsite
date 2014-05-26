@@ -46,7 +46,7 @@
 								<li><a href="http://github.com/{{ user.github }}"><i class="fa fa-github"></i></a></li>
 							{% endif %}
 							{% if user.user.email %}
-								<li><a href="#"><i class="fa fa-envelope"></i></a></li>
+								<li><a href="mailto:{{ user.user.email }}"><i class="fa fa-envelope"></i></a></li>
 							{% endif %}
 							{% if user.personal_website %}
 								<li><a href="http://{{ user.personal_website }}"><i class="fa fa-globe"></i></a></li>
