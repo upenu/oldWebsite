@@ -1,12 +1,13 @@
-#officer-container {
+#officer-member-container {
 	width: 772px;
 	margin: 0 auto;
 	min-height: 300px;
+	float: left;
 }
 
-.officer {
+.officer-member {
 	width: 180px;
-	min-height: 350px;
+	height: 300px;
 	background-color: white;
 	position: relative;
 	display: inline-block;
@@ -19,13 +20,17 @@
 	-ms-box-shadow: 0 0 5px #bfbeba !important;
 }
 
-.officer-picture {
+.officer-member-picture {
 	width: 100%;
 	height: 180px;
 	margin-bottom: 5px;
 }
 
-.officer span {
+.officer-members {
+	width: ;
+}
+
+.officer-member span {
 	display: block;
 }
 
@@ -51,7 +56,7 @@
 }
 
 
-.officer-info {
+.officer-member-info {
 	padding: 5px;
 	font-size: 13px;
 	line-height: 1.2;
@@ -59,11 +64,12 @@
 }
 
 .content-container {
-	width: 900px;
+	width: 980px;
 	margin: 72px auto 20px auto;
 	background-image: url(http://subtlepatterns.com/patterns/brillant.png);
-	padding: 35px;
+	padding: 35px 20px;
 	min-height: 500px;
+	overflow: auto;
 }
 
 .content-container *{
@@ -95,44 +101,4 @@
 #archive li a {
 	color: #555;
 	font-weight: 400;
-}
-
-#member-container {
-	width: 772px;
-	margin: 0 auto;
-	min-height: 300px;
-}
-
-.member {
-	width: 316px;
-	height: 150px;
-	background-color: white;
-	position: relative;
-	display: inline-block;
-	margin-right: 10px;
-	margin-bottom: 20px;
-	-moz-box-shadow: 0 0 5px #bfbeba !important;
-	-webkit-box-shadow: 0 0 5px #bfbeba !important;
-	-o-box-shadow: 0 0 5px #bfbeba !important;
-	-ktml-box-shadow: 0 0 5px #bfbeba !important;
-	-ms-box-shadow: 0 0 5px #bfbeba !important;
-}
-
-.member-picture {
-	width: 150px;
-	height: 150px;
-	margin-bottom: 5px;
-	float: left;
-}
-
-.member span {
-	display: block;
-}
-
-.member-info {
-	padding: 5px;
-	font-size: 12px;
-	line-height: 1.2;
-	font-weight: 500;
-	float: left;
 }
