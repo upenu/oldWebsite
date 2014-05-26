@@ -34,7 +34,7 @@ def officers(request):
         if len(officer_profile) != 0:
             for c_officer in officer_profile:
                 setattr(officer, 'position', positions[c_officer.position-1])
-                setattr(officer, 'photo', c_officer.photo)
+                setattr(officer, 'photo', officer.picture)
 
     context = RequestContext(request, {'users': officers, 'title': 'Officers'})
     return HttpResponse(template.render(context))
