@@ -36,7 +36,7 @@ def officers(request):
                 setattr(officer, 'position', positions[c_officer.position-1])
                 setattr(officer, 'photo', c_officer.photo)
 
-    context = Context({'users': officers, 'title': 'Officers'})
+    context = RequestContext(request, {'users': officers, 'title': 'Officers'})
     return HttpResponse(template.render(context))
 
 def members(request):
@@ -46,7 +46,7 @@ def members(request):
     for member in members:
         setattr(member, 'position', 'Member')
 
-    context = Context({'users': members, 'title': 'Members'})
+    context = RequestContext(request, {'users': members, 'title': 'Members'})
     return HttpResponse(template.render(context))
 
 
