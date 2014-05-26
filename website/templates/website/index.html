@@ -97,7 +97,7 @@
             <div class="events-list-item float">
                 <img src="/media/{{ event.thumbnail }}">
                 <h1>{{ event.name }}</h1>
-                <p><span>Date:</span> {{ event.start_time }}</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Location:</span> {{ event.location }}</p>
+                <p><span>Date:</span> {{ event.start_time.date }}</br><span>Time:</span> {{ event.start_time|date:"g:i A" }} - {{ event.end_time|date:"g:i A" }}</br><span>Location:</span> {{ event.location }}</p>
                 <div class="description">
                   <img src="/media/{{ event.banner }}">
                   <h1>{{ event.name }}</h1>
@@ -105,53 +105,6 @@
                 </div>
             </div>
             {% endfor %}
-            <!-- <div class="events-list-item float">
-                <img src="">
-                <h1>Yelp @ Berkeley</h1>
-                <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Location:</span> Wozniak Lounge</br>430-8 Soda Hall, Berkeley</p>
-                <div class="description">
-                  <img src="">
-                  <h1>Yelp @ Berkeley</h1>
-                  <p>Yelp will be checking in at Berkeley to meet the best and brightest computer science and engineering students. You’re invited to come and to learn more about Yelp tech and culture from a few members of our engineering team. Stick around for presentations from not one, but TWO of Berkeley's very own! We'll kick things off with a quick Q+A with former Yelp intern, Mark M. as he speaks about his experiences at Yelp and what he's learned along the way. Then, join Berkeley alum Steven M. as he dives deep into Yelp's log processes.</p>
-                </div>
-            </div>
-            <div class="events-list-item float">
-                <img src="">
-                <h1>John DeNero's Big...</h1>
-                <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Location:</span> Wozniak Lounge</br>430-8 Soda Hall, Berkeley</p>
-                <div class="description">
-                  <img src="">
-                  <h1>John DeNero's Big Ideas Talk</h1>
-                  <p>EECS Lecturer PSOE Candidate John DeNero is swinging by this week. He'll be giving a talk on Monday at 1PM in the Woz. Come if you're interested in seeing what John has to offer as a potential CS lecturer. You may give your opinion (good and/or bad) by posting on this event.
-Some explanation: Because some of our lecturers (Clancy, Harvey) have retired, the CS department is looking into hiring new ones. There are two candidates, Josh Hug and John DeNero. Josh came in last week and gave a talk on Monday. If you went to it and have thoughts good or bad, please post them on the event page (https://www.facebook.com/events/1378156932449980/) or PM me. John is coming in this Monday, so you can go to that if you'd like. Please keep in mind that the Woz can seat 100 and a lot of Professors will be in attendance, so if things fill up, they have priority.</p>
-                </div>
-            </div>
-            <div class="events-list-item float">
-                <img src="">
-                <h1>Galileo Hackathon</h1>
-                <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Location:</span> Wozniak Lounge</br>430-8 Soda Hall, Berkeley</p>
-                <div class="description">
-                  <img src="">
-                  <h1>Galileo Hackathon</h1>
-                  <p>CSUA is partnering with Intel for an exciting 24-hour hardware + software hackathon revolving around the exciting new Intel Galileo Development board! Intel will be providing Berkeley students with 10 Galileo boards, complete with dev kits (cables, Arduino Uno R3 sensors, and more). Each team of 4-5 students will be able to work with their own board. A link with more info about the board is below.
-Register at http://bit.ly/1behwHc. Space is limited!
-
-The Intel development boards are compatible with Arduino hardware, so they can be programmed using the Arduino IDE. More details will be coming shortly!
-
-This hackathon is for both CS and EE majors, and a great opportunity for both hardware + software students to work on the same team. Both undergraduate and graduate students are welcome! Registration will be limited to ~50 students due to limited numbers of boards. So please register as soon as possible.</p>
-                </div>
-            </div>
-            <div class="events-list-item float">
-                <img src="">
-                <h1>General Meeting #4</h1>
-                <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Location:</span> Wozniak Lounge</br>430-8 Soda Hall, Berkeley</p>
-                <div class="description">
-                  <img src="">
-                  <h1>General Meeting #4</h1>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-            </div> -->
           </div>
         </div>
       </div>
