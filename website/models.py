@@ -36,11 +36,11 @@ class UserProfile(models.Model):
         #('S15', 'Spring 2015')
     )
 
-    user = models.OneToOneField(User) 
+    user = models.OneToOneField(User)
     user_type = models.IntegerField(max_length=1, choices=USER_TYPES, default=1, verbose_name='You are a(n)')
     grad_year = models.CharField(max_length=4, choices=GRAD_YEARS, default='15', verbose_name='When are you graduating | When did you graduate?')
     year_joined = models.CharField(max_length=11, choices=YEAR_JOINED, default='F14', verbose_name='When did you join UPE?')
-    picture = models.ImageField(upload_to='profile_images', default='/profile_images/spock.jpg', blank=True)
+    picture = models.ImageField(upload_to='profile_images', default='/profile_images/spock.jpg')
     personal_website = models.CharField(max_length=50, blank=True)
     resume = models.FileField(upload_to='resumes', blank=True, null=True)
     github = models.CharField(max_length=50, blank=True)

@@ -283,12 +283,14 @@ table {
   width: 590px;
   height: 510px;
   margin-right: 60px;
+  overflow: hidden;
   float: right;
 }
 
 .events-list-description img, .oh-list-description img {
-  width: 590px;
   height: 218px;
+  margin: 0 auto;
+  display: block;
 }
 
 .events-list-description h1, .oh-list-description h1 {
