@@ -20,3 +20,7 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('user_type',) 
+
+class ResumeUploadForm(forms.Form):
+    resume = forms.FileField(label='Upload a PDF')
+

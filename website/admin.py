@@ -1,7 +1,6 @@
 from django.contrib import admin
 from website.models import *
 
-# Register your models here.
 
 class ClassesTakenInline(admin.TabularInline):
     model = OfficerClass
@@ -13,8 +12,8 @@ class OfficerAdmin(admin.ModelAdmin):
 
 admin.site.register(UserProfile)
 admin.site.register(OfficerProfile, OfficerAdmin)
-admin.site.register(OfficeHour)
-admin.site.register(BerkeleyClass)
-admin.site.register(CandidateProfile)
-admin.site.register(Requirement)
-admin.site.register(Completion)
+#admin.site.register(OfficeHour)
+#admin.site.register(BerkeleyClass)
+#admin.site.register(CandidateProfile)
+#admin.site.register(Requirement)
+#admin.site.register(Completion)
