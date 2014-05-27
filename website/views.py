@@ -10,12 +10,11 @@ from django.template import Context, Template
 
 from website.models import UserProfile
 
-from django.forms import * 
+from django.forms import *
 
 def index(request):
     template = loader.get_template('website/index.html')
-    events = Event.objects.all()
-    context = RequestContext(request, {'events': events})
+    context = RequestContext(request, {})
     return HttpResponse(template.render(context))
 
 def calendar(request):
