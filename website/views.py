@@ -19,7 +19,7 @@ def index(request):
 
 def calendar(request):
     template = loader.get_template('website/calendar.html')
-    context = RequestContext(request, {})
+    context = RequestContext(request, {'days':[1,2,3]})
     return HttpResponse(template.render(context))
 
 def officers(request):

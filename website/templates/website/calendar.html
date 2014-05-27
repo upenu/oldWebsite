@@ -1,5 +1,9 @@
 {% extends "website/header_footer.html" %}
 {% load staticfiles %}
+{% load filters %}
+{% block javascript %}
+  <script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
+{% endblock %}
 {% block content %}
 <div id="calendar-wrapper">
     <div id="calendar-title">April 2014</div>
@@ -14,7 +18,20 @@
         <td class="day-row">Saturday</td>
       </tr>
     </table>
-    <table id="week1-wrapper">
+    {% for i in 5|times %}
+    <table id="week{{forloop.counter}}-wrapper">
+      <tr id="week{{forloop.counter}}">
+        {% for j in 7|times %}
+        <td class="calendar-day">
+          <div class="date">{{forloop.counter}}</div>
+          <ul id="events">
+          </ul>
+        </td>
+        {% endfor %}
+      </tr>
+    </table>
+    {% endfor %}
+    <!-- <table id="week1-wrapper">
       <tr id="week1">
         <td class="calendar-day">
           <div class="date">1</div>
@@ -216,6 +233,6 @@
           </ul>
         </td>
       </tr>
-    </table>
+    </table> -->
 	</div>
 {% endblock %}

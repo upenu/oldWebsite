@@ -28,21 +28,9 @@
     <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
     <!-- END GOOGLE FONTS -->
 
-    <!-- JS LINKS -->
-      <!-- JQUERY -->
-      <script src="{% static "website/js/jquery-1.11.0.min.js" %}"></script>
-      <!-- ENDS JQUERY -->
-      <script src="{% static "website/js/header_script.js" %}"></script>
-      <script src="{% static "website/js/thumbnail_script.js" %}"></script>
-      <script src="{% static "website/js/modernizr.custom.79639.js" %}"></script>
-      <script src="{% static "website/js/ba_cond.min.js" %}"></script>
-      <script src="{% static "website/js/slitslider.js" %}"></script>
-      <script src="{% static "website/js/slitslider_custom.js" %}"></script>
-      <script src="{% static "website/js/landingpage.banner.custom.js" %}"></script>
-      <script src="{% static "website/js/landingpage.main.custom.js" %}"></script>
-      <script src="{% static "website/js/footer_script.js" %}"></script>
-      <script src="{% static "website/js/header_script.js" %}"></script>
-    <!-- ENDS JS LINKS -->
+    {% block javascript %}
+      <script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
+    {% endblock %}
 
   </head>
   <body>
