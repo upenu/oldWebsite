@@ -233,23 +233,55 @@ a:hover {
     border-radius: 0px 3px 3px 0px;
     cursor: pointer;
 }
-/*.footer-column {
-  width: 33%;
-  float: left;
-  line-height: 24px;
+#footer-wrapper .social {
+  background-color: #808080;
+  padding: 12px;
+  border-radius: 50px;
+  height: 15px;
+  width: 15px;
+  display: inline-block;
 }
-#links {
-    color: white; 
+
+#footer-wrapper .social .fa{
+  font-size: 20px;
+  position: relative;
+  color: #fefefa;
 }
-.column-content {
-  color: #777;
+
+#footer-wrapper .social .fa-facebook {
+  top: -1px;
+  left: 1px;
 }
-.column-title {
-  font-size: 18px;
-  padding-bottom: 10px;
+
+
+#footer-wrapper .facebook, .twitter, .rss {
+  background: #808080;
+  webkit-transition: all 0.3s ease-in-out;
+  moz-transition: all 0.3s ease-in-out;
+  o-transition: all 0.3s ease-in-out;
+  ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;;
 }
-ul li:before {
-    content: "+";
-    padding-right: 5px;
-    color: #3EACC7;
-}*/
+
+#footer-wrapper .facebook:hover {
+  background-color: #3b5998;
+
+}
+
+#footer-wrapper .twitter:hover {
+  background-color: #2daddc;
+}
+
+#footer-wrapper .rss:hover {
+  background-color: #d14836;
+}
+
+#footer-wrapper .social .fa-twitter {
+  top: -2px;
+  left: -1px;
+}
+
+#footer-wrapper .social .fa-rss {
+  top: -2px;
+  left: 1px;
+}
