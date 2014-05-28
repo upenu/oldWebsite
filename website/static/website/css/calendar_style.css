@@ -50,7 +50,7 @@ table {
 
 /* Calendar Styles */
 #calendar-wrapper {
-	padding: 30px;
+	padding: 10px 30px 30px 30px;
 	width: 1024px;
 	color: #242424;
 	background-image: url(http://subtlepatterns.com/patterns/brillant.png);
