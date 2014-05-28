@@ -3,6 +3,8 @@
 {% load filters %}
 {% block javascript %}
   <script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
+  <script src="{% static "website/js/date.js" %}"></script>
+  <script src="{% static "website/js/calendar.js" %}"></script>
 {% endblock %}
 {% block content %}
 <div id="calendar-wrapper">
@@ -18,19 +20,83 @@
         <td class="day-row">Saturday</td>
       </tr>
     </table>
-    {% for i in 5|times %}
-    <table id="week{{forloop.counter}}-wrapper">
-      <tr id="week{{forloop.counter}}">
-        {% for j in 7|times %}
+    <table id="week1-wrapper">
+      <tr id="week1">
+      {% for j in 7|times %}
+        {% if j >= weekday %}
         <td class="calendar-day">
-          <div class="date">{{forloop.counter}}</div>
+          <div class="date">{{ forloop.counter }}</div>
           <ul id="events">
           </ul>
         </td>
-        {% endfor %}
+        {% endif %}
+        {% if not j >= weekday %}
+        <td class="calendar-day next-month">
+          <div class="date">{{ forloop.counter }}</div>
+          <ul id="events">
+          </ul>
+        </td>
+        {% endif %}
+      {% endfor %}
       </tr>
     </table>
-    {% endfor %}
+
+    <table id="week2-wrapper">
+      <tr id="week2">
+      {% for j in 7|times %}
+        <td class="calendar-day">
+          <div class="date">{{ 7|add:forloop.counter }}</div>
+          <ul id="events">
+          </ul>
+        </td>
+      {% endfor %}
+      </tr>
+    </table>
+
+    <table id="week3-wrapper">
+      <tr id="week3">
+      {% for j in 7|times %}
+        <td class="calendar-day">
+          <div class="date">{{ 14|add:forloop.counter }}</div>
+          <ul id="events">
+          </ul>
+        </td>
+      {% endfor %}
+      </tr>
+    </table>
+
+    <table id="week4-wrapper">
+      <tr id="week4">
+      {% for j in 7|times %}
+        <td class="calendar-day">
+          <div class="date">{{ 21|add:forloop.counter }}</div>
+          <ul id="events">
+          </ul>
+        </td>
+      {% endfor %}
+      </tr>
+    </table>
+
+    <table id="week5-wrapper">
+      <tr id="week5">
+      {% for j in 7|times %}
+        {% if 28|add:forloop.counter > days %}
+        <td class="calendar-day next-month">
+          <div class="date"></div>
+          <ul id="events">
+          </ul>
+        </td>
+        {% endif %}
+        {% if not 28|add:forloop.counter > days %}
+          <td class="calendar-day">
+          <div class="date">{{ 28|add:forloop.counter }}</div>
+          <ul id="events">
+          </ul>
+        </td>
+        {% endif %}
+      {% endfor %}
+      </tr>
+    </table>
     <!-- <table id="week1-wrapper">
       <tr id="week1">
         <td class="calendar-day">

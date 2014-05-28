@@ -18,6 +18,6 @@ urlpatterns = patterns('',
     url(r'^register/$', 'website.views.register', name='register'),
     url(r'^myprofile/$', 'website.views.myprofile', name='myprofile'),
     url(r'^login/$', 'website.views.user_login', name='login'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout',
-                                  {'next_page': '/'}),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
+    url(r'^get_calendar_info/$', 'website.views.get_calendar_info', name='get_calendar_info'),
 )
