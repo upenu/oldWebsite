@@ -26,7 +26,7 @@ def calendar(request):
     now = datetime.datetime.now()
     num_days = calendar.monthrange(now.year, now.month)[1]
     weekday = int(now.weekday())
-    context = RequestContext(request, {'days': num_days, 'weekday': weekday+1})
+    context = RequestContext(request, {'month': now.strftime('%B'), 'year': now.year})
     return HttpResponse(template.render(context))
 
 """
