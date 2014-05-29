@@ -37,10 +37,14 @@ var createCalendarTemp = function(eventList) {
 	}
 	dayTemplate = $("#day-temp").html();
 	dayCompiled = Handlebars.compile(dayTemplate);
+	console.log('CURRDATE: ' + parseInt(currDate.getDate()))
 	for (i = 1; i <= 7 - firstDay; i++) {
 		if (eventDays.indexOf(i) > -1) {
 			console.log('hit');
 			context = getEvent(eventList, i);
+			if (i == parseInt(currDate.getDate())) {
+				context['currDate'] = true;
+			}
 			console.log(context);
 			console.log('i: ' +i);
 			$('#week1').append(dayCompiled(context))
@@ -56,6 +60,9 @@ var createCalendarTemp = function(eventList) {
 		if (eventDays.indexOf(j) > -1) {
 			console.log('hit');
 			context = getEvent(eventList, j);
+			if (j == parseInt(currDate.getDate())) {
+				context['currDate'] = true;
+			}
 			console.log(context);
 			console.log('j: ' +j);
 			$('#week2').append(dayCompiled(context))
@@ -70,6 +77,9 @@ var createCalendarTemp = function(eventList) {
 		if (eventDays.indexOf(k) > -1) {
 			console.log('hit');
 			context = getEvent(eventList, k);
+			if (k == parseInt(currDate.getDate())) {
+				context['currDate'] = true;
+			}
 			console.log(context);
 			console.log('k: ' + k);
 			$('#week3').append(dayCompiled(context))
@@ -84,6 +94,9 @@ var createCalendarTemp = function(eventList) {
 		if (eventDays.indexOf(l) > -1) {
 			console.log('hit');
 			context = getEvent(eventList, l);
+			if (l == parseInt(currDate.getDate())) {
+				context['currDate'] = true;
+			}
 			console.log(context);
 			console.log('l: ' + l);
 			$('#week4').append(dayCompiled(context))
@@ -98,6 +111,11 @@ var createCalendarTemp = function(eventList) {
 		if (eventDays.indexOf(m) > -1) {
 			console.log('hit');
 			context = getEvent(eventList, m);
+
+			if (m == currDate.getDate()) {
+				console.log('hitt!!');
+				context['currDate'] = true;
+			}
 			console.log(context);
 			console.log('m: ' +m);
 			$('#week5').append(dayCompiled(context))

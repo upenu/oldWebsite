@@ -10,9 +10,9 @@ from django.template import Context, Template
 from calendar import monthrange
 from website.models import UserProfile
 from django.forms import *
-import json
 from datetime import date, timedelta
 from django.core.serializers.json import DjangoJSONEncoder
+import json
 
 def index(request):
     template = loader.get_template('website/index.html')

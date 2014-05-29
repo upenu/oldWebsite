@@ -131,3 +131,7 @@ table {
 .next-month {
 	background: #E2E2E2;
 }
+
+#curr-date {
+	color: #e67e22;
+}

@@ -16,7 +16,11 @@
 
 <script id="day-temp" type="text/x-handlebars-template">
   <td class="calendar-day">
+    {{#if currDate}}
+    <div id="curr-date" class="date">{{ date }}</div>
+    {{else}}
     <div class="date">{{ date }}</div>
+    {{/if}}
     <ul id="events">
       {{#if name}}
       <li class="event-info">{{ name }}</li>
