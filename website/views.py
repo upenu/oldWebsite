@@ -12,7 +12,7 @@ from website.models import UserProfile
 from django.forms import *
 from datetime import date, timedelta
 from django.core.serializers.json import DjangoJSONEncoder
-import json
+import json, re
 
 def index(request):
     template = loader.get_template('website/index.html')
@@ -124,22 +124,44 @@ def user_login(request):
 def myprofile(request):
     user = request.user
     up = UserProfile.objects.get(user=user)
+    resume_form = ResumeUploadForm()
+    profile_pic_form = ProfilePicChangeForm()
     if request.method == 'POST':
         if 'resume' in request.FILES:
             resume_form = ResumeUploadForm(request.POST, request.FILES)
-            profile_pic_form = ProfilePicChangeForm()
             if resume_form.is_valid():
                 up.resume = request.FILES['resume']
                 up.save()
         elif 'picture' in request.FILES:
-            resume_form = ResumeUploadForm()
             profile_pic_form = ProfilePicChangeForm(request.POST, request.FILES)
             if profile_pic_form.is_valid():
                 up.picture = request.FILES['picture']
                 up.save()
-    else:
-        resume_form = ResumeUploadForm()
-        profile_pic_form = ProfilePicChangeForm()
+        elif request.POST['name'] == 'email':
+            user.email = request.POST['value']
+            user.save()
+        elif request.POST['name'] == 'github':
+            up.github = request.POST['value']
+            up.save()
+        elif request.POST['name'] == 'linkedin':
+            up.linkedin = request.POST['value']
+            up.save()
+        elif request.POST['name'] == 'personal_website':
+            up.personal_website = request.POST['value']
+            up.save()
+        elif request.POST['name'] == 'name':
+            name = request.POST['value']
+            p = re.compile('([a-zA-Z]+)\\s+([a-zA-Z]+)')
+            m = p.match(name)
+            user.first_name = m.group(1)
+            user.last_name = m.group(2)
+            user.save()
+        elif request.POST['name'] == 'year_joined':
+            up.year_joined = request.POST['value']
+            up.save()
+        elif request.POST['name'] == 'grad_year':
+            up.grad_year = request.POST['value']
+            up.save()
     return render_to_response('website/profile.html', 
             context_instance=RequestContext(request,{'up': up, 'resume_upload': resume_form, 'profile_pic': profile_pic_form}))
 

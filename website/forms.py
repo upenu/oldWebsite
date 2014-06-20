@@ -25,5 +25,5 @@ class ResumeUploadForm(forms.Form):
     resume = forms.FileField(label='Upload a PDF')
 
 class ProfilePicChangeForm(forms.Form):
-    picture = forms.ImageField(label='Upload an image')
+    picture = forms.ImageField(label='')
 
