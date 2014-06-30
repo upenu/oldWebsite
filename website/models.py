@@ -258,3 +258,8 @@ class Event(models.Model):
     banner = models.ImageField(upload_to='event_images/banners')
     def __str__(self):
         return self.name
+
+class WebDevApp(models.Model):
+    user = models.OneToOneField(User)
+    why = models.TextField(max_length=500)
+    experience = models.TextField(max_length=500)

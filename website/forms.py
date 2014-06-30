@@ -27,3 +27,7 @@ class ResumeUploadForm(forms.Form):
 class ProfilePicChangeForm(forms.Form):
     picture = forms.ImageField(label='')
 
+# class WebDevAppForm(forms.Form):
+#     class Meta
+#         model = WebDevApp
+        
