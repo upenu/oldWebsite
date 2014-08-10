@@ -94,6 +94,11 @@ table {
 	height: 100px;
 	table-layout: fixed;
 }
+#week6-wrapper {
+	height: 100px;
+	table-layout: fixed;
+    width: 100%;
+}
 .calendar-day {
     border-style: solid;
     border-width: 1.5px;
@@ -133,5 +138,5 @@ table {
 }
 
 #curr-date {
-	color: #e67e22;
+	color: #e74c3c;
 }

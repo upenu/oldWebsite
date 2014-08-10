@@ -1,28 +1,25 @@
-// Parses JSON from Django calendar API to return a list of event objects containing the event's date and name
-var createEventList = function(data) {
+// Parses JSON from Django calendar API to return a list of event objects containing the event's date and name=
+var createEventList = function (data) {
 	var event, parsedEvent, name, day;
 	var eventList = [];
 	for(var event in data.events){
-		eventDate = data.events[event];
-		parsedEventDate = Date.parse(eventDate.slice(0, -1));
+        eventDate = data.events[event];
+        parsedEventDate = Date.parse(eventDate.slice(0, -1));
 		month = parsedEventDate.getMonthName();
 		date = parsedEventDate.getDate();
 		name = event;
 		eventList.push({'name': name, 'date': date});
 	}
-	console.log(eventList);
 	return eventList;
 };
 
 // Creates a Handlebars template for the calendar using a list of event objects
 var createCalendarTemp = function(eventList) {
-	console.log(eventList);
 	var eventDays, currDate, numDays, firstDay;
 	// A list of dates that have an event
 	eventDays = [];
 	for(var i = 0, len = eventList.length; i < len; i++) {
 		eventDays.push(eventList[i].date);
-		console.log(eventDays);
 	}
 	currDate = new Date();
 	numDays = daysInMonth(currDate.getMonth()+1, currDate.getFullYear())
@@ -37,16 +34,12 @@ var createCalendarTemp = function(eventList) {
 	}
 	dayTemplate = $("#day-temp").html();
 	dayCompiled = Handlebars.compile(dayTemplate);
-	console.log('CURRDATE: ' + parseInt(currDate.getDate()))
 	for (i = 1; i <= 7 - firstDay; i++) {
 		if (eventDays.indexOf(i) > -1) {
-			console.log('hit');
 			context = getEvent(eventList, i);
 			if (i == parseInt(currDate.getDate())) {
 				context['currDate'] = true;
 			}
-			console.log(context);
-			console.log('i: ' +i);
 			$('#week1').append(dayCompiled(context))
 		} else {
 			context = {'date': i};
@@ -55,16 +48,12 @@ var createCalendarTemp = function(eventList) {
 	}
 
 	var offset = i;
-	console.log('offset: ' + offset);
 	for (var j = offset; j < offset+7; j++) {
 		if (eventDays.indexOf(j) > -1) {
-			console.log('hit');
 			context = getEvent(eventList, j);
 			if (j == parseInt(currDate.getDate())) {
 				context['currDate'] = true;
 			}
-			console.log(context);
-			console.log('j: ' +j);
 			$('#week2').append(dayCompiled(context))
 		} else {
 			context = {'date': j};
@@ -75,13 +64,10 @@ var createCalendarTemp = function(eventList) {
 	offset = j
 	for (var k = offset; k < offset+7; k++) {
 		if (eventDays.indexOf(k) > -1) {
-			console.log('hit');
 			context = getEvent(eventList, k);
 			if (k == parseInt(currDate.getDate())) {
 				context['currDate'] = true;
 			}
-			console.log(context);
-			console.log('k: ' + k);
 			$('#week3').append(dayCompiled(context))
 		} else {
 			context = {'date': k};
@@ -92,13 +78,11 @@ var createCalendarTemp = function(eventList) {
 	offset = k
 	for (var l = offset; l < offset+7; l++) {
 		if (eventDays.indexOf(l) > -1) {
-			console.log('hit');
+			// console.log('hit');
 			context = getEvent(eventList, l);
 			if (l == parseInt(currDate.getDate())) {
 				context['currDate'] = true;
 			}
-			console.log(context);
-			console.log('l: ' + l);
 			$('#week4').append(dayCompiled(context))
 		} else {
 			context = {'date': l};
@@ -107,38 +91,50 @@ var createCalendarTemp = function(eventList) {
 	}
 
 	offset = l
-	for (var m = offset; m <= numDays; m++) {
+	for (var m = offset; m <= numDays && m - offset < 7; m++) {
 		if (eventDays.indexOf(m) > -1) {
-			console.log('hit');
 			context = getEvent(eventList, m);
 
 			if (m == currDate.getDate()) {
-				console.log('hitt!!');
 				context['currDate'] = true;
 			}
-			console.log(context);
-			console.log('m: ' +m);
 			$('#week5').append(dayCompiled(context))
 		} else {
 			context = {'date': m};
 			$('#week5').append(dayCompiled(context))
 		}
 	}
-
-	for (;m <= 31; m++) {
+	for (;m <= 31 && m - offset < 7; m++) {
 		dayTemplate = $("#next-month-temp").html();
 		dayCompiled = Handlebars.compile(dayTemplate);
 		context = {'date': m};
 		$('#week5').append(dayCompiled(context))
 	}
-};
+    if (m - offset >= 7) {
+        for (;m <= 31; m++) {
+            if (eventDays.indexOf(m) > -1) {
+			    context = getEvent(eventList, m);
+                if (m == currDate.getDate()) {
+                    context['currDate'] = true;
+                }
+                $('#week6').append(dayCompiled(context))
+            } else {
+                context = {'date': m};
+                $('#week6').append(dayCompiled(context))
+            }
+        }
+        for (; m <= 37; m++) {
+            dayTemplate = $("#next-month-temp").html();
+            dayCompiled = Handlebars.compile(dayTemplate);
+            context = {'date': m};
+            $('#week6').append(dayCompiled(context))
+        }
+    }
+  };
 
 // Gets the corresponding event object given a date in eventList
 var getEvent = function(eventList, date) {
 	for(var i = 0, len = eventList.length; i < len; i++) {
-		console.log('in');
-		console.log(eventList[i]['date']);
-		console.log(date);
 		if (parseInt(eventList[i]['date']) == parseInt(date)) {
 			return eventList[i];
 		};
