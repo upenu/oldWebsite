@@ -60,9 +60,9 @@ WSGI_APPLICATION = 'upe.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'website',
-        'USER': 'Mari',
-        'PASSWORD': 'hithere',
+        'NAME': 'upe_db',
+        'USER': 'admin',
+        'PASSWORD': 'littlewhale',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -92,25 +92,25 @@ USE_TZ = True
 
 AUTHENTICATION_BACKENDS = ('website.backends.CustomBackend',)
 
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config( \
-        default='postgres://ubdyevsrhidvzy:1CkBW8X2w8l8WgXL74rE-pbnHH@ec2-54-83-14-68.compute-1.amazonaws.com:5432/d172rbc0tne9ov')
+#import dj_database_url
+#DATABASES['default'] =  dj_database_url.config( \
+        #default='postgres://ubdyevsrhidvzy:1CkBW8X2w8l8WgXL74rE-pbnHH@ec2-54-83-14-68.compute-1.amazonaws.com:5432/d172rbc0tne9ov')
 
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+## Honor the 'X-Forwarded-Proto' header for request.is_secure()
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Allow all host headers
-ALLOWED_HOSTS = ['*']
+## Allow all host headers
+#ALLOWED_HOSTS = ['*']
 
-# Static asset configuration
-import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
+## Static asset configuration
+#import os
+#BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+#STATIC_ROOT = 'staticfiles'
+#STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
-)
+#STATICFILES_DIRS = (
+        #os.path.join(BASE_DIR, 'static'),
+#)
 
 from django.conf import global_settings
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + ("website.processor.populate_footer",)
