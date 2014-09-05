@@ -233,6 +233,7 @@ table {
 .events-list-item, .oh-list-item  {
   color: black;
   margin: 10px 0px;
+  margin-top: 20px;
   height: 140px;
   width: 310px;
   cursor: pointer;
