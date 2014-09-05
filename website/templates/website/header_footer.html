@@ -33,41 +33,41 @@
              <a href="/"><img id="header-icon" src="{% static "website/images/layout/header/upe_whale.png" %}" alt="Workshop"><span id="upe-brand">UPE</span></a>
           </li>
           <li class="header-section">
-            <a href="#">About</a>
+            <a href="/#main-wrapper">About</a>
             <ul id="subnav-1" class="subnav">
-                <li><a href="#">General Information</a></li>
-                <li><a href="/officers">Officers</a></li>
-                <li><a href="/members">Members</a></li>
+                <!-- <li><a href="#">General Information</a></li> -->
+                <!-- <li><a href="/officers">Officers</a></li> -->
+                <!-- <li><a href="/members">Members</a></li> -->
             </ul>
           </li>
           <li class="header-section">
             <a href="#">Student Services</a>
             <ul id="subnav-2" class="subnav">
-                <li><a href="#">Interview Questions</a></li>
-                <li><a href="#">Mock Interviews</a></li>
-                <li><a href="#">Early Applicants</a></li>
+                <!-- <li><a href="#">Interview Questions</a></li> -->
+                <!-- <li><a href="#">Mock Interviews</a></li> -->
+                <li><a href="https://docs.google.com/forms/d/1pPDIUCatFntVqLV1rgSSTFjq3ALfwKfYcSbRBBn3cCk/viewform">Early Applicants</a></li>
             </ul>
           </li>
-          <li class="header-section">
+          <!-- <li class="header-section">
             <a href="#">Industrial Relations</a>
             <ul id="subnav-3" class="subnav">
                 <li><a href="#">Main</a></li>
                 <li><a href="#">Infosessions</a></li>
                 <li><a href="#">Resume Book</a></li>
             </ul>
-          </li>
+          </li> -->
           <li class="header-section pull-right">
             {% if user.is_authenticated %}
             <a href="/logout">Logout</a>
             {% else %}
-            <a href="/register">Register</a>
+            <!-- <a href="/register">Register</a> -->
             {% endif %}
           </li>
           <li class="header-section pull-right">
             {% if user.is_authenticated %}
             <a href="/myprofile">{{ user.first_name }} {{ user.last_name }}</a>
             {% else %}
-            <a href="/login">Login</a>
+            <!-- <a href="/login">Login</a> -->
             {% endif %}
           </li>
           <li class="header-section">
@@ -125,13 +125,13 @@
               <div class="top-col-info">
                 <div id="name">Social Media</div>
                   <ul id="footer-icons">
-                    <li class="icon-bar">
+                    <!-- <li class="icon-bar">
                       <a target="blank">
                         <div class="social rss">
                           <i class="fa fa-rss"></i>
                         </div>
                       </a>
-                    </li>
+                    </li> -->
 
                     <li class="icon-bar">
                       <a href="https://twitter.com/berkeleyUPE" target="blank">
@@ -149,13 +149,13 @@
                       </a>
                     </li>
                   </ul>
-                <div id="name">Subscribe to our newsletter</div>
+                <!-- <div id="name">Subscribe to our newsletter</div>
                 <div id='search-box'>
                   <form action='/search' id='search-form' method='get' target='_top'>
                   <input id='search-text' name='q' placeholder='Your e-mail...' type='text'/>
                   <button id='search-button' type='submit'>Sign Up</button>
                   </form>
-                </div>
+                </div> -->
               </div>
               </div>
           </div>
@@ -164,14 +164,14 @@
           <div id="footer-bottom">
             <img id="footer-icon" src="{% static "website/images/layout/header/upe_whale.png" %}" alt="Workshop">
             <div id="mini-menu">
-              <div class="mini-menu-item"><a href="links">FAQ</a></div> 
+              <!-- <div class="mini-menu-item"><a href="links">FAQ</a></div> 
               <div class="mini-menu-item">&middot</div>
               <div class="mini-menu-item"><a href="links">Privacy</a></div> 
               <div class="mini-menu-item">&middot</div>
-              <div class="mini-menu-item"><a href="links">Terms of Service</a></div> 
+              <div class="mini-menu-item"><a href="links">Terms of Service</a></div>  -->
             </div>
             <div id="copyright">
-               Copyright © 2014 Upsilon Pi Epsilon at the University of California Berkeley
+               Copyright © 2014 Upsilon Pi Epsilon at the University of California, Berkeley
             </div>
           </div>
         </div>
