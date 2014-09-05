@@ -369,7 +369,7 @@ table {
 #business-wrapper {
   margin: 20px 0px;
   width: 990px;
-  height: 700px;
+  /*height: 700px;*/
   background: #fff;
   box-shadow: 0 0 5px #bfbeba;
   -moz-box-shadow: 0 0 5px #bfbeba;
