@@ -13,6 +13,8 @@ Coding Conventions:
 
 Setup (for devs)
 ===============
+0. Install Homebrew
+``ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"``
 1. Have Python 3 installed
 2. Have `pip3` installed
 3. Install `virtualenv` by doing `pip3 install virtualenv`
