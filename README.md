@@ -15,6 +15,7 @@ Setup (for devs)
 ===============
 1. Have Python 3 installed
 2. Have `pip3` installed
+3. Install `virtualenv` by doing `pip3 install virtualenv`
 3. Clone this git repo
 4. In the git repo, create a virtual env `virtualenv --python=/path/to/python3 venv` 
 5. Start the virtual env: `source venv/bin/activate`
