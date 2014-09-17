@@ -15,17 +15,18 @@ Setup (for devs)
 ===============
 0. Install Homebrew
 ``ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"``
-1. Have Python 3 installed
-2. Have `pip3` installed
+1. Have Python 3 installed (``brew install python3``)
+2. Have `pip3` installed (Should come with step 2)
 3. Install `virtualenv` by doing `pip3 install virtualenv`
 3. Clone this git repo
-4. In the git repo, create a virtual env `virtualenv --python=/path/to/python3 venv` 
+4. In the git repo, create a virtual env `virtualenv --python=/path/to/python3 venv` You probably can get away with ``virtualenv venv``, but if you see python2.7 somewhere in the command log. Use stackoverflow to find where your python3 is installed.
 5. Start the virtual env: `source venv/bin/activate`
-5. Install requirements `python3 install -r requirements.txt`
 6. Install postgres (Google postgres.app)
-7. Remember to add postgres to path in `.bash_profile`: `PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"`
+6a. Remember to add postgres to path in `~/.bash_profile`: `PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"`
+``export PATH`` AND RESTART TERMINAL
+7. Install requirements `pip3 install -r requirements.txt`
 8. Open the Postgres app to start the Postgres server
-9. Inside the postgres server shell, run `CREATE DATABASE upe_db;`. Don't forget the semicolon.
+9. Inside the postgres server shell use ``psql`` to enter shell, run `CREATE DATABASE upe_db;`. Don't forget the semicolon.
 10. Also run `CREATE USER admin WITH PASSWORD 'littlewhale'`.
 11. Type `\q` to quit the postgres server shell.
 12. Now you are ready to do `python3 manage.py syncdb`
