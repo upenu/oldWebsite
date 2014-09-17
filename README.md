@@ -31,3 +31,8 @@ Setup (for devs)
 14. Now you can run `python3 manage.py runserver`. 
 15. Visit `localhost:8000` in your server. You should now see the UPE website locally!
 16. Wrapping up: you can do Ctrl-C to stop the server, and then run `deactivate` in the terminal to stop the virtualenv.
+
+To change your local django admin username/password
+=================
+1. To change the password: [follow the instructions here](http://stackoverflow.com/questions/1873806/changing-password-in-django)
+2. To change the username: `python3 manage.py runserver`, then go to `localhost:8000/admin`>Users and modify the user.
