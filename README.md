@@ -27,7 +27,7 @@ Setup (for devs)
 7. Install requirements `pip3 install -r requirements.txt`
 8. Open the Postgres app to start the Postgres server
 9. Inside the postgres server shell use ``psql`` to enter shell, run `CREATE DATABASE upe_db;`. Don't forget the semicolon.
-10. Also run `CREATE USER admin WITH PASSWORD 'littlewhale'`.
+10. Also run `CREATE USER admin WITH PASSWORD 'littlewhale';`.
 11. Type `\q` to quit the postgres server shell.
 12. Now you are ready to do `python3 manage.py syncdb`
 13. If successful, Django should ask you to install superusers. Say yes, and use a one-character username/password for ease.
