@@ -314,6 +314,8 @@ table {
 
 .description-text {
   padding:20px;
+  overflow:scroll;
+  height:197px;
 }
 
 .events-list-description h1, .oh-list-description h1 {
