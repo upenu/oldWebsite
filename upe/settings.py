@@ -38,7 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website',
-    'upe_calendar'
+    'upe_calendar',
+    'users'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -91,7 +92,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-AUTHENTICATION_BACKENDS = ('website.backends.CustomBackend',)
+AUTHENTICATION_BACKENDS = ('users.backends.CustomBackend',)
 
 from django.conf import global_settings
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + ("website.processor.populate_footer",)

@@ -1,10 +1,10 @@
 from django import forms
 from django.contrib.auth.models import User
-from website.models import *
+from users.models import *
 
-class CompletionForm(forms.Form):
-    requirements = forms.ModelChoiceField(queryset=Requirement.objects.all()) 
-    candidates = forms.ModelChoiceField(queryset=CandidateProfile.objects.all())
+# class CompletionForm(forms.Form):
+#     requirements = forms.ModelChoiceField(queryset=Requirement.objects.all()) 
+#     candidates = forms.ModelChoiceField(queryset=CandidateProfile.objects.all())
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
@@ -26,8 +26,4 @@ class ResumeUploadForm(forms.Form):
 
 class ProfilePicChangeForm(forms.Form):
     picture = forms.ImageField(label='')
-
-# class WebDevAppForm(forms.Form):
-#     class Meta
-#         model = WebDevApp
         
