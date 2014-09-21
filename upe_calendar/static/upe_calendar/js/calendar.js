@@ -153,7 +153,7 @@ var getFirstDay = function() {
 }
 
 $(document).ready(function() {
-	$.get( "/get_calendar_info", function(data) {
+	$.get( "/calendar/get_calendar_info", function(data) {
 		var eventList, context, calendarTemplate, calendarCompiled;
 
 		eventList = createEventList(data);

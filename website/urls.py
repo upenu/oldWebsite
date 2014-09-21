@@ -9,7 +9,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', 'website.views.index', name='index'),
-    url(r'^calendar/$', 'website.views.calendar', name='calendar'),
     url(r'^officers/$', 'website.views.officers', name='officers'),
     url(r'^members/$', 'website.views.members', name='members'),
     url(r'^officehours/$', 'website.views.officehours', name='officehours'),
@@ -19,5 +18,4 @@ urlpatterns = patterns('',
     url(r'^myprofile/$', 'website.views.myprofile', name='myprofile'),
     url(r'^login/$', 'website.views.user_login', name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
-    url(r'^get_calendar_info/$', 'website.views.get_calendar_info', name='get_calendar_info'),
 )

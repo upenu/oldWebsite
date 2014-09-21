@@ -1,4 +1,4 @@
-from website.models import Event
+from upe_calendar.models import Event
 from datetime import date, timedelta
 
 """
