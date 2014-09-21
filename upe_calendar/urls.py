@@ -8,5 +8,6 @@ urlpatterns = patterns('',
     # url(r'^$', 'upe.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', 'website.views.index', name='index'),
+    url(r'^$', 'upe_calendar.views.calendar', name='calendar'),
+    url(r'^get_calendar_info/$', 'upe_calendar.views.get_calendar_info', name='get_calendar_info'),
 )

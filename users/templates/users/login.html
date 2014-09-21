@@ -1,0 +1,32 @@
+{% extends "website/header_footer.html" %}
+{% load staticfiles %}
+{% block stylesheets %}
+<link href="bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static "website/css/full_style.css" %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static "website/css/main_style.css" %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static "website/css/header_style.css" %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static "website/css/footer_style.css" %}" type="text/css" media="screen" />
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static "website/css/hover.css" %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static "users/css/officers_members.css" %}" type="text/css" media="screen" />
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
+{% endblock %}
+{% block content %}
+<div class="content-container">
+    {% if incorrect_log_in %}
+    <p>Username or Password is incorrect</p>
+    {% endif %}
+    <form id="login_form" method="post" action="/login/">
+        {% csrf_token %}
+        Username: <input type="text" name="username" value="" size="50" />
+        <br />
+        Password: <input type="password" name="password" value="" size="50" />
+        <br />
+        <input type="submit" value="submit" />
+    </form>
+    <p>
+    <a href="/register">Register</a>
+    </p>
+</div>
+{% endblock %}
