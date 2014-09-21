@@ -91,6 +91,8 @@ var createCalendarTemp = function(eventList) {
 	}
 
 	offset = l
+	var num_days_of_month_in_last_week = 0,
+	    z = 0;
 	for (var m = offset; m <= numDays && m - offset < 7; m++) {
 		if (eventDays.indexOf(m) > -1) {
 			context = getEvent(eventList, m);
@@ -103,11 +105,13 @@ var createCalendarTemp = function(eventList) {
 			context = {'date': m};
 			$('#week5').append(dayCompiled(context))
 		}
+		num_days_of_month_in_last_week++;
+		z = m + 1;
 	}
-	for (;m <= 31 && m - offset < 7; m++) {
+	for (var y = num_days_of_month_in_last_week; y >= 0; y--, z++) {
 		dayTemplate = $("#next-month-temp").html();
 		dayCompiled = Handlebars.compile(dayTemplate);
-		context = {'date': m};
+		context = {'date': z};
 		$('#week5').append(dayCompiled(context))
 	}
     if (m - offset >= 7) {
