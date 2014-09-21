@@ -17,41 +17,41 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-	display: block;
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
 ol, ul {
-	list-style: none;
+  list-style: none;
 }
 blockquote, q {
-	quotes: none;
+  quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+  content: '';
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* Main Styles */
 
 #main-wrapper {
-	font-size: 14px;
+  font-size: 14px;
   line-height: 18px;
   font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
   color: #555;
@@ -59,7 +59,7 @@ table {
 }
 
 #main-inner-wrapper {
-	width: 990px;
+  width: 990px;
   margin: 0px auto 30px auto;
 }
 
@@ -177,7 +177,7 @@ table {
 
 #events-OH-wrapper, #oh-wrapper {
   margin: 10px 0px;
-	width: 990px;
+  width: 990px;
   min-height: 500px;
   background: #fff;
   box-shadow: 0 0 10px #bfbeba;
@@ -192,14 +192,14 @@ table {
 #events-wrapper, #oh-content {
   margin: 0px 30px;
   padding: 10px 0px 10px 0px;
-	width: 930px;
+  width: 930px;
   color: black;
 }
 
 #events-title-wrapper, #oh-title-wrapper {
   height: 50px;
   margin: 0px auto;
-	width: 990px;
+  width: 990px;
 }
 
 #events-title, #oh-title {
@@ -282,10 +282,19 @@ table {
 
 .events-list-description, .oh-list-description {
   width: 590px;
-  height: 510px;
+  height: 474px;
+
   margin-right: 60px;
+  margin-top: -5px;
   overflow: hidden;
   float: right;
+
+  box-shadow: 0 0 5px #bfbeba;
+  -moz-box-shadow: 0 0 5px #bfbeba !important;
+  -webkit-box-shadow: 0 0 5px #bfbeba !important;
+  -o-box-shadow: 0 0 5px #bfbeba !important;
+  -ktml-box-shadow: 0 0 5px #bfbeba !important;
+  -ms-box-shadow: 0 0 5px #bfbeba !important;
 }
 
 .events-list-description img, .oh-list-description img {
@@ -294,8 +303,20 @@ table {
   display: block;
 }
 
+.events-list-description-image {
+  /* banner height should be > 237px */
+  height: 237px;
+  overflow: hidden;
+  background-size: 100% auto;
+  background-attachment: cover;
+  background-repeat: no-repeat;
+}
+
+.description-text {
+  padding:20px;
+}
+
 .events-list-description h1, .oh-list-description h1 {
-  width: 590px;
   text-align: center;
   font-size: 18px;
   font-weight: 700;
@@ -304,7 +325,6 @@ table {
 }
 
 .events-list-description p, .oh-list-description p {
-  width: 590px;
   line-height: 20px;
   margin: 10px 0px;
 }
@@ -312,14 +332,14 @@ table {
 /*
 #OH-today-wrapper {
   margin: 10px auto;
-	width: 990px;
+  width: 990px;
   height: 500px;
 }
 
 #OH-today-title-wrapper {
   height: 50px;
   margin: 0px auto;
-	width: 930px;
+  width: 930px;
 }
 
 #OH-today-title {
