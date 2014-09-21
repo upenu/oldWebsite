@@ -39,7 +39,7 @@ def get_calendar_info(request):
         events = Event.objects.filter(start_time__month=curr_date.month)
         for event in events:
             response['events'][event.name] = event.start_time
-        return HttpResponse(json.dumps(response, cls=DjangoJSONEncoder), mimetype='application/json')
+        return HttpResponse(json.dumps(response, cls=DjangoJSONEncoder), content_type='application/json')
 
 def officers(request):
     template = loader.get_template('website/officers_members.html')
