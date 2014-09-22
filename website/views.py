@@ -12,3 +12,7 @@ def index(request):
     template = loader.get_template('website/index.html')
     context = RequestContext(request, {})
     return HttpResponse(template.render(context))
+
+def tos(request):
+    template = loader.get_template('website/tos.html')
+    return HttpResponse(template.render())
