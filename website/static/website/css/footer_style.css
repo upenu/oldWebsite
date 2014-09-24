@@ -31,15 +31,7 @@ a:hover {
 }
 #sponsor-images {
   width: 120px;
-  height: 40px;
-  margin: 10px auto;
-}
-.img-col {
-  float: left;
-  display: inline;
-  width: 250px;
-  padding: 10px;
-  padding-left: 30px;
+  margin: 0 auto;
 }
 #footer-top-wrapper {
   font-family: "Myriad Set Pro", "Lucida Grande", "Helvetica Neue", "Helvetica", "Arial", "Verdana", "sans-serif";
