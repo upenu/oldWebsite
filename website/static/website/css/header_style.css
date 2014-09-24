@@ -1,6 +1,6 @@
 #header-wrapper {
-    background: #242424;
-    font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
+    background: #444;
+    font-family: "Myriad Set Pro", "Lucida Grande", "Helvetica Neue", "Helvetica", "Arial", "Verdana", "sans-serif";
     color: #C9C9C9;
     z-index: 10;
     width: 100%;
@@ -10,7 +10,6 @@
     top: 0px;
 }
 #header-content {
-    background: #242424;
     padding: 0% 6%;
     height: 50px;
     width: 990px;
@@ -49,7 +48,6 @@
 }
 
 .nav {
-  background: #242424;
   height: 50px;
   display: inline-block;
   width: 100%;
@@ -59,7 +57,6 @@
   float: left;
   list-style-type: none;
   position: relative;
-  border-left: 1px solid #2e2e2e;
 }
 
 .nav li a {
@@ -74,8 +71,9 @@
 }
 
 .nav li a:hover {
-  background-color: #2e2e2e;
+  background-color: #494646;
 }
+
 #brand-section {
     width: 120px;
 }
@@ -148,15 +146,11 @@
   height: auto;
   opacity: 0;
   transition: all 0.1s;
-  background: #232323;
+  background: #444;
 }
 
 .subnav li {
   float: none;
-}
-
-.subnav li a {
-  border-bottom: 1px solid #2e2e2e;
 }
 
 #options:hover .subnav{
@@ -177,13 +171,13 @@
 }
 
 #subnav-1 {
-    right: -138px;
+    right: -135px;
 }
 
 #subnav-2 {
-    right: -68px;
+    right: -65px;
 }
 
 #subnav-3 {
-    right: -54px;
+    right: -51px;
 }

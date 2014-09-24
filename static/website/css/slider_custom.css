@@ -25,8 +25,8 @@
 } 
 
 .sl-slide {
-	z-index: 1;
-  font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
+  z-index: 1;
+  font-family: "Myriad Set Pro", "Lucida Grande", "Helvetica Neue", "Helvetica", "Arial", "Verdana", "sans-serif";
 }
 
 /* The duplicate parts/slices */
@@ -126,7 +126,7 @@
 .sl-slider h2,
 .sl-slider blockquote {
 	padding: 140px 30px 10px 30px;
-	width: 700px;
+	width: 800px;
 	max-width: 960px;
 	color: #fff;
 	margin: 0 auto;
@@ -151,7 +151,7 @@
 
 .sl-slider .slide2 blockquote, .sl-slider .slide3 blockquote {
 	font-size: 20px;
-	width: 700px;
+	width: 800px;
 	line-height: 1.5;
 	margin: -15px 0px 0px 100px;
 }
@@ -167,8 +167,16 @@
 	padding-top: 20px;
 	font-weight: 300;
 	text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
-	width: 713px;
+	width: 800px;
 	max-width: 750px;
+}
+
+.sl-slide.slide1 h2 {
+	width: 628px;
+}
+
+.sl-slide.slide1 blockquote {
+	width: 741px;
 }
 
 .sl-slider blockquote cite {
