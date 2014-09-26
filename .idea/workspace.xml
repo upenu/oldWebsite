@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4e27b4c-c13a-41a6-8b82-7f8fb07d64ff" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/static/website/css/footer_style.css" afterPath="$PROJECT_DIR$/website/static/website/css/footer_style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/website/images/1.jpg" afterPath="$PROJECT_DIR$/static/website/images/1.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/static/website/images/1.jpg" afterPath="$PROJECT_DIR$/website/static/website/images/1.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/static/website/images/2.jpg" afterPath="$PROJECT_DIR$/website/static/website/images/2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/website/css/footer_style.css" afterPath="$PROJECT_DIR$/static/website/css/footer_style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/static/website/css/slider_custom.css" afterPath="$PROJECT_DIR$/website/static/website/css/slider_custom.css" />
     </list>
     <ignored path="website.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,11 +61,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="footer_style.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="footer_style.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/static/website/css/footer_style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33333334" vertical-offset="293" max-vertical-offset="3540">
+            <state vertical-scroll-proportion="-8.346154" vertical-offset="293" max-vertical-offset="3540">
               <caret line="34" column="1" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="slitslider_custom.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/website/static/website/js/slitslider_custom.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="73" max-vertical-offset="750">
+              <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="43" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="slider_custom.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/website/static/website/css/slider_custom.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.47611466" vertical-offset="1921" max-vertical-offset="8145">
+              <caret line="148" column="14" selection-start-line="148" selection-start-column="14" selection-end-line="148" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -84,6 +107,7 @@
         <option value="$PROJECT_DIR$/website/templates/website/header_footer.html" />
         <option value="$PROJECT_DIR$/static/website/css/main_style.css" />
         <option value="$PROJECT_DIR$/website/static/website/css/footer_style.css" />
+        <option value="$PROJECT_DIR$/website/static/website/css/slider_custom.css" />
       </list>
     </option>
   </component>
@@ -170,6 +194,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="website" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -449,8 +499,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/website/static/website/css/footer_style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="293" max-vertical-offset="3540">
+        <state vertical-scroll-proportion="-8.346154" vertical-offset="293" max-vertical-offset="3540">
           <caret line="34" column="1" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/static/website/js/slitslider_custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="73" max-vertical-offset="750">
+          <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="43" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/static/website/css/slider_custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47611466" vertical-offset="1921" max-vertical-offset="8145">
+          <caret line="148" column="14" selection-start-line="148" selection-start-column="14" selection-end-line="148" selection-end-column="14" />
           <folding />
         </state>
       </provider>

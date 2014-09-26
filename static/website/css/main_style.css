@@ -3,7 +3,7 @@
 #main-wrapper {
   font-size: 14px;
   line-height: 18px;
-  font-family: "Myriad Set Pro", "Lucida Grande", "Helvetica Neue", "Helvetica", "Arial", "Verdana", "sans-serif";
+  font-family: 'PT Sans', sans-serif;
   color: #555;
   overflow: hidden;
 }
@@ -59,7 +59,6 @@
 
 #content-studentservices-wrapper img {
   float: left;
-  margin: 0px 43px;
 }
 
 #content-studentservices-text {
@@ -86,7 +85,6 @@
 
 #content-members-wrapper img {
   float: left;
-  margin: 0px 43px;
 }
 
 #content-members-text {
@@ -124,6 +122,10 @@
   display: inline-block;
   border-radius: 115px;
   margin-left: 150px;
+}
+
+.circle.circle2 {
+  margin-left: 60px;
 }
 
 #events-OH-wrapper, #oh-wrapper {

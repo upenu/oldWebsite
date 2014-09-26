@@ -1,15 +1,14 @@
 /* Overarching Styles */
 
 body {
-  font-family: "Myriad Set Pro", "Lucida Grande", "Helvetica Neue", "Helvetica", "Arial", "Verdana", "sans-serif";
+  font-family: 'PT Sans', sans-serif;
   background-color: #f2f2f2;
-  margin: 0;
 }
 
 #main-wrapper {
   font-size: 14px;
   line-height: 18px;
-  font-family: "Myriad Set Pro", "Lucida Grande", "Helvetica Neue", "Helvetica", "Arial", "Verdana", "sans-serif";
+  font-family: 'PT Sans', sans-serif;
   color: #333;
 }
 
