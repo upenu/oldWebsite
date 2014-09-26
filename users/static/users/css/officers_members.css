@@ -60,7 +60,7 @@
 	padding: 5px;
 	font-size: 13px;
 	line-height: 1.2;
-	font-weight: 500;
+	font-weight: 800;
 }
 
 #main-content-wrapper .content-container {
@@ -73,7 +73,7 @@
 }
 
 #main-content-wrapper .content-container {
-	font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
+	font-family: 'PT Sans', sans-serif;
 }
 
 #main-content-wrapper .content-sidebar {
