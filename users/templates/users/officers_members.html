@@ -30,7 +30,7 @@
 			{% for user in users %}
 				<div class="officer-member grow">
 					{% if user.picture %}
-						<img class="officer-member-picture" src="/media/{{user.picture}}">
+					<img class="officer-member-picture" src='/media/{{user.picture}}' onmouseover='this.src="/media/{{user.funny_picture}}"' onmouseout="this.src='/media/{{user.picture}}'" />
 					{% else %}
 						{% if not user.picture %}
 						<img class="officer-member-picture" src="/media/profile_images/spock.jpg">

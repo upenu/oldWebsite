@@ -26,4 +26,6 @@ class ResumeUploadForm(forms.Form):
 
 class ProfilePicChangeForm(forms.Form):
     picture = forms.ImageField(label='')
-        
+
+class FunnyProfilePicChangeForm(forms.Form):
+    funny_picture = forms.ImageField(label='')

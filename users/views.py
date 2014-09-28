@@ -34,6 +34,7 @@ def members(request):
     for member in members:
         setattr(member, 'position', 'Member')
         setattr(member, 'photo', member.picture)
+        setattr(member, 'funny_photo', member.funny_picture)
 
     context = RequestContext(request, {'users': members, 'title': 'Members'})
     return HttpResponse(template.render(context))
@@ -96,6 +97,7 @@ def myprofile(request):
     up = UserProfile.objects.get(user=user)
     resume_form = ResumeUploadForm()
     profile_pic_form = ProfilePicChangeForm()
+    profile_funny_pic_form = FunnyProfilePicChangeForm()
     print(request.method)
     if request.method == 'POST':
         print(request.FILES)
@@ -109,6 +111,11 @@ def myprofile(request):
             profile_pic_form = ProfilePicChangeForm(request.POST, request.FILES)
             if profile_pic_form.is_valid():
                 up.picture = request.FILES['picture']
+                up.save()
+        elif 'funny_picture' in request.FILES:
+            profile_funny_pic_form = FunnyProfilePicChangeForm(request.POST, request.FILES)
+            if profile_funny_pic_form.is_valid():
+                up.funny_picture = request.FILES['funny_picture']
                 up.save()
         elif request.POST['name'] == 'email':
             user.email = request.POST['value']
@@ -136,7 +143,7 @@ def myprofile(request):
             up.grad_year = request.POST['value']
             up.save()
     return render_to_response('users/profile.html', 
-            context_instance=RequestContext(request,{'up': up, 'resume_upload': resume_form, 'profile_pic': profile_pic_form}))
+			context_instance=RequestContext(request,{'up': up, 'resume_upload': resume_form, 'profile_pic': profile_pic_form, 'funny_profile_pic': profile_funny_pic_form}))
 
 
     # STUFF FOR LATER

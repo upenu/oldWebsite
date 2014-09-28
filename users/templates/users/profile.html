@@ -29,6 +29,9 @@
                 <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
                   Change Profile Picture
                 </button>
+                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#funnyModal">
+                  Change Alt Profile Picture
+                </button>
                 </p>
 
                 <!-- Modal -->
@@ -43,6 +46,28 @@
                       </div>
                       <div class="modal-body">
                         {{ profile_pic }}
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                        <input type="submit" value="Upload" class="btn btn-primary" />
+                      </div>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="funnyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                    <form action="{% url "myprofile" %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Change Alt Profile Picture</h4>
+                      </div>
+                      <div class="modal-body">
+                        {{ funny_profile_pic }}
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
