@@ -40,14 +40,13 @@
   width: 600px;
   margin: 20px auto 10px auto;
   font-weight: 700;
-  text-align: center;
+ /* text-align: center;*/
   font-size: 24px;
 }
 
 #content-header-wrapper p {
-  width: 750px;
   margin: 20px auto 10px auto;
-  text-align: center;
+  /* text-align: center;*/
   font-size: 16px;
   line-height: 20px;
   color: #888;
