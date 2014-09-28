@@ -42,6 +42,7 @@ class UserProfile(models.Model):
     grad_year = models.CharField(max_length=4, choices=GRAD_YEARS, default='15', verbose_name='When are you graduating | When did you graduate?')
     year_joined = models.CharField(max_length=11, choices=YEAR_JOINED, default='F14', verbose_name='When did you join UPE?')
     picture = models.ImageField(upload_to='profile_images', default='/profile_images/spock.jpg')
+    funny_picture = models.ImageField(upload_to='profile_images', default='/profile_images/spock.jpg')
     personal_website = models.CharField(max_length=50, blank=True)
     resume = models.FileField(upload_to='resumes', blank=True, null=True)
     github = models.CharField(max_length=50, blank=True)
@@ -82,7 +83,6 @@ class OfficerProfile(models.Model):
     user = models.OneToOneField(User)
     position_dict = dict(OFFICER_POSITION_CHOICES)
     position = models.IntegerField(max_length=1, choices=OFFICER_POSITION_CHOICES, default=1)
-    photo = models.ImageField(upload_to='images/officers/')
     office_hours = models.ManyToManyField('OfficeHour', blank=True)
     classes_taken = models.ManyToManyField('BerkeleyClass', through='OfficerClass')
 
