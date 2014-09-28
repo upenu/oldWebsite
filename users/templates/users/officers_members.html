@@ -1,6 +1,7 @@
 {% extends "website/header_footer.html" %}
 {% load staticfiles %}
 {% block stylesheets %}
+	<link rel="stylesheet" href="{% static "website/css/reset.css" %}" type="text/css" media="screen" />
 	<link rel="stylesheet" href="{% static "website/css/full_style.css" %}" type="text/css" media="screen" />
 	<link rel="stylesheet" href="{% static "website/css/main_style.css" %}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{% static "website/css/header_style.css" %}" type="text/css" media="screen" />
@@ -28,10 +29,10 @@
 		<div id="officer-members">
 			{% for user in users %}
 				<div class="officer-member grow">
-					{% if user.photo %}
-						<img class="officer-member-picture" src="/media/{{user.photo}}">
+					{% if user.picture %}
+						<img class="officer-member-picture" src="/media/{{user.picture}}">
 					{% else %}
-						{% if not user.photo %}
+						{% if not user.picture %}
 						<img class="officer-member-picture" src="/media/profile_images/spock.jpg">
 						{% endif %}
 					{% endif %}

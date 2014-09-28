@@ -18,8 +18,8 @@
       <div class="sl-slide slide1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
         <div class="sl-slide-inner">
           <div class="bg-img bg-img-1"></div>
-          <h2 class="fadeInMoveDown">Upsilon Pi Epsilon (UPE), Nu Chapter</h2>
-          <blockquote class="fadeInMoveUp"><p>The premiere Computer Science Honor Society at UC Berkeley.</cite></blockquote>
+          <h2 class="fadeInMoveDown">Upsilon Pi Epsilon, Nu Chapter</h2>
+          <blockquote class="fadeInMoveUp"><p>The premiere Computer Science Honor Society at Berkeley.</cite></blockquote>
         </div>
       </div>
 
@@ -28,14 +28,7 @@
           <div class="bg-img bg-img-2"></div>
           <h2 class="fadeInMoveDown">We help you get stuff done.</h2>
           <blockquote class="fadeInMoveRight">
-            <span>Some of the things we do:</span>
-            <ul>
-              <li>Hold Infosessions & Tech Talks</li>
-              <li>Interview Training</li>
-              <li>Resume Critique</li>
-              <li>Tutor</li>
-              <li>Host Social Mixers</li>
-            </ul>
+            <span>Professional network from the top tech. companies, Interview Training, Infosessions, Tutoring, and more!</span>
           </blockquote>
         </div>
       </div>
@@ -45,14 +38,14 @@
           <div class="bg-img bg-img-3"></div>
           <h2 class="fadeInMoveDown">We extend membership to all prospective majors!</h2>
           <blockquote class="fadeInMoveLeft">
-            <span>In order to qualify, you must:</span>
+            <!-- <span>In order to qualify, you must:</span>
             <ul>
               <li>Be a prospective Computer Science major in the College of Letters and Sciences</li>
               <li>Have taken at least 2 CS major requirement courses with letter grade B or higher</li>
               <li>Have taken or currently enrolled in a total of 4 CS major requirement courses</li>
               <li>Have a CS GPA of at least 3.5</li>
-            </ul>
-            <span>Apply <a href="https://docs.google.com/forms/d/1pPDIUCatFntVqLV1rgSSTFjq3ALfwKfYcSbRBBn3cCk/viewform"><u>here</u></a> before September 8!</span>
+            </ul> -->
+            <span>The deadline for Fall 2014 has passed. Apply next semester!</span>
           </blockquote>
         </div>
       </div>
@@ -77,8 +70,8 @@
         <p>Upsilon Pi Epsilon is the first and only international honor society for the Computing Sciences. The UC Berkeley chapter, launched in 1995, honors the top tier of Computer Science students on campus.</p>
       </div>
       <div id="content-studentservices-wrapper">
-        <div class="circle pull-left">
-          <img src="{% static "website/images/content/wozniak1.jpg" %}">
+        <div class="circle circle1 pull-left">
+          <img src="{% static "website/images/circle1.jpg" %}">
         </div>
         <div id="content-studentservices-text">
           <h1>We help others</h1>
@@ -86,8 +79,8 @@
         </div>
       </div>
       <div id="content-members-wrapper">
-        <div class="circle">
-          <img class="pull-right" src="{% static "website/images/content/hackathon1.png" %}" height="200px">
+        <div class="circle circle2">
+          <img class="pull-right" src="{% static "website/images/circle2.jpg" %}">
         </div>
         <div id="content-members-text">
           <h1>Connections and Opportunities</h1>
@@ -98,10 +91,11 @@
     <div id="events-OH-wrapper">
       <div id="events-wrapper">
         <div id="events-title-wrapper">
-          <div id="events-title">Upcoming</div>
+          <div id="events-title">Upcoming Events</div>
         </div>
         <div id="events-content-wrapper">
-          <div class="events-list-description"></div>
+          <div class="events-list-description">
+          </div>
           <div id="events-list-wrapper">
             {% for event in events %}
             <div class="events-list-item float">
@@ -109,9 +103,13 @@
                 <h1>{{ event.name }}</h1>
                 <p><span>Date:</span> {{ event.start_time.date }}</br><span>Time:</span> {{ event.start_time|date:"g:i A" }} - {{ event.end_time|date:"g:i A" }}</br><span>Location:</span> {{ event.location }}</p>
                 <div class="description">
-                  <img src="/media/{{ event.banner }}">
-                  <h1>{{ event.name }}</h1>
-                  <p>{{ event.description }}</p>
+                  <div class="events-list-description-image" style="background-image: url(/media/{{ event.banner }});"></div>
+                  <div class="description-text">
+                    <h1>{{ event.name }}</h1>
+                    <p>{% autoescape off %}
+                      {{ event.description }}
+                    {% endautoescape %}</p>
+                  </div>
                 </div>
             </div>
             {% endfor %}

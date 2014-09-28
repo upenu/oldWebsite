@@ -132,6 +132,9 @@ table {
 	border-width: 1px;
 	margin-bottom: 6px;
 	border-radius: 31px;
+	text-overflow: ellipsis;
+	max-width: 130px;
+	overflow: hidden;
 }
 .next-month {
 	background: #E2E2E2;
