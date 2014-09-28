@@ -10,5 +10,4 @@ urlpatterns = patterns('',
 
     url(r'^$', 'website.views.index', name='index'),
     url(r'^faq/', 'website.views.faq', name='faq'),
-    url(r'^$', 'website.views.tos', name='tos'),
 )
