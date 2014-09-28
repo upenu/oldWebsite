@@ -1,28 +1,42 @@
 {% extends "website/header_footer.html" %}
 {% block content %}
-
-<div class="faq-container">
-	<div class="questions-list-container">
-		<ul class="questions">
-			<li><span>Question 1</span></li>
-			<li><span>Question 2</span></li>
-		</ul>
-	</div>
-	<div class="answers-list-container">
-		<ul class="answers">
-			<li>
-				<div class="answer">
-					<header>How do I get in UPE?</header>
-					<p>You just apply</p>
-				</div>
-			</li>
-			<li>
-				<div class="answer">
-					<header>How do I get in UPE?</header>
-					<p>You just apply</p>
-				</div>
-			</li>
-		</ul>
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static "website/css/faq.css" %}" type="text/css" />
+<link rel="stylesheet" href="{% static "website/css/main_style.css" %}" type="text/css"  />
+<div id="main-wrapper">
+	<div id="main-inner-wrapper">
+		<div id="content-wrapper" class="faq-container">
+			<div class="questions-list-container">
+				<ul class="questions">
+					<li><span><a href="#answer1">Question 1</a></span></li></a>
+					<li><span><a href="#answer2">Question 2</a></span></li>
+					<li><span><a href="#answer3">Question 3</a></span></li>
+				</ul>
+			</div>
+			<div class="answers-list-container">
+				<ul class="answers">
+					<h1> Frequently Asked Questions </h1>
+					<li>
+						<div class="answer">
+							<header id="answer1">Question1</header>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dolor velit, volutpat quis nisl et, dapibus aliquam sapien. Proin sit amet nisl et turpis maximus tristique. Sed urna tellus, posuere ut vulputate efficitur, mattis vitae dui. Sed tristique vitae sapien ac venenatis. In hac habitasse platea dictumst. Praesent ut eros eu libero sodales imperdiet sed et eros. Pellentesque lorem erat, lobortis sed tincidunt porta, porta vitae massa. Vestibulum ac feugiat odio. Vivamus vel dolor interdum, tincidunt dolor quis, posuere velit. Praesent mattis dictum massa quis egestas. Nullam a tempor nibh. Maecenas eros nibh, mollis id dui nec, mattis auctor arcu. Donec vitae sodales velit. Pellentesque non augue augue. Mauris quis diam a felis porta convallis sed sed tortor. Aenean mattis orci vitae dapibus laoreet.</p>
+						</div>
+					</li>
+					<li>
+						<div class="answer" >
+							<header id="answer2">Question2</header>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dolor velit, volutpat quis nisl et, dapibus aliquam sapien. Proin sit amet nisl et turpis maximus tristique. Sed urna tellus, posuere ut vulputate efficitur, mattis vitae dui. Sed tristique vitae sapien ac venenatis. In hac habitasse platea dictumst. Praesent ut eros eu libero sodales imperdiet sed et eros. Pellentesque lorem erat, lobortis sed tincidunt porta, porta vitae massa. Vestibulum ac feugiat odio. Vivamus vel dolor interdum, tincidunt dolor quis, posuere velit. Praesent mattis dictum massa quis egestas. Nullam a tempor nibh. Maecenas eros nibh, mollis id dui nec, mattis auctor arcu. Donec vitae sodales velit. Pellentesque non augue augue. Mauris quis diam a felis porta convallis sed sed tortor. Aenean mattis orci vitae dapibus laoreet.</p>
+						</div>
+					</li>
+					<li>
+						<div class="answer" >
+							<header id="answer3">Question3</header>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dolor velit, volutpat quis nisl et, dapibus aliquam sapien. Proin sit amet nisl et turpis maximus tristique. Sed urna tellus, posuere ut vulputate efficitur, mattis vitae dui. Sed tristique vitae sapien ac venenatis. In hac habitasse platea dictumst. Praesent ut eros eu libero sodales imperdiet sed et eros. Pellentesque lorem erat, lobortis sed tincidunt porta, porta vitae massa. Vestibulum ac feugiat odio. Vivamus vel dolor interdum, tincidunt dolor quis, posuere velit. Praesent mattis dictum massa quis egestas. Nullam a tempor nibh. Maecenas eros nibh, mollis id dui nec, mattis auctor arcu. Donec vitae sodales velit. Pellentesque non augue augue. Mauris quis diam a felis porta convallis sed sed tortor. Aenean mattis orci vitae dapibus laoreet.</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</div>
 </div>
 {% endblock %}

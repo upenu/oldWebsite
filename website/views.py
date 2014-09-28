@@ -15,4 +15,10 @@ def index(request):
 
 def tos(request):
     template = loader.get_template('website/tos.html')
-    return HttpResponse(template.render())
+    context = RequestContext(request, {})
+    return HttpResponse(template.render(context))
+
+def faq(request):
+    template = loader.get_template('website/faq.html')
+    context = RequestContext(request, {})
+    return HttpResponse(template.render(context))

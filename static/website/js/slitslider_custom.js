@@ -37,9 +37,9 @@ $(function() {
   $(".sl-slider").addClass( 'sl-trans-elems' );
   var counter = 1;
   var NUMSLIDES = 3; // Change to number of slides
-  window.setInterval(function(){
-    $(".sl-slider").removeClass( 'sl-trans-elems' );
-    Page.switchSlides(counter % NUMSLIDES+1);
-    counter += 1;
-    }, 7000);
+  // window.setInterval(function(){
+  //   $(".sl-slider").removeClass( 'sl-trans-elems' );
+  //   Page.switchSlides(counter % NUMSLIDES+1);
+  //   counter += 1;
+  //   }, 7000);
 });

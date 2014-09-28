@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* CSS RESET
    http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -48,12 +49,14 @@ table {
   border-spacing: 0;
 }
 
+=======
+>>>>>>> 7183e212948a0c85ecd09d5633a60fcbf87f1dd5
 /* Main Styles */
 
 #main-wrapper {
   font-size: 14px;
   line-height: 18px;
-  font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
+  font-family: 'PT Sans', sans-serif;
   color: #555;
   overflow: hidden;
 }
@@ -70,7 +73,8 @@ table {
 
 #content-wrapper {
   background-color: #fff;
-  margin: 20px auto;
+  padding: 20px 0;
+  margin: 35px auto;
   height: 600px;
   box-shadow: 0 0 10px #bfbeba;
   -moz-box-shadow: 0 0 10px #bfbeba;
@@ -108,7 +112,6 @@ table {
 
 #content-studentservices-wrapper img {
   float: left;
-  margin: 0px 43px;
 }
 
 #content-studentservices-text {
@@ -135,7 +138,6 @@ table {
 
 #content-members-wrapper img {
   float: left;
-  margin: 0px 43px;
 }
 
 #content-members-text {
@@ -175,9 +177,18 @@ table {
   margin-left: 150px;
 }
 
+.circle.circle2 {
+  margin-left: 60px;
+}
+
 #events-OH-wrapper, #oh-wrapper {
   margin: 10px 0px;
   width: 990px;
+<<<<<<< HEAD
+=======
+  overflow: auto;
+  padding: 15px 0;
+>>>>>>> 7183e212948a0c85ecd09d5633a60fcbf87f1dd5
   min-height: 500px;
   background: #fff;
   box-shadow: 0 0 10px #bfbeba;
@@ -199,7 +210,10 @@ table {
 #events-title-wrapper, #oh-title-wrapper {
   height: 50px;
   margin: 0px auto;
+<<<<<<< HEAD
   width: 990px;
+=======
+>>>>>>> 7183e212948a0c85ecd09d5633a60fcbf87f1dd5
 }
 
 #events-title, #oh-title {
@@ -212,7 +226,7 @@ table {
 }
 
 #events-content-wrapper, #oh-content-wrapper {
-  width: 990px;
+  width: 930px;
   height: auto;
 }
 
@@ -283,8 +297,11 @@ table {
 .events-list-description, .oh-list-description {
   width: 590px;
   height: 474px;
+<<<<<<< HEAD
 
   margin-right: 60px;
+=======
+>>>>>>> 7183e212948a0c85ecd09d5633a60fcbf87f1dd5
   margin-top: -5px;
   overflow: hidden;
   float: right;

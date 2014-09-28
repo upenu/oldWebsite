@@ -76,7 +76,7 @@ def user_login(request):
             user.backend = 'users.backends.CustomBackend'
             login(request, user)
             logged_in = True
-            template = loader.get_template('users/index.html')
+            template = loader.get_template('website/index.html')
             context = RequestContext(request, {
                 })
             return HttpResponse(template.render(context))
@@ -96,9 +96,12 @@ def myprofile(request):
     up = UserProfile.objects.get(user=user)
     resume_form = ResumeUploadForm()
     profile_pic_form = ProfilePicChangeForm()
+    print(request.method)
     if request.method == 'POST':
+        print(request.FILES)
         if 'resume' in request.FILES:
             resume_form = ResumeUploadForm(request.POST, request.FILES)
+            print(resume_form.is_valid())
             if resume_form.is_valid():
                 up.resume = request.FILES['resume']
                 up.save()
