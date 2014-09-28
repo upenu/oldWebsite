@@ -22,7 +22,6 @@ def officers(request):
         if len(officer_profile) != 0:
             for c_officer in officer_profile:
                 setattr(officer, 'position', positions[c_officer.position-1])
-                setattr(officer, 'photo', officer.picture)
 
     context = RequestContext(request, {'users': officers, 'title': 'Officers'})
     return HttpResponse(template.render(context))
@@ -33,8 +32,6 @@ def members(request):
 
     for member in members:
         setattr(member, 'position', 'Member')
-        setattr(member, 'photo', member.picture)
-        setattr(member, 'funny_photo', member.funny_picture)
 
     context = RequestContext(request, {'users': members, 'title': 'Members'})
     return HttpResponse(template.render(context))
