@@ -30,6 +30,13 @@
         (<p>) element. This ensures each element appears on a new line,
         making everything look neater. -->
         <!-- {{ user_form.as_p }} -->
+
+        <div class="form-field profile">
+            <label>{{ profile_form.user_type.label }}</label>
+            {{ profile_form.user_type }}
+        </div>
+
+        
         <div class="form-field first_name">
             <label>{{ user_form.first_name.label }}</label>
             {{ user_form.first_name }}
@@ -53,12 +60,6 @@
             <label>{{ user_form.email.label }}</label>
             {{ user_form.email }}
         </div>
-
-        <div class="form-field profile">
-            <label>{{ profile_form.user_type.label }}</label>
-            {{ profile_form.user_type }}
-        </div>
-
 
         <!-- Provide a button to click to submit the form. -->
         <input type="submit" name="submit" value="Register" />
