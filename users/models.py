@@ -43,18 +43,24 @@ class UserProfile(models.Model):
     year_joined = models.CharField(max_length=11, choices=YEAR_JOINED, default='F14', verbose_name='When did you join UPE?')
     picture = models.ImageField(upload_to='profile_images', default='/profile_images/spock.jpg')
     funny_picture = models.ImageField(upload_to='profile_images', default='/profile_images/spock.jpg')
+    
     personal_website = models.CharField(max_length=50, blank=True)
     resume = models.FileField(upload_to='resumes', blank=True, null=True)
     github = models.CharField(max_length=50, blank=True)
     linkedin = models.CharField(max_length=50, blank=True)
     approved = models.BooleanField(default=True)
+
     candidate_profile = models.ForeignKey('CandidateProfile', blank=True, null=True)
     officer_profile = models.ForeignKey('OfficerProfile', blank=True, null=True)
 
     def __str__(self):
         return self.user.first_name + " " + self.user.last_name
 
+class Course(models.Model):
+    pass
+
 # EVERYTHING BELOW IS FOR LATER.
+
 
 class CandidateProfile(models.Model):
     user = models.OneToOneField(User)
