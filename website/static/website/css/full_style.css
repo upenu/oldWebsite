@@ -46,6 +46,12 @@ body {
 	border-color: #357ebd;
 }
 
+.btn-green {
+	color: #fff;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+}
+
 .form-control {
 	display: block;
 	width: 100%;
