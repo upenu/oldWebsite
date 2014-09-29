@@ -1,29 +1,51 @@
-/* Overarching Styles */
-
-body {
-  font-family: 'PT Sans', sans-serif;
-  background-color: #f2f2f2;
+#user-form {
+	width: 433px;
+	margin: 20px auto;
 }
 
-#main-wrapper {
-  font-size: 14px;
-  line-height: 18px;
-  font-family: 'PT Sans', sans-serif;
-  color: #333;
+label {
+	display: block;
 }
 
-.pull-left {
-	float: left !important;
+.register {
+	font-size: 28px;
+	font-weight: 700;
+	display: block;
+	text-align: center;
 }
 
-.pull-right {
-	float: right !important;
+.form-field {
+	margin-top: 10px;
 }
 
-.btn {
+input {
+	width: 200px;
+	height: 20px;
+	border-radius: 4px;
+}
+
+p {
+	margin: 15px 0;
+}
+
+label {
+	display: block;
+}
+
+.form-field.first_name {
 	display: inline-block;
+}
+
+.form-field.last_name {
+	display: inline-block;
+}
+
+#id_user_type {
+	width: 120px;
+}
+
+input[type="submit"] {
 	padding: 6px 12px;
-	margin-bottom: 0;
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 1.42857143;
@@ -38,19 +60,20 @@ body {
 	background-image: none;
 	border: 1px solid transparent;
 	border-radius: 4px;
-}
-
-.btn-blue {
 	color: #fff;
 	background-color: #428bca;
 	border-color: #357ebd;
+	height: 35px;
+	width: 214px;
+	margin: 25px auto;
+	display: block;
 }
 
-.form-control {
+input {
+	margin: 5px 0;
 	display: block;
-	width: 100%;
-	height: 34px;
-	padding: 6px 12px;
+	height: 20px;
+	padding: 6px 6px;
 	font-size: 14px;
 	line-height: 1.42857143;
 	color: #555;
@@ -64,4 +87,3 @@ body {
 	-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
-
