@@ -17,6 +17,14 @@
 	margin-top: 15px;
 }
 
+.register-container {
+	text-align: center;
+}
+
+.register {
+	font-weight: bold;
+}
+
 input {
 	margin: 5px 0;
 	display: block;

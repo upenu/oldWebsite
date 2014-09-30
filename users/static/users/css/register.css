@@ -18,6 +18,14 @@ label {
 	margin-top: 10px;
 }
 
+.login-container {
+	text-align: center;
+}
+
+.login {
+	font-weight: bold;
+}
+
 input {
 	width: 200px;
 	height: 20px;
