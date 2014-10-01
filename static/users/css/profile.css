@@ -1,0 +1,33 @@
+.circular {
+  width: 200px;
+  height: 200px;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+}
+
+.name {
+  text-align: center;
+}
+
+.profile-column {
+  float: left;
+  width: 30%;
+  padding-left: 2%;
+}
+
+.profile-pic {
+  text-align:center;
+  padding-right: 3%;
+}
+/*
+.profile-column h2 {
+  text-align: center;
+}
+*/
+
+/*
+.resume {
+  display: inline-block;
+}
+*/
