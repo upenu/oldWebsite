@@ -69,9 +69,31 @@
                     data-type="text"
                     data-pk="1"
                     data-url="/myprofile/"
-                    data-title="Enter linkedin">
+                    data-title="Website">
                     {{ up.personal_website }}
                 </a>
+            </li>
+            <li>
+                <label class="attribute"><i class="fa fa-linkedin"></i> LinkedIn:</label>
+                <a href="#"
+                   id="linkedin"
+                   data-type="text"
+                   data-pk="1"
+                   data-url="/myprofile/"
+                   data-title="LinkedIn">
+                   {{ up.linkedin }}
+               </a>
+            </li>
+            <li>
+                <label class="attribute"><i class="fa fa-github"></i> Github:</label>
+                <a href="#"
+                   id="github"
+                   data-type="text"
+                   data-pk="1"
+                   data-url="/myprofile/"
+                   data-title="Github">
+                   {{ up.github }}
+               </a>
             </li>
             {% if up.resume %}
             <li>
