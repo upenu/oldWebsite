@@ -11,25 +11,33 @@
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{% static "website/css/hover.css" %}" type="text/css" media="screen" />
 <link rel="stylesheet" href="{% static "users/css/officers_members.css" %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static "users/css/profile.css" %}" type="text/css" media="screen" />
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
 {% endblock %}
 {% block content %}
 <div class="content-container">
     <div id="content-header-wrapper">
-        <div class="panel panel-primary">
+        <div class="">
+          <!--
             <div class="panel-heading">
                 <h1><a href="#" id="name" data-type="text" data-pk="1" data-url="/myprofile/" data-title="Enter name" style="color:white;">{{ user.first_name }} {{ user.last_name }}</a></h1>
             </div>
+            -->
             <div class="panel-body">
-                <p>
-                <img src="/media/{{ up.picture }}" height="180px" width="180px">
+              <div class="profile-column profile-pic">
+                <div>
+                <img src="/media/{{ up.picture }}" class="circular">
                 <br/>
                 <!-- Button trigger modal -->
+                <br/>
                 <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
                   Change Profile Picture
                 </button>
-                </p>
+
+                </div>
+                <h2 class="name">{{ user.first_name }} {{ user.last_name }}</h2>
+                <p>{{ up.get_user_type_display }}</p>
 
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -53,22 +61,23 @@
                     </form>
                   </div>
                 </div>
+              </div>
+                
 
-                <p>{{ up.get_user_type_display }}</p>
+                <!-- Personal info column -->
+                <div class="profile-column">
+                <h2>Personal</h2>
                 <p>Email: 
                 <a href="#" id="email" data-type="text" data-pk="1" data-url="/myprofile/" data-title="Enter email" style="color:black;">{{ user.email }}</a>
                 </p>
-                <p>Graduation Year: <a href="#" id="grad_year" style="color: black;">{{ up.get_grad_year_display }}</a></p>
-                <p>Joined in <a href="#" id="year_joined" style="color:black;">{{ up.get_year_joined_display }}</a></p>
                 <p>Personal Website:
                 <a href="#" id="personal_website" data-type="text" data-pk="1" data-url="/myprofile/" data-title="Enter linkedin" style="color:black;">{{ up.personal_website }}</a>
                 </p>
                 {% if up.resume %}
-                <p>Resume: <a href="/media/{{ up.resume }}" style="color: blue;">link</a></p>
+                <p class="resume">Resume: <a href="/media/{{ up.resume }}" style="color: blue;">{{ user.first_name }}'s Resume</a></p><p>
                 {% else %}
-                <p>Resume: n/a
+                <p class="resume">Resume: n/a
                 {% endif %}
-                                
                 <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#resume-modal">
                   Upload New Resume
                 </button>
@@ -101,6 +110,15 @@
                 </p>
                 <p>Linkedin: 
                 <a href="#" id="linkedin" data-type="text" data-pk="1" data-url="/myprofile/" data-title="Enter linkedin" style="color:black;">{{ up.linkedin }}</a></p>
+              </div>
+
+            <!-- UPE Profile column -->
+            <div class="profile-column">
+              <h2>Academic</h2>
+                <p>Graduation Year: <a href="#" id="grad_year" style="color: black;">{{ up.get_grad_year_display }}</a></p>
+                <p>Joined UPE in <a href="#" id="year_joined" style="color:black;">{{ up.get_year_joined_display }}</a></p>
+
+            </div>
             </div>
         </div>
     </div>
