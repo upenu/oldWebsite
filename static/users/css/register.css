@@ -7,10 +7,6 @@ label {
 	display: block;
 }
 
-.login-container {
-	margin: 0 auto;
-}
-
 .register {
 	font-size: 28px;
 	font-weight: 700;
@@ -20,6 +16,14 @@ label {
 
 .form-field {
 	margin-top: 10px;
+}
+
+.login-container {
+	text-align: center;
+}
+
+.login {
+	font-weight: bold;
 }
 
 input {
