@@ -108,7 +108,8 @@ var createCalendarTemp = function(eventList) {
 		num_days_of_month_in_last_week++;
 		z = m + 1;
 	}
-	for (var y = num_days_of_month_in_last_week; y >= 0; y--, z++) {
+	for (var y = 6 - num_days_of_month_in_last_week; y >= 0; y--, z++) {
+		console.log(num_days_of_month_in_last_week);
 		dayTemplate = $("#next-month-temp").html();
 		dayCompiled = Handlebars.compile(dayTemplate);
 		context = {'date': z};
