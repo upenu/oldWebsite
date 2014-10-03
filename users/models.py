@@ -82,7 +82,6 @@ class OfficerProfile(models.Model):
     user = models.OneToOneField(User)
     position_dict = dict(OFFICER_POSITION_CHOICES)
     position = models.IntegerField(max_length=1, choices=OFFICER_POSITION_CHOICES, default=1)
-    photo = models.ImageField(upload_to='images/officers/')
     office_hours = models.ManyToManyField('OfficeHour', blank=True)
     classes_taken = models.ManyToManyField('BerkeleyClass', through='OfficerClass')
 
