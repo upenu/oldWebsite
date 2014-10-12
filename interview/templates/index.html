@@ -1,0 +1,217 @@
+{% extends "website/header_footer.html" %}
+{% load staticfiles %}
+{% block javascript %}
+  <script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
+  <script src="{% static "website/js/thumbnail_script.js" %}"></script>
+  <script src="{% static "website/js/modernizr_custom_79639.js" %}"></script>
+  <script src="{% static "website/js/ba_cond.min.js" %}"></script>
+  <script src="{% static "website/js/slitslider.js" %}"></script>
+  <script src="{% static "website/js/slitslider_custom.js" %}"></script>
+  <script src="{% static "website/js/landingpage_banner_custom.js" %}"></script>
+  <script src="{% static "website/js/landingpage_main_custom.js" %}"></script>
+{% endblock %}
+{% block content %}
+<!-- BANNER -->
+<div id="banner-wrapper">
+  <div id="slider" class="sl-slider-wrapper">
+    <div class="sl-slider">
+      <div class="sl-slide slide1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+        <div class="sl-slide-inner">
+          <div class="bg-img bg-img-1"></div>
+          <h2 class="fadeInMoveDown">Upsilon Pi Epsilon (UPE), Nu Chapter</h2>
+          <blockquote class="fadeInMoveUp"><p>The premiere Computer Science Honor Society at UC Berkeley.</cite></blockquote>
+        </div>
+      </div>
+
+      <div class="sl-slide slide2" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
+        <div class="sl-slide-inner">
+          <div class="bg-img bg-img-2"></div>
+          <h2 class="fadeInMoveDown">We help you get stuff done.</h2>
+          <blockquote class="fadeInMoveRight">
+            <span>Some of the things we do:</span>
+            <ul>
+              <li>Hold Infosessions & Tech Talks</li>
+              <li>Interview Training</li>
+              <li>Resume Critique</li>
+              <li>Tutor</li>
+              <li>Host Social Mixers</li>
+            </ul>
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="sl-slide slide3" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+        <div class="sl-slide-inner">
+          <div class="bg-img bg-img-3"></div>
+          <h2 class="fadeInMoveDown">We extend membership to all prospective majors!</h2>
+          <blockquote class="fadeInMoveLeft">
+            <span>In order to qualify, you must:</span>
+            <ul>
+              <li>Be a prospective Computer Science major in the College of Letters and Sciences</li>
+              <li>Have taken at least 2 CS major requirement courses with letter grade B or higher</li>
+              <li>Have taken or currently enrolled in a total of 4 CS major requirement courses</li>
+              <li>Have a CS GPA of at least 3.5</li>
+            </ul>
+            <span>Apply <a href="https://docs.google.com/forms/d/1pPDIUCatFntVqLV1rgSSTFjq3ALfwKfYcSbRBBn3cCk/viewform"><u>here</u></a> before September 8!</span>
+          </blockquote>
+        </div>
+      </div>
+    </div><!-- /sl-slider -->
+
+    <nav id="nav-dots" class="nav-dots">
+      <span class="nav-dot-current"></span>
+      <span></span>
+      <span></span>
+    </nav>
+
+  </div><!-- /slider-wrapper -->
+</div>
+<!-- ENDS BANNER -->
+
+<!-- MAIN -->
+<div id="main-wrapper">
+  <div id="main-inner-wrapper">
+    <div id="content-wrapper">
+      <div id="content-header-wrapper">
+        <h1>Upholding academic excellence</h1>
+        <p>Upsilon Pi Epsilon is the first and only international honor society for the Computing Sciences. The UC Berkeley chapter, launched in 1995, honors the top tier of Computer Science students on campus.</p>
+      </div>
+      <div id="content-studentservices-wrapper">
+        <div class="circle pull-left">
+          <img src="{% static "website/images/content/wozniak1.jpg" %}">
+        </div>
+        <div id="content-studentservices-text">
+          <h1>We help others</h1>
+          <p>UPE keeps all students from Berkeley's technical disciplines well-informed of our student activities through intensive marketing over the web and e-mail, print posters, and in-class announcements to the student body. UPE engages students with our many activities, making us renowned for our service to the university community. We not only reach out to computer science students and faculty, but also the EECS, math, and other engineering majors.</p>
+        </div>
+      </div>
+      <div id="content-members-wrapper">
+        <div class="circle">
+          <img class="pull-right" src="{% static "website/images/content/hackathon1.png" %}" height="200px">
+        </div>
+        <div id="content-members-text">
+          <h1>Connections and Opportunities</h1>
+          <p>We work closely with major corporations, organizing events ranging from brief one-hour info-sessions about companies and recruiting opportunities to full-scale day-long sessions to showcase their research and product development. Our resumé books make it easier for companies to target the top 30% Berkeley CS students.</p>
+        </div>
+      </div>
+    </div>
+    <div id="events-OH-wrapper">
+      <div id="events-wrapper">
+        <div id="events-title-wrapper">
+          <div id="events-title">Upcoming</div>
+        </div>
+        <div id="events-content-wrapper">
+          <div class="events-list-description">
+          </div>
+          <div id="events-list-wrapper">
+            {% for event in events %}
+            <div class="events-list-item float">
+                <img src="/media/{{ event.thumbnail }}">
+                <h1>{{ event.name }}</h1>
+                <p><span>Date:</span> {{ event.start_time.date }}</br><span>Time:</span> {{ event.start_time|date:"g:i A" }} - {{ event.end_time|date:"g:i A" }}</br><span>Location:</span> {{ event.location }}</p>
+                <div class="description">
+                  <div class="events-list-description-image" style="background-image: url(/media/{{ event.banner }});"></div>
+                  <div class="description-text">
+                    <h1>{{ event.name }}</h1>
+                    <p>{% autoescape off %}
+                      {{ event.description }}
+                    {% endautoescape %}</p>
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div id="oh-wrapper">
+      <div id="oh-content">
+        <div id="oh-title-wrapper">
+          <div id="oh-title">Office Hours</div>
+        </div>
+        <div id="oh-content-wrapper">
+          <div id="oh-list-wrapper">
+            <div class="oh-list-item float">
+                <img src="">
+                <h1>John Doe</h1>
+                <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Classes:</span> CS 61A</p>
+            </div>
+            <div class="oh-list-item float">
+                <img src="">
+                <h1>John Doe</h1>
+                <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Classes:</span> CS 61A</p>
+            </div>
+            <div class="oh-list-item float">
+                <img src="">
+                <h1>John Doe</h1>
+                <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Classes:</span> CS 61A</p>
+            </div>
+            <div class="oh-list-item float">
+                <img src="">
+                <h1>John Doe</h1>
+                <p><span>Date:</span> September 27, 2014</br><span>Time:</span> 7:00pm - 9:00pm</br><span>Classes:</span> CS 61A</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div id="business-wrapper">
+      <div class="partners-wrapper">
+        <div class="title-wrapper">
+          <div class="title">
+            Who we've <span>worked</span> with
+          </div>
+        </div>
+        <div class="companies-background">
+          <div class="companies-wrapper">
+            <img src="{% static "website/images/content/partner-logos/datastax.png" %}" width="150px">
+            <img src="{% static "website/images/content/partner-logos/ea.png" %}" width="75px">
+            <img src="{% static "website/images/content/partner-logos/google.png" %}" width="150px">
+            <img src="{% static "website/images/content/partner-logos/chevron.png" %}" width="45px">
+            <img src="{% static "website/images/content/partner-logos/factset.png" %}" width="120px" style="margin-top: 30px;">
+            <img src="{% static "website/images/content/partner-logos/netapp.png" %}" width="50px">
+            <img src="{% static "website/images/content/partner-logos/salesforce.png" %}" width="115px">
+            <img src="{% static "website/images/content/partner-logos/rockmelt.png" %}" width="60px">
+            <img src="{% static "website/images/content/partner-logos/sequoiacapital.png" %}" width="150px">
+            <img src="{% static "website/images/content/partner-logos/arista.png" %}" width="115px">
+            <img src="{% static "website/images/content/partner-logos/zynga.png" %}" width="115px">
+            <img src="{% static "website/images/content/partner-logos/tableau.png" %}" width="115px">
+            <img src="{% static "website/images/content/partner-logos/groupon.png" %}" width="115px">
+            <img src="{% static "website/images/content/partner-logos/linkedin.png" %}" width="115px">
+            <img src="{% static "website/images/content/partner-logos/more.png" %}" width="60px" style="margin-top: 10px;">
+          </div>
+        </div>
+      </div>
+      <!-- <div id="indrel-wrapper">
+        <div class="indrel-column">
+          <div class="icon-box">
+            <h2>Résumé Book</h2>
+            <img src="">
+            <p>Companies can purchase a UPE Résumé Book from our organization, a portfolio of résumés with nearly 30 résumés of Berkeley's highest-achieving computer science students. You can use our résumés as a starting point for your company's recruiting process.</p>
+            <p><a href="#">Purchase a UPE Résumé Book</a></p>
+          </div>
+        </div>
+        <div class="indrel-column">
+          <div class="icon-box">
+            <h2>Information Sessions</h2>
+            <img src="">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p><a href="#">Host an info-session with us</a></p>
+          </div>
+        </div>
+        <div class="indrel-column">
+          <div class="icon-box">
+            <h2>Workshops</h2>
+            <img src="">
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud.</p>
+            <p><a href="#">Host a workshop with us</a></p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- ENDS MAIN -->
+
+{% endblock %}

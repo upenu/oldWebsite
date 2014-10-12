@@ -1,0 +1,6 @@
+<h1>{{ question.question_text }}</h1>
+<ul>
+{% for answer in answer.object.all() %}
+    <li>{{ answer.answer_text }}</li>
+{% endfor %}
+</ul>

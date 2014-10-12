@@ -9,8 +9,11 @@ urlpatterns = patterns('',
     # url(r'^$', 'upe.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
+    
+                       
     url(r'^', include('website.urls')),
     url(r'^calendar/', include('upe_calendar.urls')),
+    url(r'^interview/', include('interview.urls')),
 
     url(r'^officers/$', 'users.views.officers', name='officers'),
     url(r'^members/$', 'users.views.members', name='members'),
