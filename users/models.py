@@ -46,7 +46,7 @@ class UserProfile(models.Model):
     resume = models.FileField(upload_to='resumes', blank=True, null=True)
     github = models.CharField(max_length=50, blank=True)
     linkedin = models.CharField(max_length=50, blank=True)
-    approved = models.BooleanField(default=True)
+    approved = models.BooleanField(default=False)
     candidate_profile = models.ForeignKey('CandidateProfile', blank=True, null=True)
     officer_profile = models.ForeignKey('OfficerProfile', blank=True, null=True)
 
