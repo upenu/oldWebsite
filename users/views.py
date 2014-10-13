@@ -57,6 +57,7 @@ def register(request):
             profile.user = user
             profile.save()
             registered = True
+            send_mail(user.first_name + user.last_name + " registered for a UPE account.", "You can approve this person at upe.berkeley.edu/approval_dashboard", "atlantis@upe.berkeley.edu", ["website_approval@upe.berkeley.edu"], fail_silently=True)
         else:
             print(str(user_form.errors) + " " + str(profile_form.errors))
     else:
