@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Upsilon Pi Epsilon</title>
     <link rel="icon" type="image/png" href="{% static "website/img/icons/favicon_whale.png" %}"/>
-    {% block stylesheets %}
+
     <link rel="stylesheet" href="{% static "website/css/full_style.css" %}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{% static "website/css/header_style.css" %}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{% static "upe_calendar/css/calendar_style.css" %}" type="text/css" media="screen" />
@@ -16,11 +16,13 @@
     <link rel="stylesheet" href="{% static "website/css/slider_custom.css" %}" type="text/css" media="screen" />
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static "website/css/hover.css" %}" type="text/css" media="screen" />
+    {% block stylesheets %}
     {% endblock %}
     <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
 
-    {% block javascript %}
+    
     <script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
+    {% block javascript %}
     {% endblock %}
 
   </head>
