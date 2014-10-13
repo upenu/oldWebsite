@@ -147,7 +147,7 @@ def approve_user(request, user_id):
     user_profile = UserProfile.objects.get(user=user)
     user_profile.approved = True
     user_profile.save()
-    message_text = "Hi " + user.first_name + ",\n\n Your UPE account has been approved. You can now login to our website at upe.berkeley.edu\n\n Thanks,\n, UPE"
+    message_text = "Hi " + user.first_name + ",\n\n Your UPE account has been approved. You can now login to our website at upe.berkeley.edu\n\n Thanks,\nUPE"
     send_mail("Your UPE Account has been approved!", message_text, "officers@upe.cs.berkeley.edu", [user.email], fail_silently=True)
     return HttpResponse("Success")
 

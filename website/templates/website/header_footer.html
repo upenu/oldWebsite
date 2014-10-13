@@ -60,14 +60,14 @@
             {% if user.is_authenticated %}
             <a href="/logout">Logout</a>
             {% else %}
-            <!-- <a href="/register">Register</a> -->
+            <a href="/register">Register</a>
             {% endif %}
           </li>
           <li class="header-section pull-right">
             {% if user.is_authenticated %}
             <a href="/myprofile">{{ user.first_name }} {{ user.last_name }}</a>
             {% else %}
-            <!-- <a href="/login">Login</a> -->
+            <a href="/login">Login</a>
             {% endif %}
           </li>
           <li class="header-section">
