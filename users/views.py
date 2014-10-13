@@ -5,6 +5,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
 from users.backends import CustomBackend
 from django.contrib.auth import login
+from django.contrib.auth.decorators import user_passes_test
+from django.core.mail import send_mail
 
 from users.models import *
 from users.forms import *
@@ -29,7 +31,7 @@ def officers(request):
 
 def members(request):
     template = loader.get_template('users/officers_members.html')
-    members = UserProfile.objects.filter(user_type=2)
+    members = UserProfile.objects.filter(user_type=2, approved=True)
 
     for member in members:
         setattr(member, 'position', 'Member')
@@ -139,7 +141,24 @@ def myprofile(request):
             context_instance=RequestContext(request,{'up': up, 'resume_upload': resume_form, 'profile_pic': profile_pic_form}))
 
 
-    # STUFF FOR LATER
+@user_passes_test(lambda u: UserProfile.objects.get(user=u).approved == True, login_url='/login/')
+def approve_user(request, user_id):
+    user = User.objects.get(id=user_id)
+    user_profile = UserProfile.objects.get(user=user)
+    user_profile.approved = True
+    user_profile.save()
+    message_text = "Hi " + user.first_name + ",\n\n Your UPE account has been approved. You can now login to our website at upe.berkeley.edu\n\n Thanks,\n, UPE"
+    send_mail("Your UPE Account has been approved!", message_text, "officers@upe.cs.berkeley.edu", [user.email], fail_silently=True)
+    return HttpResponse("Success")
+
+@user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
+def officer_approval_dashboard(request):
+    users = User.objects.filter(userprofile__approved=False)
+    return render(request, 'users/officer_approval_dashboard.html', {"users": users})
+
+
+    
+# STUFF FOR LATER
 
 def officehours(request):
     def slot(x):
@@ -230,3 +249,5 @@ def requirements(request):
     else:
         form = CompletionForm()
     return render(request, 'users/requirements.html',{'form': form,})
+
+

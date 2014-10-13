@@ -10,6 +10,7 @@ var createEventList = function (data) {
 		name = event;
 		eventList.push({'name': name, 'date': date});
 	}
+	console.log(eventList);
 	return eventList;
 };
 
