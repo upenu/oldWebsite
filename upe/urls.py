@@ -22,7 +22,8 @@ urlpatterns = patterns('',
     url(r'^login/$', 'users.views.user_login', name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
 
-
+    url(r'^approval_dashboard/$', 'users.views.officer_approval_dashboard', name='officer_approval_dashboard'),
+    url(r'approve_user/(?P<user_id>[0-9]+)/$', 'users.views.approve_user', name='approve_user'),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
