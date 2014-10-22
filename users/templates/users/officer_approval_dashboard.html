@@ -21,19 +21,29 @@
                     Name
                 </th>
                 <th>
+                    Position
+                </th>
+                <th>
                     Approve
+                </th>
+                <th>
+                    Reject
                 </th>
             </tr>
         </thead>
         <tbody>
-            {% for user in users %}
+            {% for up in user_profiles %}
             <tr>
                 <td>
-                    {{user.id}} {{user.first_name}} {{user.last_name}}
+                    {{up.id}} {{up.user.first_name}} {{up.user.last_name}}
                 </td>
                 <td>
-                    <a href="/approve_user/{{user.id}}">Approve</a> 
+                    {{up.}}
                 </td>
+                <td>
+                    <a href="/approve_user/{{up.id}}">Approve</a> 
+                </td>
+
             </tr>
             {% endfor %}
         </tbody>

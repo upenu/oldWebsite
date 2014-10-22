@@ -15,7 +15,7 @@ import json
 
 def officers(request):
     template = loader.get_template('users/officers_members.html')
-    officers = UserProfile.objects.filter(user_type=3)
+    officers = UserProfile.objects.filter(user_type=3, approved=True)
     positions = ['President', 'Vice President', 'Secretary', 'Treasurer',
             'Professional Development', 'Industrial Relations', 'Social', 'Publicity', 'Technology']
 
@@ -142,7 +142,7 @@ def myprofile(request):
             context_instance=RequestContext(request,{'up': up, 'resume_upload': resume_form, 'profile_pic': profile_pic_form}))
 
 
-@user_passes_test(lambda u: UserProfile.objects.get(user=u).approved == True, login_url='/login/')
+@user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
 def approve_user(request, user_id):
     user = User.objects.get(id=user_id)
     user_profile = UserProfile.objects.get(user=user)
@@ -155,7 +155,8 @@ def approve_user(request, user_id):
 @user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
 def officer_approval_dashboard(request):
     users = User.objects.filter(userprofile__approved=False)
-    return render(request, 'users/officer_approval_dashboard.html', {"users": users})
+    user_profiles = UserProfile.objects.filter(approved=False)
+    return render(request, 'users/officer_approval_dashboard.html', {"users": users, "user_profiles": user_profiles})
 
 
     

@@ -53,6 +53,11 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.first_name + " " + self.user.last_name
 
+    def is_officer(self):
+        return user_type == 3
+
+
+
 # EVERYTHING BELOW IS FOR LATER.
 
 class CandidateProfile(models.Model):
