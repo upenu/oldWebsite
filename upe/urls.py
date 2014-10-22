@@ -24,6 +24,7 @@ urlpatterns = patterns('',
 
     url(r'^approval_dashboard/$', 'users.views.officer_approval_dashboard', name='officer_approval_dashboard'),
     url(r'approve_user/(?P<user_id>[0-9]+)/$', 'users.views.approve_user', name='approve_user'),
+    url(r'reject_user/(?P<user_id>[0-9]+)/$', 'users.views.reject_user', name='reject_user'),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {

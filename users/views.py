@@ -144,13 +144,23 @@ def myprofile(request):
 
 @user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
 def approve_user(request, user_id):
-    user = User.objects.get(id=user_id)
-    user_profile = UserProfile.objects.get(user=user)
+    user_profile = UserProfile.objects.get(id=user_id)
     user_profile.approved = True
     user_profile.save()
     message_text = "Hi " + user.first_name + ",\n\n Your UPE account has been approved. You can now login to our website at upe.berkeley.edu\n\n Thanks,\nUPE"
     send_mail("Your UPE Account has been approved!", message_text, "officers@upe.cs.berkeley.edu", [user.email], fail_silently=True)
-    return HttpResponse("Success")
+    return redirect('/approval_dashboard') 
+
+@user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
+def reject_user(request, user_id):
+    user_profile = UserProfile.objects.get(id=user_id)
+    email = user.email
+    user_profile.user.delete()
+    user_profile.delete()
+    message_text = "Hi " + user.first_name + ",\n\n Your UPE account registration has been denied. Please contact us if this is an error.\n\n Thanks,\nUPE"
+    send_mail("Your UPE account application has been rejected!", message_text, "officers@upe.cs.berkeley.edu", [email], fail_silently=True)
+    return redirect('/approval_dashboard') 
+
 
 @user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
 def officer_approval_dashboard(request):
