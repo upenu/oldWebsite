@@ -155,9 +155,10 @@ def approve_user(request, user_id):
 def reject_user(request, user_id):
     user_profile = UserProfile.objects.get(id=user_id)
     email = user_profile.user.email
+    first_name = user_profile.user.first_name
     user_profile.user.delete()
     user_profile.delete()
-    message_text = "Hi " + user.first_name + ",\n\n Your UPE account registration has been denied. Please contact us if this is an error.\n\n Thanks,\nUPE"
+    message_text = "Hi " + first_name + ",\n\n Your UPE account registration has been denied. Please contact us if this is an error.\n\n Thanks,\nUPE"
     send_mail("Your UPE account application has been rejected!", message_text, "officers@upe.cs.berkeley.edu", [email], fail_silently=True)
     return redirect('/approval_dashboard') 
 
