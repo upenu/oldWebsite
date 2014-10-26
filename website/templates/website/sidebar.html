@@ -1,0 +1,17 @@
+{% comment %}
+This sidebar.html can be included in any other template using 
+{% include "website/sidebar.html" %}. In the context, there should be
+a 'sidebar' object/dictionary with the attributes:
+- title: the title that will appear on the sidebar
+- list: list of element objects in the sidebar
+  - link: the link that the element has
+  - text: the text that should be displayed on the sidebar
+{% endcomment %}
+	<div class="content-sidebar">
+    <h1> {{ sidebar.title }} </h1>
+		<ul id="archive">
+      {% for elem in sidebar.list %}
+      <li><a href="{{ elem.link }}">{{ elem.text }}</a></li>
+      {% endfor %}
+		</ul>
+	</div>
