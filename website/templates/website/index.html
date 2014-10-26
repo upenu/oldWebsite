@@ -86,80 +86,35 @@
       <div class="filters">
         <select class="custom-select filter days">
           <option>Monday</option>
+          <option>Tuesday</option>
+          <option>Wednesday</option>
+          <option>Thursday</option>
         </select>
         <select class="filter classes">
           <option>CS 170</option>
+          <option>CS 160</option>
+          <option>CS 161</option>
         </select>
         <select class="filter skill">
           <option>Django</option>
         </select>
       </div>
       <ul class="officers-oh">
-        <li>
-          <div class="officer-oh">
-            <img class="image">
-            <div class="info">
-              <span class="name">Mari</span>
-              <span class="date">Mon 12-1, Tue 1-3</span>
-              <ul class="classes-skills">
-                <li>CS 169</li>
-                <li>CS 160</li>
-              </ul>
+        {% for officer in officers %}
+          <li>
+            <div class="officer-oh">
+              <img class="image">
+              <div class="info">
+                <span class="name">Mari</span>
+                <span class="date">Mon 12-1, Tue 1-3</span>
+                <ul class="classes-skills">
+                  <li>CS 169</li>
+                  <li>CS 160</li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </li>
-         <li>
-          <div class="officer-oh">
-            <img class="image">
-            <div class="info">
-              <span class="name">Mari</span>
-              <span class="date">Mon 12-1, Tue 1-3</span>
-              <ul class="classes-skills">
-                <li>CS 169</li>
-                <li>CS 160</li>
-              </ul>
-            </div>
-          </div>
-        </li>
-         <li>
-          <div class="officer-oh">
-            <img class="image">
-            <div class="info">
-              <span class="name">Mari</span>
-              <span class="date">Mon 12-1, Tue 1-3</span>
-              <ul class="classes-skills">
-                <li>CS 169</li>
-                <li>CS 160</li>
-              </ul>
-            </div>
-          </div>
-        </li>
-         <li>
-          <div class="officer-oh">
-            <img class="image">
-            <div class="info">
-              <span class="name">Mari</span>
-              <span class="date">Mon 12-1, Tue 1-3</span>
-              <ul class="classes-skills">
-                <li>CS 169</li>
-                <li>CS 160</li>
-              </ul>
-            </div>
-          </div>
-        </li>
-         <li>
-          <div class="officer-oh">
-            <img class="image">
-            <div class="info">
-              <span class="name">Mari</span>
-              <span class="date">Mon 12-1, Tue 1-3</span>
-              <ul class="classes-skills">
-                <li>CS 169</li>
-                <li>CS 160</li>
-              </ul>
-            </div>
-          </div>
-        </li>
+          </li>
+        {% endfor %}
       </ul>
     </div>
     <div id="events-OH-wrapper">

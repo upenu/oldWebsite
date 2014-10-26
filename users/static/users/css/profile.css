@@ -1,9 +1,9 @@
 .content-container {
-  display: flex;
+  display: -webkit-flex;
 }
 
 .profile-pic-container {
-  flex: 0 0 300px;
+  -webkit-flex: 0 0 300px;
   text-align: center;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .personal-info-container {
-  flex: 0 0 350px;
+  -webkit-flex: 0 0 350px;
 }
 
 .personal-info-container ul {
@@ -79,7 +79,7 @@
 }
 
 .academic-info-container {
-  flex: 0 0 300px;
+  -webkit-flex: 0 0 300px;
 }
 
 
