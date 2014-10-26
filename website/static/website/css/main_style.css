@@ -129,7 +129,7 @@
   margin-left: 60px;
 }
 
-#events-OH-wrapper, #oh-wrapper {
+#events-OH-wrapper, .oh-wrapper {
   margin: 10px 0px;
   width: 990px;
   overflow: auto;
@@ -145,7 +145,78 @@
   background-image: url(http://subtlepatterns.com/patterns/brillant.png);
 }
 
-#events-wrapper, #oh-content {
+.oh-wrapper .filters {
+  margin: 15px 30px;
+}
+
+.oh-wrapper .filters .filter {
+  width: 150px;
+  margin-right: 35px;
+  height: 30px;
+  background: white;
+  border: 2px solid #555;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'PT Sans';
+  color: #555;
+}
+
+.officers-oh {
+  padding: 30px 110px;
+}
+
+.officers-oh > li {
+  width: 180px;
+  height: 300px;
+  background-color: white;
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  -moz-box-shadow: 0 0 5px #bfbeba !important;
+  -webkit-box-shadow: 0 0 5px #bfbeba !important;
+  -o-box-shadow: 0 0 5px #bfbeba !important;
+  -ktml-box-shadow: 0 0 5px #bfbeba !important;
+  -ms-box-shadow: 0 0 5px #bfbeba !important;
+}
+
+.officers-oh .image {
+  width: 100%;
+  height: 180px;
+  margin-bottom: 5px;
+}
+
+.officers-oh .info {
+  text-align: left;
+  padding: 5px;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.info .name {
+  font-weight: 800;
+}
+
+.info .date {
+  font-style: italic;
+}
+
+.info .classes-skills li {
+  display: inline-block;
+  padding: 4px;
+  background-color: yellow;
+  border-radius: 13px;
+}
+
+.info span, .info ul {
+  display: block;
+}
+
+.officers-oh > li:nth-child(4) {
+  margin-right: 0;
+}
+
+#events-wrapper, #oh-content, .oh-title {
   margin: 0px 30px;
   padding: 10px 0px 10px 0px;
   width: 930px;
@@ -157,7 +228,7 @@
   margin: 0px auto;
 }
 
-#events-title, #oh-title {
+#events-title, .oh-title {
   width: 310px;
   font-weight: 700;
   font-size: 20px;
@@ -183,6 +254,10 @@
 
 #events-list-wrapper {
   width: 310px;
+}
+
+.oh-title {
+  padding: 10px 0 0 0;
 }
 
 .events-list-item, .oh-list-item  {

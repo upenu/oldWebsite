@@ -55,7 +55,7 @@
     border-color: #C9C9C9;
     border-top-width: 0.5px;
 }
-.date {
+#calendar-wrapper .date {
 	font-size: 12px;
 	text-align: right;
 	color: #C9C9C9;
