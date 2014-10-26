@@ -3,7 +3,7 @@
 }
 
 .profile-pic-container {
-  flex: 0 0 400px;
+  flex: 0 0 300px;
   text-align: center;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .personal-info-container {
-  flex: 0 0 300px;
+  flex: 0 0 350px;
 }
 
 .personal-info-container ul {
@@ -90,4 +90,8 @@
   -webkit-border-radius: 150px;
   -moz-border-radius: 150px;
   border: 5px solid #444;
+}
+
+#resume-modal {
+  text-align: center;
 }
