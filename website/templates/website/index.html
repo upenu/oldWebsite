@@ -9,6 +9,8 @@
   <script src="{% static "website/js/slitslider_custom.js" %}"></script>
   <script src="{% static "website/js/landingpage_banner_custom.js" %}"></script>
   <script src="{% static "website/js/landingpage_main_custom.js" %}"></script>
+  <script src="{% static "website/js/isotope.min.js" %}"></script>
+  <script src="{% static "website/js/office_hours.js" %}"></script>
 {% endblock %}
 {% block content %}
 <!-- BANNER -->
@@ -84,29 +86,111 @@
     <div class="oh-wrapper">
       <header class="oh-title">Office Hours</header>
       <div class="filters">
-        <select class="custom-select filter days">
-          <option>Monday</option>
-          <option>Tuesday</option>
-          <option>Wednesday</option>
-          <option>Thursday</option>
+        <select class="filter days">
+          <option value="">-- Day --</option>
+          <option value="monday">Monday</option>
+          <option value="tuesday">Tuesday</option>
+          <option value="wednesday">Wednesday</option>
+          <option value="thursday">Thursday</option>
+          <option value="friday">Friday</option>
         </select>
         <select class="filter classes">
-          <option>CS 170</option>
-          <option>CS 160</option>
-          <option>CS 161</option>
+          <option value="">-- Class --</option>
+          <option value="cs61a">CS 61A</option>
+          <option value="cs61b">CS 61B</option>
+          <option value="cs160">CS 160</option>
+          <option value="cs169">CS 169</option>
+          <option value="cs184">CS 184</option>
         </select>
-        <select class="filter skill">
+        <!-- <select class="filter skill">
           <option>Django</option>
-        </select>
+        </select> -->
       </div>
       <ul class="officers-oh">
-        {% for officer in officers %}
-          <li>
+        <li class="tile thursday">
+          <div class="officer-oh">
+            <img class="image" src="http://upe.berkeley.edu/media/profile_images/spock.jpg">
+            <div class="info">
+              <span class="name">Jason Zhang</span>
+              <span class="date">Thur 2-4</span>
+              <ul class="classes-skills">
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="tile monday tuesday cs61a">
             <div class="officer-oh">
-              <img class="image">
+              <img class="image" src="http://upe.berkeley.edu/media/profile_images/dickson.jpg">
               <div class="info">
-                <span class="name">Mari</span>
+                <span class="name">Dickson Tsai</span>
                 <span class="date">Mon 12-1, Tue 1-3</span>
+                <ul class="classes-skills">
+                  <li>CS 61A</li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="tile wednesday">
+            <div class="officer-oh">
+              <img class="image" src="http://upe.berkeley.edu/media/profile_images/andy.jpg">
+              <div class="info">
+                <span class="name">Andy Zheng</span>
+                <span class="date">Wed 2-4</span>
+                <ul class="classes-skills">
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="tile tuesday">
+            <div class="officer-oh">
+              <img class="image" src="http://upe.berkeley.edu/media/profile_images/hugh.jpg">
+              <div class="info">
+                <span class="name">Hugh Chen</span>
+                <span class="date">Tue 1-3</span>
+                <ul class="classes-skills">
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="tile wednesday">
+            <div class="officer-oh">
+              <img class="image" src="http://upe.berkeley.edu/media/profile_images/jennifer.jpg">
+              <div class="info">
+                <span class="name">Jennifer Dai</span>
+                <span class="date">Wed 1-2</span>
+                <ul class="classes-skills">
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="tile monday">
+            <div class="officer-oh">
+              <img class="image" src="http://upe.berkeley.edu/media/profile_images/jackie.jpg">
+              <div class="info">
+                <span class="name">Jacqueline Xu</span>
+                <span class="date">Mon 1-3</span>
+                <ul class="classes-skills">
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="tile wednesday friday">
+            <div class="officer-oh">
+              <img class="image" src="http://upe.berkeley.edu/media/profile_images/DSC_2246.JPG">
+              <div class="info">
+                <span class="name">Ralph Arroyo</span>
+                <span class="date">Wed 4-5, Fri 3-4</span>
+                <ul class="classes-skills">
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="tile wednesday friday cs160 cs169">
+            <div class="officer-oh">
+              <img class="image" src="http://upe.berkeley.edu/media/profile_images/DSC_2244.JPG">
+              <div class="info">
+                <span class="name">Mari Batilando</span>
+                <span class="date">Wed 12-1, Fri 1-2</span>
                 <ul class="classes-skills">
                   <li>CS 169</li>
                   <li>CS 160</li>
@@ -114,7 +198,65 @@
               </div>
             </div>
           </li>
-        {% endfor %}
+          <li class="tile friday">
+            <div class="officer-oh">
+              <img class="image" src="http://upe.berkeley.edu/media/profile_images/DSC_2225.JPG">
+              <div class="info">
+                <span class="name">Jeffrey Zhang</span>
+                <span class="date">Friday 2-3</span>
+                <ul class="classes-skills">
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="tile monday cs161">
+            <div class="officer-oh">
+              <img class="image" src="http://upe.berkeley.edu/media/profile_images/tiffany.jpg">
+              <div class="info">
+                <span class="name">Tiffany Ko</span>
+                <span class="date">Mon 11-1</span>
+                <ul class="classes-skills">
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="tile monday cs161">
+            <div class="officer-oh">
+              <img class="image" src="http://upe.berkeley.edu/media/profile_images/DSC_2237.JPG">
+              <div class="info">
+                <span class="name">Jason Jia</span>
+                <span class="date">Mon 3-5</span>
+                <ul class="classes-skills">
+                  <li>CS 162</li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="tile tuesday cs61a cs61b">
+            <div class="officer-oh">
+              <img class="image" src="http://upe.berkeley.edu/media/profile_images/brian.jpg">
+              <div class="info">
+                <span class="name">Brian Su</span>
+                <span class="date">Tue 12-1, 4-5</span>
+                <ul class="classes-skills">
+                  <li>CS 61A</li>
+                  <li>CS 61B</li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="tile thursday wednesday cs184">
+            <div class="officer-oh">
+              <img class="image" src="http://upe.berkeley.edu/media/profile_images/photo.jpg">
+              <div class="info">
+                <span class="name">Darren Tsung</span>
+                <span class="date">Wed 11-12, Thur 12-2</span>
+                <ul class="classes-skills">
+                  <li>CS 184</li>
+                </ul>
+              </div>
+            </div>
+          </li>
       </ul>
     </div>
     <div id="events-OH-wrapper">
