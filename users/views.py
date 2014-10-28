@@ -19,12 +19,12 @@ def officers(request):
     positions = ['President', 'Vice President', 'Secretary', 'Treasurer',
             'Professional Development', 'Industrial Relations', 'Social', 'Publicity', 'Technology']
 
-    for officer in officers:
-        officer_profile = OfficerProfile.objects.filter(user=officer.user)
-        if len(officer_profile) != 0:
-            for c_officer in officer_profile:
-                setattr(officer, 'position', positions[c_officer.position-1])
-                setattr(officer, 'photo', officer.picture)
+    # for officer in officers:
+    #     officer_profile = OfficerProfile.objects.filter(user=officer.user)
+    #     if len(officer_profile) != 0:
+    #         for c_officer in officer_profile:
+    #             setattr(officer, 'position', positions[c_officer.position-1])
+    #             setattr(officer, 'photo', officer.picture)
 
     context = RequestContext(request, {'users': officers, 'title': 'Officers'})
     return HttpResponse(template.render(context))

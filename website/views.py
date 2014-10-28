@@ -7,8 +7,14 @@ from django.template import Context, Template
 from django.forms import *
 from django.core.serializers.json import DjangoJSONEncoder
 import json, re
+from users.models import *
 
 def index(request):
     template = loader.get_template('website/index.html')
-    context = RequestContext(request, {})
-    return HttpResponse(template.render(context))
+    officers = UserProfile.objects.filter(user_type=3, approved=True)
+
+    
+
+    # context = RequestContext(request, { 'officers': officers })
+    # return HttpResponse(template.render(context))
+    return render(request, 'website/index.html', { 'officers': officers })

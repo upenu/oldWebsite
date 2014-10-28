@@ -4647,7 +4647,7 @@ Editableform based on Twitter Bootstrap 3
 
             //for bs3 set default class `input-sm` to standard inputs
             var emptyInputClass = this.input.options.inputclass === null || this.input.options.inputclass === false;
-            var defaultClass = 'input-sm';
+            var defaultClass = 'input-xs';
             
             //bs3 add `form-control` class to standard inputs
             var stdtypes = 'text,select,textarea,password,email,url,tel,number,range,time,typeaheadjs'.split(','); 
@@ -4678,10 +4678,10 @@ Editableform based on Twitter Bootstrap 3
     
     //buttons
     $.fn.editableform.buttons = 
-      '<button type="submit" class="btn btn-primary btn-sm editable-submit">'+
+      '<button type="submit" class="btn btn-primary btn-xs editable-submit">'+
         '<i class="glyphicon glyphicon-ok"></i>'+
       '</button>'+
-      '<button type="button" class="btn btn-default btn-sm editable-cancel">'+
+      '<button type="button" class="btn btn-default btn-xs editable-cancel">'+
         '<i class="glyphicon glyphicon-remove"></i>'+
       '</button>';         
     
