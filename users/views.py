@@ -154,6 +154,7 @@ def approve_user(request, user_id):
 @user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
 def reject_user(request, user_id):
     user_profile = UserProfile.objects.get(id=user_id)
+    user = user_profile.user
     email = user_profile.user.email
     first_name = user_profile.user.first_name
     message_text = "Hi " + first_name + ",\n\n Your UPE account registration has been denied. Please contact us if this is an error.\n\n Thanks,\nUPE"
