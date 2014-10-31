@@ -147,9 +147,9 @@ def approve_user(request, user_id):
     user_profile = UserProfile.objects.get(id=user_id)
     user_profile.approved = True
     user_profile.save()
-    message_text = "Hi " + user.first_name + ",\n\n Your UPE account has been approved. You can now login to our website at upe.berkeley.edu\n\n Thanks,\nUPE"
+    message_text = "Hi " + user_profile.user.first_name + ",\n\n Your UPE account has been approved. You can now login to our website at upe.berkeley.edu\n\n Thanks,\nUPE"
     send_mail("Your UPE Account has been approved!", message_text, "officers@upe.cs.berkeley.edu", [user_profile.user.email], fail_silently=True)
-    return redirect('/approval_dashboard') 
+    return officer_approval_dashboard(request) 
 
 @user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
 def reject_user(request, user_id):
