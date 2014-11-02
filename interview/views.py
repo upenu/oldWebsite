@@ -15,9 +15,11 @@ from interview.models import Question
 
 
 def index(request):
-    template = loader.get_template('website/interview.html')
+    template = loader.get_template('interview/interview.html')
     questions = Question.objects.all()
-    context = RequestContext(request, {'questions':questions})
+    categories = {question.category for question in questions}
+    sidebar_elems = [{"link": "#", "text": category} for category in categories]
+    context = RequestContext(request, {'questions':questions, 'sidebar': {'title': "Categories", 'list': sidebar_elems}})
     return HttpResponse(template.render(context))
 
 # def index(request):

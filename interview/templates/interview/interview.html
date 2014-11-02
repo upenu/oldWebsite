@@ -1,22 +1,54 @@
-{% extends "interview/header_footer.html" %}
-{% block content %}
+{% extends "website/header_footer.html" %}
 
+{% load staticfiles %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static "website/css/bootstrap.min.css" %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static "users/css/officers_members.css" %}" type="text/css" media="screen" />
+{% endblock %}
+
+{% block javascript %}
+<script src="{% static "website/js/bootstrap.min.js" %}"></script>
+{% endblock %}
+
+{% block content %}
 
 <!-- MAIN -->
 <div id="main-wrapper">
-  <div id="main-inner-wrapper">
-    <div id="content-wrapper">
-      <div id="events-title">Mock Interview Questions</div>
+	<div id="main-inner-wrapper">
+		<div id="content-wrapper">
+    {% include "website/sidebar.html" %}
+			<div id="events-title">Mock Interview Questions</div>
 
-<p>
-	This page contains selected interview questions for UPE members or candidates to practice. We hope to do our best to prepare you for technical interviews. Now...take out a piece of paper and let get to the questions.
-</p>
+			<div>
+				<p>
+					This page contains selected interview questions for UPE members or candidates to practice. We hope to do our best to prepare you for technical interviews. Now...take out a piece of paper and let get to the questions.
+				</p>
+			</div>
 
-<div id="qnalist">
-	{% for question in questions %}
-	<p> {{ question.question_text }} </p>
+			<div id="qnalist">
+				{% for question in questions %}
+				<p> {{ question.question_text }} </p>
+				
+				<br>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#question{{question.id}}">
+								Solution
+							</a>
+						</h4>
+					</div>
+					<div id="question{{question.id}}" class="panel-collapse collapse">
+						<div class="panel-body">
+							<p> {{ question.answer_text }} </p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			
+		</div>
+	</div>
 </div>
-        </div>
-      </div>
-    </div>
 {% endblock %}

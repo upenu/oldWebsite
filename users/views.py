@@ -35,7 +35,9 @@ def members(request):
         setattr(member, 'position', 'Member')
         setattr(member, 'photo', member.picture)
 
-    context = RequestContext(request, {'users': members, 'title': 'Members'})
+    year_list = [{"link": "#", "text": "{0} - {1}".format(year, year + 1)} for year in range(2012, 2015)]
+    member_sidebar = {'title': 'Members', 'list': year_list}
+    context = RequestContext(request, {'users': members, 'title': 'Members', 'sidebar': member_sidebar})
     return HttpResponse(template.render(context))
 
 

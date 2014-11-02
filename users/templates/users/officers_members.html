@@ -15,15 +15,7 @@
 	<script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
 {% endblock %}
 {% block content %}
-<div class="content-container">
-	<div class="content-sidebar">
-		<h1>{{ title }}</h1>
-		<ul id="archive">
-			<li><a href="#">2014 - 2015</a></li>
-			<li><a href="#">2013 - 2014</a></li>
-			<li><a href="#">2012 - 2013</a></li>
-		</ul>
-	</div>
+  {% include "website/sidebar.html" %}
 	<div id="officer-member-container">
 		<div id="officer-members">
 			{% for user in users %}
@@ -60,5 +52,4 @@
 			{% endfor %}
 		</div>
 	</div>
-</div>
 {% endblock %}
