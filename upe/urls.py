@@ -11,6 +11,7 @@ urlpatterns = patterns('',
 
     url(r'^', include('website.urls')),
     url(r'^calendar/', include('upe_calendar.urls')),
+    url(r'^board/', include('opportunity_board.urls')),
 
     url(r'^officers/$', 'users.views.officers', name='officers'),
     url(r'^members/$', 'users.views.members', name='members'),
