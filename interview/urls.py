@@ -6,6 +6,11 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'interview.views.index', name='interview'),
+    url(r'^create/$', 'interview.views.create', name='create'),
+    url(r'^delete/(?P<question_id>[0-9]+)/$', 'interview.views.delete', name='delete'),
+    url(r'^favorite/(?P<question_id>[0-9]+)/$', 'interview.views.favorite', name='favorite'),
+    url(r'^rate/(?P<question_id>[0-9]+)/(?P<score>[0-9])/$', 'interview.views.rate', name='rate'),
+    url(r'^question/(?P<question_id>[0-9]+)/$', 'interview.views.view_question', name='question'),
 #    url(r'^$', 'website.views.index', name='website-index'),
 
 #

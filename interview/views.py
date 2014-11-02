@@ -22,6 +22,37 @@ def index(request):
     context = RequestContext(request, {'questions':questions, 'sidebar': {'title': "Categories", 'list': sidebar_elems}})
     return HttpResponse(template.render(context))
 
+def create(request):
+    """
+    Create single question
+    """
+    pass
+
+def favorite(request, question_id):
+    """
+    Save question for later
+    """
+    pass
+
+def delete(request, question_id):
+    """
+    Delete single question
+    """
+    pass
+
+def rate(request, question_id, score):
+    """
+    Rate single question
+    """
+    pass
+
+def view_question(request, question_id):
+    """
+    View single question
+    """
+    question = Question.objects.get(id=question_id)
+    return render(request, "interview/question.html", {'question': question})
+
 # def index(request):
 #     latest_question_list = Question.objects.all()[:5]
 #     context = {'latest_question_list': latest_question_list}
