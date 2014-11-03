@@ -40,9 +40,9 @@ def members(request):
     context = RequestContext(request, {'users': members, 'title': 'Members'})
     return HttpResponse(template.render(context))
 
-def alum(request):
+def alumni(request):
     template = loader.get_template('users/officers_members.html')
-    alums = UserProfile.objects.filter(user_type=4, approved=True)
+    alumni = UserProfile.objects.filter(user_type=4, approved=True)
 
     for alum in alumni:
         setattr(alum, 'position', 'alum')
