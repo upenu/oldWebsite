@@ -16,7 +16,7 @@
 
     <span class="register">Create Post</span>
 
-    <form id="question-form" method="post" action="/board/create/"
+    <form id="question-form" method="post" action="/interview/create/"
         enctype="multipart/form-data">
         {% csrf_token %}
         <!-- Display each form. The as_p method wraps each element in a paragraph
@@ -24,21 +24,26 @@
         making everything look neater. -->
         <!-- {{ user_form.as_p }} -->
 
-        <div class="form-field title">
-            <label>{{ post_form.title.label }}</label>
-            {{ post_form.title }}
+        <div class="form-field question_text">
+            <label>{{ question_form.question_text.label }}</label>
+            {{ question_form.question_text }}
         </div>
 
-        <div class="form-field content">
-            <label>{{ post_form.content.label }}</label>
-            {{ post_form.content }}
+        <div class="form-field answer_text">
+            <label>{{ question_form.answer_text.label }}</label>
+            {{ question_form.answer_text }}
         </div>
 
-        <div class="form-field date_deadline">
-            <label>{{ post_form.date_deadline.label}}</label>
-            {{ post_form.date_deadline }}
+        <div class="form-field difficulty">
+            <label>{{ question_form.difficulty.label}}</label>
+            {{ question_form.difficulty }}
         </div>
 
+        
+        <div class="form-field category">
+            <label>{{ question_form.category.label}}</label>
+            {{ question_form.category }}
+        </div>
         <!-- Provide a button to click to submit the form. -->
         <input type="submit" name="submit" value="create" />
     </form>

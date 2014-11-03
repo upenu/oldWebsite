@@ -49,14 +49,14 @@ table {
 }
 
 /* Footer Styles */
-a {
+footer-content a {
 /*  color: #777;*/
   color: white;
 }
-a:link {
+footer-content a:link {
   text-decoration: none;
 }
-a:hover {
+footer-content a:hover {
   text-decoration: underline;
 }
 #footer-wrapper {

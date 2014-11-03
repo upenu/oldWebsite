@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     url(r'^question/(?P<question_id>[0-9]+)/$', 'interview.views.view_question', name='question'),
 #    url(r'^$', 'website.views.index', name='website-index'),
 
-#
+
 #    # ex: /interview/
 #    url(r'^$', interview.views.index, name='index'),
 #    # ex: /interview/5/

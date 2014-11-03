@@ -12,10 +12,11 @@ from django.core.urlresolvers import reverse
 from django.views import generic
 
 from interview.models import Question
+from interview.forms import QuestionForm
 
 
 def index(request):
-    template = loader.get_template('interview/interview.html')
+    template = loader.get_template('interview/index.html')
     questions = Question.objects.all()
     categories = {question.category for question in questions}
     sidebar_elems = [{"link": "#", "text": category} for category in categories]
@@ -26,7 +27,16 @@ def create(request):
     """
     Create single question
     """
-    pass
+    if request.method == 'POST':
+        question_form = QuestionForm(request.POST)
+        if question_form.is_valid():
+            question = question_form.save()
+            return index(request)
+        else:
+            print(str(question_form.errors))
+    else:
+        question_form = QuestionForm()
+    return render(request, "interview/create.html", {'question_form': question_form})
 
 def favorite(request, question_id):
     """
