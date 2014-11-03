@@ -14,6 +14,7 @@ urlpatterns = patterns('',
 
     url(r'^officers/$', 'users.views.officers', name='officers'),
     url(r'^members/$', 'users.views.members', name='members'),
+    url(r'^alumnis/$', 'users.views.alumnis', name='alumnis'),
     url(r'^officehours/$', 'users.views.officehours', name='officehours'),
     url(r'^currentofficers/$', 'users.views.currentofficers', name='currentofficers'),
     url(r'^requirements/$', 'users.views.requirements', name='requirements'),

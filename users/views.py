@@ -40,6 +40,17 @@ def members(request):
     context = RequestContext(request, {'users': members, 'title': 'Members'})
     return HttpResponse(template.render(context))
 
+def alum(request):
+    template = loader.get_template('users/officers_members.html')
+    alums = UserProfile.objects.filter(user_type=4, approved=True)
+
+    for alum in alumni:
+        setattr(alum, 'position', 'alum')
+        setattr(alum, 'photo', alum.picture)
+
+    context = RequestContext(request, {'users': alumni, 'title': 'Alumni'})
+    return HttpResponse(template.render(context))
+
 
 def register(request):
     context = RequestContext(request)

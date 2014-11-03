@@ -45,7 +45,9 @@
 					<span class="name">John Doe</span>
 					<span class="year">Computer Science, 2014</span>
 					<span class="initiated">UPE, Spring 2014</span>
-					<span class="email">john.doe@berkeley.edu</span>
+					{% if user.is_authenticated %} { %>
+						<span class="email">john.doe@berkeley.edu</span>
+					} <% }
 					<ul class="social">
 						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
 						<li><a href="#"><i class="fa fa-github"></i></a></li>
