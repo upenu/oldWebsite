@@ -26,7 +26,10 @@ def officers(request):
     #             setattr(officer, 'position', positions[c_officer.position-1])
     #             setattr(officer, 'photo', officer.picture)
 
-    context = RequestContext(request, {'users': officers, 'title': 'Officers'})
+    context = RequestContext(request, 
+        {'users': officers,
+        'title': 'Officers',
+        'logged_in': request.user.is_authenticated()})
     return HttpResponse(template.render(context))
 
 def members(request):
@@ -37,7 +40,10 @@ def members(request):
         setattr(member, 'position', 'Member')
         setattr(member, 'photo', member.picture)
 
-    context = RequestContext(request, {'users': members, 'title': 'Members'})
+    context = RequestContext(request,
+        {'users': members,
+        'title': 'Members',
+        'logged_in': request.user.is_authenticated()})
     return HttpResponse(template.render(context))
 
 def alumni(request):
@@ -45,10 +51,13 @@ def alumni(request):
     alumni = UserProfile.objects.filter(user_type=4, approved=True)
 
     for alum in alumni:
-        setattr(alum, 'position', 'alum')
+        setattr(alum, 'position', 'Alum')
         setattr(alum, 'photo', alum.picture)
 
-    context = RequestContext(request, {'users': alumni, 'title': 'Alumni'})
+    context = RequestContext(request, 
+        {'users': alumni,
+        'title': 'Alumni',
+        'logged_in': request.user.is_authenticated()})
     return HttpResponse(template.render(context))
 
 
