@@ -18,3 +18,6 @@ def index(request):
     # context = RequestContext(request, { 'officers': officers })
     # return HttpResponse(template.render(context))
     return render(request, 'website/index.html', { 'officers': officers })
+
+def oh(request):
+    return render(request, 'website/oh.html', {})
