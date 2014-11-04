@@ -41,7 +41,7 @@
 						<span class="year">Computer Science, 20{{ user.grad_year }}</span>
 						<span class="position">{{ user.position }}</span>
 						<span class="joined">{{ user.joined }}</span>
-						{% if user.is_authenticated %}
+						{% if user.user.is_authenticated %}
 							<span class="email">{{ user.user.email }}</span>
 						{% endif %}
 						<ul class="social">
@@ -51,7 +51,7 @@
 							{% if user.github %}
 								<li><a href="http://github.com/{{ user.github }}"><i class="fa fa-github"></i></a></li>
 							{% endif %}
-							{% if user.user.email and user.is_authenticated %} 
+							{% if user.user.email and user.user.is_authenticated %} 
 								<li><a href="mailto:{{ user.user.email }}"><i class="fa fa-envelope"></i></a></li>
 							{% endif %}
 							{% if user.personal_website %}
