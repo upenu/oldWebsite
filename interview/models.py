@@ -16,3 +16,4 @@ class PersonalQuestion(models.Model):
     stars = models.IntegerField() # Save questions for later
     quest = models.ForeignKey('Question', blank=True, null=True)
     user = models.OneToOneField(UserProfile, blank=True, null=True)
+    favorite = models.BooleanField(default=False)

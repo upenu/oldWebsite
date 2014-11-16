@@ -41,8 +41,30 @@ def create(request):
 def favorite(request, question_id):
     """
     Save question for later
+    1. get the user for request
+    up=UserProfile.objects.get(user=request.user)
+    2. get the question using question_id
+    q=Question.objects.get(id=question_id)
+
+    (add favorite field in the personal question)
+
+    3. get the PQ  question 
+    pq=personalQuestions.objects.get_or_create(user=up, question=q)
+    pq.favorite=not pq.favorite
+    pq.save()
+    return json success
+
+    http://stackoverflow.com/questions/2428092/creating-a-json-response-using-django-and-python
+
+
     """
-    pass
+    up = UserProfile.objects.get(user=request.user)
+    q = Question.objects.get(id=question_id)
+    pq_fav = personalQuestions.objects.get_or_create(user=up, question=q)
+    pq_fav.favorite = not pq.favorite
+    pq_fav.save()
+    return HttpResponse(json.dumps(pq_fav), content_type="application/json")
+
 
 def delete(request, question_id):
     """
@@ -50,11 +72,33 @@ def delete(request, question_id):
     """
     pass
 
-def rate(request, question_id, score):
+def rate(request, question_id, stars_no):
     """
     Rate single question
+        1. get the user for request
+    up=UserProfile.objects.get(user=request.user)
+    2. get the question using question_id
+    q=Question.objects.get(id=question_id)
+
+    (add favorite field in the personal question)
+
+    3. get the PQ  question 
+    pq=personalQuestions.objects.get_or_create(user=up, question=q)
+    pq.stars=stars_no
+    pq.save()
+    return json success
     """
-    pass
+    up = UserProfile.objects.get(user=request.user)
+    q = Question.objects.get(id=question_id)
+    pq_rate = personalQuestions.objects.get_or_create(user=up, question=q)
+    pq_rate.stars = stars_no
+    pq_rate.save()
+    return HttpResponse(json.dumps(pq_rate), content_type="application/json")
+
+def view_all_favorite(request, question_id):
+    """
+    View all favorite questions
+    """
 
 def view_question(request, question_id):
     """
