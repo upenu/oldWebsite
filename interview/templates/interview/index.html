@@ -35,7 +35,7 @@
 
 			<div id="qnalist">
 				{% for question in questions %}
-				<p> {{ question.question_text }} </p>
+                <a href="/interview/question/{{question.id}}"> {{ question.question_text }} </p>
 				
 				<br>
 				<div class="panel panel-default">

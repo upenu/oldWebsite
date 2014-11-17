@@ -15,11 +15,24 @@ from interview.models import Question
 from interview.forms import QuestionForm
 
 
-def index(request):
+def index(request, question_category=None):
     template = loader.get_template('interview/index.html')
-    questions = Question.objects.all()
-    categories = {question.category for question in questions}
-    sidebar_elems = [{"link": "#", "text": category} for category in categories]
+    if question_category is None or question_category == "All":
+        questions = Question.objects.all()
+    else:
+        questions = Question.objects.all().filter(category=question_category)
+    categories = {question.category for question in Question.objects.all()}
+    sidebar_elems = []
+    sidebar_elems.append({
+        "link": "/interview/category/All",
+        "text": "All ({0})".format(len(Question.objects.all()))
+        })
+    for category in categories:
+        quantity = len(Question.objects.filter(category=category))
+        sidebar_elems.append({
+            "link": "/interview/category/" + category,
+            "text": "{0} ({1})".format(category, str(quantity))
+            })
     context = RequestContext(request, {'questions':questions, 'sidebar': {'title': "Categories", 'list': sidebar_elems}})
     return HttpResponse(template.render(context))
 

@@ -13,15 +13,15 @@
 {% endblock %}
 {% block content %}
 <div class="content-container">
-        <div class="post" id="post-{{post.id}}">
-            <div class= "post-title">
-                {{post.title}} {{post.id}}
+        <div class="question" id="question-{{question.id}}">
+            <div class= "question-metadata">
+                Category: {{question.category}}, Difficulty: {{question.difficulty}}
             </div>
-            <div class="post-content">
-                {{post.content}}
+            <div class="question-text">
+                {{question.question_text}}
             </div>
-            <div class="post-datepublished">
-                {{post.date_published}}
+            <div class="question-answer">
+                {{question.answer_text}}
             </div>
         </div>
         <hr/>
