@@ -79,13 +79,13 @@ class UserProfile(models.Model):
         ('S12', 'Spring 2012'),
         ('S13', 'Spring 2013'),
         ('S14', 'Spring 2014'),
-        ('S15', 'Spring 2015'),
+        #('S15', 'Spring 2015')
     )
 
     user = models.OneToOneField(User)
     user_type = models.IntegerField(max_length=1, choices=USER_TYPES, default=1, verbose_name='You are a(n)')
-    grad_year = models.CharField(max_length=4, choices=GRAD_YEARS, default='17', verbose_name='When are you graduating | When did you graduate?')
-    year_joined = models.CharField(max_length=11, choices=YEAR_JOINED, default='S15', verbose_name='When did you join UPE?')
+    grad_year = models.CharField(max_length=4, choices=GRAD_YEARS, default='15', verbose_name='When are you graduating | When did you graduate?')
+    year_joined = models.CharField(max_length=11, choices=YEAR_JOINED, default='F14', verbose_name='When did you join UPE?')
     picture = models.ImageField(upload_to='profile_images', default='/profile_images/spock.jpg')
     personal_website = models.CharField(max_length=50, blank=True)
     resume = models.FileField(upload_to='resumes', blank=True, null=True)
@@ -100,6 +100,8 @@ class UserProfile(models.Model):
 
     def is_officer(self):
         return user_type == 3
+
+
 
 # EVERYTHING BELOW IS FOR LATER.
 
@@ -259,9 +261,11 @@ class BerkeleyClass(models.Model):
         (31280, 'Math 128A'),
         (31850, 'Math 185'),
     )
+
     class_dict = dict(CLASS_CHOICES)
     class_name = models.IntegerField(max_length=5, choices=CLASS_CHOICES)
     officers = models.ManyToManyField('OfficerProfile', through='OfficerClass')
+
     def __str__(self):
         return self.class_dict[self.class_name]
 
@@ -292,21 +296,3 @@ class Completion(models.Model):
     requirement = models.ForeignKey('Requirement')
     completed = models.BooleanField(default=False)
     date_completed = models.DateField(default=date.today)
-
-
-class LowerDivReqs(models.Model):
-    ## This model is for the EarlyApplicant model
-    pass
-
-class EarlyApplicant(models.Model):
-    user = models.OneToOneField(User)
-    user_profile = models.ForeignKey('UserProfile', blank=True, null=True)
-    courses_taking = models.TextField(max_length=500)
-    courses_taken = models.TextField(max_length=500)
-    courses_a_minus = models.TextField(max_length=500)
-    reported_gpa = models.DecimalField(max_digits=4, decimal_places=3, verbose_name='Your lower-div prerequisite GPA')
-    uploaded_transcript = models.FileField(upload_to='early_app_transcripts', verbose_name='Unofficial transcript for verification', blank=True, null=True)
-    motivation_upe = models.TextField(max_length=1000, verbose_name='Motivation for joining UPE')
-
-    def __str__(self):
-        return self.user.first_name + " " + self.user.last_name

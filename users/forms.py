@@ -21,25 +21,6 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         fields = ('user_type',) 
 
-class EarlyApplicantForm(forms.ModelForm):
-    CLASS_CHOICES = (
-        ('CS 61A/AS', 'CS 61A/AS'),
-        ('CS 61B/L', 'CS 61B/L'),
-        ('CS 61C', 'CS 61C'),
-        ('CS 70',   'CS 70'),  
-        ('Math 1A', 'Math 1A'),
-        ('Math 1B', 'Math 1B'),
-        ('Math 54', 'Math 54'),
-    )
-    courses_taking = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=CLASS_CHOICES)
-    courses_taken = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=CLASS_CHOICES)
-    courses_a_minus = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=CLASS_CHOICES)
-
-    class Meta:
-        model = EarlyApplicant
-        fields = ('reported_gpa', 'courses_taking', 'courses_taken', 'courses_a_minus', 
-            'uploaded_transcript', 'motivation_upe')
-
 class ResumeUploadForm(forms.Form):
     resume = forms.FileField(label='Upload a PDF')
 

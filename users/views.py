@@ -88,39 +88,6 @@ def register(request):
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
             context)
 
-def apply_early(request):
-    context = RequestContext(request)
-    registered = False
-
-    if request.method == 'POST':
-        user_form = UserForm(data=request.POST)
-        early_form = EarlyApplicantForm(request.POST, request.FILES)
-
-        if user_form.is_valid() and early_form.is_valid():
-            user = user_form.save()
-            user.set_password(user.password)
-            user.save()
-            early = early_form.save(commit=False)
-            early.user = user
-            profile = UserProfile(user=user, user_type=1)
-            profile.save()
-            early.user_profile = profile
-            for course_attr in ['courses_taking', 'courses_taken', 'courses_a_minus']:
-                print(course_attr, ":", request.POST.getlist(course_attr))
-                setattr(early, course_attr, ', '.join(request.POST.getlist(course_attr)))
-            early.save()
-            registered = True
-            send_mail(user.first_name + " " + user.last_name + " applied early for UPE.", "You can approve this person after logging in at upe.berkeley.edu/approval_dashboard_early", "early@upe.berkeley.edu", ["early@upe.berkeley.edu"], fail_silently=True)
-        else:
-            print(str(user_form.errors) + " " + str(early_form.errors))
-    else:
-        user_form = UserForm()
-        early_form = EarlyApplicantForm()
-    return render_to_response(
-        'users/early_app.html',
-        {'user_form': user_form, 'early_form': early_form, 'registered': registered},
-        context)
-
 def user_login(request):
     context = RequestContext(request)
     incorrect_log_in = False
