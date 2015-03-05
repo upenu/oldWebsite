@@ -79,7 +79,7 @@ class UserProfile(models.Model):
         ('S12', 'Spring 2012'),
         ('S13', 'Spring 2013'),
         ('S14', 'Spring 2014'),
-        #('S15', 'Spring 2015')
+        ('S15', 'Spring 2015')
     )
 
     user = models.OneToOneField(User)
