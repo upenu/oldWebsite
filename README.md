@@ -19,22 +19,23 @@ Setup (for devs)
 1. Have Python 3 installed (``brew install python3``)
 2. Have `pip3` installed (Should come with step 2)
 3. Install `virtualenv` by doing `pip3 install virtualenv`
-3. Clone this git repo
-4. In the git repo, create a virtual env `virtualenv --python=/path/to/python3 venv` You probably can get away with ``virtualenv venv``, but if you see python2.7 somewhere in the command log. Use stackoverflow to find where your python3 is installed.
-5. Start the virtual env: `source venv/bin/activate`
-6. Install postgres (Google postgres.app)
-6a. Remember to add postgres to path in `~/.bash_profile`: `PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"`
+4. Clone this git repo
+5. In the git repo, create a virtual env `virtualenv --python=/path/to/python3 venv` You probably can get away with ``virtualenv venv``, but if you see python2.7 somewhere in the command log. Use stackoverflow to find where your python3 is installed.
+6. Start the virtual env: `source venv/bin/activate`
+7. Install postgres (Google postgres.app)
+7a. Remember to add postgres to path in `~/.bash_profile`: `PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"`
 ``export PATH`` AND RESTART TERMINAL
-7. Install requirements `pip3 install -r requirements.txt`
-8. Open the Postgres app to start the Postgres server
-9. Inside the postgres server shell use ``psql`` to enter shell, run `CREATE DATABASE upe_db;`. Don't forget the semicolon.
-10. Also run `CREATE USER admin WITH PASSWORD 'littlewhale';`.
-11. Type `\q` to quit the postgres server shell.
-12. Now you are ready to do `python3 manage.py syncdb`
-13. If successful, Django should ask you to install superusers. Say yes, and use a one-character username/password for ease.
-14. Now you can run `python3 manage.py runserver`. 
-15. Visit `localhost:8000` in your server. You should now see the UPE website locally!
-16. Wrapping up: you can do Ctrl-C to stop the server, and then run `deactivate` in the terminal to stop the virtualenv.
+8. Start the virtual env again: `source venv/bin/activate`
+9. Install requirements `pip3 install -r requirements.txt`
+10. Open the Postgres app to start the Postgres server
+11. Inside the postgres server shell use ``psql`` to enter shell, run `CREATE DATABASE upe_db;`. Don't forget the semicolon.
+12. Also run `CREATE USER admin WITH PASSWORD 'littlewhale';`.
+13. Type `\q` to quit the postgres server shell.
+14. Now you are ready to do `python3 manage.py syncdb`
+15. If successful, Django should ask you to install superusers. Say yes, and use a one-character username/password for ease.
+16. Now you can run `python3 manage.py runserver`. 
+17. Visit `localhost:8000` in your server. You should now see the UPE website locally!
+18. Wrapping up: you can do Ctrl-C to stop the server, and then run `deactivate` in the terminal to stop the virtualenv.
 
 To change your local django admin username/password
 =================
