@@ -1,0 +1,67 @@
+{% extends "website/header_footer.html" %}
+{% load staticfiles %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{% static "website/css/reset.css" %}" type="text/css" media="screen" />
+	<link rel="stylesheet" href="{% static "website/css/full_style.css" %}" type="text/css" media="screen" />
+	<link rel="stylesheet" href="{% static "website/css/main_style.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "website/css/header_style.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "website/css/footer_style.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static "website/css/hover.css" %}" type="text/css" media="screen" />
+	<link rel="stylesheet" href="{% static "users/css/officers_members.css" %}" type="text/css" media="screen" />
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Arimo:400,700' type='text/css'>
+{% endblock %}
+{% block javascript %}
+	<script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
+{% endblock %}
+{% block content %}
+<div class="content-container">
+	<div class="content-sidebar">
+		<h1>{{ title }}</h1>
+		<ul id="archive">
+			<li><a href="#">2014 - 2015</a></li>
+			<!-- <li><a href="#">2013 - 2014</a></li> -->
+			<!-- <li><a href="#">2012 - 2013</a></li> -->
+		</ul>
+	</div>
+	<div id="officer-member-container">
+		<div id="officer-members">
+			{% for user in users %}
+				<div class="officer-member grow">
+					{% if user.picture %}
+						<img class="officer-member-picture" src="/media/{{user.picture}}">
+					{% else %}
+						{% if not user.picture %}
+						<img class="officer-member-picture" src="/media/profile_images/spock.jpg">
+						{% endif %}
+					{% endif %}
+					<div class="officer-member-info">
+						<span class="name">{{ user }}</span>
+						<span class="year">Computer Science, 20{{ user.grad_year }}</span>
+						<span class="position">{{ user.position }}</span>
+						<span class="joined">{{ user.joined }}</span>
+						{% if logged_in %}
+							<span class="email">{{ user.user.email }}</span>
+						{% endif %}
+						<ul class="social">
+							{% if user.linkedin %}
+								<li><a href="http://linkedin.com/in/{{ user.linkedin }}"><i class="fa fa-linkedin"></i></a></li>
+							{% endif %}
+							{% if user.github %}
+								<li><a href="http://github.com/{{ user.github }}"><i class="fa fa-github"></i></a></li>
+							{% endif %}
+							{% if user.user.email and logged_in %} 
+								<li><a href="mailto:{{ user.user.email }}"><i class="fa fa-envelope"></i></a></li>
+							{% endif %}
+							{% if user.personal_website %}
+								<li><a href="http://{{ user.personal_website }}"><i class="fa fa-globe"></i></a></li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock %}

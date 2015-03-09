@@ -46,6 +46,20 @@ def members(request):
         'logged_in': request.user.is_authenticated()})
     return HttpResponse(template.render(context))
 
+def interest(request):
+    template = loader.get_template('users/application.html')
+    # members = UserProfile.objects.filter(user_type=2, approved=True)
+
+    # for member in members:
+    #     setattr(member, 'position', 'Member')
+    #     setattr(member, 'photo', member.picture)
+
+    context = RequestContext(request,{
+        # {'users': members,
+        # 'title': 'Members',
+        'logged_in': request.user.is_authenticated()})
+    return HttpResponse(template.render(context))
+
 def alumni(request):
     template = loader.get_template('users/officers_members.html')
     alumni = UserProfile.objects.filter(user_type=4, approved=True)
