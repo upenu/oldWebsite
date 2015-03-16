@@ -1,0 +1,11 @@
+.info-container{
+	background-color: grey;
+	border-radius: 15px;
+	width: 800px;
+	margin:150px;
+	padding:10px;
+}
+
+.info{
+	font-family: 'Oswald', sans-serif;
+}
