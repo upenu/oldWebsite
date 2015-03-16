@@ -79,7 +79,7 @@ class UserProfile(models.Model):
         ('S12', 'Spring 2012'),
         ('S13', 'Spring 2013'),
         ('S14', 'Spring 2014'),
-        #('S15', 'Spring 2015')
+        ('S15', 'Spring 2015')
     )
 
     user = models.OneToOneField(User)
@@ -206,6 +206,10 @@ class BerkeleyClass(models.Model):
         (10612, 'CS 61B/L'),
         (10613, 'CS 61C'),
         (10700, 'CS 70'),
+        (10981, 'CS 98-1'),
+        (10982, 'CS 98-2'),
+        (10983, 'CS 98-32'),
+        (10984, 'CS 98-47'),
         (11490, 'CS 149'),
         (11500, 'CS 150'),
         (11600, 'CS 160'),
@@ -224,6 +228,10 @@ class BerkeleyClass(models.Model):
         (11945, 'CS 194-5'),
         (11948, 'CS 194-8'),
         (11950, 'CS 195'),
+        (11981, 'CS 198-1'),
+        (11982, 'CS 198-2'),
+        (11983, 'CS 198-32'),
+        (11984, 'CS 198-47'),
         (20200, 'EE 20'),
         (20400, 'EE 40'),
         (21050, 'EE 105'),
