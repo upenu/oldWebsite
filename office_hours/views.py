@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+def office_hours(request):
+    template = loader.get_template("...")
+
