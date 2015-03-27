@@ -6,6 +6,7 @@ class OfficeHour(models.Model):
     description = models.TextField(max_length=500, blank=True, null=True)
     is_interview_slot = False
     avaliable = True
+    interviewee_email = models.CharField(max_length=30, blank = True, null = True)
 
     DAY_OF_WEEK_CHOICES = (
         (1, 'Monday'),
@@ -31,15 +32,12 @@ class OfficeHour(models.Model):
     hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=11)
 
     def __str__(self):
-        return self.name
+        return self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour]
 
     @property
     def officer(self):
         return self.user.__str__()
 
-    @property
-    def time(self):
-        return self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour]
 
 
 class Misc(models.Model):
