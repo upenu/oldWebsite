@@ -4,6 +4,8 @@ from users.models import UserProfile
 class OfficeHour(models.Model):
     user = models.ForeignKey(UserProfile)
     description = models.TextField(max_length=500, blank=True, null=True)
+    is_interview_slot = False
+    avaliable = True
 
     DAY_OF_WEEK_CHOICES = (
         (1, 'Monday'),
