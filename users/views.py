@@ -61,7 +61,7 @@ def interest(request):
     return HttpResponse(template.render(context))
 
 def alumni(request):
-    template = loader.get_template('users/officers_members.html')
+    template = loader.get_template('users/members.html')
     alumni = UserProfile.objects.filter(user_type=4, approved=True)
 
     for alum in alumni:

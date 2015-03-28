@@ -49,3 +49,8 @@ To change your local django admin username/password
 =================
 1. To change the password: [follow the instructions here](http://stackoverflow.com/questions/1873806/changing-password-in-django)
 2. To change the username: `python3 manage.py runserver`, then go to `localhost:8000/admin`>Users and modify the user.
+
+# Server Deployment Checklist
+1. Make sure models are good to go: `python3 manage.py migrate`. (`makemigrations` should be done locally and then committed to Git)
+2. If any static files are changed, update them on the server: `python3 manage.py collectstatic`
+3. If any Python files are changed, restart the server: `sudo initctl restart uwsgi`
