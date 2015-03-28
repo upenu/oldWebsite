@@ -105,3 +105,20 @@
 	color: #555;
 	font-weight: 400;
 }
+
+#main-content-wrapper .officer-position {
+    padding: 10px;
+}
+
+#main-content-wrapper .position-label {
+    border-bottom: 2px solid #3eacc7;
+}
+
+/* See https://css-tricks.com/hash-tag-links-padding/ */
+#main-content-wrapper .position-container:before {
+    display: block;
+    content: " ";
+    margin-top: -50px;
+    height: 50px;
+    visibility: hidden;
+}

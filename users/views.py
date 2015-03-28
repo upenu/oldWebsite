@@ -11,29 +11,29 @@ from django.core.mail import send_mail
 from users.models import *
 from users.forms import *
 
+from users.utils import *
 import json
 
 def officers(request):
-    template = loader.get_template('users/officers_members.html')
+    template = loader.get_template('users/officers.html')
     officers = UserProfile.objects.filter(user_type=3, approved=True)
-    positions = ['President', 'Vice President', 'Secretary', 'Treasurer',
-            'Professional Development', 'Industrial Relations', 'Social', 'Publicity', 'Technology']
+    for position in OfficerPosition.positions.values():
+        position.users = []
 
-    # for officer in officers:
-    #     officer_profile = OfficerProfile.objects.filter(user=officer.user)
-    #     if len(officer_profile) != 0:
-    #         for c_officer in officer_profile:
-    #             setattr(officer, 'position', positions[c_officer.position-1])
-    #             setattr(officer, 'photo', officer.picture)
+    for officer in officers:
+        officer_profile_list = OfficerProfile.objects.filter(user=officer.user, term=CURRENT_SEMESTER[0])
+        if len(officer_profile_list) != 0:
+             OfficerPosition.positions[officer_profile_list[0].position].users.append(officer)
 
     context = RequestContext(request, 
-        {'users': officers,
+        {'positions': OfficerPosition.positions.values(),
         'title': 'Officers',
+        'current_semester': CURRENT_SEMESTER[1],
         'logged_in': request.user.is_authenticated()})
     return HttpResponse(template.render(context))
 
 def members(request):
-    template = loader.get_template('users/officers_members.html')
+    template = loader.get_template('users/members.html')
     members = UserProfile.objects.filter(user_type=2, approved=True)
 
     for member in members:
