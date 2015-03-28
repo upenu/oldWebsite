@@ -54,3 +54,7 @@ To change your local django admin username/password
 1. Make sure models are good to go: `python3 manage.py migrate`. (`makemigrations` should be done locally and then committed to Git)
 2. If any static files are changed, update them on the server: `python3 manage.py collectstatic`
 3. If any Python files are changed, restart the server: `sudo initctl restart uwsgi`
+
+# Mailing List Documentation
+To make sure that the update script (`update.sh`) runs, the owner of all the postfix-related files must be `postfix`.
+- e.g. if edits to `virtual` changes the owner, do `chmod postfix virtual`.
