@@ -23,6 +23,8 @@ urlpatterns = patterns('',
     url(r'^myprofile/$', 'users.views.myprofile', name='myprofile'),
     url(r'^login/$', 'users.views.user_login', name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
+    url(r'^accounts/password_reset', 'django.contrib.auth.views.password_reset', {'template_name': 'users/password_reset_form.html'}),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 
     url(r'^approval_dashboard/$', 'users.views.officer_approval_dashboard', name='officer_approval_dashboard'),
     url(r'approve_user/(?P<user_id>[0-9]+)/$', 'users.views.approve_user', name='approve_user'),
