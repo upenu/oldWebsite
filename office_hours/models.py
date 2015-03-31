@@ -3,12 +3,15 @@ from users.models import UserProfile
 
 
 
+class InterviewReservation(models.Model):
+    generic_time = models.ForeignKey(OfficeHour)
+    avaliable = True
+    interviewee_email = models.CharField(max_length=30, blank = True, null = True)
+    specific_date = models.DateField()
+
 class OfficeHour(models.Model):
     user = models.ForeignKey(UserProfile)
     description = models.TextField(max_length=500, blank=True, null=True)
-    is_interview_slot = False
-    avaliable = True
-    interviewee_email = models.CharField(max_length=30, blank = True, null = True)
 
     CLASS_CHOICES = (
         (10100, 'CS 10'),
@@ -113,11 +116,3 @@ class OfficeHour(models.Model):
     def officer(self):
         return self.user.__str__()
 
-
-
-class Misc(models.Model):
-    # officer_username = models.CharField(max_length=30,
-    #     help_text='Please enter a valid officer username as this is used for website queries.')
-
-    def __str__(self):
-        return self.name() + " " + self.officer_username
