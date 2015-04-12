@@ -3,15 +3,11 @@ from users.models import UserProfile
 
 
 
-class InterviewReservation(models.Model):
-    generic_time = models.ForeignKey(OfficeHour)
-    avaliable = True
-    interviewee_email = models.CharField(max_length=30, blank = True, null = True)
-    specific_date = models.DateField()
+
 
 class OfficeHour(models.Model):
     user = models.ForeignKey(UserProfile)
-    description = models.TextField(max_length=500, blank=True, null=True)
+    # description = models.TextField(max_length=500, blank=True, null=True)
 
     CLASS_CHOICES = (
         (10100, 'CS 10'),
@@ -107,7 +103,7 @@ class OfficeHour(models.Model):
 
     day_of_week = models.IntegerField(max_length=1, choices=DAY_OF_WEEK_CHOICES, default=1)
     hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=11)
-    class_name = models.IntegerField(max_length=5, choices=CLASS_CHOICES)
+    class_name = models.IntegerField(max_length=5, choices=CLASS_CHOICES, default=10100)
 
     def __str__(self):
         return self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour]
@@ -115,4 +111,10 @@ class OfficeHour(models.Model):
     @property
     def officer(self):
         return self.user.__str__()
+
+class InterviewReservation(models.Model):
+    generic_time = models.ForeignKey('OfficeHour')
+    avaliable = True
+    interviewee_email = models.CharField(max_length=30, blank = True, null = True)
+    specific_date = models.DateField()
 
