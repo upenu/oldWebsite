@@ -1,14 +1,10 @@
 from django.db import models
+from django import forms
 from users.models import UserProfile
 
 
 
-
-
-class OfficeHour(models.Model):
-    user = models.ForeignKey(UserProfile)
-    # description = models.TextField(max_length=500, blank=True, null=True)
-
+class Classes(models.Model):
     CLASS_CHOICES = (
         (10100, 'CS 10'),
         (10610, 'CS 61A'),
@@ -80,6 +76,13 @@ class OfficeHour(models.Model):
         (31850, 'Math 185'),
     )
 
+    class_dict = dict(CLASS_CHOICES)
+    class_name = models.IntegerField(max_length=5, choices=CLASS_CHOICES, default=10100)
+    # class_name = forms.ChoiceField(widget=forms.RadioSelect, choices=CLASS_CHOICES)
+    def __str__(self):
+        return self.class_dict[self.class_name]
+
+class DateAndTime(models.Model):
     DAY_OF_WEEK_CHOICES = (
         (1, 'Monday'),
         (2, 'Tuesday'),
@@ -99,14 +102,22 @@ class OfficeHour(models.Model):
 
     day_dict = dict(DAY_OF_WEEK_CHOICES)
     time_dict = dict(TIME_OF_DAY_CHOICES)
-    class_dict = dict(CLASS_CHOICES)
 
     day_of_week = models.IntegerField(max_length=1, choices=DAY_OF_WEEK_CHOICES, default=1)
     hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=11)
-    class_name = models.IntegerField(max_length=5, choices=CLASS_CHOICES, default=10100)
 
     def __str__(self):
-        return self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour]
+        return self.day_dict[self.day_of_week] + " at " + self.time_dict[self.hour]
+
+
+class OfficeHour(models.Model):
+    user = models.OneToOneField(UserProfile)
+    class_name = models.ManyToManyField(Classes)
+    # description = models.TextField(max_length=500, blank=True, null=True)
+    date_and_time = models.ManyToManyField(DateAndTime)
+
+    def __str__(self):
+        return self.user.__str__()
 
     @property
     def officer(self):
@@ -118,3 +129,9 @@ class InterviewReservation(models.Model):
     interviewee_email = models.CharField(max_length=30, blank = True, null = True)
     specific_date = models.DateField()
 
+
+
+#TODO
+# switch foreign key to one to one
+# make fields for OH able to put in MC
+# push
