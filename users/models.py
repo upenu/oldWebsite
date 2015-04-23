@@ -96,8 +96,7 @@ class UserProfile(models.Model):
     officer_profile = models.ForeignKey('OfficerProfile', blank=True, null=True)
 
     def __str__(self):
-        # return self.user.first_name + " " + self.user.last_name
-        return self.user.username
+        return self.user.first_name + " " + self.user.last_name
 
     def is_officer(self):
         return user_type == 3

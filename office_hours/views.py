@@ -4,7 +4,7 @@ from django.template import RequestContext, loader
 from django.http import HttpResponse, HttpResponseRedirect
 from office_hours.models import *
 
-def office_hours(request):
+def interview_reservations(request):
 
     template = loader.get_template('office_hours/officehours.html')
     current_date = datetime.date.today()
@@ -124,7 +124,7 @@ class Format:
 
 
 
-def noffice_hours(request):
+def office_hours(request):
     template = loader.get_template('office_hours/oh.html')
     objects = []
     classes = set()
