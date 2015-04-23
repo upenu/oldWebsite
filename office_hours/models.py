@@ -124,14 +124,25 @@ class OfficeHour(models.Model):
         return self.user.__str__()
 
 class InterviewReservation(models.Model):
-    generic_time = models.ForeignKey('OfficeHour')
-    avaliable = True
+
+    TIME_OF_DAY_CHOICES = (
+        (11, '11 AM'),
+        (12, '12 PM'),
+        (13, '1 PM'),
+        (14, '2 PM'),
+        (15, '3 PM'),
+        (16, '4 PM'),
+        (17, '5 PM'),
+    )
+
+    time_dict = dict(TIME_OF_DAY_CHOICES)
+    hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=11)
+    available = True
     interviewee_email = models.CharField(max_length=30, blank = True, null = True)
     specific_date = models.DateField()
 
+    def __str__(self):
+        return self.time_dict[self.hour]
 
 
-#TODO
-# switch foreign key to one to one
-# make fields for OH able to put in MC
-# push
+
