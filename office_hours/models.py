@@ -109,6 +109,14 @@ class DateAndTime(models.Model):
     def __str__(self):
         return self.day_dict[self.day_of_week] + " at " + self.time_dict[self.hour]
 
+    @property
+    def day(self):
+        return self.day_dict[self.day_of_week]
+
+    @property
+    def hourofday(self):
+        return self.time_dict[self.hour]
+
 
 class OfficeHour(models.Model):
     user = models.OneToOneField(UserProfile)
