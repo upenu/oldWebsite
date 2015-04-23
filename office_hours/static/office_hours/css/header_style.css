@@ -1,0 +1,183 @@
+#header-wrapper {
+    background: #444;
+    font-family: 'PT Sans', sans-serif;
+    color: #C9C9C9;
+    z-index: 10;
+    width: 100%;
+    height: 50px;
+    font-size: 12px;
+    position: fixed;
+    top: 0px;
+}
+#header-content {
+    padding: 0% 6%;
+    height: 50px;
+    width: 990px;
+    margin: 0 auto;
+}
+#title {
+    float: left;
+    font-size: 25px;
+    font-weight: 700;
+    padding-left: 0px;
+    margin-top: 12px;
+    padding-right: 20px;
+}
+#header-icon {
+    height: 30px;
+    float: left;
+    display: block;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+
+.button {
+    display: inline-block;
+    background: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #5485bb;
+    float: right;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.nav {
+  height: 50px;
+  display: inline-block;
+  width: 100%;
+}
+
+.nav li {
+  float: left;
+  list-style-type: none;
+  position: relative;
+}
+
+.nav li a {
+    font-size: 14px;
+    color: #fefefa;
+    display: block;
+    line-height: 50px;
+    padding: 0 12px;
+    text-decoration: none;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+}
+
+.nav li a:hover {
+  background-color: #494646;
+}
+
+#brand-section {
+    width: 120px;
+}
+#upe-brand {
+    display: inline-block;
+    float: right;
+    width: 45px;
+    font-size: 18px;
+    color: #fefefa;
+}
+
+#search_text {
+  width: 297px;
+  padding: 15px 0 15px 20px;
+  font-size: 16px;
+  font-family: Montserrat, sans-serif;
+  border: 0 none;
+  height: 52px;
+  margin-right: 0px;
+  color: white;
+  outline: none;
+  background: #1f7f5c;
+  float: left;
+  box-sizing: border-box;
+  transition: all 0.15s;
+}
+::-webkit-input-placeholder {
+  color:white;
+}
+:-moz-placeholder {
+  color:white;
+}
+::-moz-placeholder {
+  color:white;
+}
+:-ms-input-placeholder {
+  color:white;
+}
+#search_text:focus{
+  background: rgb(64, 151, 119);
+}
+#search_button{
+  border: 0 none;
+  background: #1f7f5c url(http://designmodo.com/demo/dropdown-menu-search/search.png) center no-repeat;
+  width: 60px;
+  float: left;
+  padding: 0;
+  text-align: center;
+  height: 52px;
+  cursor: pointer;
+}
+
+#options a{
+  border-left: 0 none;
+}
+
+#options>a {
+  background-image: url(http://designmodo.com/demo/dropdown-menu-search/triangle.png);
+  background-position: 85% center;
+  background-repeat: no-repeat;
+  padding-right: 42px;
+}
+
+.subnav {
+  visibility: hidden;
+  position: absolute;
+  top:110%;
+  right: -80px;
+  width: 200px;
+  height: auto;
+  opacity: 0;
+  transition: all 0.1s;
+  background: #444;
+}
+
+.subnav li {
+  float: none;
+}
+
+#options:hover .subnav{
+  visibility: visible;
+  top:100%;
+  opacity: 1;
+}
+
+.header-section a {
+    border-left: 0 none;
+    color: #999;
+}
+
+.header-section:hover .subnav{
+  visibility: visible;
+  top:100%;
+  opacity: 1;
+}
+
+#subnav-1 {
+    right: -135px;
+}
+
+#subnav-2 {
+    right: -65px;
+}
+
+#subnav-3 {
+    right: -51px;
+}

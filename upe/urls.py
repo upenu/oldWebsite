@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^calendar/', include('upe_calendar.urls')),
 
     url(r'^officehours/$', 'office_hours.views.office_hours', name='officehours'),
+    url(r'^nofficehours/$', 'office_hours.views.noffice_hours', name='officehours'),
 
     url(r'^officers/$', 'users.views.officers', name='officers'),
     url(r'^members/$', 'users.views.members', name='members'),

@@ -66,3 +66,73 @@ def office_hours(request):
 #         'group_4': group(4),
 #         'group_5': group(5),
 #         })
+
+class Format:
+    def __init__(self, oh):
+        self.name = oh.user
+        self.image = oh.user.picture.url
+        self.times = {'Monday': [], 'Tuesday': [], 'Wednesday': [], 'Thursday': [], 'Friday': []}
+        self.classes = []
+        self.time_dict = oh.date_and_time.all()[0].time_dict
+
+        classlist = []
+        for klass in oh.class_name.all():
+            classlist.append(klass.__str__())
+        self.classes = sorted(classlist)
+        for time in oh.date_and_time.all():
+            self.times[time.day].append(time.hour)
+        for key in self.times:
+            self.times[key] = sorted(self.times[key])
+        print(self.times)
+
+    @property
+    def formatted_times(self):
+        string = ""
+        days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+        for key in days:
+            num_of_hours = len(self.times[key])
+            if num_of_hours >= 2 and num_of_hours % 2 == 0:
+                string += key[:3]
+                string += " "
+                index = 0
+                begin = 0
+                end = 1
+                while index < num_of_hours:
+                    for entry in range(begin, end):
+                        string += self.time_dict[self.times[key][begin]][:2].strip()
+                        string += "-"
+                        string += self.time_dict[self.times[key][end]][:2].strip()
+                    index += 2
+                    begin += 2
+                    end += 2
+                    string += ", "
+        string = string.rstrip(', ')
+        return string
+
+    @property
+    def tile_class(self):
+        string = "tile "
+        for day in self.times:
+            if len(self.times[day]) >= 2:
+                string += day.lower()
+                string += " "
+        for class_name in self.classes:
+            string += class_name.lower().strip().replace(" ", "").replace("/l", "")
+            string += " "
+        return string.strip()
+
+
+
+
+def noffice_hours(request):
+    template = loader.get_template('office_hours/oh.html')
+    objects = []
+    classes = set()
+    for oh in OfficeHour.objects.all():
+        objects.append(Format(oh))
+        for klass in oh.class_name.all():
+            classes.add(klass.__str__())
+    objects = sorted(objects, key=lambda x: x.name.user.last_name)
+    response = {'office_hours': objects, 'classes': sorted(list(classes))}
+    context = RequestContext(request, response)
+    return HttpResponse(template.render(context))

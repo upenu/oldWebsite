@@ -1,0 +1,61 @@
+    {% extends "office_hours/header_footer.html" %}
+    {% load staticfiles %}
+    {% block javascript %}
+      <script src="{% static "office_hours/js/jquery_1.11.0.min.js" %}"></script>
+      <script src="{% static "office_hours/js/thumbnail_script.js" %}"></script>
+      <script src="{% static "office_hours/js/modernizr_custom_79639.js" %}"></script>
+      <script src="{% static "office_hours/js/ba_cond.min.js" %}"></script>
+      <script src="{% static "office_hours/js/slitslider.js" %}"></script>
+      <script src="{% static "office_hours/js/slitslider_custom.js" %}"></script>
+      <script src="{% static "office_hours/js/landingpage_banner_custom.js" %}"></script>
+      <script src="{% static "office_hours/js/landingpage_main_custom.js" %}"></script>
+      <script src="{% static "office_hours/js/isotope.min.js" %}"></script>
+      <script src="{% static "office_hours/js/office_hours.js" %}"></script>
+    {% endblock %}
+    {% block content %}
+
+    <!-- MAIN -->
+    <div id="main-wrapper">
+      <div id="main-inner-wrapper">
+        <div class="oh-wrapper">
+          <header class="oh-title">Office Hours (at 346 Soda Hall)</header>
+          <div class="filters">
+            <select class="filter days">
+              <option value="">-- Day --</option>
+              <option value="monday">Monday</option>
+              <option value="tuesday">Tuesday</option>
+              <option value="wednesday">Wednesday</option>
+              <option value="thursday">Thursday</option>
+              <option value="friday">Friday</option>
+            </select>
+            <select class="filter classes">
+              <option value="">-- Class --</option>
+                {% for class in classes %}
+                    <option value={% filter lower %} {{ class.split|join:""|cut:"/L" }} {% endfilter %}>{{ class }}</option>
+                {% endfor %}
+            </select>
+          </div>
+          <ul class="officers-oh">
+              {% for oh in office_hours %}
+                <li class="{{ oh.tile_class }}">
+                  <div class="officer-oh">
+                    <img class="image" src={{ oh.image }}>
+                    <div class="info">
+                      <span class="name">{{ oh.name }}</span>
+                      <span class="date">{{ oh.formatted_times }}</span>
+                      <ul class="classes-skills">
+                          {% for class in oh.classes %}
+                              <li>{{ class }}</li>
+                          {% endfor %}
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- ENDS MAIN -->
+
+    {% endblock %}
