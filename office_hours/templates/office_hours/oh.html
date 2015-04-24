@@ -18,9 +18,142 @@
     <div id="main-wrapper">
       <div id="main-inner-wrapper">
         <div class="oh-wrapper">
-          <header class="oh-title">Office Hours (at 346 Soda Hall)</header>
+          <header class="oh-title">Office Hours [346 Soda Hall]</header>
           <div class="filters">
-            <select class="filter days">
+            <table width="920" style="display:table-header-group">
+                <col width="150">
+                <col width="220">
+                <col width="220">
+                <col width="220">
+                <col width="220">
+                <col width="220">
+            <thead align="left" style="display:table-header-group">
+                <tr>
+            <th></th>
+            {% for day in days %}
+                <th>{{ day }}</th>
+            {% endfor %}
+                </tr>
+            </thead>
+            <tbody align="left" style="display:table-header-group">
+                <tr>
+                    <td><br></td>
+                </tr>
+                <tr>
+                    <td>11 - 12 PM</td>
+                    <ul>
+                        {% for oh in office_hours %}
+                            {% for hours in oh.times.values %}
+                                {% for hour in hours %}
+                                    {% if hour == 11 %}
+                                        <td>{{ oh.name }}<br>{{ oh.classes }}</td>
+                                    {% else %}
+                                        <td></td>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </tr>
+                <tr>
+                    <td>12 - 1 PM</td>
+                    <ul>
+                        {% for oh in office_hours %}
+                            {% for hours in oh.times.values %}
+                                {% for hour in hours %}
+                                    {% if hour == 12 %}
+                                        <td>{{ oh.name }}<br>{{ oh.classes }}</td>
+                                    {% else %}
+                                        <td></td>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </tr>
+                <tr>
+                    <td>1 - 2 PM</td>
+                    <ul>
+                        {% for oh in office_hours %}
+                            {% for hours in oh.times.values %}
+                                {% for hour in hours %}
+                                    {% if hour == 13 %}
+                                        <td>{{ oh.name }}<br>{{ oh.classes }}</td>
+                                    {% else %}
+                                        <td></td>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </tr>
+                <tr>
+                    <td>2 - 3 PM</td>
+                    <ul>
+                        {% for oh in office_hours %}
+                            {% for hours in oh.times.values %}
+                                {% for hour in hours %}
+                                    {% if hour == 14 %}
+                                        <td>{{ oh.name }}<br>{{ oh.classes }}</td>
+                                    {% else %}
+                                        <td></td>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </tr>
+                <tr>
+                    <td>3 - 4 PM</td>
+                    <ul>
+                        {% for oh in office_hours %}
+                            {% for hours in oh.times.values %}
+                                {% for hour in hours %}
+                                    {% if hour == 15 %}
+                                        <td>{{ oh.name }}<br>{{ oh.classes }}</td>
+                                    {% else %}
+                                        <td></td>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </tr>
+                <tr>
+                    <td>4 - 5 PM</td>
+                    <ul>
+                        {% for oh in office_hours %}
+                            {% for hours in oh.times.values %}
+                                {% for hour in hours %}
+                                    {% if hour == 16 %}
+                                        <td>{{ oh.name }}<br>{{ oh.classes }}</td>
+                                    {% else %}
+                                        <td></td>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </tr>
+                <tr>
+                    <td>5 - 6 PM</td>
+                    <ul>
+                        {% for oh in office_hours %}
+                            {% for hours in oh.times.values %}
+                                {% for hour in hours %}
+                                    {% if hour == 17 %}
+                                        <td>{{ oh.name }}<br>{{ oh.classes }}</td>
+                                    {% else %}
+                                        <td></td>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </tr>
+            </tbody>
+            </table>
+            <!-- <select class="filter days">
               <option value="">-- Day --</option>
               <option value="monday">Monday</option>
               <option value="tuesday">Tuesday</option>
@@ -33,9 +166,9 @@
                 {% for class in classes %}
                     <option value={% filter lower %} {{ class.split|join:""|cut:"/L" }} {% endfilter %}>{{ class }}</option>
                 {% endfor %}
-            </select>
+            </select> -->
           </div>
-          <ul class="officers-oh">
+          <!-- <ul class="officers-oh">
               {% for oh in office_hours %}
                 <li class="{{ oh.tile_class }}">
                   <div class="officer-oh">
@@ -52,7 +185,7 @@
                   </div>
                 </li>
               {% endfor %}
-          </ul>
+          </ul> -->
         </div>
       </div>
     </div>

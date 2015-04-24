@@ -121,9 +121,6 @@ class Format:
             string += " "
         return string.strip()
 
-
-
-
 def office_hours(request):
     template = loader.get_template('office_hours/oh.html')
     objects = []
@@ -133,6 +130,7 @@ def office_hours(request):
         for klass in oh.class_name.all():
             classes.add(klass.__str__())
     objects = sorted(objects, key=lambda x: x.name.user.last_name)
-    response = {'office_hours': objects, 'classes': sorted(list(classes))}
+    response = {'office_hours': objects, 'classes': sorted(list(classes)), 
+            'days': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']}
     context = RequestContext(request, response)
     return HttpResponse(template.render(context))

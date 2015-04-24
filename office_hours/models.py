@@ -1,8 +1,8 @@
 from django.db import models
 from django import forms
 from users.models import UserProfile
-
-
+from calendar import HTMLCalendar
+from datetime import date
 
 class Classes(models.Model):
     CLASS_CHOICES = (
@@ -152,5 +152,4 @@ class InterviewReservation(models.Model):
     def __str__(self):
         return self.time_dict[self.hour]
 
-
-
+# class OfficeHoursCalendar(HTMLCalendar):
