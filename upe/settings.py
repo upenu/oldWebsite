@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'website',
     'upe_calendar',
-    'users'
+    'users',
+    'office_hours'
 )
 
 MIDDLEWARE_CLASSES = (

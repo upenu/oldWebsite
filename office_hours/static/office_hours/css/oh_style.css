@@ -1,0 +1,142 @@
+
+body {
+	font-family: 'PT Sans', sans-serif;
+}
+#week1 {
+	background-color: gray;
+	width: 800px;
+	position: absolute;
+	left: calc(50% - 400px);
+	margin-top: 20px;
+	display: none;
+}
+
+#week2 {
+	background-color: gray;
+	width: 800px;
+	position: absolute;
+	left: calc(50% - 400px);
+	margin-top: 20px;
+	display: none;
+}
+
+#week3 {
+	background-color: gray;
+	width: 800px;
+	position: absolute;
+	left: calc(50% - 400px);
+	margin-top: 20px;
+	display: none;
+}
+
+#week4 {
+	background-color: #f2f2f2;
+	width: 800px;
+	position: absolute;
+	left: calc(50% - 400px);
+	margin-top: 20px;
+	display: none;
+}
+
+#date_selection {
+	background-color: #616161;
+	width: 100%;
+	height: 300px;
+	text-align: center;
+}
+
+#select_week1 {
+	background-color: white;
+	color: #444;
+	height: 100px;
+	width: 200px;
+	display: inline-block;
+	margin: 50px 50px;
+	border-radius: 5px;
+}
+
+#select_week2 {
+	background-color: white;
+	color: #444;
+	height: 100px;
+	width: 200px;
+	display: inline-block;
+	margin: 50px 50px;
+	border-radius: 5px;
+}
+
+#select_week3 {
+	background-color: white;
+	color: #444;
+	height: 100px;
+	width: 200px;
+	display: inline-block;
+	margin: 50px 50px;
+	border-radius: 5px;
+}
+
+#select_week4 {
+	background-color: white;
+	color: #444;
+	height: 100px;
+	width: 200px;
+	display: inline-block;
+	margin: 50px 50px;
+	border-radius: 5px;
+}
+
+#main{
+	width: 100%;
+	height: 1000px;
+}
+
+.interview-slot {
+    margin: 10px;
+    background-color: 419DB9;
+    /* padding: 20px; */
+    height: 60px;
+    font-size: 20px;
+}
+
+.reserve-button {
+    display: inline-block;
+    margin-left: 20px;
+    background-color: #616161;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+.interview-text {
+    display: inline-block;
+    width: 600px;
+    color: white;
+    margin: 20px;
+}
+
+.select-week-text {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.slots-label {
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.dates {
+    margin-top: 8px;
+    font-size: 16px;
+}
+
+.head-title {
+    color: white;
+    font-size: 40px;
+    padding-top: 20px;
+}
+
+.sub-title {
+    color: white;
+    font-style: italic;
+    padding-top: 10px;
+}

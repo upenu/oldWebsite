@@ -1,0 +1,251 @@
+<html>
+<head>
+    {% extends "website/header_footer.html" %}
+    {% load staticfiles %}
+    {% block javascript %}
+    <script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
+    <script src="{% static "office_hours/js/oh.js" %}"></script>
+    {% endblock %}
+    {% block content %}
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'office_hours/css/oh_style.css' %}" />
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div id="main">
+
+        <div id="date_selection">
+            <div class="head-title">
+                Reserve an Interview
+            </div>
+            <div class="sub-title">
+                <em>Select a week to begin</em>
+            </div>
+            <div id="select_week1">
+                <div class="select-week-text">
+                    <div class="title">
+                        Week 1
+                    </div>
+                    <div class="dates">
+                        {{ week1begindate|date:"F d" }} - {{ week1enddate|date:"F d" }}
+                    </div>
+                    <div class="slots-label">
+                        {% if week1 %}
+                            Available Slots: {{ week1|length }}
+                        {% else %}
+                            No Available Slots
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div id="select_week2">
+                <div class="select-week-text">
+                    <div class="title">
+                        Week 2
+                    </div>
+                    <div class="dates">
+                        {{ week2begindate|date:"F d" }} - {{ week2enddate|date:"F d" }}
+                    </div>
+                    <div class="slots-label">
+                        {% if week2 %}
+                            Available Slots: {{ week2|length }}
+                        {% else %}
+                            No Available Slots
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div id="select_week3">
+                <div class="select-week-text">
+                    <div class="title">
+                        Week 3
+                    </div>
+                    <div class="dates">
+                        {{ week3begindate|date:"F d" }} - {{ week3enddate|date:"F d" }}
+                    </div>
+                    <div class="slots-label">
+                        {% if week3 %}
+                            Available Slots: {{ week3|length }}
+                        {% else %}
+                            No Available Slots
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div id="select_week4">
+                <div class="select-week-text">
+                    <div class="title">
+                        Week 4
+                    </div>
+                    <div class="dates">
+                        {{ week4begindate|date:"F d" }} - {{ week4enddate|date:"F d" }}
+                    </div>
+                    <div class="slots-label">
+                        {% if week4 %}
+                            Available Slots: {{ week4|length }}
+                        {% else %}
+                            No Available Slots
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="week1">
+            {% for i in week1 %}
+                <div class="interview-slot">
+                    <div class="interview-text">
+                        <p> {{ i.specific_date|date:"l, F d" }} at {{ i }} </p>
+                    </div>
+                    <div class="reserve-button">
+                        Reserve 
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="week2">
+            <!-- I just wanted to say {{ test }} -->
+            {% for i in week2 %}
+                <div class="interview-slot">
+                    <div class="interview-text">
+                        <p> {{ i.specific_date|date:"l, F d" }} at {{ i }} </p>
+                    </div>
+                    <div class="reserve-button">
+                        Reserve 
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="week3">
+            <!-- I just wanted to say {{ test }} -->
+            {% for i in week3 %}
+                <div class="interview-slot">
+                    <div class="interview-text">
+                        <p> {{ i.specific_date|date:"l, F d" }} at {{ i }} </p>
+                    </div>
+                    <div class="reserve-button">
+                        Reserve 
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="week4">
+            <!-- I just wanted to say {{ test }} -->
+            {% for i in week4 %}
+                <div class="interview-slot">
+                    <div class="interview-text">
+                        <p> {{ i.specific_date|date:"l, F d" }} at {{ i }} </p>
+                    </div>
+                    <div class="reserve-button">
+                        Reserve 
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+<body>
+    {% endblock %}
+</html>
+
+
+
+<!-- <table>
+<thead>
+    <tr>
+        <th>Hour</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>11 AM - 12 PM</td>
+        {% for slot in slot_11 %}
+            <td>{{ slot|safe }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        <td>12 PM - 1 PM</td>
+        {% for slot in slot_12 %}
+            <td>{{ slot|safe }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        <td>1 PM - 2 PM</td>
+        {% for slot in slot_13 %}
+            <td>{{ slot|safe }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        <td>2 PM - 3 PM</td>
+        {% for slot in slot_14 %}
+            <td>{{ slot|safe }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        <td>3 PM - 4 PM</td>
+        {% for slot in slot_15 %}
+            <td>{{ slot|safe }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        <td>4 PM - 5 PM</td>
+        {% for slot in slot_16 %}
+            <td>{{ slot|safe }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        <td>5 PM - 6 PM</td>
+        {% for slot in slot_17 %}
+            <td>{{ slot|safe }}</td>
+        {% endfor %}
+    </tr>
+</tbody>
+</table>
+
+</br>
+
+<table>
+<tbody>
+    <tr>
+        {% for group in group_0 %}
+            <td>{{ group|safe }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        {% for group in group_1 %}
+            <td>{{ group|safe }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        {% for group in group_2 %}
+            <td>{{ group|safe }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        {% for group in group_3 %}
+            <td>{{ group|safe }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        {% for group in group_4 %}
+            <td>{{ group|safe }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        {% for group in group_5 %}
+            <td>{{ group|safe }}</td>
+        {% endfor %}
+    </tr>
+</tbody>
+</table> -->

@@ -12,11 +12,13 @@ urlpatterns = patterns('',
     url(r'^', include('website.urls')),
     url(r'^calendar/', include('upe_calendar.urls')),
 
+    url(r'^interviews/$', 'office_hours.views.interview_reservations', name='interviews'),
+    url(r'^officehours/$', 'office_hours.views.office_hours', name='officehours'),
+
     url(r'^officers/$', 'users.views.officers', name='officers'),
     url(r'^members/$', 'users.views.members', name='members'),
     url(r'^interest/$', 'users.views.interest', name='interest'),
     url(r'^alumni/$', 'users.views.alumni', name='alumni'),
-    url(r'^officehours/$', 'users.views.officehours', name='officehours'),
     url(r'^currentofficers/$', 'users.views.currentofficers', name='currentofficers'),
     url(r'^requirements/$', 'users.views.requirements', name='requirements'),
     url(r'^register/$', 'users.views.register', name='register'),
@@ -37,5 +39,6 @@ urlpatterns = patterns('',
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.STATIC_ROOT,
     }),
+    #url(r'^officehours/', include('office_hours.urls'))
     
 )
