@@ -14,6 +14,14 @@ def interview_reservations(request):
     else:
         form = NameForm()
 
+    # if request.method == 'POST':
+    #     form = InterviewForm(request.POST)
+    #     if form.is_valid():
+    #         available = False
+    #         interviewee_email = 
+    #         return HttpResponseRedirect
+
+
     template = loader.get_template('office_hours/officehours.html')
     current_date = datetime.date.today()
     beginning_of_month = datetime.date(current_date.year, current_date.month, 1)
