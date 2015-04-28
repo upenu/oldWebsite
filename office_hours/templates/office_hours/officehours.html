@@ -144,6 +144,12 @@
                     <div class="reserve-button">
                         Reserve 
                     </div>
+		    <form action="/interviews/" method="post">
+		      <label for="your_name">Your name: </label>
+		      <input id="your_name" type="text" name="your_name" 
+			     value="{{ current_name }}">
+		      <input type="submit" class="reserve-button" value="Reserve">
+		    </form>
                 </div>
             {% endfor %}
         </div>

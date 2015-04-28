@@ -145,7 +145,7 @@ class InterviewReservation(models.Model):
 
     time_dict = dict(TIME_OF_DAY_CHOICES)
     hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=11)
-    available = True
+    available = models.BooleanField(default=True)
     interviewee_email = models.CharField(max_length=30, blank = True, null = True)
     specific_date = models.DateField()
 
