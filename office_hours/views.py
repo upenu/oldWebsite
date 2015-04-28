@@ -3,8 +3,16 @@ import datetime
 from django.template import RequestContext, loader
 from django.http import HttpResponse, HttpResponseRedirect
 from office_hours.models import *
+from .forms import NameForm
 
 def interview_reservations(request):
+
+    if request.method == 'POST':
+        form = NameForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/thanks/')
+    else:
+        form = NameForm()
 
     template = loader.get_template('office_hours/officehours.html')
     current_date = datetime.date.today()
@@ -18,11 +26,11 @@ def interview_reservations(request):
 
 
     response = {'week1': [], 'week2': [], 'week3': [], 'week4': [], 
-    'week1begindate': beginning_of_month, 'week1enddate': week1_end,
-    'week2begindate': week1_end, 'week2enddate': week2_end,
-    'week3begindate': week2_end, 'week3enddate': week3_end,
-    'week4begindate': week3_end, 'week4enddate': week4_end,
-    }
+                'week1begindate': beginning_of_month, 'week1enddate': week1_end,
+                'week2begindate': week1_end, 'week2enddate': week2_end,
+                'week3begindate': week2_end, 'week3enddate': week3_end,
+                'week4begindate': week3_end, 'week4enddate': week4_end,
+            }
     interviews = InterviewReservation.objects.filter(specific_date__gte = current_date)
     for i in interviews:
         if i.available:
