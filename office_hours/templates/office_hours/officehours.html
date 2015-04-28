@@ -144,12 +144,13 @@
                     <div class="reserve-button">
                         Reserve 
                     </div>
-        		    <form action="/interviews/" method="post">
-        		      <label for="email">Email: </label>
-        		      <input id="email" type="email" name="email" 
-        			     value="{{ email }}">
-        		      <input type="submit" class="reserve-button" value="Reserve">
-        		    </form>
+		    <p>
+        	      <form action="/interviews/" method="post">
+			{% csrf_token %}
+			{{ form }}
+        		<input type="submit" value="Reserve"/>
+        	      </form>
+		    </p>
                 </div>
             {% endfor %}
         </div>
