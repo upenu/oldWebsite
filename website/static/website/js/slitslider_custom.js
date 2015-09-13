@@ -26,8 +26,6 @@ $(function() {
 
       },
       switchSlides = function(slideNum) {
-        console.log(slideNum);
-
         slitslider.jump( slideNum );
       };
       return { init : init, switchSlides: switchSlides };

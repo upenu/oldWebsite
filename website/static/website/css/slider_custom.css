@@ -12,6 +12,10 @@
 	left: 0;
 }
 
+.main-banner-text {
+    text-align: center;
+}
+
 /* Slide wrapper and slides */
 
 .sl-slide,
@@ -204,7 +208,7 @@
 	background-size: cover;
 	background-position: center center;
 	z-index: 1;
-	background-color: rgba(0, 0, 0, 0.420);
+	background-color: rgba(0, 0, 0, 0.7);
 }
 
 .slide-text {
@@ -273,7 +277,7 @@
 	height: 30px;
 	width: 100%;
 	left: 0;
-	z-index: 1000;
+	z-index: 9;
 }
 
 .nav-dots span {

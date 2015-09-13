@@ -12,6 +12,10 @@
 	left: 0;
 }
 
+.main-banner-text {
+    text-align: center;
+}
+
 /* Slide wrapper and slides */
 
 .sl-slide,
@@ -189,6 +193,28 @@
 	display: inline-block;
 }
 
+.slide-tint {
+	padding: 200px;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	position: absolute;
+	top: -200px;
+	left: -200px;
+	width: 100%;
+	height: 100%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	z-index: 1;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.slide-text {
+	z-index: 2;
+}
+
 .bg-img {
 	padding: 200px;
 	-webkit-box-sizing: content-box;
@@ -251,7 +277,7 @@
 	height: 30px;
 	width: 100%;
 	left: 0;
-	z-index: 1000;
+	z-index: 9;
 }
 
 .nav-dots span {

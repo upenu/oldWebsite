@@ -51,8 +51,7 @@ table {
 /* Banner Styles */
 
 #banner-wrapper {
-  width: 1200px;
-  margin: 70px auto 0px auto;
+  width: 100%;
   overflow: hidden;
 }
 

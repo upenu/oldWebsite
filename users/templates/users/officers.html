@@ -17,16 +17,13 @@
 {% endblock %}
 {% block content %}
 <div class="content-container">
-	<div class="content-sidebar">
+	<div class="officer-sidebar">
 		<h1>{{ title }}</h1>
 		<ul id="archive">
             <li>{{ current_semester }}</li>
             {% for position in positions %}
                 <li><a href="#{{position.email_name}}">{{position.full_name}}</a></li>
             {% endfor %}
-            <!-- <li><a href="#">2014 - 2015</a></li> -->
-			<!-- <li><a href="#">2013 - 2014</a></li> -->
-			<!-- <li><a href="#">2012 - 2013</a></li> -->
 		</ul>
 	</div>
 	<div id="officer-member-container">

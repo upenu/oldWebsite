@@ -1,4 +1,10 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans);
+
 /* Main Styles */
+
+a {
+  color:#47B5DA;
+}
 
 #main-wrapper {
   font-size: 14px;
@@ -20,20 +26,19 @@
 
 #content-wrapper {
   background-color: #fff;
-  padding: 20px 0;
+  padding: 20px 0 40px;
   margin: 35px auto;
-  height: 600px;
   box-shadow: 0 0 10px #bfbeba;
   -moz-box-shadow: 0 0 10px #bfbeba;
   -webkit-box-shadow: 0 0 10px #bfbeba;
   -o-box-shadow: 0 0 10px #bfbeba;
   -ktml-box-shadow: 0 0 10px #bfbeba;
   -ms-box-shadow: 0 0 10px #bfbeba;
-  background-image: url(http://subtlepatterns.com/patterns/swirl.png);
 }
 
 #content-header-wrapper {
   padding: 10px 0px 30px 0px;
+  text-align: center;
 }
 
 #content-header-wrapper h1 {
@@ -49,6 +54,7 @@
   /* text-align: center;*/
   font-size: 16px;
   line-height: 20px;
+  padding: 0 25px;
   color: #888;
 }
 
@@ -128,7 +134,7 @@
   margin-left: 60px;
 }
 
-#events-OH-wrapper, #oh-wrapper {
+#events-OH-wrapper, .oh-wrapper {
   margin: 10px 0px;
   width: 990px;
   overflow: auto;
@@ -141,10 +147,77 @@
   -o-box-shadow: 0 0 10px #bfbeba;
   -ktml-box-shadow: 0 0 10px #bfbeba;
   -ms-box-shadow: 0 0 10px #bfbeba;
-  background-image: url(http://subtlepatterns.com/patterns/brillant.png);
 }
 
-#events-wrapper, #oh-content {
+.oh-wrapper .filters {
+  margin: 15px 30px;
+}
+
+.oh-wrapper .filters .filter {
+  width: 150px;
+  margin-right: 35px;
+  height: 30px;
+  background: white;
+  border: 2px solid #555;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'PT Sans';
+  color: #555;
+}
+
+.officers-oh {
+  padding: 30px 80px;
+}
+
+.officers-oh > li {
+  width: 180px;
+  height: 300px;
+  background-color: white;
+  position: relative;
+  display: inline-block;
+  margin: 8px;
+  -moz-box-shadow: 0 0 5px #bfbeba !important;
+  -webkit-box-shadow: 0 0 5px #bfbeba !important;
+  -o-box-shadow: 0 0 5px #bfbeba !important;
+  -ktml-box-shadow: 0 0 5px #bfbeba !important;
+  -ms-box-shadow: 0 0 5px #bfbeba !important;
+}
+
+.officers-oh .image {
+  width: 86%;
+  height: auto;
+  padding: 7%;
+}
+
+.officers-oh .info {
+  text-align: left;
+  padding: 5px;
+  font-size: 16px;
+  line-height: 1.2;
+  margin-top: 8px;
+}
+
+.info .name {
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.info .date {
+}
+
+.info .classes-skills {
+  display: inline-block;
+  margin-right: 5px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #43ACC5;
+}
+
+.info span, .info ul {
+  display: block;
+}
+
+#events-wrapper, #oh-content, .oh-title {
   margin: 0px 30px;
   padding: 10px 0px 10px 0px;
   width: 930px;
@@ -156,7 +229,7 @@
   margin: 0px auto;
 }
 
-#events-title, #oh-title {
+#events-title, .oh-title {
   width: 310px;
   font-weight: 700;
   font-size: 20px;
@@ -182,6 +255,10 @@
 
 #events-list-wrapper {
   width: 310px;
+}
+
+.oh-title {
+  padding: 10px 0 0 0;
 }
 
 .events-list-item, .oh-list-item  {
@@ -283,64 +360,6 @@
   margin: 10px 0px;
 }
 
-/*
-#OH-today-wrapper {
-  margin: 10px auto;
-  width: 990px;
-  height: 500px;
-}
-
-#OH-today-title-wrapper {
-  height: 50px;
-  margin: 0px auto;
-  width: 930px;
-}
-
-#OH-today-title {
-  width: 600px;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 45px;
-  border-bottom: 2px solid #3eacc7;
-}
-
-#OH-today-content-wrapper {
-  width: 930px;
-  margin: 20px auto;
-  height: 570px;
-}
-
-.OH-today-item {
-  float: left;
-  font-size: 12px;
-  margin-right: 15px;
-  width: 150px;
-  height: 250px;
-  box-shadow: 0 0 5px #bfbeba;
-  -moz-box-shadow: 0 0 5px #bfbeba;
-  -webkit-box-shadow: 0 0 5px #bfbeba;
-  -o-box-shadow: 0 0 5px #bfbeba;
-  -ktml-box-shadow: 0 0 5px #bfbeba;
-  -ms-box-shadow: 0 0 5px #bfbeba;
-}
-
-.OH-today-item img {
-  width: 140px;
-  height: 140px;
-  margin: 5px;
-}
-
-.OH-today-item p {
-  width: 140px;
-  margin: 0px 5px;
-}
-
-.OH-today-item p  span{
-  font-weight: 700;
-}
-
-*/
-
 #business-wrapper {
   margin: 20px 0px;
   width: 990px;
@@ -357,7 +376,7 @@
 .partners-wrapper {
   height: 320px;
   width: 990px;
-  background: linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5)), url(http://subtlepatterns.com/patterns/gplaypattern.png) repeat;
+  background: linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5));
 }
 
 .partners-wrapper .title-wrapper {
@@ -443,3 +462,5 @@
 .icon-box a:hover {
   text-decoration: underline;
 }
+
+

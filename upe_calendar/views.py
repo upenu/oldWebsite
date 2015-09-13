@@ -25,7 +25,7 @@ def get_calendar_info(request):
     if request.method == 'GET':
         response = {'events': {}}
         curr_date = date.today()
-        events = Event.objects.filter(start_time__month=curr_date.month)
+        events = Event.objects.filter(start_time__month=curr_date.month, start_time__year=curr_date.year)
         for event in events:
             response['events'][event.name] = event.start_time
         return HttpResponse(json.dumps(response, cls=DjangoJSONEncoder), content_type='application/json')

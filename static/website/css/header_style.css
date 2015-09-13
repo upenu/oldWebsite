@@ -1,5 +1,5 @@
 #header-wrapper {
-    background: #444;
+    background: #43ACC5;
     font-family: 'PT Sans', sans-serif;
     color: #C9C9C9;
     z-index: 10;
@@ -8,6 +8,7 @@
     font-size: 12px;
     position: fixed;
     top: 0px;
+    box-shadow: 2px 2px 4px #4D4D4D;
 }
 #header-content {
     padding: 0% 6%;
@@ -60,29 +61,28 @@
 }
 
 .nav li a {
-    font-size: 14px;
+    font-size: 15px;
     color: #fefefa;
     display: block;
     line-height: 50px;
     padding: 0 12px;
     text-decoration: none;
-    text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
-    font-weight: 400;
 }
 
 .nav li a:hover {
-  background-color: #494646;
+  background-color: #1C83A6;
 }
 
 #brand-section {
-    width: 120px;
+    width: 130px;
 }
 #upe-brand {
     display: inline-block;
     float: right;
     width: 45px;
-    font-size: 18px;
+    font-size: 22px;
     color: #fefefa;
+    font-weight: lighter;
 }
 
 #search_text {
@@ -146,7 +146,7 @@
   height: auto;
   opacity: 0;
   transition: all 0.1s;
-  background: #444;
+  background: #2795BA;
 }
 
 .subnav li {

@@ -2,6 +2,10 @@
 
 /* Main Styles */
 
+a {
+  color:#47B5DA;
+}
+
 #main-wrapper {
   font-size: 14px;
   line-height: 18px;
@@ -22,16 +26,14 @@
 
 #content-wrapper {
   background-color: #fff;
-  padding: 20px 0;
+  padding: 20px 0 40px;
   margin: 35px auto;
-  height: 600px;
   box-shadow: 0 0 10px #bfbeba;
   -moz-box-shadow: 0 0 10px #bfbeba;
   -webkit-box-shadow: 0 0 10px #bfbeba;
   -o-box-shadow: 0 0 10px #bfbeba;
   -ktml-box-shadow: 0 0 10px #bfbeba;
   -ms-box-shadow: 0 0 10px #bfbeba;
-  background-image: url(http://subtlepatterns.com/patterns/swirl.png);
 }
 
 #content-header-wrapper {
@@ -145,7 +147,6 @@
   -o-box-shadow: 0 0 10px #bfbeba;
   -ktml-box-shadow: 0 0 10px #bfbeba;
   -ms-box-shadow: 0 0 10px #bfbeba;
-  background-image: url(http://subtlepatterns.com/patterns/brillant.png);
 }
 
 .oh-wrapper .filters {
@@ -197,16 +198,19 @@
 }
 
 .info .name {
-  font-weight: 800;
+  font-weight: bolder;
+  font-size: 18px;
 }
 
 .info .date {
 }
 
-.info .classes-skills li {
+.info .classes-skills {
   display: inline-block;
   margin-right: 5px;
-  font-weight: bold;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #43ACC5;
 }
 
 .info span, .info ul {
@@ -434,7 +438,7 @@
 .partners-wrapper {
   height: 320px;
   width: 990px;
-  background: linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5)), url(http://subtlepatterns.com/patterns/gplaypattern.png) repeat;
+  background: linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5));
 }
 
 .partners-wrapper .title-wrapper {
@@ -520,3 +524,5 @@
 .icon-box a:hover {
   text-decoration: underline;
 }
+
+
