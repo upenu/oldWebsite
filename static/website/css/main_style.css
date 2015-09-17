@@ -166,7 +166,7 @@ a {
 }
 
 .officers-oh {
-  padding: 30px 80px;
+  padding: 30px 90px;
 }
 
 .officers-oh > li {
@@ -184,9 +184,9 @@ a {
 }
 
 .officers-oh .image {
-  width: 86%;
-  height: auto;
-  padding: 7%;
+  width: 100%;
+  height: 180px;
+  margin-bottom: 5px;
 }
 
 .officers-oh .info {
@@ -194,12 +194,11 @@ a {
   padding: 5px;
   font-size: 16px;
   line-height: 1.2;
-  margin-top: 8px;
 }
 
 .info .name {
   font-weight: bolder;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .info .date {
@@ -291,16 +290,18 @@ a {
 }
 
 .events-list-item h1, .oh-list-item h1 {
-  margin: 5px auto auto 70px;
+  margin: 5px auto 8px 8px;
   padding-top: 10px;
+  font-size: 18px;
   font-weight: 700;
-  width: 200px;
+  width: 280px;
 }
 
 .events-list-item p, .oh-list-item p {
-  margin: 0px auto 5px 70px;
-  line-height: 20px;
-  width: 250px;
+  margin: 0px auto 5px 10px;
+  line-height: 24px;
+  width: 280px;
+  font-size: 14px;
 }
 
 .events-list-item p span, .oh-list-item p span {
@@ -342,9 +343,9 @@ a {
 }
 
 .description-text {
-  padding:20px;
-  overflow:scroll;
-  height:197px;
+  padding: 20px;
+  overflow: auto;
+  height: 197px;
 }
 
 .events-list-description h1, .oh-list-description h1 {
@@ -359,6 +360,64 @@ a {
   line-height: 20px;
   margin: 10px 0px;
 }
+
+/*
+#OH-today-wrapper {
+  margin: 10px auto;
+  width: 990px;
+  height: 500px;
+}
+
+#OH-today-title-wrapper {
+  height: 50px;
+  margin: 0px auto;
+  width: 930px;
+}
+
+#OH-today-title {
+  width: 600px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 45px;
+  border-bottom: 2px solid #3eacc7;
+}
+
+#OH-today-content-wrapper {
+  width: 930px;
+  margin: 20px auto;
+  height: 570px;
+}
+
+.OH-today-item {
+  float: left;
+  font-size: 12px;
+  margin-right: 15px;
+  width: 150px;
+  height: 250px;
+  box-shadow: 0 0 5px #bfbeba;
+  -moz-box-shadow: 0 0 5px #bfbeba;
+  -webkit-box-shadow: 0 0 5px #bfbeba;
+  -o-box-shadow: 0 0 5px #bfbeba;
+  -ktml-box-shadow: 0 0 5px #bfbeba;
+  -ms-box-shadow: 0 0 5px #bfbeba;
+}
+
+.OH-today-item img {
+  width: 140px;
+  height: 140px;
+  margin: 5px;
+}
+
+.OH-today-item p {
+  width: 140px;
+  margin: 0px 5px;
+}
+
+.OH-today-item p  span{
+  font-weight: 700;
+}
+
+*/
 
 #business-wrapper {
   margin: 20px 0px;

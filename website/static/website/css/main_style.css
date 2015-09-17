@@ -295,16 +295,18 @@ a {
 }
 
 .events-list-item h1, .oh-list-item h1 {
-  margin: 5px auto auto 70px;
+  margin: 5px auto 8px 8px;
   padding-top: 10px;
+  font-size: 18px;
   font-weight: 700;
-  width: 200px;
+  width: 280px;
 }
 
 .events-list-item p, .oh-list-item p {
-  margin: 0px auto 5px 70px;
-  line-height: 20px;
-  width: 250px;
+  margin: 0px auto 5px 10px;
+  line-height: 24px;
+  width: 280px;
+  font-size: 14px;
 }
 
 .events-list-item p span, .oh-list-item p span {
@@ -346,9 +348,9 @@ a {
 }
 
 .description-text {
-  padding:20px;
-  overflow:scroll;
-  height:197px;
+  padding: 20px;
+  overflow: auto;
+  height: 197px;
 }
 
 .events-list-description h1, .oh-list-description h1 {

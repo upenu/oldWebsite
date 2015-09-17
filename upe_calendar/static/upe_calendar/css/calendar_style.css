@@ -3,9 +3,9 @@
 	padding: 10px 30px 30px 30px;
 	width: 1024px;
 	color: #242424;
-	background-image: url(http://subtlepatterns.com/patterns/brillant.png);
 	margin: 70px auto 20px auto;
 	font-family: 'PT Sans', sans-serif;
+    background-color: white;
 }
 #calendar-title {
     text-align: center;
@@ -60,7 +60,6 @@
 	text-align: right;
 	color: #C9C9C9;
 	padding: 5px;
-	/* background: #C5E6EE; */
 }
 .day-row {
     border-style: solid;
@@ -90,6 +89,7 @@
 	background: #E2E2E2;
 }
 
-#curr-date {
-	color: #e74c3c;
+#calendar-wrapper #curr-date {
+	color: black;
+    font-weight: bold;
 }

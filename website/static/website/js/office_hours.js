@@ -9,6 +9,16 @@ $(document).ready(function () {
 	var tileString = '<li class=\"tile\">\r\n  <div class=\"officer-oh\">\r\n    <img class=\"image\" src=\"http:\/\/upe.berkeley.edu\/media\/profile_images\/spock.jpg\">\r\n    <div class=\"info\">\r\n      <span class=\"name\"><\/span>\r\n      <span class=\"date\"><\/span>\r\n      <ul class=\"classes-skills\">\r\n      <\/ul>\r\n    <\/div>\r\n  <\/div>\r\n<\/li>';
 	var tileTemplate = $(tileString);
 
+    officers.sort(function(x, y) {
+        if (x.name > y.name) {
+            return 1;
+        } else if (x.name < y.name) {
+            return -1;
+        } else {
+            return 0;
+        }
+    });
+
 	for (var i = officers.length - 1; i >= 0; i--) {
         var officer = officers[i];
        	var tile = tileTemplate.clone();
@@ -42,8 +52,15 @@ $(document).ready(function () {
 		tile.find('.classes-skills').html(courses);
 		tile.find('.date').html(hours);
 
-        officerList.isotope('insert', tile);
+        tile.find('.image').hover(function() {
+    //        this.src = 'http://upe.berkeley.edu/media/profile_images/Soy - ' + officer.name + '.jpg';
+            console.log(officer);
+            console.log('http://upe.berkeley.edu/media/profile_images/Soy - ' + officer.name + '.jpg');
+        }, function() {
+            this.src = 'http://upe.berkeley.edu/media/profile_images/spock.jpg';
+        });
 
+        officerList.isotope('insert', tile);
     }
 
 	var classFilter = '',

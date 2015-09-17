@@ -22,9 +22,9 @@
     <div class="date">{{ date }}</div>
     {{/if}}
     <ul id="events">
-      {{#if name}}
-      <li class="event-info">{{ name }}</li>
-      {{/if}}
+      {{#each events}}
+      <li class="event-info">{{ this.name }}</li>
+      {{/each}}
     </ul>
   </td>
 </script>
