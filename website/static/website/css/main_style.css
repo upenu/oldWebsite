@@ -134,7 +134,7 @@ a {
   margin-left: 60px;
 }
 
-#events-OH-wrapper, .oh-wrapper {
+#events-OH-wrapper, .oh-wrapper, #twitter-feed-wrapper {
   margin: 10px 0px;
   width: 990px;
   overflow: auto;
@@ -221,19 +221,19 @@ a {
   margin-right: 0;
 }
 
-#events-wrapper, #oh-content, .oh-title {
+#events-wrapper, #oh-content, .oh-title, #twitter-wrapper {
   margin: 0px 30px;
   padding: 10px 0px 10px 0px;
   width: 930px;
   color: black;
 }
 
-#events-title-wrapper, #oh-title-wrapper {
+#events-title-wrapper, #oh-title-wrapper, #twitter-title-wrapper {
   height: 50px;
   margin: 0px auto;
 }
 
-#events-title, .oh-title {
+#events-title, .oh-title, #twitter-title {
   width: 310px;
   font-weight: 700;
   font-size: 20px;
@@ -242,7 +242,7 @@ a {
   border-bottom: 2px solid #3eacc7;
 }
 
-#events-content-wrapper, #oh-content-wrapper {
+#events-content-wrapper, #oh-content-wrapper, #twitter-content-wrapper {
   width: 930px;
   height: auto;
 }
