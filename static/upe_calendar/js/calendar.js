@@ -16,12 +16,7 @@ var createEventList = function (data) {
 
 // Creates a Handlebars template for the calendar using a list of event objects
 var createCalendarTemp = function(eventList) {
-	var eventDays, currDate, numDays, firstDay;
-	// A list of dates that have an event
-	eventDays = [];
-	for(var i = 0, len = eventList.length; i < len; i++) {
-		eventDays.push(eventList[i].date);
-	}
+	var currDate, numDays, firstDay;
 	currDate = new Date();
 	numDays = daysInMonth(currDate.getMonth()+1, currDate.getFullYear())
 

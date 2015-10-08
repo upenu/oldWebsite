@@ -6,7 +6,7 @@ $(document).ready(function () {
 
 	var officers = JSON.parse(officeHours);
 	var officerList = $('.officers-oh');
-	var tileString = '<li class=\"tile\">\r\n  <div class=\"officer-oh\">\r\n    <img class=\"image\" src=\"http:\/\/upe.berkeley.edu\/media\/profile_images\/spock.jpg\">\r\n    <div class=\"info\">\r\n      <span class=\"name\"><\/span>\r\n      <span class=\"date\"><\/span>\r\n      <ul class=\"classes-skills\">\r\n      <\/ul>\r\n    <\/div>\r\n  <\/div>\r\n<\/li>';
+	var tileString = '<li class=\"tile\">\r\n  <div class=\"officer-oh\">\r\n    <img class=\"image normal\" src=\"http:\/\/upe.berkeley.edu\/media\/profile_images\/spock.jpg\">\r\n   <img class=\"image soy\">\r\n    <div class=\"info\">\r\n      <span class=\"name\"><\/span>\r\n      <span class=\"date\"><\/span>\r\n      <ul class=\"classes-skills\">\r\n      <\/ul>\r\n    <\/div>\r\n  <\/div>\r\n<\/li>';
 	var tileTemplate = $(tileString);
 
     officers.sort(function(x, y) {
@@ -19,11 +19,15 @@ $(document).ready(function () {
         }
     });
 
-	for (var i = officers.length - 1; i >= 0; i--) {
+	for (var i = 0; i < officers.length; i++) {
         var officer = officers[i];
        	var tile = tileTemplate.clone();
 		var courses = '';
 		var hours = '';
+
+        tile.find('.normal').attr('src', 'http://upe.berkeley.edu/media/profile_images/' + officer.name + '.jpg');
+        tile.find('.soy').attr('src', 'http://upe.berkeley.edu/media/profile_images/Soy - ' + officer.name + '.jpg');
+        tile.find('.soy').hide();
 
         for (var j = 0; j < officer.courses.length; j++) {
 			var times = officer.times;
@@ -52,12 +56,12 @@ $(document).ready(function () {
 		tile.find('.classes-skills').html(courses);
 		tile.find('.date').html(hours);
 
-        tile.find('.image').hover(function() {
-    //        this.src = 'http://upe.berkeley.edu/media/profile_images/Soy - ' + officer.name + '.jpg';
-            console.log(officer);
-            console.log('http://upe.berkeley.edu/media/profile_images/Soy - ' + officer.name + '.jpg');
+        tile.find('.officer-oh').hover(function() {
+            $(this).find('.normal').hide();
+            $(this).find('.soy').show()
         }, function() {
-            this.src = 'http://upe.berkeley.edu/media/profile_images/spock.jpg';
+            $(this).find('.normal').show();
+            $(this).find('.soy').hide()
         });
 
         officerList.isotope('insert', tile);
