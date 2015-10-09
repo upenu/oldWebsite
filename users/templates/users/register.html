@@ -23,7 +23,7 @@
     <a href="/">Return to the homepage.</a><br />
     {% else %}
     <!-- <strong>REGISTER</strong><br /> -->
-    < class="container">
+    <div class="container">
 
         <div class="col-md-6">
             <span class="register">Register</span>
@@ -72,10 +72,6 @@
                 <!-- Provide a button to click to submit the form. -->
                 <input type="submit" name="submit" value="Register" />
             </form>
-            {% endif %}
-            <div class="login-container">
-                <span class="login-text">Already a member?</span> <a class="login" href="/login">Login</a>
-            </div>
         </div>
         <div class="col-md-6">
             <span class="register">Or Register through Social Media!</span>
@@ -83,6 +79,11 @@
             <a href="#"> <button class="btn btn-primary"> Twitter </button> </a>
             <a href="#"> <button class="btn btn-primary"> Google </button> </a>
         </div>
-      </div>
+    </div>
+    {% endif %}
+    <div class="login-container">
+         <span class="login-text">Already a member?</span> <a class="login" href="/login">Login</a>
+    </div>
+
 </div>
 {% endblock %}

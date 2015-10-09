@@ -18,6 +18,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '9+!w(w9&qra8zp)k(^xq%i!3flgnipy4m_84&o8bf7#&&4nvl!'
+SOCIAL_AUTH_FACEBOOK_KEY = '1636610166620222'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'cdee9718c25fa87dec38022246af441a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,6 +42,7 @@ INSTALLED_APPS = (
     'website',
     'upe_calendar',
     'users',
+    'thirdauth'
     'social.apps.django_app.default'
 )
 
