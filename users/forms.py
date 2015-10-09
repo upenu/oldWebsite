@@ -14,7 +14,7 @@ class UserForm(forms.ModelForm):
         self.fields['username'].help_text = None
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'username', 'email', 'password', 'grad_year')
+        fields = ('first_name', 'last_name', 'username', 'email', 'password')
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
