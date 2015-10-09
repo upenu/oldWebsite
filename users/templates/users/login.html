@@ -30,6 +30,7 @@
         <ul>
             <li><span>Not a member yet?</span> <a class="register" href="/register">Register</a></li>
             <li><span>Forgot your password?</span> <a class="register" href="/accounts/password_reset">Reset Password</a></li>
+            <li> <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a> </li>
         </ul>
     </div>
 </div>

@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'website',
     'upe_calendar',
-    'users'
+    'users',
+    'social.apps.django_app.default'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -96,6 +97,19 @@ AUTHENTICATION_BACKENDS = ('users.backends.CustomBackend',)
 
 from django.conf import global_settings
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + ("website.processor.populate_footer",)
+TEMPLATE_CONTEXT_PROCESSORS += (
+   'django.contrib.auth.context_processors.auth',
+   'django.core.context_processors.debug',
+   'django.core.context_processors.i18n',
+   'django.core.context_processors.media',
+   'django.core.context_processors.static',
+   'django.core.context_processors.tz',
+   'django.contrib.messages.context_processors.messages',
+   'social.apps.django_app.context_processors.backends',
+   'social.apps.django_app.context_processors.login_redirect',
+)
+
+LOGIN_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST      = 'localhost'
@@ -105,3 +119,12 @@ EMAIL_PORT      = 25
 EMAIL_USE_TLS   = False
 DEFAULT_FROM_EMAIL  = 'Do-Not-Reply <atlantis@upe.cs.berkeley.edu>'
 
+AUTHENTICATION_BACKENDS += (
+   'social.backends.facebook.FacebookOAuth2',
+   # 'social.backends.google.GoogleOAuth2',
+   # 'social.backends.twitter.TwitterOAuth',
+   # 'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1183856238295938'
+SOCIAL_AUTH_FACEBOOK_SECRET = '13a6e96c99ef16f1453298c135679943'
