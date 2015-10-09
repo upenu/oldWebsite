@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
+from django.template.context import RequestContext
 from users.backends import CustomBackend
 from django.contrib.auth import login
 from django.contrib.auth.decorators import user_passes_test
@@ -25,7 +26,7 @@ def officers(request):
         if len(officer_profile_list) != 0:
              OfficerPosition.positions[officer_profile_list[0].position].users.append(officer)
 
-    context = RequestContext(request, 
+    context = RequestContext(request,
         {'positions': OfficerPosition.positions.values(),
         'title': 'Officers',
         'current_semester': CURRENT_SEMESTER[1],
@@ -68,7 +69,7 @@ def alumni(request):
         setattr(alum, 'position', 'Alum')
         setattr(alum, 'photo', alum.picture)
 
-    context = RequestContext(request, 
+    context = RequestContext(request,
         {'users': alumni,
         'title': 'Alumni',
         'logged_in': request.user.is_authenticated()})
@@ -121,10 +122,10 @@ def user_login(request):
             return HttpResponse("Your account has not been approved yet.")
         else:
             incorrect_log_in = True
-            return render_to_response('users/login.html', 
+            return render_to_response('users/login.html',
                     context_instance=RequestContext(request,{'incorrect_log_in': incorrect_log_in}))
     else:
-        return render_to_response('users/login.html', 
+        return render_to_response('users/login.html',
                 context_instance=RequestContext(request,{'incorrect_log_in': incorrect_log_in}))
 
 @login_required
@@ -172,7 +173,7 @@ def myprofile(request):
         elif request.POST['name'] == 'grad_year':
             up.grad_year = request.POST['value']
             up.save()
-    return render_to_response('users/profile.html', 
+    return render_to_response('users/profile.html',
             context_instance=RequestContext(request,{'up': up, 'resume_upload': resume_form, 'profile_pic': profile_pic_form}))
 
 
@@ -183,7 +184,7 @@ def approve_user(request, user_id):
     user_profile.save()
     message_text = "Hi " + user_profile.user.first_name + ",\n\n Your UPE account has been approved. You can now login to our website at upe.berkeley.edu\n\n Thanks,\nUPE"
     send_mail("Your UPE Account has been approved!", message_text, "officers@upe.cs.berkeley.edu", [user_profile.user.email], fail_silently=True)
-    return officer_approval_dashboard(request) 
+    return officer_approval_dashboard(request)
 
 @user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
 def reject_user(request, user_id):
@@ -193,7 +194,7 @@ def reject_user(request, user_id):
     message_text = "Hi " + first_name + ",\n\n Your UPE account registration has been denied. Please contact us if this is an error.\n\n Thanks,\nUPE"
     send_mail("Your UPE account application has been rejected!", message_text, "officers@upe.cs.berkeley.edu", [email], fail_silently=True)
     user_profile.delete()
-    return officer_approval_dashboard(request) 
+    return officer_approval_dashboard(request)
 
 
 @user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
@@ -203,7 +204,7 @@ def officer_approval_dashboard(request):
     return render(request, 'users/officer_approval_dashboard.html', {"users": users, "user_profiles": user_profiles})
 
 
-    
+
 # STUFF FOR LATER
 
 def officehours(request):
@@ -289,11 +290,9 @@ def requirements(request):
             cd = form.cleaned_data
             can = cd['candidates']
             req = cd['requirements']
-            newbie = Completion.objects.create(candidate=can, requirement=req, completed=True) 
+            newbie = Completion.objects.create(candidate=can, requirement=req, completed=True)
             newbie.save()
             return HttpResponseRedirect('')
     else:
         form = CompletionForm()
     return render(request, 'users/requirements.html',{'form': form,})
-
-
