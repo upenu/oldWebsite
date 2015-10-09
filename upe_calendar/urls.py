@@ -10,4 +10,6 @@ urlpatterns = patterns('',
 
     url(r'^$', 'upe_calendar.views.calendar', name='calendar'),
     url(r'^get_calendar_info/$', 'upe_calendar.views.get_calendar_info', name='get_calendar_info'),
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url('', include('django.contrib.auth.urls', namespace='auth')),
 )
