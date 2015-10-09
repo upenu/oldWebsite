@@ -19,6 +19,17 @@
 <div class="content-container">
 	<div class="content-sidebar">
 		<h1>{{ title }}</h1>
+		<form action="{% url 'members_filter' %}" method="post">
+			{% csrf_token %}
+			<p style="margin-bottom: 5px">
+				Filter by: <select name="select">
+						<option value="Name">Name</option>
+						<option value="Year">Year</option>
+					</select>
+				<input type="text" name="input" placeholder="Search for a member...">
+				<button id="filter" type="submit">Filter</button>
+			</p>
+		</form>
 	</div>
 	<div id="officer-member-container">
 		<div id="officer-members">

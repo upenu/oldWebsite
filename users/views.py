@@ -46,6 +46,31 @@ def members(request):
         'logged_in': request.user.is_authenticated()})
     return HttpResponse(template.render(context))
 
+# A rudimentary filtering capability that can filter UPE members by year or by name 
+# to make searching/browsing easier for current members and candidates who are perhaps
+# trying to get a feel for the number of their peers involved in UPE. 
+def members_filter(request):
+    template = loader.get_template('users/members.html')
+    option = request.POST['select'];
+    inp = request.POST['input']
+    context = RequestContext(request,
+        {'users': [],
+        'title': 'Members',
+        'logged_in': request.user.is_authenticated()})
+    if option == 'Name':
+        filter_members = []
+        members = UserProfile.objects.filter(user_type=2, approved=True)
+        for member in members:
+            if inp in str(member):
+                filter_members.append(member);
+                setattr(member, 'position', 'Member')
+                setattr(member, 'photo', member.picture)
+        context['users'] = filter_members
+    elif option == 'Year':
+        filter_members = UserProfile.objects.filter(user_type=2, approved=True, grad_year=inp[2:])
+        context['users'] = filter_members
+    return HttpResponse(template.render(context))
+
 def interest(request):
     template = loader.get_template('users/application.html')
     # members = UserProfile.objects.filter(user_type=2, approved=True)
