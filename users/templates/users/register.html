@@ -73,11 +73,21 @@
                 <input type="submit" name="submit" value="Register" />
             </form>
         </div>
+
         <div class="col-md-6">
-            <span class="register">Or Register through Social Media!</span>
-            <a href="#"> <button class="btn btn-primary"> Facebook </button> </a>
-            <a href="#"> <button class="btn btn-primary"> Twitter </button> </a>
-            <a href="#"> <button class="btn btn-primary"> Google </button> </a>
+            <span class="register">Or Log in through Social Media!</span>
+             <ul>
+                 <li>
+                   <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
+                 </li>
+                 <li>
+                   <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google</a>
+                 </li>
+                 <li>
+                   <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Login with Twitter</a>
+                 </li>
+
+             </ul>
         </div>
     </div>
     {% endif %}

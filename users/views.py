@@ -9,6 +9,10 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import user_passes_test
 from django.core.mail import send_mail
 
+/** for facebook ,google, twitter integration **/
+from django.shortcuts import render_to_response
+from django.template.context import RequestContext
+
 from users.models import *
 from users.forms import *
 
@@ -296,3 +300,12 @@ def requirements(request):
     else:
         form = CompletionForm()
     return render(request, 'users/requirements.html',{'form': form,})
+
+
+/** For facebook,google,twitter Login **/
+def home(request):
+   context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user})
+   return render_to_response('website/register.html',
+                             context_instance=context)
