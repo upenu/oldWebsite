@@ -10,6 +10,10 @@
 <link rel="stylesheet" href="{% static "users/css/officers_members.css" %}" type="text/css" media="screen" />
 <link rel="stylesheet" href="{% static "users/css/register.css" %}" type="text/css" media="screen" />
 <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{% static "website/css/bootstrap.min.css" %}" type="text/css" media="screen" />
+{% endblock %}
+{% block javascript %}
+<script src="{% static "website/js/bootstrap.min.js" %}"></script>
 {% endblock %}
 {% block content %}
 <div class="content-container">
@@ -19,51 +23,59 @@
     <a href="/">Return to the homepage.</a><br />
     {% else %}
     <!-- <strong>REGISTER</strong><br /> -->
-    <span class="register">Register</span>
+    < class="container">
 
-    <form id="user-form" method="post" action="/register/"
-        enctype="multipart/form-data">
-        {% csrf_token %}
-        <!-- Display each form. The as_p method wraps each element in a paragraph
-        (<p>) element. This ensures each element appears on a new line,
-        making everything look neater. -->
-        <!-- {{ user_form.as_p }} -->
+        <div class="col-md-6">
+            <span class="register">Register</span>
 
-        <div class="form-field profile">
-            <label>{{ profile_form.user_type.label }}</label>
-            {{ profile_form.user_type }}
+            <form id="user-form" method="post" action="/register/"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- Display each form. The as_p method wraps each element in a paragraph
+                (<p>) element. This ensures each element appears on a new line,
+                making everything look neater. -->
+                <!-- {{ user_form.as_p }} -->
+
+                <div class="form-field profile">
+                    <label>{{ profile_form.user_type.label }}</label>
+                    {{ profile_form.user_type }}
+                </div>
+
+
+                <div class="form-field first_name">
+                    <label>{{ user_form.first_name.label }}</label>
+                    {{ user_form.first_name }}
+                </div>
+                <div class="form-field last_name">
+                    <label>{{ user_form.last_name.label}}</label>
+                    {{ user_form.last_name }}
+                </div>
+
+                <div class="form-field username">
+                    <label>{{ user_form.username.label }}</label>
+                    {{ user_form.username }}
+                </div>
+
+                <div class="form-field password">
+                    <label>{{ user_form.password.label }}</label>
+                    {{ user_form.password }}
+                </div>
+
+                <div class="form-field email">
+                    <label>{{ user_form.email.label }}</label>
+                    {{ user_form.email }}
+                </div>
+                <!-- Provide a button to click to submit the form. -->
+                <input type="submit" name="submit" value="Register" />
+            </form>
+            {% endif %}
+            <div class="login-container">
+                <span class="login-text">Already a member?</span> <a class="login" href="/login">Login</a>
+            </div>
         </div>
-
-
-        <div class="form-field first_name">
-            <label>{{ user_form.first_name.label }}</label>
-            {{ user_form.first_name }}
+        <div class="col-md-6">
         </div>
-        <div class="form-field last_name">
-            <label>{{ user_form.last_name.label}}</label>
-            {{ user_form.last_name }}
-        </div>
-
-        <div class="form-field username">
-            <label>{{ user_form.username.label }}</label>
-            {{ user_form.username }}
-        </div>
-
-        <div class="form-field password">
-            <label>{{ user_form.password.label }}</label>
-            {{ user_form.password }}
-        </div>
-
-        <div class="form-field email">
-            <label>{{ user_form.email.label }}</label>
-            {{ user_form.email }}
-        </div>
-        <!-- Provide a button to click to submit the form. -->
-        <input type="submit" name="submit" value="Register" />
-    </form>
-    {% endif %}
-    <div class="login-container">
-        <span class="login-text">Already a member?</span> <a class="login" href="/login">Login</a>
     </div>
+
 </div>
 {% endblock %}
