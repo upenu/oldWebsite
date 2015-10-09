@@ -166,7 +166,7 @@ a {
 }
 
 .officers-oh {
-  padding: 30px 90px;
+  padding: 30px 110px;
 }
 
 .officers-oh > li {
@@ -175,7 +175,8 @@ a {
   background-color: white;
   position: relative;
   display: inline-block;
-  margin: 8px;
+  margin-right: 10px;
+  margin-bottom: 20px;
   -moz-box-shadow: 0 0 5px #bfbeba !important;
   -webkit-box-shadow: 0 0 5px #bfbeba !important;
   -o-box-shadow: 0 0 5px #bfbeba !important;
@@ -198,7 +199,7 @@ a {
 
 .info .name {
   font-weight: bolder;
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .info .date {
@@ -214,6 +215,10 @@ a {
 
 .info span, .info ul {
   display: block;
+}
+
+.officers-oh > li:nth-child(4) {
+  margin-right: 0;
 }
 
 #events-wrapper, #oh-content, .oh-title {
