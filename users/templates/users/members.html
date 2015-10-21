@@ -21,13 +21,23 @@
 		<h1>{{ title }}</h1>
 		<form action="{% url 'members_filter' %}" method="post">
 			{% csrf_token %}
+			<p style="margin-bottom: 5px">Filter by: </p>
 			<p style="margin-bottom: 5px">
-				Filter by: <select name="select">
-						<option value="Name">Name</option>
-						<option value="Year">Year</option>
-					</select>
-				<input type="text" name="input" placeholder="Search for a member...">
-				<button id="filter" type="submit">Filter</button>
+				<span>
+				Name: <input type="text" name="membername" placeholder="Search by name">
+				</span>
+				<span style="margin-left: 5px">
+				Graduation Year: <select name="gradyear">
+					<option></option>
+					<option>2015</option>
+					<option>2016</option>
+					<option>2017</option>
+					<option>2018</option>
+				</select>
+				</span>
+				<span style="margin-left: 5px">
+					<button id="filter" type="submit">Filter</button>
+				</span>
 			</p>
 		</form>
 	</div>
