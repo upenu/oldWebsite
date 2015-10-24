@@ -27,8 +27,9 @@ OfficerPosition('profdev', 'Professional Development')
 OfficerPosition('ir', 'Industrial Relations')
 OfficerPosition('social', 'Social')
 OfficerPosition('publicity', 'Publicity')
+OfficerPosition('outreach', 'Outreach')
 OfficerPosition('webdev', 'Web Development')
-OfficerPosition('specialops', 'Special Operations')
+OfficerPosition('general', 'General Officers')
 
 current_time = datetime.datetime.now()
 CURRENT_YEAR = current_time.year
