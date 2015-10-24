@@ -43,7 +43,12 @@ def members(request):
     context = RequestContext(request,
         {'users': members,
         'title': 'Members',
-        'logged_in': request.user.is_authenticated()})
+        'logged_in': request.user.is_authenticated(),
+        'name_filter': '',
+        'grad_yr_filter': '',
+        'member_since_filter_sem': '',
+        'member_since_filter_year': ''
+        })
     return HttpResponse(template.render(context))
 
 # A rudimentary filtering capability that can filter UPE members by year or by name 
@@ -53,16 +58,31 @@ def members_filter(request):
     template = loader.get_template('users/members.html')
     name_filter = request.POST['membername'];
     grad_yr_filter = request.POST['gradyear']
+    member_since_filter = request.POST['membersince']
+    if len(member_since_filter):
+        member_since_split = member_since_filter.split(' ')
+        member_since_filter_sem = member_since_split[0]
+        member_since_filter_year = member_since_split[1]
+    else:
+        member_since_filter_sem = ''
+        member_since_filter_year = ''
     context = RequestContext(request,
         {'users': [],
         'title': 'Members',
-        'logged_in': request.user.is_authenticated()})
+        'logged_in': request.user.is_authenticated(),
+        'name_filter': name_filter,
+        'grad_yr_filter': grad_yr_filter,
+        'member_since_filter_sem': member_since_filter_sem,
+        'member_since_filter_year': member_since_filter_year
+        })
     members = UserProfile.objects.filter(user_type=2, approved=True)
     filter_members = []
     for member in members:
         if len(name_filter) and name_filter not in str(member):
             continue
         if len(grad_yr_filter) and member.grad_year != grad_yr_filter[2:]:
+            continue
+        if len(member_since_filter) and member.year_joined != member_since_filter[0] + member_since_filter[-2:]:
             continue
         filter_members.append(member);
         setattr(member, 'position', 'Member')

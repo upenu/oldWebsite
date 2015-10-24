@@ -14,6 +14,32 @@
 {% endblock %}
 {% block javascript %}
 	<script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
+	<script>
+		var Spring = "Spring";
+		var Fall = "Fall";
+		$(function() {
+			{% if grad_yr_filter %}
+			var gradyear_options = $("[name=gradyear]").children("option");
+			for (var i = 0; i < gradyear_options.length; i++) {
+				var gradyr_option = $(gradyear_options[i]);
+				if (gradyr_option.text() == {{ grad_yr_filter }}) {
+					gradyr_option.attr("selected", "selected");
+					break;
+				}
+			}
+			{% endif %}
+			{% if member_since_filter_sem %}
+				var membersince_options = $("[name=membersince]").children("option");
+				for (var j = 0; j < membersince_options.length; j++) {
+					var membersince_option = $(membersince_options[j]);
+					if (membersince_option.text() == {{ member_since_filter_sem }} + " " + {{ member_since_filter_year}}) {
+						membersince_option.attr("selected", "selected");
+						break;
+					}
+				}
+			{% endif %}
+		});
+	</script>
 {% endblock %}
 {% block content %}
 <div class="content-container">
@@ -24,7 +50,7 @@
 			<p style="margin-bottom: 5px">Filter by: </p>
 			<p style="margin-bottom: 5px">
 				<span>
-				Name: <input type="text" name="membername" placeholder="Search by name">
+				Name: <input type="text" name="membername" placeholder="Search by name" value="{{ name_filter }}">
 				</span>
 				<span style="margin-left: 5px">
 				Graduation Year: <select name="gradyear">
@@ -33,6 +59,17 @@
 					<option>2016</option>
 					<option>2017</option>
 					<option>2018</option>
+				</select>
+				<span style="margin-left: 5px">
+				Member Since: <select name="membersince">
+					<option></option>
+					<option>Fall 2012</option>
+					<option>Spring 2012</option>
+					<option>Fall 2013</option>
+					<option>Spring 2013</option>
+					<option>Fall 2014</option>
+					<option>Spring 2014</option>
+					<option>Fall 2015</option>
 				</select>
 				</span>
 				<span style="margin-left: 5px">
