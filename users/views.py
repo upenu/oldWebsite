@@ -47,7 +47,8 @@ def members(request):
         'name_filter': '',
         'grad_yr_filter': '',
         'member_since_filter_sem': '',
-        'member_since_filter_year': ''
+        'member_since_filter_year': '',
+        'none_found': False
         })
     return HttpResponse(template.render(context))
 
@@ -73,7 +74,8 @@ def members_filter(request):
         'name_filter': name_filter,
         'grad_yr_filter': grad_yr_filter,
         'member_since_filter_sem': member_since_filter_sem,
-        'member_since_filter_year': member_since_filter_year
+        'member_since_filter_year': member_since_filter_year,
+        'none_found': True
         })
     members = UserProfile.objects.filter(user_type=2, approved=True)
     filter_members = []
@@ -84,6 +86,7 @@ def members_filter(request):
             continue
         if len(member_since_filter) and member.year_joined != member_since_filter[0] + member_since_filter[-2:]:
             continue
+        context['none_found'] = False
         filter_members.append(member);
         setattr(member, 'position', 'Member')
         setattr(member, 'photo', member.picture)   

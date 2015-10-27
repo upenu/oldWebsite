@@ -47,13 +47,12 @@
 		<h1>{{ title }}</h1>
 		<form action="{% url 'members_filter' %}" method="post">
 			{% csrf_token %}
-			<p style="margin-bottom: 5px">Filter by: </p>
-			<p style="margin-bottom: 5px">
-				<span>
-				Name: <input type="text" name="membername" placeholder="Search by name" value="{{ name_filter }}">
+			<p style="margin-bottom: 5px"><span style="font-weight: bold">Filter By</span>: 
+				<span style="margin-left: 10px">
+				Name <input type="text" name="membername" placeholder="Search by name" value="{{ name_filter }}">
 				</span>
 				<span style="margin-left: 5px">
-				Graduation Year: <select name="gradyear">
+				Graduation Year <select name="gradyear">
 					<option></option>
 					<option>2015</option>
 					<option>2016</option>
@@ -61,7 +60,7 @@
 					<option>2018</option>
 				</select>
 				<span style="margin-left: 5px">
-				Member Since: <select name="membersince">
+				Member Since <select name="membersince">
 					<option></option>
 					<option>Fall 2012</option>
 					<option>Spring 2012</option>
@@ -78,8 +77,11 @@
 			</p>
 		</form>
 	</div>
-	<div id="officer-member-container">
+	<div id="officer-member-container" style="margin-top: 5px">
 		<div id="officer-members">
+			{% if none_found %}
+				<p style="color: blue">Sorry, no members matched your search. <a href="{% url 'users.views.members' %}">Clear filters?</a></p>
+			{% endif %}
 			{% for user in users %}
 				<div class="officer-member grow">
 					{% if user.picture %}
