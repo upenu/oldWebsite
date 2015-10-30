@@ -13,6 +13,7 @@
 	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Arimo:400,700' type='text/css'>
 {% endblock %}
 {% block javascript %}
+<!-- Set pre-existing filters for <select>s for graduation year and member since. Pre-existing filter for name's <input> is done directly in the HTML -->
 	<script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
 	<script>
 		var Spring = "Spring";
@@ -73,6 +74,7 @@
 				</span>
 				<span style="margin-left: 5px">
 					<button id="filter" type="submit">Filter</button>
+					<a href="{% url 'users.views.members' %}"><button type="button">Clear Filters</button></a>
 				</span>
 			</p>
 		</form>
@@ -80,6 +82,7 @@
 	<div id="officer-member-container" style="margin-top: 5px">
 		<div id="officer-members">
 			{% if none_found %}
+			<!-- Error message shown if no members matched filter request -->
 				<p style="color: blue">Sorry, no members matched your search. <a href="{% url 'users.views.members' %}">Clear filters?</a></p>
 			{% endif %}
 			{% for user in users %}

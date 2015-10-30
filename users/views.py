@@ -52,8 +52,8 @@ def members(request):
         })
     return HttpResponse(template.render(context))
 
-# A rudimentary filtering capability that can filter UPE members by year or by name 
-# to make searching/browsing easier for current members and candidates who are perhaps
+# A filtering capability on the members page that can filter UPE members by graduation year, name, or
+# years of membership to make searching/browsing easier for current members and candidates who are perhaps
 # trying to get a feel for the number of their peers involved in UPE. 
 def members_filter(request):
     template = loader.get_template('users/members.html')
@@ -62,6 +62,7 @@ def members_filter(request):
     member_since_filter = request.POST['membersince']
     if len(member_since_filter):
         member_since_split = member_since_filter.split(' ')
+        # split the semester string from the year number because of how Django template variables work
         member_since_filter_sem = member_since_split[0]
         member_since_filter_year = member_since_split[1]
     else:
