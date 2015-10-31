@@ -73,6 +73,23 @@ TEMPLATE_CONTEXT_PROCESSORS = (
    'social.apps.django_app.context_processors.backends',
    'social.apps.django_app.context_processors.login_redirect',
 )
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.user.create_user',
+    'users.pipeline.save_profile',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+    'users.pipeline.save_profile_picture',
+    #'path.to.save_profile',  # <--- set the path to the function
+    #'users.pipeline.social_auth.associate_user',
+    #'users.pipeline.social_auth.load_extra_data',
+    #'users.pipeline.user.user_details'
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
