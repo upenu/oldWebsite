@@ -85,10 +85,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details',
     'users.pipeline.save_profile_picture',
-    #'path.to.save_profile',  # <--- set the path to the function
-    #'users.pipeline.social_auth.associate_user',
-    #'users.pipeline.social_auth.load_extra_data',
-    #'users.pipeline.user.user_details'
+    'users.pipeline.user_login',
 )
 
 # Database
