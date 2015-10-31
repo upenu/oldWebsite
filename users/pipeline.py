@@ -3,9 +3,11 @@ from .models import UserProfile
 from requests import request, HTTPError
 
 from django.core.files.base import ContentFile
+from django.http import HttpResponse, HttpResponseRedirect
+
 
 def save_profile(backend, user, response, *args, **kwargs):
-    if backend.name == 'facebook' and kwargs['is_new']:
+    if kwargs['is_new']:
         attrs = {'user': user, 'approved': False, 'year_joined': 'F15'}
         attrs = dict(attrs.items())
         UserProfile.objects.create(**attrs)
@@ -27,7 +29,7 @@ def save_profile_picture(backend, user, response, details,
                                    ContentFile(response.content))
             up.save()
 
-def user_login(backend, user, response, details, is_new=FALSE, *args, **kwargs):
+def user_login(backend, user, response, details, is_new=False, *args, **kwargs):
     up = UserProfile.objects.get(user=user)
-    if up.approved == False:
+    if not up.approved:
             return HttpResponse("Your account has not been approved yet.")
