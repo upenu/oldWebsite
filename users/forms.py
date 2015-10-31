@@ -14,12 +14,12 @@ class UserForm(forms.ModelForm):
         self.fields['username'].help_text = None
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'username', 'email', 'password', 'date_joined')
+        fields = ('first_name', 'last_name', 'username', 'email', 'password',)
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('user_type', 'grad_year')
+        fields = ('user_type',)
 
 class ResumeUploadForm(forms.Form):
     resume = forms.FileField(label='Upload a PDF')
