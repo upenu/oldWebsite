@@ -15,9 +15,9 @@ def save_profile(backend, user, response, *args, **kwargs):
 def save_profile_picture(backend, user, response, details,
                          is_new=False,*args,**kwargs):
     url = ""
-    if is_new and backend.name == 'facebook':
+    if backend.name == 'facebook':
         url = 'http://graph.facebook.com/{0}/picture'.format(response['id'])
-    if is_new and backend.name == 'GoogleOAuth2':
+    if backend.name == 'google-oauth2':
        if response.get('image') and response['image'].get('url'):
            url = response['image'].get('url')
            ext = url.split('.')[-1]
