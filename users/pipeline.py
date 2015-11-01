@@ -21,6 +21,8 @@ def save_profile_picture(backend, user, response, details,
        if response.get('image') and response['image'].get('url'):
            url = response['image'].get('url')
            ext = url.split('.')[-1]
+    if backend.name == 'twitter':
+        url = response.get('profile_image_url', '').replace('_normal','')
     if is_new:
         try:
             response = request('GET', url, params={'type': 'large'})
