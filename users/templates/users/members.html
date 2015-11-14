@@ -13,15 +13,78 @@
 	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Arimo:400,700' type='text/css'>
 {% endblock %}
 {% block javascript %}
+<!-- Set pre-existing filters for <select>s for graduation year and member since. Pre-existing filter for name's <input> is done directly in the HTML -->
 	<script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
+	<script>
+		var Spring = "Spring";
+		var Fall = "Fall";
+		$(function() {
+			{% if grad_yr_filter %}
+			var gradyear_options = $("[name=gradyear]").children("option");
+			for (var i = 0; i < gradyear_options.length; i++) {
+				var gradyr_option = $(gradyear_options[i]);
+				if (gradyr_option.text() == {{ grad_yr_filter }}) {
+					gradyr_option.attr("selected", "selected");
+					break;
+				}
+			}
+			{% endif %}
+			{% if member_since_filter_sem %}
+				var membersince_options = $("[name=membersince]").children("option");
+				for (var j = 0; j < membersince_options.length; j++) {
+					var membersince_option = $(membersince_options[j]);
+					if (membersince_option.text() == {{ member_since_filter_sem }} + " " + {{ member_since_filter_year}}) {
+						membersince_option.attr("selected", "selected");
+						break;
+					}
+				}
+			{% endif %}
+		});
+	</script>
 {% endblock %}
 {% block content %}
 <div class="content-container">
 	<div class="content-sidebar">
 		<h1>{{ title }}</h1>
+		<form action="{% url 'members_filter' %}" method="post">
+			{% csrf_token %}
+			<p style="margin-bottom: 5px"><span style="font-weight: bold">Filter By</span>: 
+				<span style="margin-left: 10px">
+				Name <input type="text" name="membername" placeholder="Search by name" value="{{ name_filter }}">
+				</span>
+				<span style="margin-left: 5px">
+				Graduation Year <select name="gradyear">
+					<option></option>
+					<option>2015</option>
+					<option>2016</option>
+					<option>2017</option>
+					<option>2018</option>
+				</select>
+				<span style="margin-left: 5px">
+				Member Since <select name="membersince">
+					<option></option>
+					<option>Fall 2012</option>
+					<option>Spring 2012</option>
+					<option>Fall 2013</option>
+					<option>Spring 2013</option>
+					<option>Fall 2014</option>
+					<option>Spring 2014</option>
+					<option>Fall 2015</option>
+				</select>
+				</span>
+				<span style="margin-left: 5px">
+					<button id="filter" type="submit">Filter</button>
+					<a href="{% url 'users.views.members' %}"><button type="button">Clear Filters</button></a>
+				</span>
+			</p>
+		</form>
 	</div>
-	<div id="officer-member-container">
+	<div id="officer-member-container" style="margin-top: 5px">
 		<div id="officer-members">
+			{% if none_found %}
+			<!-- Error message shown if no members matched filter request -->
+				<p style="color: blue">Sorry, no members matched your search. <a href="{% url 'users.views.members' %}">Clear filters?</a></p>
+			{% endif %}
 			{% for user in users %}
 				<div class="officer-member grow">
 					{% if user.picture %}
