@@ -1,0 +1,63 @@
+{% extends "website/header_footer.html" %}
+{% load staticfiles %}
+{% block javascript %}
+  <link rel="shortcut icon" href="{% static "website/favicon.ico" %}" type="image/x-icon">
+  <link rel=icon href="{% static "website/favicon.ico" %}" type="image/x-icon">
+  <link href="{% static "website/css/bootstrap.min.css" %}" rel="stylesheet">
+  <link href="{% static "website/css/header_style.css" %}" rel="stylesheet">
+  <link href="{% static "website/css/interview.css" %}" rel="stylesheet">
+
+  	<script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
+	<script src="{% static "website/js/modernizr_custom_79639.js" %}"></script>
+  	<script src="{% static "website/js/ba_cond.min.js" %}"></script>
+  	<!-- <script src="{% static "website/js/landingpage_banner_custom.js" %}"></script> -->
+  	<script src="{% static "website/js/landingpage_main_custom.js" %}"></script>
+  	<script src="{% static "website/js/isotope.min.js" %}"></script>
+  	<script src="{% static "website/js/office_hours.json" %}"></script>
+  	<script src="{% static "website/js/office_hours.js" %}"></script>
+ 	<script src="{% static "website/js/bootstrap.min.js" %}"></script>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2" id="questions-sidebar">
+			<h2 style="text-align: center">Questions</h2>
+			<table class="table table-hover" id="questions-table">
+				<tr><th class="question-cat" id="Arrays"><strong>Arrays</strong><span class="caret"></span></th></tr>
+					<tr><td class="question" data-target="Arrays">Array 1</td></tr>
+					<tr><td class="question" data-target="Arrays">Array 2</td></tr>
+					<tr><td class="question" data-target="Arrays">Array 3</td></tr>
+				<tr><th class="question-cat" id="Linked-Lists"><strong>Linked Lists</strong><span class="caret"></span></th></tr>
+					<tr><td class="question" data-target="Linked-Lists">LL 1</td></tr>
+					<tr><td class="question" data-target="Linked-Lists">LL 2</td></tr>
+					<tr><td class="question" data-target="Linked-Lists">LL 3</td></tr>
+				<tr><th class="question-cat" id="Trees"><strong>Trees</strong><span class="caret"></span></th></tr>
+				<tr><th class="question-cat" id="Bitwise Ops"><strong>Bitwise Ops</strong><span class="caret"></span></th></tr>
+			</table>
+		</div>
+		<div class="col-md-9" id="targ-question">
+			<h2 id="question-title">Sample Question Title</h2>
+			<p id="question-txt"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+			<p id="question-img"></p>
+			<div id="soln-handler">
+				<button class="btn btn-primary" id="toggle-soln" type="button" data-toggle="collapse" data-target="#question-soln" aria-expanded="false">Toggle Solution</button>
+				<div class="collapse" id="question-soln">
+					<div class="well">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+				</div>
+			</div>
+			<div id="nav-questions">
+				<button class="btn btn-primary" id="prev-question">Previous Question</button>
+				<button class="btn btn-primary" id="next-question">Next Question</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$(function() {
+		$(".question").hide();
+	});
+	$(".question-cat").click(function() {
+		$("[data-target=" + $(this).attr("id") + "]").slideToggle(100);
+	});
+</script>
+{% endblock %}

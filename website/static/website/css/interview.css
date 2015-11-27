@@ -1,0 +1,19 @@
+#questions-sidebar {
+	height: 600px;
+	border: 1px solid black;
+	overflow: auto;
+}
+#questions-table {
+	cursor: pointer;
+}
+#targ-question {
+	height: 600px;
+	overflow: auto;
+}
+#question-soln {
+	margin-top: 10px;
+}
+#nav-questions {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
