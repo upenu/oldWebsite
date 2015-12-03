@@ -26,8 +26,18 @@
         <br />
         <input type="submit" class="btn-green" value="Login" />
     </form>
+
     <div class="register-container">
         <ul>
+          <li>
+             <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
+           </li>
+           <li>
+             <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google</a>
+           </li>
+           <li>
+             <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Login with Twitter</a>
+           </li>
             <li><span>Not a member yet?</span> <a class="register" href="/register">Register</a></li>
             <li><span>Forgot your password?</span> <a class="register" href="/accounts/password_reset">Reset Password</a></li>
         </ul>

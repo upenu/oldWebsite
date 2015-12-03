@@ -12,7 +12,7 @@
 <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
 {% endblock %}
 {% block content %}
-<div class="content-container"> 
+<div class="content-container">
 
     {% if registered %}
     <strong>Thanks for registering an account with UPE! Please wait up to 2 days for approval.</strong>
@@ -33,7 +33,6 @@
             <label>{{ profile_form.user_type.label }}</label>
             {{ profile_form.user_type }}
         </div>
-
 
         <div class="form-field first_name">
             <label>{{ user_form.first_name.label }}</label>
@@ -64,6 +63,17 @@
     </form>
     {% endif %}
     <div class="login-container">
+      <ul>
+        <li>
+           <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
+         </li>
+         <li>
+           <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google</a>
+         </li>
+         <li>
+           <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Login with Twitter</a>
+         </li>
+       </ul>
         <span class="login-text">Already a member?</span> <a class="login" href="/login">Login</a>
     </div>
 </div>

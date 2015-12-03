@@ -18,6 +18,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '9+!w(w9&qra8zp)k(^xq%i!3flgnipy4m_84&o8bf7#&&4nvl!'
+SOCIAL_AUTH_FACEBOOK_KEY = '1636610166620222'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'cdee9718c25fa87dec38022246af441a'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '408450188124-m8m6fg1qk6jghqsuuftktf96qso7bhg2.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'u4yC9izdYi8P4Rpku5aNPj2X'
+SOCIAL_AUTH_TWITTER_KEY = '2V9j8no3cwZbaaLGRO8Hy7yhF'
+SOCIAL_AUTH_TWITTER_SECRET = '8UUUipY2a2VlHjfgrkgZz6NLGnNv7EcEoIQjmG6uOhyjD8m4L4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,7 +45,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'website',
     'upe_calendar',
-    'users'
+    'users',
+    'social.apps.django_app.default'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,6 +62,31 @@ ROOT_URLCONF = 'upe.urls'
 
 WSGI_APPLICATION = 'upe.wsgi.application'
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+   'django.contrib.auth.context_processors.auth',
+   'django.core.context_processors.debug',
+   'django.core.context_processors.i18n',
+   'django.core.context_processors.media',
+   'django.core.context_processors.static',
+   'django.core.context_processors.tz',
+   'django.contrib.messages.context_processors.messages',
+   'social.apps.django_app.context_processors.backends',
+   'social.apps.django_app.context_processors.login_redirect',
+)
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.user.create_user',
+    'users.pipeline.save_profile',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+    'users.pipeline.save_profile_picture',
+    'users.pipeline.user_login',
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -92,7 +124,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-AUTHENTICATION_BACKENDS = ('users.backends.CustomBackend',)
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'users.backends.CustomBackend',
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    )
 
 from django.conf import global_settings
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + ("website.processor.populate_footer",)
@@ -105,3 +143,6 @@ EMAIL_PORT      = 25
 EMAIL_USE_TLS   = False
 DEFAULT_FROM_EMAIL  = 'Do-Not-Reply <atlantis@upe.cs.berkeley.edu>'
 
+
+# For facebook/google/twitter
+LOGIN_REDIRECT_URL = '/'
