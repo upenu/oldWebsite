@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_markdown',
+    'django_mathjax',
     'website',
     'upe_calendar',
     'users'
@@ -104,4 +106,15 @@ EMAIL_HOST_USER = ''
 EMAIL_PORT      = 25
 EMAIL_USE_TLS   = False
 DEFAULT_FROM_EMAIL  = 'Do-Not-Reply <atlantis@upe.cs.berkeley.edu>'
+
+MATHJAX_ENABLED=True
+
+MATHJAX_CONFIG_DATA = {
+  "tex2jax": {
+    "inlineMath":
+      [
+          ['\\(','\\)']
+      ]
+  }
+}
 

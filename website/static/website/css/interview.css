@@ -1,15 +1,21 @@
 #questions-sidebar {
 	height: 600px;
-	border: 1px solid black;
 	overflow: auto;
 }
 #questions-table {
 	cursor: pointer;
 }
 #targ-question {
-	height: 600px;
+	height: 800px;
 	overflow: auto;
 }
+
+#targ-question iframe {
+    height: 100%;
+    width: 100%;
+}
+
+
 #question-soln {
 	margin-top: 10px;
 }

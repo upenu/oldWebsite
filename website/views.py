@@ -8,6 +8,7 @@ from django.forms import *
 from django.core.serializers.json import DjangoJSONEncoder
 import json, re
 from users.models import *
+from website.models import *
 
 def index(request):
     template = loader.get_template('website/index.html')
@@ -23,4 +24,9 @@ def oh(request):
     return render(request, 'website/oh.html', {})
 
 def interview(request):
-	return render(request, 'website/interview.html', {})
+    questions = Question.objects.order_by('difficulty')
+    return render(request, 'website/interview.html', { 'questions': questions})
+    
+def interview_question(request, ident):
+    question = Question.objects.get(id=int(ident))
+    return render(request, 'website/interview_question.html', {'question': question})

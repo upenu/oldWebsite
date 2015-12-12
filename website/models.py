@@ -1,19 +1,27 @@
 from django.db import models
+from django_markdown.models import MarkdownField
 
-class QuestionCategory(models.Model):
-	category_title = models.CharField(max_length=100)
+class QuestionTag(models.Model):
+    tag = models.CharField(max_length=100)
+    def __str__(self):
+        return self.tag
 
 class Question(models.Model):
-	question_category = models.ForeignKey(QuestionCategory)
-	question_title = models.CharField(max_length=100)
-	question_text = models.CharField(max_length=1000)
-	question_soln = models.CharField(max_length=1000)
-	question_difficulty = models.PositiveSmallIntegerField()
+    tags = models.ManyToManyField(QuestionTag)
+    title = models.CharField(max_length=100)
+    text = MarkdownField()
+    solution = MarkdownField()
+    difficulty = models.PositiveSmallIntegerField()
+    
+    def __str__(self):
+        return self.title
+    
 
 class QuestionImage(models.Model):
-	question = models.ForeignKey(Question)
-	img = models.ImageField(upload_to='question_images', null=True)
-	for_soln = models.BooleanField(default=False) # whether this image is for the soln of the question
+    question = models.ForeignKey(Question)
+    img = models.ImageField(upload_to='question_images', null=True)
+    for_soln = models.BooleanField(default=False) # whether this image is for the soln of the question
+    
 
 
 

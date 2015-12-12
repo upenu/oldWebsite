@@ -2,3 +2,5 @@ Django==1.7
 Pillow==2.4.0
 psycopg2==2.5.3
 pystache==0.5.4
+django-markdown==0.8.4
+django-mathjax==0.0.5
