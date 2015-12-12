@@ -11,5 +11,6 @@ urlpatterns = patterns('',
     url(r'^$', 'website.views.index', name='index'),
     url(r'^oh/$', 'website.views.oh', name='oh'),
     url(r'^interview/$', 'website.views.interview', name='interview'),
-    url(r'^interview/question/(?P<ident>\d+)/$', 'website.views.interview_question', name='interview_question')
+    url(r'^interview/question/(?P<ident>\d+)/$', 'website.views.interview_question', name='interview_question'),
+    url(r'^interview/tagged/(?P<tag>.+)/$', 'website.views.interview_tagged', name='interview_tagged')
 )

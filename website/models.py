@@ -17,12 +17,6 @@ class Question(models.Model):
         return self.title
     
 
-class QuestionImage(models.Model):
-    question = models.ForeignKey(Question)
-    img = models.ImageField(upload_to='question_images', null=True)
-    for_soln = models.BooleanField(default=False) # whether this image is for the soln of the question
-    
-
 
 
 

@@ -118,3 +118,5 @@ MATHJAX_CONFIG_DATA = {
   }
 }
 
+MARKDOWN_EXTENSIONS = ['extra']
+

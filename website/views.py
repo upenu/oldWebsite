@@ -30,3 +30,8 @@ def interview(request):
 def interview_question(request, ident):
     question = Question.objects.get(id=int(ident))
     return render(request, 'website/interview_question.html', {'question': question})
+    
+def interview_tagged(request, tag):
+    tagObj = QuestionTag.objects.get(tag=tag)
+    questions = Question.objects.filter(tags=tagObj).order_by('difficulty')
+    return render(request, 'website/interview.html', {'questions': questions})

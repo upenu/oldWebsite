@@ -17,6 +17,7 @@
  	<script src="{% static "website/js/bootstrap.min.js" %}"></script>
     {% mathjax_scripts %}
 {% endblock %}
+<div id="question-wrapper">
 <h2 id="question-title">{{question.title}}</h2>
 <p id="question-txt">{{question.text|markdown}}</p>
 <div id="soln-handler">
@@ -25,9 +26,12 @@
 		<div class="well">{{question.solution|markdown}}</div>
 	</div>
 </div>
+</div>
+<!--
+ADD SUPPORT FOR THESE LATER
 <div id="nav-questions">
 	<button class="btn btn-primary" id="prev-question">Previous Question</button>
 	<button class="btn btn-primary" id="next-question">Next Question</button>
-</div>
+</div>-->
 <script>
 </script>
