@@ -48,12 +48,12 @@
 		<h1>{{ title }}</h1>
 		<form action="{% url 'members_filter' %}" method="post">
 			{% csrf_token %}
-			<p style="margin-bottom: 5px"><span style="font-weight: bold">Filter By</span>: 
+			<p style="margin-bottom: 40px"><span style="font-weight: bold">Filter By</span>: 
 				<span style="margin-left: 10px">
 				Name <input type="text" name="membername" placeholder="Search by name" value="{{ name_filter }}">
 				</span>
 				<span style="margin-left: 5px">
-				Graduation Year <select name="gradyear">
+				Graduation Year <select class="filter" name="gradyear">
 					<option></option>
 					<option>2015</option>
 					<option>2016</option>
@@ -61,7 +61,7 @@
 					<option>2018</option>
 				</select>
 				<span style="margin-left: 5px">
-				Member Since <select name="membersince">
+				Member Since <select class="filter" name="membersince">
 					<option></option>
 					<option>Fall 2012</option>
 					<option>Spring 2012</option>
