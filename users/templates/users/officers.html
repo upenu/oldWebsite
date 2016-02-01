@@ -40,7 +40,7 @@
                 </span>
             </h2>
 		{% for user in position.users %}
-            	<div class='officer-position grow' data-toggle="modal" data-target="#{{ user.user|cut:"." }}">
+            	<div class='officer-position grow' data-toggle="modal" data-target="#{{ user.user|cut:"."|cut:"@" }}">
                     <div class="officer-member">
                         {% if user.picture %}
                             <img class="officer-member-picture" src="/media/{{user.picture}}">
@@ -81,7 +81,7 @@
        </div>
        {% for position in positions %}
        		{% for user in position.users %}
-       			<div id={{ user.user|cut:"." }} class="modal fade" role="dialog">
+       			<div id={{ user.user|cut:"."|cut:"@" }} class="modal fade" role="dialog">
 				  	<div class="modal-dialog">
 				   		<div class="modal-content">
 				    		<div class="modal-header">
