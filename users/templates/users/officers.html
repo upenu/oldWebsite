@@ -39,7 +39,6 @@
                 </span>
             </h2>
 		{% for user in position.users %}
-				<a href="#">
             	<div class='officer-position grow' data-toggle="modal" data-target="#{{ user.user }}">
                     <div class="officer-member">
                         {% if user.picture %}
@@ -74,7 +73,6 @@
                         </div>
                     </div>
 				</div>
-				</a>
         {% endfor %}
        {% endfor %}
        </div>
