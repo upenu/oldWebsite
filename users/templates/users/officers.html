@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="{% static "website/css/main_style.css" %}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{% static "website/css/header_style.css" %}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{% static "website/css/footer_style.css" %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static "website/css/hover.css" %}" type="text/css" media="screen" />
 	<link rel="stylesheet" href="{% static "users/css/officers_members.css" %}" type="text/css" media="screen" />
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
@@ -40,7 +40,7 @@
                 </span>
             </h2>
 		{% for user in position.users %}
-            	<div class='officer-position grow' data-toggle="modal" data-target="#{{ user.user|cut:"."|cut:"@" }}">
+            	<div class='officer-position grow'>
                     <div class="officer-member">
                         {% if user.picture %}
                             <img class="officer-member-picture" src="/media/{{user.picture}}">
@@ -70,6 +70,7 @@
                                 {% if user.personal_website %}
                                     <li><a href="http://{{ user.personal_website }}"><i class="fa fa-globe"></i></a></li>
                                 {% endif %}
+                                	<li><i onmouseover="this.style.cursor='pointer';"class="fa fa-comment" data-toggle="modal" data-target="#{{ user.user|cut:"."|cut:"@" }}"></i></li>
                             </ul>
                         </div>
                     </div>
