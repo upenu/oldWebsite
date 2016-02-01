@@ -7,7 +7,7 @@ from users.models import *
 #    extra = 1
 
 class OfficerAdmin(admin.ModelAdmin):
-    fields = ('user', 'position', 'term')
+    fields = ('user', 'position', 'term', 'bio')
 #    inlines = (ClassesTakenInline,)
 
 admin.site.register(UserProfile)

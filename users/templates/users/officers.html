@@ -11,9 +11,11 @@
 	<link rel="stylesheet" href="{% static "users/css/officers_members.css" %}" type="text/css" media="screen" />
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Arimo:400,700' type='text/css'>
+	<link rel="stylesheet" href="{% static "website/css/bootstrap.modals.css" %}" type="text/css" media="screen"/> 
 {% endblock %}
 {% block javascript %}
-	<script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="{% static "website/js/bootstrap.modals.js" %}"></script> 
 {% endblock %}
 {% block content %}
 <div class="content-container">
@@ -28,7 +30,7 @@
 	</div>
 	<div id="officer-member-container">
 		<div id="officer-members">
-			{% for position in positions %}
+	{% for position in positions %}
             <h2 class="position-container">
                 <span class="position-label" id="{{position.email_name}}">{{position.full_name}} 
                     <span class="position-email">
@@ -36,9 +38,10 @@
                     </span>
                 </span>
             </h2>
-            <div class='officer-position'>
-                {% for user in position.users %}
-                    <div class="officer-member grow">
+		{% for user in position.users %}
+				<a href="#">
+            	<div class='officer-position grow' data-toggle="modal" data-target="#{{ user.user }}">
+                    <div class="officer-member">
                         {% if user.picture %}
                             <img class="officer-member-picture" src="/media/{{user.picture}}">
                         {% else %}
@@ -46,6 +49,7 @@
                             <img class="officer-member-picture" src="/media/profile_images/spock.jpg">
                             {% endif %}
                         {% endif %}
+
                         <div class="officer-member-info">
                             <span class="name">{{ user }}</span>
                             <span class="year">Computer Science, {{ user.get_grad_year_display }}</span>
@@ -69,10 +73,28 @@
                             </ul>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
-            {% endfor %}
-		</div>
-	</div>
-</div>
+				</div>
+				</a>
+        {% endfor %}
+       {% endfor %}
+       </div>
+       </div>
+       </div>
+       {% for position in positions %}
+       		{% for user in position.users %}
+       			<div id="{{ user.user }}" class="modal fade" role="dialog">
+				  	<div class="modal-dialog">
+				   		<div class="modal-content">
+				    		<div class="modal-header">
+				      			<button type="button" class="close" data-dismiss="modal">&times;</button>
+				      			<h4 class="modal-title">{{ user }}</h4>
+				    		</div>
+				  			<div class="modal-body">
+				    			<p>{{user.officer_profile.bio}}</p>
+				  			</div>
+				 		</div>
+					</div>
+				</div>
+			{% endfor %}
+		{% endfor %}
 {% endblock %}

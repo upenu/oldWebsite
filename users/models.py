@@ -57,7 +57,8 @@ class OfficerProfile(models.Model):
     position_dict = dict(OFFICER_POSITION_CHOICES)
     position = models.IntegerField(max_length=1, choices=OFFICER_POSITION_CHOICES, default=1)
     term = models.CharField(max_length=5, choices=TERM, default='S15', verbose_name='Officer term')
-    
+    bio = models.TextField(default='Check back soon!')   
+     
     #office_hours = models.ManyToManyField('OfficeHour', blank=True)
     #classes_taken = models.ManyToManyField('BerkeleyClass', through='OfficerClass')
 
