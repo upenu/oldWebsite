@@ -39,3 +39,6 @@ spring_strings =  tuple(('S' + year[2:], 'Spring ' + year) for year in YEAR_STRI
 SEMESTERS = fall_strings + spring_strings
 CURRENT_SEMESTER = spring_strings[-1] if current_time.month < 6 \
         else fall_strings[-1]
+
+
+

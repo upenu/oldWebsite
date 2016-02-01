@@ -1,5 +1,6 @@
 {% extends "website/header_footer.html" %}
 {% load staticfiles %}
+{% load custom_filters %}
 {% block stylesheets %}
 	<link rel="stylesheet" href="{% static "website/css/reset.css" %}" type="text/css" media="screen" />
 	<link rel="stylesheet" href="{% static "website/css/full_style.css" %}" type="text/css" media="screen" />
@@ -80,7 +81,7 @@
        </div>
        {% for position in positions %}
        		{% for user in position.users %}
-       			<div id="{{ user.user|replace(".", "9") }}" class="modal fade" role="dialog">
+       			<div id={{ user.user|cut:"." }} class="modal fade" role="dialog">
 				  	<div class="modal-dialog">
 				   		<div class="modal-content">
 				    		<div class="modal-header">
