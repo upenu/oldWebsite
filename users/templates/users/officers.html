@@ -80,7 +80,7 @@
        </div>
        {% for position in positions %}
        		{% for user in position.users %}
-       			<div id="{{ user.user }}" class="modal fade" role="dialog">
+       			<div id="{{ user.user|replace(".", "9") }}" class="modal fade" role="dialog">
 				  	<div class="modal-dialog">
 				   		<div class="modal-content">
 				    		<div class="modal-header">
