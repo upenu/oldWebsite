@@ -5,6 +5,12 @@ If you're getting image not found:
 
 export DYLD_LIBRARY_PATH=/Applications/Postgres.app/Contents/Versions/9.3/lib
 
+General Conventions:
+- Simpler models are better
+- Commit all of your migration scripts
+- Don't commit unnecessary stuff (settings.py...)
+- It's too late now, but try not to store things like passwords and auth in code for the future
+
 Coding Conventions:
 - Use "_" for filenames
 - User "-" for class names
