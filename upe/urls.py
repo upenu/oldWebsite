@@ -38,5 +38,6 @@ urlpatterns = patterns('',
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.STATIC_ROOT,
     }),
-    
+    url('', include('social.apps.django_app.urls', namespace='social')),
+
 )

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from users.models import *
 
 # class CompletionForm(forms.Form):
-#     requirements = forms.ModelChoiceField(queryset=Requirement.objects.all()) 
+#     requirements = forms.ModelChoiceField(queryset=Requirement.objects.all())
 #     candidates = forms.ModelChoiceField(queryset=CandidateProfile.objects.all())
 
 class UserForm(forms.ModelForm):
@@ -19,11 +19,11 @@ class UserForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('user_type',) 
+        fields = ('user_type',)
 
 class ResumeUploadForm(forms.Form):
     resume = forms.FileField(label='Upload a PDF')
 
 class ProfilePicChangeForm(forms.Form):
     picture = forms.ImageField(label='')
-        
+
