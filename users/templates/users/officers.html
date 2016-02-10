@@ -41,6 +41,7 @@
                 </h2>
             </h2>
 			!-->
+          <a name="{{position.email_name}}"></a>
 		{% for user in position.users %}
             	<div class='officer-position grow'>
                     <div class="officer-member">
@@ -54,12 +55,12 @@
 
                         <div class="officer-member-info">
                             <span class="name">{{ user }}</span>
-							<span class="joined">{{position.full_name}}</span>
+							<span class="position_name">{{position.full_name}}</span>
                             <span class="year">Computer Science, {{ user.get_grad_year_display }}</span>
                             
-                            {% if logged_in %}
+                            
                                 <span class="email">{{position.email}}</span>
-                            {% endif %}
+                            
                             <ul class="social">
                                 {% if user.linkedin %}
                                     <li><a href="{{ user.linkedin }}"><i class="fa fa-linkedin"></i></a></li>
@@ -101,3 +102,4 @@
 			{% endfor %}
 		{% endfor %}
 {% endblock %}
+
