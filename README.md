@@ -65,4 +65,4 @@ To change your local django admin username/password
 
 # Mailing List Documentation
 To make sure that the update script (`update.sh`) runs, the owner of all the postfix-related files must be `postfix`.
-- e.g. if edits to `virtual` changes the owner, do `chmod postfix virtual`.
+- e.g. if edits to `virtual` changes the owner, do `chown postfix virtual`.
