@@ -97,7 +97,7 @@
             {% for event in events %}
             <div class="events-list-item float">
                 <h1>{{ event.name }}</h1>
-                <p><span>Date:</span> {{ event.start_time.date }}</br><span>Time:</span> {{ event.start_time|date:"g:i A" }} </br><span>Location:</span> {{ event.location }}</p>
+                <p><span>Date:</span> {{ event.start_time|date:"m/d/y" }}</br><span>Time:</span> {{ event.start_time|date:"g:i A" }} </br><span>Location:</span> {{ event.location }}</p>
                 <div class="description">
                   <div class="events-list-description-image" style="background-image: url({{ event.banner }});"></div>
                   <div class="description-text">
