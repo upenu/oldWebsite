@@ -29,16 +29,19 @@
             {% endfor %}
 		</ul>
 	</div>
-	<div id="officer-member-container">
+	<div id="officer-member-container" >
 		<div id="officer-members">
 	{% for position in positions %}
+	<!--
             <h2 class="position-container">
-                <span class="position-label" id="{{position.email_name}}">{{position.full_name}} 
-                    <span class="position-email">
+                <h2 class="position-label" id="{{position.email_name}}">{{position.full_name}}
+                    <h2 class="position-email">
                         (<a href="mailto:{{position.email}}">{{position.email}}</a>)
-                    </span>
-                </span>
+                    </h2>
+                </h2>
             </h2>
+			!-->
+          <a name="{{position.email_name}}"></a>
 		{% for user in position.users %}
             	<div class='officer-position grow'>
                     <div class="officer-member">
@@ -52,11 +55,12 @@
 
                         <div class="officer-member-info">
                             <span class="name">{{ user }}</span>
+							<span class="position_name">{{position.full_name}}</span>
                             <span class="year">Computer Science, {{ user.get_grad_year_display }}</span>
-                            <span class="joined">Member since {{ user.get_year_joined_display }}</span>
-                            {% if logged_in %}
-                                <span class="email">{{ user.user.email }}</span>
-                            {% endif %}
+                            
+                            
+                                <span class="email">{{position.email}}</span>
+                            
                             <ul class="social">
                                 {% if user.linkedin %}
                                     <li><a href="{{ user.linkedin }}"><i class="fa fa-linkedin"></i></a></li>
@@ -98,3 +102,4 @@
 			{% endfor %}
 		{% endfor %}
 {% endblock %}
+

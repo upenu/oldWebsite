@@ -7,6 +7,7 @@ h1 {
 	margin: 0 auto;
 	min-height: 300px;
 	float: left;
+	width:800px;
 }
 
 #main-content-wrapper .officer-member {
@@ -113,18 +114,26 @@ h1 {
 
 #main-content-wrapper .officer-position {
     padding: 10px;
+	
 }
 
 #main-content-wrapper .position-label {
-    border-bottom: 2px solid #3eacc7;
+    text-align:center;
 }
 
 /* See https://css-tricks.com/hash-tag-links-padding/ */
+
 #main-content-wrapper .position-container:before {
     display: block;
+	width: 150px;
+    margin: 10px;
     content: " ";
     margin-top: -50px;
     height: 50px;
-    visibility: hidden;
+    
+    
 }
+
+
+
 
