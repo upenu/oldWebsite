@@ -26,7 +26,7 @@ $(document).ready(function () {
 		var hours = '';
 
         tile.find('.normal').attr('src', '/media/profile_images/' + officer.name + '.jpg');
-        tile.find('.soy').attr('src', '/media/profile_images/Soy - ' + officer.name + '.jpg');
+        tile.find('.soy').attr('src', '/media/profile_images/' + officer.name + '.jpg');
         tile.find('.soy').hide();
 
         for (var j = 0; j < officer.courses.length; j++) {
