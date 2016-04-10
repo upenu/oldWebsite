@@ -21,3 +21,6 @@ def index(request):
 
 def oh(request):
     return render(request, 'website/oh.html', {})
+
+def ir(request):
+	return render(request, 'website/ir.html', {})
