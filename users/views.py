@@ -187,6 +187,8 @@ def myprofile(request):
     #    w = 3
     #if up.get_user_type_display == "Officer":
     #    op = OfficerProfile.objects.get(user=user)
+ 
+
         		
     resume_form = ResumeUploadForm()
     profile_pic_form = ProfilePicChangeForm()
