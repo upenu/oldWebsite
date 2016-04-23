@@ -85,7 +85,7 @@ a {
 
 #main-ir-inner-wrapper {
   width: 990px;
-  height: 1500px;
+  height: 1600px;
   margin: 0px auto 30px auto;
 }
 
@@ -112,7 +112,7 @@ a {
 }
 
 #content-ir-wrap {
-  height: 1200px;
+  height: 1350px;
 }
 
 #content-ir-text {
@@ -131,8 +131,32 @@ a {
   line-height: 20px;
 }
 
+#anchor-right {
+  position: fixed;
+  font-size: 20px;
+  height: 60px;
+  width: 200px;
+  padding: 10px;
+  top: 210px;
+  right: 240px;
+  border: 2px solid #43ACC5;
+}
 
+#anchor-right h1 {
+  font-weight: 800;
+  padding-bottom: 5px;
+}
 
+#anchor-right p {
+  font-size: 16px;
+}
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -75px;
+    visibility: hidden;
+}
 
 
 
