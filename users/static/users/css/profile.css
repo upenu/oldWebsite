@@ -54,6 +54,17 @@
   margin: 10px 0 15px 0;
 }
 
+.requirements-info-container ul {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+
+.requirements-info-container ul li {
+  margin: 5px 0 5px 0;
+}
+
+
 .title {
   font-weight: 800;
   font-weight: 800;
@@ -82,6 +93,9 @@
   -webkit-flex: 0 0 300px;
 }
 
+.requirements-info-container {
+  -webkit-flex: 300 300 300px;
+}
 
 .circular {
   width: 200px;

@@ -152,7 +152,31 @@
           </div>
         </div>
       </div>
+      {% if up.get_user_type_display == "Candidate" %}
+      <div class="requirements-info-container">
+        <span class="title">General Requirements</span>
+        <ul>
+          {% for req_title, req in gen_req_tuple %}
+          <li>
+              <label class="req-title">{{ req_title.value }}:</label>
+              <span class="req">{{ req.value }}</span>
+          </li>
+          {% endfor %}
+        </ul>
     </div>
+      <div class="requirements-info-container">
+        <span class="title">Committee Requirements</span>
+        <ul>
+          {% for req_title, req in com_req_tuple %}
+          <li>
+              <label class="attribute">{{ req_title.value }}:</label>
+              <span class="req">{{ req.value }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
 </div>
 {% endblock %}
 
