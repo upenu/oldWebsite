@@ -103,4 +103,3 @@ EMAIL_HOST_USER = ''
 EMAIL_PORT      = 25
 EMAIL_USE_TLS   = False
 DEFAULT_FROM_EMAIL  = 'Do-Not-Reply <atlantis@upe.cs.berkeley.edu>'
-
