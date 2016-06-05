@@ -3,3 +3,5 @@ Pillow==2.4.0
 python-dateutil==2.5.2
 mysqlclient==1.3.7
 pystache==0.5.4
+django-markdown==0.8.4
+django-mathjax==0.0.5

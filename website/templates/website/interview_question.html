@@ -1,0 +1,37 @@
+{% load staticfiles %}
+{% load mathjax %}
+{% load django_markdown %}
+{% block javascript %}
+  <link href="{% static "website/css/bootstrap.min.css" %}" rel="stylesheet">
+  <link href="{% static "website/css/header_style.css" %}" rel="stylesheet">
+  <link href="{% static "website/css/interview.css" %}" rel="stylesheet">
+
+  	<script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
+	<script src="{% static "website/js/modernizr_custom_79639.js" %}"></script>
+  	<script src="{% static "website/js/ba_cond.min.js" %}"></script>
+  	<!-- <script src="{% static "website/js/landingpage_banner_custom.js" %}"></script> -->
+  	<script src="{% static "website/js/landingpage_main_custom.js" %}"></script>
+  	<script src="{% static "website/js/isotope.min.js" %}"></script>
+  	<script src="{% static "website/js/office_hours.json" %}"></script>
+  	<script src="{% static "website/js/office_hours.js" %}"></script>
+ 	<script src="{% static "website/js/bootstrap.min.js" %}"></script>
+    {% mathjax_scripts %}
+{% endblock %}
+<div id="question-wrapper">
+<h2 id="question-title">{{question.title}}</h2>
+<p id="question-txt">{{question.text|markdown}}</p>
+<div id="soln-handler">
+	<button class="btn btn-primary" id="toggle-soln" type="button" data-toggle="collapse" data-target="#question-soln" aria-expanded="false">Show Solution</button>
+	<div class="collapse" id="question-soln">
+		<div class="well">{{question.solution|markdown}}</div>
+	</div>
+</div>
+</div>
+<!--
+ADD SUPPORT FOR THESE LATER
+<div id="nav-questions">
+	<button class="btn btn-primary" id="prev-question">Previous Question</button>
+	<button class="btn btn-primary" id="next-question">Next Question</button>
+</div>-->
+<script>
+</script>

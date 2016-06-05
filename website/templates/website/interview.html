@@ -1,0 +1,57 @@
+{% extends "website/header_footer.html" %}
+{% load staticfiles %}
+{% block javascript %}
+  <link rel="shortcut icon" href="{% static "website/favicon.ico" %}" type="image/x-icon">
+  <link rel=icon href="{% static "website/favicon.ico" %}" type="image/x-icon">
+  <link href="{% static "website/css/bootstrap.min.css" %}" rel="stylesheet">
+  <link href="{% static "website/css/header_style.css" %}" rel="stylesheet">
+  <link href="{% static "website/css/interview.css" %}" rel="stylesheet">
+
+  	<script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
+	<script src="{% static "website/js/modernizr_custom_79639.js" %}"></script>
+  	<script src="{% static "website/js/ba_cond.min.js" %}"></script>
+  	<!-- <script src="{% static "website/js/landingpage_banner_custom.js" %}"></script> -->
+  	<script src="{% static "website/js/landingpage_main_custom.js" %}"></script>
+  	<script src="{% static "website/js/isotope.min.js" %}"></script>
+  	<script src="{% static "website/js/office_hours.json" %}"></script>
+  	<script src="{% static "website/js/office_hours.js" %}"></script>
+ 	<script src="{% static "website/js/bootstrap.min.js" %}"></script>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-2" id="questions-sidebar">
+			<table class="table table-hover" id="questions-table">
+				{% for q in questions %}
+                <tr><td class="question" id="{{q.id}}">
+                    <b>{{q.title}}</b><br>
+                    {% for tag in q.tags.all %}
+                    <span class="tag">{{tag}}</span>
+                    {% endfor %}
+                </td></tr>
+                {% endfor %}
+			</table>
+		</div>
+		<div class="col-xs-10" id="targ-question">
+			<iframe id="question_frame" frameborder="0"></iframe>
+		</div>
+	</div>
+</div>
+<script>
+	$(".question").click(function(event) {
+	    var elements = document.getElementsByClassName("question")
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].style.backgroundColor= "#fff";
+        }
+	    event.target.style.backgroundColor = "#eee";
+	    var id = event.target.id;
+	    var container = $("#targ-question");
+	    container.empty();
+	    container.append("<iframe src='/interview/question/" + id + "' frameborder='0'/>");
+	});
+	$(".tag").click(function(event) {
+	    var name = event.target.innerHTML;
+	    window.location.href = window.location.href.split("/interview/")[0] + "/interview/tagged/" + name;
+	});
+</script>
+{% endblock %}
