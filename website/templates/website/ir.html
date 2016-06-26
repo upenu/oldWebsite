@@ -1,0 +1,116 @@
+{% extends "website/header_footer.html" %}
+{% load staticfiles %}
+{% block javascript %}
+  <link rel="shortcut icon" href="{% static "website/favicon.ico" %}" type="image/x-icon">
+  <link rel=icon href="{% static "website/favicon.ico" %}" type="image/x-icon">
+
+  <script src="{% static "website/js/landingpage_banner_custom.js" %}"></script>
+  <script src="{% static "website/js/landingpage_main_custom.js" %}"></script>
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+
+<div id="main-wrapper">
+  <div id="main-ir-inner-wrapper">
+    <div id="content-ir-wrapper">
+      <div id="content-ir-header-wrapper">
+        <h1>Frequently Asked Questions</h1>
+      </div>
+      <div id="content-ir-wrap">
+
+      <div id="content-ir-text">
+        <a href="#q1">Do I have to be a CAP-member to hold an event?</a><br>
+        <a href="#q2">When/where can info sessions be held? Best time and place?</a><br>
+        <a href="#q3">How is the event advertised?</a><br>
+        <a href="#q4">How much does it cost?</a><br>
+        <a href="#q5">Can it be co-sponsored?</a><br>
+        <a href="#q6">How can I become a CAP-member?</a><br>
+        <a href="#q7">What is the student turnout for an event?</a><br>
+        <a href="#q8">Have you worked with startups before?</a><br>
+        <a href="#q9">How early should we contact if we are interested in an event?</a><br>
+        <a href="#q10">Who should I contact?</a><br>
+      </div>
+        
+        <div id="content-ir-text">
+          <a class="anchor" name="q1"></a>
+          <h1>Do I have to be a CAP-member to hold an event?</h1>
+          <p>No, you don’t have to be a CAP-member to hold and event with UPE and the CS community at Cal. Though without this membership, you may not actively recruit and collect resumes at the event.</p>
+        </div>
+        <div id="content-ir-text">
+          <a class="anchor" name="q2"></a>
+          <h1>When/where can info sessions be held? Best time and place?</h1>
+          <p>We typically host it in a room appropriate for the venue. It could be the Wozniak Lounge to a spacious room in Soda Hall. It is more a case-by-case basis. We typically host the events around 6PM if we can and have them go for about an hour.</p>
+        </div>
+        <div id="content-ir-text">
+          <a class="anchor" name="q3"></a>
+          <h1>How is the event advertised?</h1>
+          <p>We make sure to let our honor society members know about the events, get the word out to the general computer science community, place flyers throughout computer science hotspots, Facebook events, and more.</p>
+        </div>
+        <div id="content-ir-text">
+          <a class="anchor" name="q4"></a>
+          <h1>How much does it cost?</h1>
+          <p>If you are a CAP-member, you have already paid membership, so you are allowed 1 info session per semester with the EECS department. If you would like an event still, we can help setup a non-recruiting event to the general public for $800 and we can host a honor society only recruiting event with just our honor society for $800.</p>
+        </div>
+        <div id="content-ir-text">
+          <a class="anchor" name="q5"></a>
+          <h1>Can it be co-sponsored?</h1>
+          <p>We have done events with other organizers in the past and wouldn’t be opposed to do it again in the future, but we would prefer to be the sole organization. This helps to keep the communication consistent and more reliable when we plan our event.</p>
+        </div>
+        <div id="content-ir-text">
+          <a class="anchor" name="q6"></a>
+          <h1>How can I become a CAP-member?</h1>
+          <p>The EECS department’s liaison Atalie Chan can help further assist you. <br> Her email is <a href="mailto:acchan@eecs.berkeley.edu">acchan@eecs.berkeley.edu</a>.</p>
+        </div>
+        <div id="content-ir-text">
+          <a class="anchor" name="q7"></a>
+          <h1>What is the student turnout for an event?</h1>
+          <p>This really is dependent on the company, the speaker, and time of year. If you email us and we know the topic, we could help better estimate for you the student turnout.</p>
+        </div>
+        <div id="content-ir-text">
+          <a class="anchor" name="q8"></a>
+          <h1>Have you worked with startups before?</h1>
+          <p>Yes we have and the events we have done for startups have gone quite well. This is because startups typically can dedicate people who know the entire (or close to the entire) operations of the company. They bring a wealth of knowledge that students crave and is always a fun give and take environment.</p>
+        </div>
+        <div id="content-ir-text">
+          <a class="anchor" name="q9"></a>
+          <h1>How early should we contact if we are interested in an event?</h1>
+          <p>The sooner we know, the better. This is because we have to book rooms and the closer to the date desired, the harder it is to book a room with enough capacity for the event. A month is a good time to have this booking occur, so anywhere 4+ weeks out from the desired date would be ideal.</p>
+        </div>
+        <div id="content-ir-text">
+            <a class="anchor" name="q10"></a>
+          <h1>Who should I contact?</h1>
+          <p>Please feel free to email <a href="mailto:ir@upe.berkeley.edu">ir@upe.berkeley.edu</a> </p>
+        </div>
+      </div>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+$(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+{% endblock %}
