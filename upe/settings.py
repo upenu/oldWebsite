@@ -60,16 +60,6 @@ WSGI_APPLICATION = 'upe.wsgi.application'
 
 DATABASES = {
     'default': {
-    #'postgres': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'upe_db',
-        'USER': 'admin',
-        'PASSWORD': 'littlewhale',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    },
-    #'default': {
-    'mysql': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'upe_db',
         'USER': 'admin',
