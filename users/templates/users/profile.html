@@ -26,6 +26,7 @@
             </button>
         <span class="name">{{ user.first_name }} {{ user.last_name }}</span>
         <span class="user-type">{{ up.get_user_type_display }}</span>
+		
 
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -48,6 +49,26 @@
                 </div>
             </div>
         </div>
+		
+		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+				<div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Edit your Officer Bio</h4>
+                        </div>
+                    <form action="{% url "myprofile" %}" method="post" >
+					    {% csrf_token %}
+						<p><textarea rows="4" cols="50" name ="value" >
+						{{ up.officer_profile.bio }}</textarea></p>
+						  <input type="submit" name = "name" value ="Submit bio">
+						</form>
+                   
+               </a>
+                </div>
+            </div>
+        </div>
+		
     </div>
     <div class="personal-info-container">
         <span class="title">Personal <i class="fa fa-user"></i></span>
@@ -65,6 +86,7 @@
             </li>
             <li>
                 <label class="attribute"><i class="fa fa-globe"></i> Website*:</label>
+				
                 <a href="#"
                     id="personal_website"
                     data-type="text"
@@ -73,6 +95,7 @@
                     data-title="Website">
                     {{ up.personal_website }}
                 </a>
+			
             </li>
             <li>
                 <label class="attribute"><i class="fa fa-linkedin"></i> LinkedIn*:</label>
@@ -111,10 +134,17 @@
                 <label class="attribute"><i class="fa fa-file"></i> Resume: <span class="resume" data-toggle="modal" data-target="#resume-modal">none</span></label>
             </li>
             {% endif %}
+			
+			{% if up.get_user_type_display == "Officer" %}
+		<li><i class="fa fa-comment"></i> Officer Bio: <a href = "#" data-toggle="modal" data-target="#myModal2">
+              Edit
+            </a> </i></li>
+		{% endif %}
                 <!-- <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#resume-modal">
                   Upload New Resume
                 </button> -->
-        <li> *Note: Include http:// or https:// before the urls </li>
+        <li> 
+		*Note: Include http:// or https:// before the urls </li>
        
          </ul>
     </div>
@@ -269,6 +299,7 @@ $(document).ready(function() {
     $('#github').editable();
     $('#linkedin').editable();
     $('#personal_website').editable();
+	$('#bio').editable();
     $('#name').editable({
         validate: function(value) {
             var myRe = /([a-zA-Z]+\s+[a-zA-Z]+)/;

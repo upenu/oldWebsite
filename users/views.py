@@ -179,6 +179,14 @@ def user_login(request):
 def myprofile(request):
     user = request.user
     up = UserProfile.objects.get(user=user)
+    #wasffs = 1
+    #
+    bio_form = ""
+    #op = up.officer_profile
+    #if op.position:
+    #    w = 3
+    #if up.get_user_type_display == "Officer":
+    #    op = OfficerProfile.objects.get(user=user)        		
     resume_form = ResumeUploadForm()
     profile_pic_form = ProfilePicChangeForm()
     print(request.method)
@@ -195,6 +203,10 @@ def myprofile(request):
             if profile_pic_form.is_valid():
                 up.picture = request.FILES['picture']
                 up.save()
+        elif request.POST['name'] == 'Submit bio':
+            #bio_form = ChangeBioForm(request.POST)
+            up.officer_profile.bio = request.POST['value']
+            up.officer_profile.save()
         elif request.POST['name'] == 'email':
             user.email = request.POST['value']
             user.save()
@@ -221,7 +233,7 @@ def myprofile(request):
             up.grad_year = request.POST['value']
             up.save()
     return render_to_response('users/profile.html', 
-            context_instance=RequestContext(request,{'up': up, 'resume_upload': resume_form, 'profile_pic': profile_pic_form}))
+            context_instance=RequestContext(request,{ 'bio': bio_form, 'up': up, 'resume_upload': resume_form, 'profile_pic': profile_pic_form}))
 
 
 @user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
@@ -341,7 +353,7 @@ def requirements(request):
             newbie.save()
             return HttpResponseRedirect('')
     else:
-        form = CompletionForm()
+        form = 9 #CompletionForm()
     return render(request, 'users/requirements.html',{'form': form,})
 
 
