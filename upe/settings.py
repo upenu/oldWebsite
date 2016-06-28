@@ -23,7 +23,9 @@ SECRET_KEY = '9+!w(w9&qra8zp)k(^xq%i!3flgnipy4m_84&o8bf7#&&4nvl!'
 DEBUG = True
 TEMPLATE_DEBUG = False
 
-
+CONFIG_FILE = open(BASE_DIR + '/upe/upe.config', 'r')
+DATABASE_PASSWORD = CONFIG_FILE.read().strip()
+CONFIG_FILE.close()
 
 LOGIN_URL = '/login/'
 
@@ -61,10 +63,10 @@ WSGI_APPLICATION = 'upe.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'upe_db',
-        'USER': 'admin',
-        'PASSWORD': 'littlewhale',
-        'HOST': '127.0.0.1',
+        'NAME': 'upe',
+        'USER': 'upe',
+        'PASSWORD': DATABASE_PASSWORD,
+        'HOST': 'mysql',
         'PORT': '3306',
     }
 }
@@ -97,10 +99,11 @@ from django.conf import global_settings
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + ("website.processor.populate_footer",)
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST      = 'localhost'
+EMAIL_HOST      = 'localhost' # TODO we need to change this
 EMAIL_HOST_PASSWORD = ''
 EMAIL_HOST_USER = ''
 EMAIL_PORT      = 25
 EMAIL_USE_TLS   = False
 DEFAULT_FROM_EMAIL  = 'Do-Not-Reply <atlantis@upe.cs.berkeley.edu>'
+
 
