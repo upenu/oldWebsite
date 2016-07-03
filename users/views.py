@@ -1,18 +1,20 @@
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
-from users.backends import CustomBackend
 from django.contrib.auth import login
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.mail import send_mail
+from django.conf import settings
 
-from users.models import *
+from users.backends import CustomBackend
 from users.forms import *
-
+from users.models import *
 from users.utils import *
+
+from oauth2client.service_account import ServiceAccountCredentials
+
 import json
+import gspread
 
 def officers(request):
     template = loader.get_template('users/officers.html')
@@ -179,20 +181,55 @@ def user_login(request):
 def myprofile(request):
     user = request.user
     up = UserProfile.objects.get(user=user)
-    #wasffs = 1
-    #
-    bio_form = ""
-    #op = up.officer_profile
-    #if op.position:
-    #    w = 3
-    #if up.get_user_type_display == "Officer":
-    #    op = OfficerProfile.objects.get(user=user)        		
+    bio_form = ""    		
     resume_form = ResumeUploadForm()
     profile_pic_form = ProfilePicChangeForm()
-    print(request.method)
+    gen_req_tuple = []
+    com_req_tuple = []
+    print(up.get_committee_display())
+    if up.get_committee_display() != 'No Committee':
+        print("why is it going here")
+        scope = ['https://spreadsheets.google.com/feeds']
+        credentials = ServiceAccountCredentials.from_json_keyfile_name(settings.DRIVE_KEYFILE_NAME, scope)
+        gc = gspread.authorize(credentials)
+        wks_gen = gc.open(settings.DRIVE_SHEET_NAME).sheet1
+        wks_com = gc.open(settings.DRIVE_SHEET_NAME).worksheet(up.get_committee_display())
+        print(user.first_name + " " + user.last_name)
+        try:
+            user_cell_gen = wks_gen.find(user.first_name + " " + user.last_name)
+            user_cell_com = wks_com.find(user.first_name + " " + user.last_name)
+        except:
+            print("Error finding cell")
+        else:
+            # general requirements stuff
+            gen_req_list = []
+            for col in range(1, wks_gen.col_count+1):
+                if wks_gen.cell(1, col).value != "":
+                    gen_req_list.append(wks_gen.cell(1, col))
+                else:
+                    break
+
+            gen_req_tuple = []
+            for req in gen_req_list:
+                gen_req_tuple.append((req, wks_gen.cell(user_cell_gen.row, req.col)))
+
+            # committee requirements stuff
+            com_req_list = []
+            for col in range(1, wks_com.col_count+1):
+                if wks_com.cell(1, col).value != "":
+                    com_req_list.append(wks_com.cell(1, col))
+                else:
+                    break
+
+            com_req_tuple = []
+            for req in com_req_list:
+                com_req_tuple.append((req, wks_com.cell(user_cell_com.row, req.col)))
+
     if request.method == 'POST':
-        print(request.FILES)
-        if 'resume' in request.FILES:
+        if request.POST['name'] == 'committee':
+            user.committee = request.POST['value']
+            user.save()
+        elif 'resume' in request.FILES:
             resume_form = ResumeUploadForm(request.POST, request.FILES)
             print(resume_form.is_valid())
             if resume_form.is_valid():
@@ -233,7 +270,7 @@ def myprofile(request):
             up.grad_year = request.POST['value']
             up.save()
     return render_to_response('users/profile.html', 
-            context_instance=RequestContext(request,{ 'bio': bio_form, 'up': up, 'resume_upload': resume_form, 'profile_pic': profile_pic_form}))
+            context_instance=RequestContext(request,{ 'bio': bio_form, 'up': up, 'resume_upload': resume_form, 'profile_pic': profile_pic_form, 'gen_req_tuple': gen_req_tuple, 'com_req_tuple': com_req_tuple}))
 
 
 @user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
@@ -341,19 +378,41 @@ def currentofficers(request):
         })
     return HttpResponse(template.render(context))
 
+@login_required
 def requirements(request):
-    template = loader.get_template('users/requirements.html')
-    if request.method == "POST":
-        form = CompletionForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            can = cd['candidates']
-            req = cd['requirements']
-            newbie = Completion.objects.create(candidate=can, requirement=req, completed=True) 
-            newbie.save()
-            return HttpResponseRedirect('')
-    else:
-        form = 9 #CompletionForm()
-    return render(request, 'users/requirements.html',{'form': form,})
+    scope = ['https://spreadsheets.google.com/feeds']
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(settings.DRIVE_KEYFILE_NAME, scope)
+    gc = gspread.authorize(credentials)
+    wks = gc.open(settings.DRIVE_SHEET_NAME).sheet1
+    user = request.user
+    up = UserProfile.objects.get(user=user)
+
+    user_cell = wks.find(user.first_name + " " + user.last_name)
+
+    req_list = []
+    for col in range(1, wks.col_count+1):
+        if wks.cell(1, col).value != "":
+            req_list.append(wks.cell(1, col))
+        else:
+            break
+
+    req_dict = []
+    for req in req_list:
+        req_dict.append((req, wks.cell(user_cell.row, req.col)))
+
+    if request.method == 'POST':
+        if request.POST['name'] == 'committee':
+            user.committee = request.POST['value']
+            user.save()
+        elif request.POST['name'] == 'name':
+            name = request.POST['value']
+            p = re.compile('([a-zA-Z]+)\\s+([a-zA-Z]+)')
+            m = p.match(name)
+            user.first_name = m.group(1)
+            user.last_name = m.group(2)
+            user.save()
+
+    return render_to_response('users/requirements.html', 
+            context_instance=RequestContext(request,{'req_dict': req_dict, 'up':up}))
 
 

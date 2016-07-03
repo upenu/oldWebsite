@@ -63,13 +63,16 @@ WSGI_APPLICATION = 'upe.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'upe',
-        'USER': 'upe',
+        'NAME': 'upe_db',
+        'USER': 'admin',
         'PASSWORD': DATABASE_PASSWORD,
-        'HOST': 'mysql',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
+
+DRIVE_KEYFILE_NAME = 'UPE-Requirements-672529407eb1.json'
+DRIVE_SHEET_NAME = 'UPE General Requirements Summer 2016'
 
 # Static files (CSS, JavaScript)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/

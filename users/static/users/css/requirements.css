@@ -1,0 +1,44 @@
+.content-container {
+  display: -webkit-flex;
+}
+
+.requirements-container {
+  display: inline-block;
+  margin: 20px 50px;
+}
+
+.name {
+  margin: 0px 10px 20px 0px;
+  display: block;
+  width: 380px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #555;
+  border-bottom: 2px solid #3eacc7;
+  text-align: center;
+}
+
+.req-list {
+  display: block;
+}
+
+.req-item {
+  margin: 0px 10px 10px 0px;
+  font-size: 15px;
+  line-height: 10px;
+  color: #555;
+}
+
+.req-title {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 10px;
+  color: #555;
+}
+
+.req {
+  font-size: 15px;
+  line-height: 10px;
+  color: #555;
+}
