@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^', include('website.urls')),
-    url(r'^calendar/', include('upe_calendar.urls')),
+    # url(r'^calendar/', include('upe_calendar.urls')),
 
     url(r'^officers/$', 'users.views.officers', name='officers'),
     url(r'^members/$', 'users.views.members', name='members'),
