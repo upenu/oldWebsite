@@ -226,10 +226,7 @@ def myprofile(request):
                 com_req_tuple.append((req, wks_com.cell(user_cell_com.row, req.col)))
 
     if request.method == 'POST':
-        if request.POST['name'] == 'committee':
-            user.committee = request.POST['value']
-            user.save()
-        elif 'resume' in request.FILES:
+        if 'resume' in request.FILES:
             resume_form = ResumeUploadForm(request.POST, request.FILES)
             print(resume_form.is_valid())
             if resume_form.is_valid():
@@ -240,6 +237,9 @@ def myprofile(request):
             if profile_pic_form.is_valid():
                 up.picture = request.FILES['picture']
                 up.save()
+        elif request.POST['name'] == 'committee':
+            user.committee = request.POST['value']
+            user.save()
         elif request.POST['name'] == 'Submit bio':
             #bio_form = ChangeBioForm(request.POST)
             up.officer_profile.bio = request.POST['value']
