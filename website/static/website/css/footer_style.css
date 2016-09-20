@@ -20,6 +20,8 @@ a:hover {
 #footer-sponsor h1 {
   text-align: center;
   font-weight: 700;
+  font-size: 14px !important;
+  margin: 0 !important;
 }
 .sponsor-icon {
   width: 120px;
