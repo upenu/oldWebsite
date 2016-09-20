@@ -187,7 +187,7 @@ def myprofile(request):
     gen_req_tuple = []
     com_req_tuple = []
     print(up.get_committee_display())
-    if up.get_committee_display() != 'No Committee':
+    if up.user_type == 1:
         print("why is it going here")
         scope = ['https://spreadsheets.google.com/feeds']
         credentials = ServiceAccountCredentials.from_json_keyfile_name(settings.DRIVE_KEYFILE_NAME, scope)
