@@ -269,7 +269,7 @@ def myprofile(request):
             up.grad_year = request.POST['value']
             up.save()
     return render_to_response('users/profile.html',
-            context_instance=RequestContext(request,{ 'bio': bio_form, 'up': up, 'resume_upload': resume_form, 'profile_pic': profile_pic_form, 'gen_req_tuple': gen_req_tuple, 'com_req_tuple': com_req_tuple}))
+            context_instance=RequestContext(request,{ 'bio': bio_form, 'up': up, 'resume_upload': resume_form, 'profile_pic': profile_pic_form }))
 
 
 @user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
@@ -376,7 +376,7 @@ def currentofficers(request):
         'officer_9': officer(9),
         })
     return HttpResponse(template.render(context))
-
+"""
 @login_required
 def requirements(request):
     scope = ['https://spreadsheets.google.com/feeds']
@@ -413,5 +413,5 @@ def requirements(request):
 
     return render_to_response('users/requirements.html',
             context_instance=RequestContext(request,{'req_dict': req_dict, 'up':up}))
-
+"""
 
