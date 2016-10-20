@@ -27,7 +27,7 @@ def officers(request):
         if len(officer_profile_list) != 0:
              OfficerPosition.positions[officer_profile_list[0].position].users.append(officer)
 
-    context = RequestContext(request, 
+    context = RequestContext(request,
         {'positions': OfficerPosition.positions.values(),
         'title': 'Officers',
         'current_semester': CURRENT_SEMESTER[1],
@@ -56,7 +56,7 @@ def members(request):
 
 # A filtering capability on the members page that can filter UPE members by graduation year, name, or
 # years of membership to make searching/browsing easier for current members and candidates who are perhaps
-# trying to get a feel for the number of their peers involved in UPE. 
+# trying to get a feel for the number of their peers involved in UPE.
 def members_filter(request):
     template = loader.get_template('users/members.html')
     name_filter = request.POST['membername'];
@@ -92,7 +92,7 @@ def members_filter(request):
         context['none_found'] = False
         filter_members.append(member);
         setattr(member, 'position', 'Member')
-        setattr(member, 'photo', member.picture)   
+        setattr(member, 'photo', member.picture)
     context['users'] = filter_members
     return HttpResponse(template.render(context))
 
@@ -118,7 +118,7 @@ def alumni(request):
         setattr(alum, 'position', 'Alum')
         setattr(alum, 'photo', alum.picture)
 
-    context = RequestContext(request, 
+    context = RequestContext(request,
         {'users': alumni,
         'title': 'Alumni',
         'logged_in': request.user.is_authenticated()})
@@ -171,24 +171,23 @@ def user_login(request):
             return HttpResponse("Your account has not been approved yet.")
         else:
             incorrect_log_in = True
-            return render_to_response('users/login.html', 
+            return render_to_response('users/login.html',
                     context_instance=RequestContext(request,{'incorrect_log_in': incorrect_log_in}))
     else:
-        return render_to_response('users/login.html', 
+        return render_to_response('users/login.html',
                 context_instance=RequestContext(request,{'incorrect_log_in': incorrect_log_in}))
 
 @login_required
 def myprofile(request):
     user = request.user
     up = UserProfile.objects.get(user=user)
-    bio_form = ""    		
+    bio_form = ""
     resume_form = ResumeUploadForm()
     profile_pic_form = ProfilePicChangeForm()
     gen_req_tuple = []
     com_req_tuple = []
-    print(up.get_committee_display())
+    """
     if up.user_type == 1:
-        print("why is it going here")
         scope = ['https://spreadsheets.google.com/feeds']
         credentials = ServiceAccountCredentials.from_json_keyfile_name(settings.DRIVE_KEYFILE_NAME, scope)
         gc = gspread.authorize(credentials)
@@ -224,7 +223,7 @@ def myprofile(request):
             com_req_tuple = []
             for req in com_req_list:
                 com_req_tuple.append((req, wks_com.cell(user_cell_com.row, req.col)))
-
+    """
     if request.method == 'POST':
         if 'resume' in request.FILES:
             resume_form = ResumeUploadForm(request.POST, request.FILES)
@@ -269,7 +268,7 @@ def myprofile(request):
         elif request.POST['name'] == 'grad_year':
             up.grad_year = request.POST['value']
             up.save()
-    return render_to_response('users/profile.html', 
+    return render_to_response('users/profile.html',
             context_instance=RequestContext(request,{ 'bio': bio_form, 'up': up, 'resume_upload': resume_form, 'profile_pic': profile_pic_form, 'gen_req_tuple': gen_req_tuple, 'com_req_tuple': com_req_tuple}))
 
 
@@ -280,7 +279,7 @@ def approve_user(request, user_id):
     user_profile.save()
     message_text = "Hi " + user_profile.user.first_name + ",\n\n Your UPE account has been approved. You can now login to our website at upe.berkeley.edu\n\n Thanks,\nUPE"
     send_mail("Your UPE Account has been approved!", message_text, "officers@upe.cs.berkeley.edu", [user_profile.user.email], fail_silently=True)
-    return officer_approval_dashboard(request) 
+    return officer_approval_dashboard(request)
 
 @user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
 def reject_user(request, user_id):
@@ -290,7 +289,7 @@ def reject_user(request, user_id):
     message_text = "Hi " + first_name + ",\n\n Your UPE account registration has been denied. Please contact us if this is an error.\n\n Thanks,\nUPE"
     send_mail("Your UPE account application has been rejected!", message_text, "officers@upe.cs.berkeley.edu", [email], fail_silently=True)
     user_profile.delete()
-    return officer_approval_dashboard(request) 
+    return officer_approval_dashboard(request)
 
 
 @user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
@@ -300,7 +299,7 @@ def officer_approval_dashboard(request):
     return render(request, 'users/officer_approval_dashboard.html', {"users": users, "user_profiles": user_profiles})
 
 
-    
+
 # STUFF FOR LATER
 
 def officehours(request):
@@ -412,7 +411,7 @@ def requirements(request):
             user.last_name = m.group(2)
             user.save()
 
-    return render_to_response('users/requirements.html', 
+    return render_to_response('users/requirements.html',
             context_instance=RequestContext(request,{'req_dict': req_dict, 'up':up}))
 
 
