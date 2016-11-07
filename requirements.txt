@@ -1,4 +1,4 @@
-Django==1.7
+Django==1.8
 Pillow==2.4.0
 PyMySQL==0.7.2
 facebook-sdk==1.0.0
