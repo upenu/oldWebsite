@@ -37,6 +37,7 @@ class UserProfile(models.Model):
     approved = models.BooleanField(default=False)
     candidate_profile = models.ForeignKey('CandidateProfile', blank=True, null=True)
     officer_profile = models.ForeignKey('OfficerProfile', blank=True, null=True)
+    can_interview = models.BooleanField(default=False)
 
 
     def __str__(self):
@@ -106,6 +107,45 @@ class OfficerProfile(models.Model):
 class OfficerClass(models.Model):
     berkeley_class = models.ForeignKey('BerkeleyClass')
     officer = models.ForeignKey('OfficerProfile')
+
+class InterviewSlot(models.Model):
+    DAY_OF_WEEK_CHOICES = (
+        (1, 'Monday'),
+        (2, 'Tuesday'),
+        (3, 'Wednesday'),
+        (4, 'Thursday'),
+        (5, 'Friday'),
+    )
+    TIME_OF_DAY_CHOICES = (
+        (11, '11 AM'),
+        (12, '12 PM'),
+        (13, '1 PM'),
+        (14, '2 PM'),
+        (15, '3 PM'),
+        (16, '4 PM'),
+        (17, '5 PM'),
+    )
+
+    day_dict = dict(DAY_OF_WEEK_CHOICES)
+    time_dict = dict(TIME_OF_DAY_CHOICES)
+
+    availability = models.BooleanField(default=True)
+    officer_username = models.CharField(max_length=30,
+        help_text='Please enter a valid officer username as this is used for website queries.')
+    student = models.CharField(max_length=50, verbose_name=('Student'))
+    student_email = models.EmailField(max_length=255, verbose_name=('Student Email'))
+    day_of_week = models.IntegerField(max_length=1, choices=DAY_OF_WEEK_CHOICES, default=1)
+    hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=11)
+    date = models.DateField(verbose_name=('Date'))
+
+    def __str__(self):
+        return self.name() + " " + self.interviewer
+
+    def name(self):
+        return self.date + " " + self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour]
+
+    def is_available(self):
+        return self.availability
 
 class OfficeHour(models.Model):
     DAY_OF_WEEK_CHOICES = (
