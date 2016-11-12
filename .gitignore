@@ -3,6 +3,7 @@
 *.pyc
 *.DS_Store
 *.idea
+settings.py
 local_settings.py
 db.sqlite3
 venv/*
