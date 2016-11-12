@@ -37,8 +37,9 @@ class UserProfile(models.Model):
     approved = models.BooleanField(default=False)
     candidate_profile = models.ForeignKey('CandidateProfile', blank=True, null=True)
     officer_profile = models.ForeignKey('OfficerProfile', blank=True, null=True)
-    can_give_office_hours = models.BooleanField(initial=False)
-
+    can_give_office_hours = models.BooleanField(default=False)
+    office_hours = models.ManyToManyField('OfficeHour', blank=True)
+    classes_taken = models.ManyToManyField('BerkeleyClass', through='OfficerClass')
 
     def __str__(self):
         return self.user.first_name + " " + self.user.last_name
