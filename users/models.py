@@ -37,9 +37,7 @@ class UserProfile(models.Model):
     approved = models.BooleanField(default=False)
     candidate_profile = models.ForeignKey('CandidateProfile', blank=True, null=True)
     officer_profile = models.ForeignKey('OfficerProfile', blank=True, null=True)
-    can_give_office_hours = models.BooleanField(default=False)
-    office_hours = models.ManyToManyField('OfficeHour', blank=True)
-    classes_taken = models.ManyToManyField('BerkeleyClass', through='OfficerClass')
+    gives_office_hours = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.first_name + " " + self.user.last_name
@@ -132,11 +130,10 @@ class OfficeHour(models.Model):
 
     day_of_week = models.IntegerField(max_length=1, choices=DAY_OF_WEEK_CHOICES, default=1)
     hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=11)
-    officer_username = models.CharField(max_length=30,
-        help_text='Please enter a valid officer username as this is used for website queries.')
+    user = models.ForeignKey('UserProfile', blank=True, null=True)
 
     def __str__(self):
-        return self.name() + " " + self.officer_username
+        return self.name() + " " + self.user.user.first_name + " " + self.user.user.last_name
 
     def name(self):
         return self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour]
