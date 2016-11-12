@@ -38,6 +38,7 @@ class UserProfile(models.Model):
     candidate_profile = models.ForeignKey('CandidateProfile', blank=True, null=True)
     officer_profile = models.ForeignKey('OfficerProfile', blank=True, null=True)
     can_give_office_hours = models.BooleanField(initial=False)
+    
 
 
     def __str__(self):
