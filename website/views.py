@@ -24,3 +24,6 @@ def oh(request):
 
 def ir(request):
 	return render(request, 'website/ir.html', {})
+
+def interview(request):
+	return render(request, 'website/interview.html', {})

@@ -443,6 +443,23 @@ a.anchor {
   margin: 10px 0px;
 }
 
+.interview-slot-row th {
+  margin: 0;
+  text-align: center;
+  border-collapse: collapse;
+  outline: 1px solid #000000;
+  background: #47B5DA;
+  color: white;
+  padding: 5px 10px;
+}
+
+.interview-slot-row td {
+  margin: 0;
+  text-align: center;
+  border-collapse: collapse;
+  outline: 1px solid #000000;
+}
+
 /*
 #OH-today-wrapper {
   margin: 10px auto;
