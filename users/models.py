@@ -137,12 +137,13 @@ class InterviewSlot(models.Model):
     day_of_week = models.IntegerField(max_length=1, choices=DAY_OF_WEEK_CHOICES, default=1)
     hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=11)
     date = models.DateField(verbose_name=('Date'))
+    slot_id = models.CharField(max_length=20, verbose_name=('Slot ID'))
 
     def __str__(self):
-        return self.name() + " " + self.interviewer
+        return self.name() + " " + self.officer_username
 
     def name(self):
-        return self.date + " " + self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour]
+        return str(self.date) + " " + self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour]
 
     def is_available(self):
         return self.availability
