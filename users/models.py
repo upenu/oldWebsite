@@ -117,13 +117,14 @@ class InterviewSlot(models.Model):
         (5, 'Friday'),
     )
     TIME_OF_DAY_CHOICES = (
+        (9, '9 AM'),
+        (10, '10AM'),
         (11, '11 AM'),
         (12, '12 PM'),
         (13, '1 PM'),
         (14, '2 PM'),
         (15, '3 PM'),
         (16, '4 PM'),
-        (17, '5 PM'),
     )
 
     day_dict = dict(DAY_OF_WEEK_CHOICES)
@@ -132,12 +133,16 @@ class InterviewSlot(models.Model):
     availability = models.BooleanField(default=True)
     officer_username = models.CharField(max_length=30,
         help_text='Please enter a valid officer username as this is used for website queries.')
-    student = models.CharField(max_length=50, verbose_name=('Student'))
-    student_email = models.EmailField(max_length=255, verbose_name=('Student Email'))
+    student = models.CharField(max_length=50, verbose_name=('Student'), default=None)
+    student_email = models.EmailField(max_length=255, verbose_name=('Student Email'), default=None)
     day_of_week = models.IntegerField(max_length=1, choices=DAY_OF_WEEK_CHOICES, default=1)
-    hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=11)
+    hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=9)
     date = models.DateField(verbose_name=('Date'))
-    slot_id = models.CharField(max_length=20, verbose_name=('Slot ID'))
+
+    @property
+    def slot_id(self):
+        day_to_id = {1: 'm', 2:'tu', 3:'w', 4:'th', 5:'f'}
+        return day_to_id[self.day_of_week] + str(self.hour)
 
     def __str__(self):
         return self.name() + " " + self.officer_username

@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, render_to_response, get_object_or_404
+from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
 from django.contrib.auth import login
@@ -59,6 +59,9 @@ def interview(request):
 	return render(request, 'website/interview.html', context)
 
 def book_interview(request, slot_id):
-	slot = get_object_or_404(InterviewSlot, slot_id=slot_id)
-	context = {'slot': slot}
+	all_slots = InterviewSlot.objects.all()
+	for slot in all_slots:
+		if slot.slot_id == slot_id:
+			context = {'slot': slot}
+			break
 	return render(request, 'website/book_interview.html', context)
