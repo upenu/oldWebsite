@@ -31,7 +31,12 @@ def interview(request):
 	interview_slot_list = InterviewSlot.objects.all()
 	now = datetime.now()
 	date = datetime.day
-	context = {'interview_slot_list': interview_slot_list, 'day': now.strftime("%A"), 'date': date}
+	day_list = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+	time_list = ["9:00 - 10:00", "10:00 - 11:00", "11:00 - 12:00", "12:00 - 1:00", "1:00 - 2:00",
+				"2:00 - 3:00", "3:00 - 4:00", "4:00 - 5:00"]
+
+	context = {'interview_slot_list': interview_slot_list, 'day': now.strftime("%A"), 'date': date, 
+	"day_list": day_list, "time_list": time_list}
 	return render(request, 'website/interview.html', context)
 
 def book_interview(request, slot_id):
