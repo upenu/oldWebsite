@@ -13,3 +13,7 @@ def multiply(value, arg):
 @register.filter(name='multiply')
 def add(value, arg):
 	return int(value) + int(arg)
+
+@register.filter(name='keyvalue')
+def keyvalue(d, key):
+	return d.get(key)

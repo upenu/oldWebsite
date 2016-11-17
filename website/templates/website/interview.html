@@ -1,5 +1,6 @@
 {% extends "website/header_footer.html" %}
 {% load staticfiles %}
+{% load filters %}
 {% block javascript %}
   <link rel="shortcut icon" href="{% static "website/favicon.ico" %}" type="image/x-icon">
   <link rel=icon href="{% static "website/favicon.ico" %}" type="image/x-icon">
@@ -21,20 +22,32 @@
 		<div id="interview-title-row">
 			<tr>
 				<th>Time</th>
-				{% for day in day_list %}
-				<th>{{ day }}</th>
-				{% endfor %}
+				<th>Sunday</th>
+				<th>Monday</th>
+				<th>Tuesday</th>
+				<th>Wednesday</th>
+				<th>Thursday</th>
+				<th>Friday</th>
+				<th>Saturday</th>
 			</tr>			
 		</div>
 		<div class="interview-slot-row-container">
-			{% for time in time_list %}
+			{% for i in range %}
 				<div class="interview-slot-row">
-					<tr>
-						<th>{{ time }}</th>
-							{% for day in day_list %}
-								<td><a href="/bookinterview/m9/">Available</a></td>
-							{% endfor %}
-					</tr>			
+					{% with start=start_times|keyvalue:i %}
+						<tr>
+							{% with slots=time_slot_dict|keyvalue:start %}
+								<th>{{ time_dict|keyvalue:start }}</th>
+									{% for slot in slots %}
+										{% if slot == None or not slot.is_available %}
+											<td>Not Available</td>								
+										{% else %}
+											<td><a href="/bookinterview/{{ slot.slot_id }}/">Available</a></td>
+										{% endif %}
+									{% endfor %}
+							{% endwith %}
+						</tr>
+					{% endwith %}		
 				</div>
 			{% endfor %}			
 		</div>
