@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.mail import send_mail
 from django.conf import settings
 
+from datetime import date
+
 from users.backends import CustomBackend
 from users.forms import *
 from users.models import *
@@ -183,7 +185,12 @@ def myprofile(request):
     up = UserProfile.objects.get(user=user)
     bio_form = ""
     resume_form = ResumeUploadForm()
-    profile_pic_form = ProfilePicChangeForm()
+    profile_pic_form = ProfilePicChangeForm() 
+    if up is not None:
+        interview_slots = InterviewSlot.objects.all().filter(officer_username=user.username)
+
+
+
     gen_req_tuple = []
     com_req_tuple = []
     """
@@ -243,6 +250,20 @@ def myprofile(request):
             #bio_form = ChangeBioForm(request.POST)
             up.officer_profile.bio = request.POST['value']
             up.officer_profile.save()
+        elif request.POST['name'] == 'Add These Hours':
+            day_num = request.POST['day_value']
+            time_num = request.POST['time_value']
+            interview_slot = interview_slots.filter(hour=time_num, day_of_week=day_num)
+            if len(interview_slot) == 0:
+                slot = InterviewSlot(hour=time_num, day_of_week=day_num, officer_username=user.username, availability=True, 
+                    date=date.today())
+                slot.save()            
+        elif request.POST['name'] == 'Remove These Hours':
+            day_num = request.POST['day_value']
+            time_num = request.POST['time_value']
+            interview_slot = interview_slots.filter(hour=time_num, day_of_week=day_num)
+            if len(interview_slot) == 1:
+                interview_slot[0].delete()
         elif request.POST['name'] == 'email':
             user.email = request.POST['value']
             user.save()

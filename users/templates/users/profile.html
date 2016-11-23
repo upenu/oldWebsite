@@ -28,7 +28,7 @@
 		
 
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <form action="{% url "myprofile" %}" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
@@ -48,27 +48,60 @@
                 </div>
             </div>
         </div>
-		
-		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
+
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
-				<div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">Edit your Officer Bio</h4>
-                        </div>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Edit your Officer Bio</h4>
+                    </div>
+
                     <form action="{% url "myprofile" %}" method="post" >
-					    {% csrf_token %}
-						<p><textarea rows="4" cols="50" name ="value" >
-						{{ up.officer_profile.bio }}</textarea></p>
-						  <input type="submit" name = "name" value ="Submit bio">
-						</form>
-                   
-               </a>
+                        {% csrf_token %}
+                        <p><textarea rows="4" cols="50" name="value">{{ up.officer_profile.bio }}</textarea></p>
+                        <input type="submit" name="name" value="Submit bio">
+                    </form>
                 </div>
             </div>
         </div>
-		
+
+        <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Edit the hours you hold technical interviews</h4>
+                    </div>
+
+                    <form action="{% url "myprofile" %}" method="post" >
+                        {% csrf_token %}
+                        <select name="day_value">
+                          <option value="1">Monday</option>
+                          <option value="2">Tuesday</option>
+                          <option value="3">Wednesday</option>
+                          <option value="4">Thursday</option>
+                          <option value="5">Friday</option>
+                        </select>
+                        <select name="time_value">
+                          <option value="9">9am - 10am</option>
+                          <option value="10">10am - 11am</option>
+                          <option value="11">11am - 12pm</option>
+                          <option value="12">12pm - 1pm</option>
+                          <option value="13">1pm - 2pm</option>
+                          <option value="14">2pm - 3pm</option>
+                          <option value="15">3pm - 4pm</option>
+                          <option value="16">4pm - 5pm</option>
+                        </select>
+                        <input type="submit" name="name" value="Add These Hours">
+                        <input type="submit" name="name" value="Remove These Hours">
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
+
     <div class="personal-info-container">
         <span class="title">Personal <i class="fa fa-user"></i></span>
         <ul>
@@ -134,17 +167,22 @@
             </li>
             {% endif %}
 			
-			{% if up.get_user_type_display == "Officer" %}
-		<li><i class="fa fa-comment"></i> Officer Bio: <a href = "#" data-toggle="modal" data-target="#myModal2">
-              Edit
-            </a> </i></li>
-		{% endif %}
+			      {% if up.get_user_type_display == "Officer" %}
+		        <li><i class="fa fa-comment"></i> Officer Bio: <a href = "#" data-toggle="modal" data-target="#myModal2">
+              Edit</a>
+            </li>
+		        {% endif %}
+            {% if up.can_interview %}
+            <li><i class="fa fa-comment"></i> Technical Interviews <a href = "#" data-toggle="modal" data-target="#myModal3">
+              Edit</a>
+            </li>
+            {% endif %}
                 <!-- <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#resume-modal">
                   Upload New Resume
                 </button> -->
-        <li> 
-		*Note: Include http:// or https:// before the urls </li>
-       
+            <li> 
+		        *Note: Include http:// or https:// before the urls
+            </li>       
          </ul>
     </div>
     <div class="academic-info-container">

@@ -45,6 +45,8 @@ class UserProfile(models.Model):
 
     def is_officer(self):
         return user_type == 3
+    def can_interview(self):
+        return self.can_interview
     def get_committee_display(self):
         for tup in self.COMMITTEE_CHOICES:
             if self.committee == tup[0]:
@@ -72,7 +74,7 @@ class OfficerProfile(models.Model):
     position_dict = dict(OFFICER_POSITION_CHOICES)
     position = models.IntegerField(max_length=1, choices=OFFICER_POSITION_CHOICES, default=1)
     term = models.CharField(max_length=5, choices=TERM, default='S15', verbose_name='Officer term')
-    bio = models.TextField(default='Check back soon!')   
+    bio = models.TextField(default='Check back soon!')
      
     #office_hours = models.ManyToManyField('OfficeHour', blank=True)
     #classes_taken = models.ManyToManyField('BerkeleyClass', through='OfficerClass')
@@ -133,8 +135,8 @@ class InterviewSlot(models.Model):
     availability = models.BooleanField(default=True)
     officer_username = models.CharField(max_length=30,
         help_text='Please enter a valid officer username as this is used for website queries.')
-    student = models.CharField(max_length=50, verbose_name=('Student'), default=None)
-    student_email = models.EmailField(max_length=255, verbose_name=('Student Email'), default=None)
+    student = models.CharField(max_length=50, verbose_name=('Student'), blank=True)
+    student_email = models.EmailField(max_length=255, verbose_name=('Student Email'), blank=True)
     day_of_week = models.IntegerField(max_length=1, choices=DAY_OF_WEEK_CHOICES, default=1)
     hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=9)
     date = models.DateField(verbose_name=('Date'))
