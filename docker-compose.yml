@@ -7,7 +7,7 @@ services:
     ports:
       - "8001:8000"
     volumes:
-      - ./website:/opt/website
+      - .:/opt/website
     links:
       - database
     depends_on:
