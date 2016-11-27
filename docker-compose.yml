@@ -14,12 +14,16 @@ services:
       - database
     command: python3 /opt/website/manage.py runserver 0.0.0.0:8000
   database:
-    restart: on-failure
+    restart: always
     image: mysql/mysql-server:5.5
     container_name: upe-mysql
     command: mysqld --user=root --verbose
+    volumes:
+      - mysqlvolume:/var/lib/mysql
     environment:
       MYSQL_USER: admin
       MYSQL_ROOT_PASSWORD: littlewhale
       MYSQL_PASSWORD: littlewhale
       MYSQL_DATABASE: upe
+volumes:
+  mysqlvolume:

@@ -30,7 +30,8 @@ Setup (for devs)
 2. Rename `website/upe/settings.py.docker` to `website/upe/settings.py`
 3. Run `docker-compose up -d` to build and start the containers (run this command in the same directory as the `Dockerfile` and `docker-compose.yml` file)
 4. Now we need to run syncdb. Run `docker-compose run web python3 /opt/website/manage.py syncdb` and create an admin account
-5. You should be able to access the website now from your machine on port 8001 (i.e. go to your web browser and go to 127.0.0.1:8001). Isn't that simple?
+5. Restart our web container so things work well. `docker-compose restart web`
+6. You should be able to access the website now from your machine on port 8001 (i.e. go to your web browser and go to 127.0.0.1:8001). Isn't that simple?
 
 ### Notes on the Docker Setup
 - We defined our Django web application to be part of the "web" service and the MySQL database to be part of the "database" service in the `docker-compose.yml` file
@@ -38,6 +39,7 @@ Setup (for devs)
 - When you make changes, you may need to restart the container for those changes to be reflected. To do this, use the command `docker-compose restart web` to restart the web service.
 - When you need to run Django commands (e.g. `makemigrations`), just use docker-compose: `docker-compose run web python3 /opt/website/manage.y <command>`
 - If things don't seem to be working, just try restarting the web service again
+- Database volume should persist since we created a volume through Docker
 
 ## Installation (For Mac -- skip if windows)
 0. Install Homebrew
