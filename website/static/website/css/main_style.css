@@ -242,6 +242,23 @@ a.anchor {
   color: #555;
 }
 
+.interviewhours-wrapper .filters {
+  margin: 10px 20px;
+}
+
+.interviewhours-wrapper .filters .filter {
+  width: 150px;
+  margin-right: 35px;
+  height: 30px;
+  background: white;
+  border: 2px solid #555;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'PT Sans';
+  color: #555;
+}
+
+
 .officers-oh {
   padding: 30px 110px;
 }
@@ -458,6 +475,15 @@ a.anchor {
   text-align: center;
   border-collapse: collapse;
   outline: 1px solid #000000;
+}
+
+
+.modal-dialog{
+    position: relative;
+    display: table;
+    overflow-y: auto;    
+    overflow-x: auto;
+    width: auto;  
 }
 
 /*

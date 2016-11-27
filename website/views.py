@@ -28,8 +28,8 @@ def ir(request):
 	return render(request, 'website/ir.html', {})
 
 def interview(request):
-	time_dict = {9: "9:00 - 10:00", 10: "10:00 - 11:00", 11: "11:00 - 12:00", 12: "12:00 - 1:00", 13: "1:00 - 2:00",
-				14: "2:00 - 3:00", 15: "3:00 - 4:00", 16: "4:00 - 5:00"}
+	time_dict = {9: "9:00am - 10:00am", 10: "10:00am - 11:00am", 11: "11:00am - 12:00pm", 12: "12:00pm - 1:00pm", 13: "1:00pm - 2:00pm",
+				14: "2:00pm - 3:00pm", 15: "3:00pm - 4:00pm", 16: "4:00pm - 5:00pm"}
 	days_of_week = [0, 1, 2, 3, 4, 5, 6]
 	start_times = {0: 9, 1: 10, 2: 11, 3: 12, 4: 13, 5: 14, 6: 15, 7: 16}
 	interview_slot_list = InterviewSlot.objects.all()

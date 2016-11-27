@@ -251,19 +251,29 @@ def myprofile(request):
             up.officer_profile.bio = request.POST['value']
             up.officer_profile.save()
         elif request.POST['name'] == 'Add These Hours':
-            day_num = request.POST['day_value']
-            time_num = request.POST['time_value']
-            interview_slot = interview_slots.filter(hour=time_num, day_of_week=day_num)
-            if len(interview_slot) == 0:
-                slot = InterviewSlot(hour=time_num, day_of_week=day_num, officer_username=user.username, availability=True, 
-                    date=date.today())
-                slot.save()            
+            max_rows = 15
+            for i in range(1, max_rows):
+                day_query = 'day_value' + str(i)
+                time_query = 'time_value' + str(i)                
+                day_num = request.POST.get(day_query)
+                time_num = request.POST.get(time_query)
+                if day_num != None and time_num != None:
+                    interview_slot = interview_slots.filter(hour=time_num, day_of_week=day_num)
+                    if len(interview_slot) == 0:
+                        slot = InterviewSlot(hour=time_num, day_of_week=day_num, officer_username=user.username, availability=True, 
+                            date=date.today())
+                        slot.save()                           
         elif request.POST['name'] == 'Remove These Hours':
-            day_num = request.POST['day_value']
-            time_num = request.POST['time_value']
-            interview_slot = interview_slots.filter(hour=time_num, day_of_week=day_num)
-            if len(interview_slot) == 1:
-                interview_slot[0].delete()
+            max_rows = 15
+            for i in range(1, max_rows):
+                day_query = 'day_value' + str(i)
+                time_query = 'time_value' + str(i)                
+                day_num = request.POST.get(day_query)
+                time_num = request.POST.get(time_query)
+                if day_num != None and time_num != None:
+                    interview_slot = interview_slots.filter(hour=time_num, day_of_week=day_num)
+                    if len(interview_slot) == 1:
+                        interview_slot[0].delete()            
         elif request.POST['name'] == 'email':
             user.email = request.POST['value']
             user.save()
