@@ -8,6 +8,7 @@ from django.forms import *
 from django.core.serializers.json import DjangoJSONEncoder
 import json, re
 from users.models import *
+from django.core.mail import send_mail
 
 from datetime import datetime
 
@@ -74,12 +75,32 @@ def confirm_interview(request):
 			if slot.get_date() == request.POST['date'] and slot.hour == int(request.POST['day_hour'][2:]):
 				booked_slot = slot
 				break
-		if booked_slot == None:
-			return oh(request)
+		#if booked_slot == None:
+		#	return oh(request)
 		booked_slot.student = request.POST['name']
 		booked_slot.student_email = request.POST['email']
 		booked_slot.availability = False
 		booked_slot.save()
+		send_confirmation_email(booked_slot)
 		return interview(request)
 	else:
 		return interview(request)
+
+def send_confirmation_email(slot):
+	student_email = slot.student_email
+	interviewer = slot.officer_username
+	profiles = UserProfile.objects.all()
+	interviewer_email = None
+	for profile in profiles:
+		if profile.user.username == interviewer:
+			interviewer_email = profile.user.email
+	if interviewer_email == None:
+		print('oops')
+		return
+	send_mail(
+	    'UPE Technical Interview Confirmation',
+	    'Here is the message.',
+	    'webdev.upe@berkeley.edu',
+	    [interviewer_email, student_email],
+	    fail_silently=False,
+	)
