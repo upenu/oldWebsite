@@ -146,6 +146,9 @@ class InterviewSlot(models.Model):
         day_to_id = {1: 'm', 2:'tu', 3:'w', 4:'th', 5:'f'}
         return day_to_id[self.day_of_week] + str(self.hour)
 
+    def get_date(self):
+        return str(self.date)
+
     def __str__(self):
         return self.name() + " " + self.officer_username
 

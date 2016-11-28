@@ -17,9 +17,11 @@
 <div id="main-wrapper">
   <div id="main-inner-wrapper">
     <div class="oh-wrapper">
-    	<div>Date: {{slot.date}}</div>
-    	<div>Time: {{slot.day_of_week}} {{slot.hour}}</div>
-		<form action="">
+    <div>{{date}}</div>
+		<form action="/confirminterview/", method="post">
+      {% csrf_token %}
+      Date: <input type="text" name="date" value="{{date}}" readonly><br>
+      Time: <input type="text" name="day_hour" value="{{day_of_week}} {{hour}}" readonly><br>
 			Full Name: <input type="text" name="name"><br>
 			Email: <input type="email" name="email"><br>
 			<input type="submit" value="Submit">

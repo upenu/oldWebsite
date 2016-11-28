@@ -62,6 +62,24 @@ def book_interview(request, slot_id):
 	all_slots = InterviewSlot.objects.all()
 	for slot in all_slots:
 		if slot.slot_id == slot_id:
-			context = {'slot': slot}
+			context = {'date': slot.get_date(), 'day_of_week':slot.day_of_week, 'hour':slot.hour}
 			break
-	return render(request, 'website/book_interview.html', context)
+	return render_to_response('website/book_interview.html', RequestContext(request, context))
+
+def confirm_interview(request):
+	if request.method == 'POST':
+		all_slots = InterviewSlot.objects.all()
+		booked_slot = None
+		for slot in all_slots:
+			if slot.get_date() == request.POST['date'] and slot.hour == int(request.POST['day_hour'][2:]):
+				booked_slot = slot
+				break
+		if booked_slot == None:
+			return oh(request)
+		booked_slot.student = request.POST['name']
+		booked_slot.student_email = request.POST['email']
+		booked_slot.availability = False
+		booked_slot.save()
+		return interview(request)
+	else:
+		return interview(request)
