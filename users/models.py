@@ -133,7 +133,7 @@ class OfficeHour(models.Model):
     user = models.ForeignKey('UserProfile', blank=True, null=True)
 
     def __str__(self):
-        return self.name() + " " + self.user.user.first_name + " " + self.user.user.last_name
+        return self.user.user.first_name + " " + self.user.user.last_name + " : " + self.name()
 
     def name(self):
         return self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour]
@@ -212,10 +212,10 @@ class BerkeleyClass(models.Model):
 
     class_dict = dict(CLASS_CHOICES)
     class_name = models.IntegerField(max_length=5, choices=CLASS_CHOICES)
-    officers = models.ManyToManyField('OfficerProfile', through='OfficerClass')
+    user = models.ForeignKey('UserProfile', blank=True, null=True)
 
     def __str__(self):
-        return self.class_dict[self.class_name]
+        return self.user.user.first_name + " " + self.user.user.last_name + " : " + self.name()
 
     def name(self):
         return self.class_dict[self.class_name]
