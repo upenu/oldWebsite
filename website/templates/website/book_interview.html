@@ -20,10 +20,12 @@
     <div>{{date}}</div>
 		<form action="/confirminterview/", method="post">
       {% csrf_token %}
-      Date: <input type="text" name="date" value="{{date}}" readonly><br>
-      Time: <input type="text" name="day_hour" value="{{day_of_week}} {{hour}}" readonly><br>
+      <input type="hidden" name="date" value="{{time_slot.get_date}}" readonly>
+      <input type="hidden" name="day_hour" value="{{time_slot.day_of_week}}{{time_slot.hour}}" readonly>
+      <span>Date: {{time_slot.get_date}}</span><br>
+      <span>Time: {{time_slot.get_day_of_week}} {{time_slot.get_time}}</span><br>
 			Full Name: <input type="text" name="name"><br>
-			Email: <input type="email" name="email"><br>
+			Berkeley Email: <input type="email" name="email"><br>
 			<input type="submit" value="Submit">
 		</form>
     </div>

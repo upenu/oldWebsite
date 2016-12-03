@@ -119,14 +119,14 @@ class InterviewSlot(models.Model):
         (5, 'Friday'),
     )
     TIME_OF_DAY_CHOICES = (
-        (9, '9 AM'),
-        (10, '10AM'),
-        (11, '11 AM'),
-        (12, '12 PM'),
-        (13, '1 PM'),
-        (14, '2 PM'),
-        (15, '3 PM'),
-        (16, '4 PM'),
+        (9, '9am - 10am'),
+        (10, '10am - 11am'),
+        (11, '11am - 12pm'),
+        (12, '12pm - 1pm'),
+        (13, '1pm - 2pm'),
+        (14, '2pm - 3pm'),
+        (15, '3pm - 4pm'),
+        (16, '4pm - 5pm'),
     )
 
     day_dict = dict(DAY_OF_WEEK_CHOICES)
@@ -147,7 +147,12 @@ class InterviewSlot(models.Model):
         return day_to_id[self.day_of_week] + str(self.hour)
 
     def get_date(self):
-        return str(self.date)
+        return self.date.strftime('%b %d, %Y')
+
+    def get_day_of_week(self):
+        return self.day_dict[self.day_of_week]
+    def get_time(self):
+        return self.time_dict[self.hour]
 
     def __str__(self):
         return self.name() + " " + self.officer_username

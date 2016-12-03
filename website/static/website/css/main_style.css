@@ -242,6 +242,23 @@ a.anchor {
   color: #555;
 }
 
+.oh-wrapper .interview-slot-row-container .interview-slot-row td a:hover {
+  background-color: yellow;
+}
+
+.oh-wrapper .interview-slot-row-container .interview-slot-row td {
+  overflow: hidden;
+  width: 200px;
+}
+
+.oh-wrapper .interview-slot-row-container .interview-slot-row td a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  margin: -10em;
+  padding: 10em;
+}
+
 .interviewhours-wrapper .filters {
   margin: 10px 20px;
 }
@@ -258,6 +275,17 @@ a.anchor {
   color: #555;
 }
 
+.interviewhours-wrapper .toprow li {
+	display: inline;
+	list-style-type: none;
+	margin-left: 10px;
+	padding-right: 105px;
+	height: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'PT Sans';
+
+}
 
 .officers-oh {
   padding: 30px 110px;
