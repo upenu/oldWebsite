@@ -99,7 +99,7 @@ def send_confirmation_email(slot):
 		return
 	send_mail(
 	    'UPE Technical Interview Confirmation',
-	    'Here is the message.',
+	    'You have successfully booked an interview with UPE {}, {}, at {}.'.format(slot.day_of_week, slot.date, slot.hour),
 	    'webdev.upe@berkeley.edu',
 	    [interviewer_email, student_email],
 	    fail_silently=False,
