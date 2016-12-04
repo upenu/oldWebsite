@@ -17,6 +17,7 @@
 <div id="main-wrapper">
   <div id="main-inner-wrapper">
     <div class="oh-wrapper">
+      <header class="oh-title">Interviews @ 346 Soda Hall</header>
       <table style="font-size: 15px; line-height: 3;" width="80%" align="center">
 		<div id="interview-title-row">
 			<tr>
@@ -28,7 +29,13 @@
 				<th>Thursday</th>
 				<th>Friday</th>
 				<th>Saturday</th>
-			</tr>			
+			</tr>
+			<tr>
+		    	<th>Date</th>
+		    	{% for date in week %}
+		    	    <th>{{ date }}</th>
+		    	{% endfor %}
+		    </tr>		
 		</div>
 		<div class="interview-slot-row-container">
 			{% for i in range %}

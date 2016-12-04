@@ -242,21 +242,26 @@ a.anchor {
   color: #555;
 }
 
-.oh-wrapper .interview-slot-row-container .interview-slot-row td a:hover {
-  background-color: yellow;
+.oh-wrapper .interview-slot-row td:hover {
+  cursor: pointer;
+  background: #47B5DA;
+  color: white;
 }
 
-.oh-wrapper .interview-slot-row-container .interview-slot-row td {
-  overflow: hidden;
-  width: 200px;
+.oh-wrapper .interview-slot-row td, th {
+  margin: 0;
+  text-align: center;
+  border-collapse: collapse;
+  outline: 1px solid #000000;
 }
 
-.oh-wrapper .interview-slot-row-container .interview-slot-row td a {
-  display: block;
-  height: 100%;
-  width: 100%;
-  margin: -10em;
-  padding: 10em;
+.oh-wrapper .interview-slot-row td {
+  padding: 5px 10px;
+}
+.oh-wrapper .interview-slot-row th {
+  background: #47B5DA;
+  color: white;
+  padding: 5px 10px;
 }
 
 .interviewhours-wrapper .filters {
@@ -284,7 +289,6 @@ a.anchor {
     font-size: 15px;
     font-weight: 600;
     font-family: 'PT Sans';
-
 }
 
 .officers-oh {
