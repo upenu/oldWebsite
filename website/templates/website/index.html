@@ -127,19 +127,20 @@
       </div>
     </div>
     {% endif %}
+    
     <div id="twitter-feed-wrapper">
         <div id="twitter-wrapper">
             <div id="twitter-content-wrapper">
-                <div id="twitter-title">Twitter</div>
-                <a class="twitter-timeline"
-                    data-dnt="true"
-                    data-chrome="noborders noheader noscrollbar nofooter"
-                    data-width="520"
-                    data-link-color="#43ACC5"
-                    data-tweet-limit="5"
-                    href="https://twitter.com/berkeleyUPE"
-                    data-widget-id="651666096114659328">@berkeleyUPE</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                <div id="twitter-title">Social Media</div>
+                {% for post in posts %}
+                <a href={{ post.url }}><img src={{ post.media }} width="60px" height="30px"></a> {{ post.date }}</br>
+                  {{ post.text }}</br>
+                  </br>
+                  {% if post.img_video %}
+                    <img src={{ post.img_video }} width="600px"></br>
+                  {% endif %}
+	  	  Likes - {{ post.likes }}</br></br>
+                {% endfor %}
             </div>
         </div>
     </div>
