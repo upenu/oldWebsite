@@ -242,28 +242,6 @@ a.anchor {
   color: #555;
 }
 
-.oh-wrapper .interview-slot-row td:hover {
-  cursor: pointer;
-  background: #47B5DA;
-  color: white;
-}
-
-.oh-wrapper .interview-slot-row td, th {
-  margin: 0;
-  text-align: center;
-  border-collapse: collapse;
-  outline: 1px solid #000000;
-}
-
-.oh-wrapper .interview-slot-row td {
-  padding: 5px 10px;
-}
-.oh-wrapper .interview-slot-row th {
-  background: #47B5DA;
-  color: white;
-  padding: 5px 10px;
-}
-
 .interviewhours-wrapper .filters {
   margin: 10px 20px;
 }
@@ -490,23 +468,6 @@ a.anchor {
 .events-list-description p, .oh-list-description p {
   line-height: 20px;
   margin: 10px 0px;
-}
-
-.interview-slot-row th {
-  margin: 0;
-  text-align: center;
-  border-collapse: collapse;
-  outline: 1px solid #000000;
-  background: #47B5DA;
-  color: white;
-  padding: 5px 10px;
-}
-
-.interview-slot-row td {
-  margin: 0;
-  text-align: center;
-  border-collapse: collapse;
-  outline: 1px solid #000000;
 }
 
 

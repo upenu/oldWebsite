@@ -4,6 +4,8 @@
   <link rel="shortcut icon" href="{% static "website/favicon.ico" %}" type="image/x-icon">
   <link rel=icon href="{% static "website/favicon.ico" %}" type="image/x-icon">
 
+  <link rel="stylesheet" href="{% static "website/css/booking.css" %}" type="text/css" media="screen" />
+
   <script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
   <script src="{% static "website/js/modernizr_custom_79639.js" %}"></script>
   <script src="{% static "website/js/ba_cond.min.js" %}"></script>
@@ -17,8 +19,9 @@
 <div id="main-wrapper">
   <div id="main-inner-wrapper">
     <div class="oh-wrapper">
+    <header class="booking">Confirm Your Booking</header>
     <div>{{date}}</div>
-		<form action="/confirminterview/", method="post">
+		<form id="booking-form" action="/confirminterview/", method="post">
       {% csrf_token %}
       <input type="hidden" name="date" value="{{time_slot.get_date}}" readonly>
       <input type="hidden" name="day_hour" value="{{time_slot.day_of_week}}{{time_slot.hour}}" readonly>
@@ -26,7 +29,7 @@
       <span>Time: {{time_slot.get_day_of_week}} {{time_slot.get_time}}</span><br>
 			Full Name: <input type="text" name="name"><br>
 			Berkeley Email: <input type="email" name="email"><br>
-			<input type="submit" value="Submit">
+			<input type="submit" class="btn-green" value="Submit">
 		</form>
     </div>
   </div>

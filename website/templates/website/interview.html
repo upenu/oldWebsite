@@ -5,6 +5,7 @@
   <link rel="shortcut icon" href="{% static "website/favicon.ico" %}" type="image/x-icon">
   <link rel=icon href="{% static "website/favicon.ico" %}" type="image/x-icon">
 
+  <link rel="stylesheet" href="{% static "website/css/interview.css" %}" type="text/css" media="screen" />
   <script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
   <script src="{% static "website/js/modernizr_custom_79639.js" %}"></script>
   <script src="{% static "website/js/ba_cond.min.js" %}"></script>
@@ -18,7 +19,7 @@
   <div id="main-inner-wrapper">
     <div class="oh-wrapper">
       <header class="oh-title">Interviews @ 346 Soda Hall</header>
-      <table style="font-size: 15px; line-height: 3;" width="80%" align="center">
+      <table class="interviews" style="font-size: 15px; line-height: 3;" width="100%" align="center">
 		<div id="interview-title-row">
 			<tr>
 				<th>Time</th>
@@ -46,9 +47,9 @@
 								<th>{{ time_dict|keyvalue:start }}</th>
 									{% for slot in slots %}
 										{% if slot == None or not slot.is_available %}
-											<td>Not Available</td>								
+											<td class="unavailable"></td>								
 										{% else %}
-											<td><a href="/bookinterview/{{ slot.slot_id }}/">Available</a></td>
+											<td class="available"><a href="/bookinterview/{{ slot.slot_id }}/">Available</a></td>
 										{% endif %}
 									{% endfor %}
 							{% endwith %}
