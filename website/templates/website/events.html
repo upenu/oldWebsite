@@ -1,0 +1,33 @@
+{% extends "website/header_footer.html" %}
+{% load staticfiles %}
+{% block stylesheets %}
+        <link rel="stylesheet" href="{% static "website/css/reset.css" %}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{% static "website/css/full_style.css" %}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{% static "website/css/main_style.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "website/css/header_style.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static "website/css/footer_style.css" %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static "website/css/hover.css" %}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Arimo:400,700' type='text/css'>
+        <link rel="stylesheet" href="{% static "website/css/bootstrap.modals.css" %}" type="text/css" media="screen"/>
+         <link rel="stylesheet" href="{% static "website/css/events.css" %}" type="text/css" media="screen" />
+{% endblock %}
+
+{% block content %}
+<div class = "content-container">
+{% for event in events %}
+<div class ="event-element">
+  <img class="event-picture" src="{{event.banner}}">
+<p><h1><b>{{ event.name }}</b></h1></p>
+<p><b>Time:</b> {{event.start_time}}</p>
+<p>&nbsp;</p>
+<p><b>Location:</b> {{event.location}}</p>
+<p>&nbsp;</p>
+<p><a href = "https://www.facebook.com/events/{{event.facebookid}}">Facebook Event </a></p>
+<p>&nbsp;</p>
+<p>{{ event.description}} </p>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

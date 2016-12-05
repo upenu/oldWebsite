@@ -1,0 +1,140 @@
+/* fuck */
+h1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/*img {
+  display: block;
+  max-width:400px;
+  max-height:200px;
+  width: auto;
+  height: auto;
+}*/
+#event-element-container {/*officer-member-container*/
+	margin: 0 auto;
+	min-height: 300px;
+	float: left;
+	width:800px;
+}
+
+#main-content-wrapper .event-element {/*officer-member*/
+        vertical-align:top;
+	width: 350px;
+	height: 600px;
+	background-color: white;
+	position: relative;
+	display: inline-block;
+	margin-right: 10px;
+	margin-bottom: 20px;
+	-moz-box-shadow: 0 0 5px #bfbeba !important;
+	-webkit-box-shadow: 0 0 5px #bfbeba !important;
+	-o-box-shadow: 0 0 5px #bfbeba !important;
+	-ktml-box-shadow: 0 0 5px #bfbeba !important;
+	-ms-box-shadow: 0 0 5px #bfbeba !important;
+}
+
+#main-content-wrapper .event-picture { /*officer-member-picture*/
+	width: 350px;
+	height: 180px;
+	margin-bottom: 5px;
+}
+
+#main-content-wrapper .event-element span {/*event-element*/
+	display: block;
+}
+
+#main-content-wrapper .social {
+	position: absolute;
+	bottom: 0px;
+	display: block;
+	padding: 5px;
+	font-size: 20px;
+}
+
+#main-content-wrapper .social li {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+#main-content-wrapper .social i {
+	color: #3eacc7 !important;
+}
+
+#main-content-wrapper .social i:hover {
+	color: #78c5d8 !important;
+}
+
+#main-content-wrapper .officer-member-info {
+	padding: 5px;
+	font-size: 13px;
+	line-height: 1.2;
+	font-weight: 800;
+}
+
+#main-content-wrapper .content-container {
+	width: 980px;
+	margin: 72px auto 20px auto;
+	padding: 35px 20px;
+	overflow: auto;
+}
+
+#main-content-wrapper .content-container {
+	font-family: 'PT Sans', sans-serif;
+	background-color: white;
+    box-shadow: 0 0 10px #bfbeba;
+    -moz-box-shadow: 0 0 10px #bfbeba;
+    -webkit-box-shadow: 0 0 10px #bfbeba;
+    -o-box-shadow: 0 0 10px #bfbeba;
+    -ktml-box-shadow: 0 0 10px #bfbeba;
+    -ms-box-shadow: 0 0 10px #bfbeba;
+}
+
+.officer-sidebar {
+    margin-bottom: 32px;
+    margin-right: 16px;
+    width: 160px;
+    float: left;
+}
+
+#main-content-wrapper .content-sidebar h1 {
+	font-size: 25px;
+	font-weight: 700;
+	color: #555;
+	border-bottom: 2px solid #3eacc7;
+	width: 115px;
+	line-height: 45px;
+	position: relative;
+	top: -15px;
+}
+
+#main-content-wrapper .email {
+	font-weight: 400;
+}
+
+#main-content-wrapper #archive li {
+	margin-bottom: 7px;
+}
+
+#main-content-wrapper #archive li a {
+	color: #555;
+	font-weight: 400;
+}
+
+#main-content-wrapper .officer-position {
+    padding: 10px;
+}
+
+#main-content-wrapper .position-label {
+    border-bottom: 2px solid #3eacc7;
+}
+
+/* See https://css-tricks.com/hash-tag-links-padding/ */
+#main-content-wrapper .position-container:before {
+    display: block;
+    content: " ";
+    margin-top: -50px;
+    height: 50px;
+    visibility: hidden;
+}
+
