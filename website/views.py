@@ -38,6 +38,12 @@ def interview(request):
     start_times = {0: 9, 1: 10, 2: 11, 3: 12, 4: 13, 5: 14, 6: 15, 7: 16}
     interview_slot_list = InterviewSlot.objects.all()
 
+    now = datetime.now()
+    date = datetime.day
+
+    current_week = _get_dates_of_week(now)
+    current_week_dates = [date.strftime('%b %d, %Y') for date in current_week]
+
     time_slot_dict = {}
     start_time = 9
     for _ in range(len(time_dict)):
@@ -48,45 +54,44 @@ def interview(request):
             if len(slot) == 0:
                 imputed_start_time.append(None)
             else:
-                #There should only be one slot from this filter 
+                #There should only be one slot from this filter
+                slot[0].date = current_week[day]
+                slot[0].save()
                 imputed_start_time.append(slot[0])
+
         time_slot_dict[start_time] = imputed_start_time
         start_time += 1
 
-    now = datetime.now()
-    date = datetime.day
-
-    current_week = get_dates_of_week(now)
-    print(current_week)
+    
 
     context = {'interview_slot_list': interview_slot_list, 'day': now.strftime("%A"), 'date': date, 
     "time_dict": time_dict, "time_slot_dict": time_slot_dict, "start_times": start_times, 
-    "range": range(len(start_times)), "week": current_week}
+    "range": range(len(start_times)), "week": current_week_dates}
 
     return render(request, 'website/interview.html', context)
 
-def get_dates_of_week(now):
+def _get_dates_of_week(now):
     this_week = ['date' for i in range(7)]
     current_day = now.weekday()
     if current_day == 6:
-        this_week[0] = now.strftime('%b %d, %Y')
+        this_week[0] = now
         for i in range(1, 7):
             add_date = now + timedelta(days=i)
-            this_week[i] = add_date.strftime('%b %d, %Y')
+            this_week[i] = add_date
     else:
         num_things_before = current_day + 1
         num_things_after = 5 - current_day
         sunday = now - timedelta(days=current_day + 1)
-        this_week[0] = sunday.strftime('%b %d, %Y')
+        this_week[0] = sunday
 
         for i in range(0, current_day):
             diff = current_day - i
             add_date = now - timedelta(days=diff)
-            this_week[i + 1] = add_date.strftime('%b %d, %Y')
+            this_week[i + 1] = add_date
         for j in range(current_day + 1, 7):
             diff = j - current_day - 1           
             add_date = now + timedelta(days=diff)
-            this_week[j] = add_date.strftime('%b %d, %Y')
+            this_week[j] = add_date
     return this_week
 
 def book_interview(request, slot_id):
@@ -105,7 +110,7 @@ def confirm_interview(request):
 
         all_slots = InterviewSlot.objects.all()
         num_student_has = len(all_slots.filter(student=name))
-        if num_student_has < 2 and validate_name(name) and validate_berkeley_email(email):
+        if num_student_has < 2 and _validate_name(name) and _validate_berkeley_email(email):
             booked_slot = None
             for slot in all_slots:
                 if slot.get_date() == request.POST['date'] and slot.hour == int(request.POST['day_hour'][1:]):
@@ -117,17 +122,17 @@ def confirm_interview(request):
             booked_slot.student_email = request.POST['email']
             booked_slot.availability = False
             booked_slot.save()
-            send_confirmation_email(booked_slot)
+            #_send_confirmation_email(booked_slot)
             return interview(request)
         else:
             return interview(request)       
     else:
         return interview(request)
 
-def validate_name(name):
+def _validate_name(name):
     return name is not None
 
-def validate_berkeley_email(email):
+def _validate_berkeley_email(email):
     try:
         validate_email(email)
     except ValidationError as e:
@@ -137,7 +142,7 @@ def validate_berkeley_email(email):
             return False
     return True
 
-def send_confirmation_email(slot):
+def _send_confirmation_email(slot):
     student_email = slot.student_email
     interviewer = slot.officer_username
     profiles = UserProfile.objects.all()

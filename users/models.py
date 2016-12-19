@@ -112,11 +112,13 @@ class OfficerClass(models.Model):
 
 class InterviewSlot(models.Model):
     DAY_OF_WEEK_CHOICES = (
+        (0, 'Sunday'),
         (1, 'Monday'),
         (2, 'Tuesday'),
         (3, 'Wednesday'),
         (4, 'Thursday'),
         (5, 'Friday'),
+        (6, 'Saturday'),
     )
     TIME_OF_DAY_CHOICES = (
         (9, '9am - 10am'),
