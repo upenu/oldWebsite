@@ -1,0 +1,35 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans);
+
+
+
+table.interviews th {
+  margin: 0;
+  text-align: center;  
+  border-collapse: collapse;
+  outline: 1px solid #000000;
+  background: #47B5DA;
+  color: white;
+
+}
+
+table.interviews td {
+  margin: 0;
+  text-align: center;
+  border-collapse: collapse;
+  outline: 1px solid #000000;
+}
+
+table.interviews td.unavailable {
+    background-color: #808080;
+}
+
+table.interviews td a{
+  width:100%;
+  display:block;
+}
+
+table.interviews td.available:hover {
+  cursor: pointer;
+  background: #47B5DA;
+  color: white;
+}

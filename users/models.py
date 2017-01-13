@@ -37,6 +37,7 @@ class UserProfile(models.Model):
     approved = models.BooleanField(default=False)
     candidate_profile = models.ForeignKey('CandidateProfile', blank=True, null=True)
     officer_profile = models.ForeignKey('OfficerProfile', blank=True, null=True)
+    can_interview = models.BooleanField(default=False)
 
 
     def __str__(self):
@@ -44,6 +45,8 @@ class UserProfile(models.Model):
 
     def is_officer(self):
         return user_type == 3
+    def can_interview(self):
+        return self.can_interview
     def get_committee_display(self):
         for tup in self.COMMITTEE_CHOICES:
             if self.committee == tup[0]:
@@ -71,7 +74,7 @@ class OfficerProfile(models.Model):
     position_dict = dict(OFFICER_POSITION_CHOICES)
     position = models.IntegerField(max_length=1, choices=OFFICER_POSITION_CHOICES, default=1)
     term = models.CharField(max_length=5, choices=TERM, default='S15', verbose_name='Officer term')
-    bio = models.TextField(default='Check back soon!')   
+    bio = models.TextField(default='Check back soon!')
      
     #office_hours = models.ManyToManyField('OfficeHour', blank=True)
     #classes_taken = models.ManyToManyField('BerkeleyClass', through='OfficerClass')
@@ -106,6 +109,61 @@ class OfficerProfile(models.Model):
 class OfficerClass(models.Model):
     berkeley_class = models.ForeignKey('BerkeleyClass')
     officer = models.ForeignKey('OfficerProfile')
+
+class InterviewSlot(models.Model):
+    DAY_OF_WEEK_CHOICES = (
+        (0, 'Sunday'),
+        (1, 'Monday'),
+        (2, 'Tuesday'),
+        (3, 'Wednesday'),
+        (4, 'Thursday'),
+        (5, 'Friday'),
+        (6, 'Saturday'),
+    )
+    TIME_OF_DAY_CHOICES = (
+        (9, '9am - 10am'),
+        (10, '10am - 11am'),
+        (11, '11am - 12pm'),
+        (12, '12pm - 1pm'),
+        (13, '1pm - 2pm'),
+        (14, '2pm - 3pm'),
+        (15, '3pm - 4pm'),
+        (16, '4pm - 5pm'),
+    )
+
+    day_dict = dict(DAY_OF_WEEK_CHOICES)
+    time_dict = dict(TIME_OF_DAY_CHOICES)
+
+    availability = models.BooleanField(default=True)
+    officer_username = models.CharField(max_length=30,
+        help_text='Please enter a valid officer username as this is used for website queries.')
+    student = models.CharField(max_length=50, verbose_name=('Student'), blank=True)
+    student_email = models.EmailField(max_length=255, verbose_name=('Student Email'), blank=True)
+    day_of_week = models.IntegerField(max_length=1, choices=DAY_OF_WEEK_CHOICES, default=1)
+    hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=9)
+    date = models.DateField(verbose_name=('Date'))
+
+    @property
+    def slot_id(self):
+        day_to_id = {1: 'm', 2:'tu', 3:'w', 4:'th', 5:'f'}
+        return day_to_id[self.day_of_week] + str(self.hour)
+
+    def get_date(self):
+        return self.date.strftime('%b %d, %Y')
+
+    def get_day_of_week(self):
+        return self.day_dict[self.day_of_week]
+    def get_time(self):
+        return self.time_dict[self.hour]
+
+    def __str__(self):
+        return self.name() + " " + self.officer_username
+
+    def name(self):
+        return str(self.date) + " " + self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour]
+
+    def is_available(self):
+        return self.availability
 
 class OfficeHour(models.Model):
     DAY_OF_WEEK_CHOICES = (

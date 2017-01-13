@@ -242,6 +242,33 @@ a.anchor {
   color: #555;
 }
 
+.interviewhours-wrapper .filters {
+  margin: 10px 20px;
+}
+
+.interviewhours-wrapper .filters .filter {
+  width: 150px;
+  margin-right: 35px;
+  height: 30px;
+  background: white;
+  border: 2px solid #555;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'PT Sans';
+  color: #555;
+}
+
+.interviewhours-wrapper .toprow li {
+	display: inline;
+	list-style-type: none;
+	margin-left: 10px;
+	padding-right: 105px;
+	height: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'PT Sans';
+}
+
 .officers-oh {
   padding: 30px 110px;
 }
@@ -441,6 +468,15 @@ a.anchor {
 .events-list-description p, .oh-list-description p {
   line-height: 20px;
   margin: 10px 0px;
+}
+
+
+.modal-dialog{
+    position: relative;
+    display: table;
+    overflow-y: auto;    
+    overflow-x: auto;
+    width: auto;  
 }
 
 /*

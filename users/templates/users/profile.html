@@ -28,7 +28,7 @@
 		
 
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <form action="{% url "myprofile" %}" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
@@ -48,27 +48,55 @@
                 </div>
             </div>
         </div>
-		
-		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
+
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
-				<div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">Edit your Officer Bio</h4>
-                        </div>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Edit your Officer Bio</h4>
+                    </div>
+
                     <form action="{% url "myprofile" %}" method="post" >
-					    {% csrf_token %}
-						<p><textarea rows="4" cols="50" name ="value" >
-						{{ up.officer_profile.bio }}</textarea></p>
-						  <input type="submit" name = "name" value ="Submit bio">
-						</form>
-                   
-               </a>
+                        {% csrf_token %}
+                        <p><textarea rows="4" cols="50" name="value">{{ up.officer_profile.bio }}</textarea></p>
+                        <input type="submit" name="name" value="Submit bio">
+                    </form>
                 </div>
             </div>
         </div>
-		
+
+        <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="{% url "myprofile" %}" method="post" >
+                        {% csrf_token %}
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Edit the hours you hold technical interviews</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="interviewhours-wrapper">
+                                <ul class="toprow">
+                                    <li><a href="#" onclick="addModalField()">Add Row</a></li>
+                                    <li><a href="#" onclick="removeModalField()">Remove Row</a></li>              
+                                </ul>
+                                                                                                
+                                <div id="modal-hour-container" class="filters">                                                              
+                                </div>                                
+                            </div>                                                                              
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <input type="submit" name="name" value="Add These Hours">
+                            <input type="submit" name="name" value="Remove These Hours">
+                        </div>                       
+                    </form>            
+                </div>
+            </div>
+        </div>
     </div>
+
     <div class="personal-info-container">
         <span class="title">Personal <i class="fa fa-user"></i></span>
         <ul>
@@ -87,7 +115,7 @@
                 <label class="attribute"><i class="fa fa-globe"></i> Website*:</label>
 				
                 <a href="#"
-                    id="personal_website"
++                    id="personal_website"
                     data-type="text"
                     data-pk="1"
                     data-url="/myprofile/"
@@ -134,17 +162,22 @@
             </li>
             {% endif %}
 			
-			{% if up.get_user_type_display == "Officer" %}
-		<li><i class="fa fa-comment"></i> Officer Bio: <a href = "#" data-toggle="modal" data-target="#myModal2">
-              Edit
-            </a> </i></li>
-		{% endif %}
+			      {% if up.get_user_type_display == "Officer" %}
+		        <li><i class="fa fa-comment"></i> Officer Bio: <a href = "#" data-toggle="modal" data-target="#myModal2">
+              Edit</a>
+            </li>
+		        {% endif %}
+            {% if up.can_interview %}
+            <li><i class="fa fa-comment"></i> Technical Interviews <a href = "#" data-toggle="modal" data-target="#myModal3" onclick="resetModalForm()">
+              Edit Hours</a>
+            </li>
+            {% endif %}
                 <!-- <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#resume-modal">
                   Upload New Resume
                 </button> -->
-        <li> 
-		*Note: Include http:// or https:// before the urls </li>
-       
+            <li> 
+		        *Note: Include http:// or https:// before the urls
+            </li>       
          </ul>
     </div>
     <div class="academic-info-container">
@@ -321,7 +354,94 @@ $(document).ready(function() {
         url: '/myprofile/',
         title: 'Choose Year Joined',
     });
+    
 });
+
+var days = [
+  {value: 1, text:"Monday"},
+  {value: 2, text:"Tuesday"},
+  {value: 3, text:"Wednesday"},
+  {value: 4, text:"Thursday"},
+  {value: 5, text:"Friday"},
+];
+
+var times = [
+  {value: 9, text:"9am - 10am"},
+  {value: 10, text:"10am - 11am"},
+  {value: 11, text:"11am - 12pm"},
+  {value: 12, text:"12pm - 1pm"},
+  {value: 13, text:"1pm - 2pm"},
+  {value: 14, text:"2pm - 3pm"},
+  {value: 15, text:"3pm - 4pm"},
+  {value: 16, text:"4pm - 5pm"}
+];
+
+function resetModalForm() {
+    var container = document.getElementById("modal-hour-container");
+
+    var day_select_elements = document.getElementsByClassName("filter days");
+    var time_select_elements = document.getElementsByClassName("filter times");
+
+    if (day_select_elements.length == 0 && time_select_elements.length == 0) {
+      addModalField();
+    } else {
+      while (container.childNodes.length > 4) {
+        container.removeChild(container.lastChild);
+      }
+    }   
+};
+
+function addModalField() {
+    var container = document.getElementById("modal-hour-container");
+    var day_select_elements = document.getElementsByClassName("filter days");
+    var time_select_elements = document.getElementsByClassName("filter times");
+
+    var select_day = document.createElement("select");
+    
+    for (var i = 0; i < days.length; i++) {
+        var day = days[i];
+        var opt = document.createElement("option");
+        opt.value = day.value;
+        opt.text = day.text;
+        select_day.appendChild(opt);
+    }
+    var day_num = day_select_elements.length + 1;
+    select_day.name = "day_value" + day_num;
+    select_day.className = "filter days";
+
+    var select_time = document.createElement("select");
+    for (var i = 0; i < times.length; i++) {
+        var time = times[i];
+        var opt = document.createElement("option");
+        opt.value = time.value;
+        opt.text = time.text;
+        select_time.appendChild(opt);
+    }
+    var time_num = time_select_elements.length + 1;
+    select_time.name = "time_value" + time_num;
+    select_time.className = "filter times";
+
+    container.appendChild(select_day);
+    container.appendChild(select_time);
+
+    var new_line = document.createElement("br");
+    new_line.className = "modal-break";
+    container.appendChild(new_line);
+};
+
+function removeModalField() {
+    var container = document.getElementById("modal-hour-container");
+    var day_select_elements = document.getElementsByClassName("filter days");
+    var time_select_elements = document.getElementsByClassName("filter times");
+    var line_break_elements = document.getElementsByClassName("modal-break");
+    
+    if (day_select_elements.length > 1 && time_select_elements.length > 1 && line_break_elements.length > 1) {
+      // need to remove two select elements and a line break element
+      container.removeChild(day_select_elements[day_select_elements.length - 1]);
+      container.removeChild(time_select_elements[time_select_elements.length - 1]);
+      container.removeChild(line_break_elements[line_break_elements.length - 1]);
+    }
+};
 
 $(function() {
     $('input[type=submit]').attr('class', $('input').attr('class') + ' btn btn-primary');
