@@ -14,7 +14,7 @@ class OfficerPosition:
 
     @property
     def email(self):
-        return '{0}@upe.berkeley.edu'.format(self.email_name)
+        return '{0} AT upe DOT berkeley DOT edu'.format(self.email_name)
 
     def __str__(self):
         return self.full_name
