@@ -14,7 +14,7 @@ class OfficerPosition:
 
     @property
     def email(self):
-        return '{0}@upe.berkeley.edu'.format(self.email_name)
+        return '{0}AT upe DOT berkeley DOT edu'.format(self.email_name)
 
     def __str__(self):
         return self.full_name
@@ -29,7 +29,7 @@ OfficerPosition('social', 'Social')
 OfficerPosition('publicity', 'Publicity')
 OfficerPosition('outreach', 'Outreach')
 OfficerPosition('webdev', 'Web Development')
-OfficerPosition('general', 'General Officers')
+OfficerPosition('facilities', 'Facilities')
 
 current_time = datetime.datetime.now()
 CURRENT_YEAR = current_time.year
