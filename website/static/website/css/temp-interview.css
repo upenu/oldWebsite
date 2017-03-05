@@ -1,9 +1,9 @@
-.#interview-frame {
+#interview-frame {
 	height: 400px;
 	width: 100%;
 	display: block;
 }
 
 .interview-faq p {
-	margin-left: 20px;
+	margin-left: 30px;
 }
