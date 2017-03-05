@@ -30,7 +30,7 @@ def oh(request):
 
 def ir(request):
     return render(request, 'website/ir.html', {})
-
+"""
 def interview(request):
     time_dict = {9: "9:00am - 10:00am", 10: "10:00am - 11:00am", 11: "11:00am - 12:00pm", 12: "12:00pm - 1:00pm", 13: "1:00pm - 2:00pm",
                 14: "2:00pm - 3:00pm", 15: "3:00pm - 4:00pm", 16: "4:00pm - 5:00pm"}
@@ -69,6 +69,10 @@ def interview(request):
     "range": range(len(start_times)), "week": current_week_dates}
 
     return render(request, 'website/interview.html', context)
+"""
+
+def interview(request):
+    return render(request, 'website/temp-interview.html', {})
 
 def _get_dates_of_week(now):
     this_week = ['date' for i in range(7)]

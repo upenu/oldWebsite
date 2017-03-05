@@ -1,0 +1,33 @@
+{% extends "website/header_footer.html" %}
+{% load staticfiles %}
+{% load filters %}
+{% block javascript %}
+  
+  <link rel="shortcut icon" href="{% static "website/favicon.ico" %}" type="image/x-icon">
+  <link rel=icon href="{% static "website/favicon.ico" %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static "website/css/temp-interview.css" %}" type="text/css" media="screen" />
+  <link rel="stylesheet" href="{% static "website/css/interview.css" %}" type="text/css" media="screen" />
+   
+  <script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
+  <script src="{% static "website/js/modernizr_custom_79639.js" %}"></script>
+  <script src="{% static "website/js/ba_cond.min.js" %}"></script>
+  <script src="{% static "website/js/landingpage_banner_custom.js" %}"></script>
+  <script src="{% static "website/js/landingpage_main_custom.js" %}"></script>
+  <script src="{% static "website/js/isotope.min.js" %}"></script>
+{% endblock %}
+{% block content %}
+<!-- MAIN -->
+<div id="main-wrapper">
+  <div id="main-inner-wrapper">
+    <div class="oh-wrapper">
+      <header class="oh-title">Interviews @ 346 Soda Hall</header>
+      <div class="interview-faq">
+        <p>Make sure to be logged into your berkeley email otherwise nothing will show up on this page.</p>	
+      </div>      
+      <iframe id="interview-frame" src="https://calendar.google.com/calendar/selfsched?sstoken=UUNoQ1F6WXdHaU95fGRlZmF1bHR8MzhlMGY3ZDNhY2U3YjM0YzlhOGNmNWI1M2Y4ZTNjZGM"></iframe>
+    </div>
+  </div>
+</div>
+<!-- ENDS MAIN -->
+
+{% endblock %}
