@@ -1,4 +1,6 @@
 from django import template
+from datetime import datetime
+
 register = template.Library()
 
 @register.filter(name='times') 
@@ -17,3 +19,7 @@ def add(value, arg):
 @register.filter(name='keyvalue')
 def keyvalue(d, key):
 	return d.get(key)
+
+@register.filter(name='todate')
+def todate(timestamp):
+	return datetime.fromtimestamp(float(timestamp))
