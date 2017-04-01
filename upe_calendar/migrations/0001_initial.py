@@ -13,17 +13,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Event',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, verbose_name='ID', primary_key=True)),
+                ('id', models.AutoField(verbose_name='ID', auto_created=True, serialize=False, primary_key=True)),
                 ('name', models.CharField(max_length=100)),
-                ('start_time', models.DateTimeField()),
-                ('end_time', models.DateTimeField()),
-                ('description', models.TextField(blank=True, null=True, max_length=500)),
+                ('description', models.TextField(blank=True, max_length=10000, null=True)),
                 ('location', models.CharField(max_length=100)),
-                ('thumbnail', models.ImageField(upload_to='event_images/thumbnails')),
-                ('banner', models.ImageField(upload_to='event_images/banners')),
+                ('banner', models.CharField(max_length=4096)),
+                ('facebookid', models.BigIntegerField(default=0)),
+                ('start_timestamp', models.BigIntegerField()),
             ],
-            options={
-            },
-            bases=(models.Model,),
         ),
     ]
