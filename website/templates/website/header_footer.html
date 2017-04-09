@@ -42,11 +42,22 @@
             </ul>
           </li>
           <li class="header-section">
-            <a href="#">Student Services</a>
+            <a href="#">Office Hours</a>
             <ul id="subnav-2" class="subnav">
                 <li><a href="/oh">Office Hours</a></li>
+            </ul>
+          </li>
+          <li class="header-section">
+            <a href="#">Professional Development</a>
+            <ul id="subnav-2" class="subnav">
                 <li><a href="/interview">Technical Interviews</a></li>
             </ul>
+          </li>
+          <li class="header-section">
+            <a href="/ir">Industry Relations</a>
+            <ul id="subnav-3" class="subnav">
+                <li><a href="/ir">FAQ</a></li>
+            </ul>            
           </li>
           <li class="header-section pull-right">
             {% if user.is_authenticated %}
@@ -61,14 +72,7 @@
             {% else %}
             <a href="/login">Login</a>
             {% endif %}
-          </li>
-          <li class="header-section">
-            <a href="/ir">Industry Relations</a>
-            <ul id="subnav-3" class="subnav">
-                <li><a href="/ir">FAQ</a></li>
-            </ul>
-            
-          </li>
+          </li>          
         </ul>
       </div>
       <!-- MENU -->
