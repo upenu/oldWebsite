@@ -41,24 +41,30 @@
                 <li><a href="/alumni">Alumni</a></li>
             </ul>
           </li>
-          <li class="header-section">
-            <a href="#">Office Hours</a>
-            <ul id="subnav-2" class="subnav">
-                <li><a href="/oh">Office Hours</a></li>
-            </ul>
-          </li>
-          <li class="header-section">
-            <a href="#">Professional Development</a>
-            <ul id="subnav-3" class="subnav">
-                <li><a href="/interview">Technical Interviews</a></li>
-            </ul>
-          </li>
-          <li class="header-section">
-            <a href="/ir">Industry Relations</a>
-            <ul id="subnav-4" class="subnav">
-                <li><a href="/ir">FAQ</a></li>
-            </ul>            
-          </li>
+          <div class="header-section">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Office Hours<span class="caret"></span></a>
+              <ul id="subnav-2" class="dropdown-menu pull-right">
+                <li><a href="/oh">Office Hours</a></li>              	
+              </ul>            	
+            </li>
+          </div>
+          <div class="header-section">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Professional Development<span class="caret"></span></a>
+              <ul id="subnav-3" class="dropdown-menu pull-right">
+                <li><a href="/interview">Technical Interviews</a></li>             	
+              </ul>            	
+            </li>
+          </div>
+          <div class="header-section">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Industry Relations<span class="caret"></span></a>
+              <ul id="subnav-4" class="dropdown-menu pull-right">
+                <li><a href="/ir">FAQ</a></li>             	
+              </ul>            	
+            </li>
+          </div>
           <li class="header-section pull-right">
             {% if user.is_authenticated %}
             <a href="/logout">Logout</a>
