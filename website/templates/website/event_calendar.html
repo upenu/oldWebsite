@@ -1,0 +1,38 @@
+{% extends "website/header_footer.html" %}
+{% load staticfiles %}
+{% load filters %}
+{% block javascript %}
+  
+  <link rel="shortcut icon" href="{% static "website/favicon.ico" %}" type="image/x-icon">
+  <link rel=icon href="{% static "website/favicon.ico" %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static "website/css/temp-interview.css" %}" type="text/css" media="screen" />
+  <link rel="stylesheet" href="{% static "website/css/interview.css" %}" type="text/css" media="screen" />
+   
+  <script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
+  <script src="{% static "website/js/modernizr_custom_79639.js" %}"></script>
+  <script src="{% static "website/js/ba_cond.min.js" %}"></script>
+  <script src="{% static "website/js/landingpage_banner_custom.js" %}"></script>
+  <script src="{% static "website/js/landingpage_main_custom.js" %}"></script>
+  <script src="{% static "website/js/isotope.min.js" %}"></script>
+{% endblock %}
+{% block content %}
+<!-- MAIN -->
+<div id="main-wrapper">
+  <div id="main-inner-wrapper">
+    <div class="oh-wrapper">
+      <header class="oh-title">Events Calendar</header>
+      <div class="interview-faq">
+        <p>Make sure to be logged into your berkeley email otherwise nothing will show up on this page.</p>	
+      </div>
+      <div class="main-content-wrapper">
+
+        <iframe src="https://calendar.google.com/calendar/embed?title=UPE%20Events%20Calendar&amp;height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=ll32ib6oleqdfh228sdejng8ak%40group.calendar.google.com&amp;color=%232952A3&amp;ctz=America%2FLos_Angeles" style="border: 10; width: 95%; height: 700px; margin: 30px auto 0; padding: 0% 2.5%;" frameborder="" scrolling="no"
+        ></iframe>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- ENDS MAIN -->
+
+{% endblock %}

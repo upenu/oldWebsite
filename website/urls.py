@@ -10,6 +10,7 @@ urlpatterns = patterns('',
 
     url(r'^$', 'website.views.index', name='index'),
     url(r'^oh/$', 'website.views.oh', name='oh'),
+    url(r'^event_calendar/$', 'website.views.event_calendar', name='event_calendar'),
     url(r'^ir/$', 'website.views.ir', name= 'ir'),
     url(r'^bookinterview/(?P<slot_id>[a-z]+[0-9]+)/$', 'website.views.book_interview', name='book_interview'),
     url(r'^interview/$', 'website.views.interview', name='interview'),
