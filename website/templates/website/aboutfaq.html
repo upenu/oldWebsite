@@ -1,0 +1,75 @@
+{% extends "website/header_footer.html" %}
+{% load staticfiles %}
+{% block javascript %}
+  <link rel="shortcut icon" href="{% static "website/favicon.ico" %}" type="image/x-icon">
+  <link rel=icon href="{% static "website/favicon.ico" %}" type="image/x-icon">
+
+  <script src="{% static "website/js/landingpage_banner_custom.js" %}"></script>
+  <script src="{% static "website/js/landingpage_main_custom.js" %}"></script>
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+
+<div id="main-wrapper">
+  <div id="main-ir-inner-wrapper">
+    <div id="content-ir-wrapper">
+      <div id="content-ir-header-wrapper">
+        <h1>General FAQ</h1>
+      </div>
+      <div id="content-ir-wrap">
+
+      <div id="content-ir-text">
+        <a href="#q1">What services does UPE offer?</a><br>
+        <a href="#q2">Who can join UPE?</a><br>
+        <a href="#q3">Where is the UPE office?</a><br>
+      </div>
+        
+        <div id="content-ir-text">
+          <a class="anchor" name="q1"></a>
+          <h1>What services does UPE offer?</h1>
+          <p>UPE does resume critiques for those interested in improving their resume for their job or internship search.  If you need some tutoring help in CS classes, we have office hours during which some of our members can help; you can go to our <a href="http://upe.berkeley.edu/oh/">office hours</a> page to see our full list of office hours and classes that we can help out with.We also do mock technical interviews, which you can sign up for <a href="http://upe.berkeley.edu/interview/">here</a>. If you want to practice on some technical interview problems before doing a mock interview, we have a Lending Library with books like "Cracking the Coding Interview" which you can borrow.
+          </p>
+        </div>
+        <div id="content-ir-text">
+          <a class="anchor" name="q2"></a>
+          <h1>Who can join UPE?</h1>
+          <p>Each semester, we send candidate invitations to the top third of declared Computer Science majors in the Letters &amp Sciences College at UC Berkeley.  Upon completion of a series of requirements, candidates can initiate into UPE as members and become part of a vast network of computer science students.</p>
+        </div>
+        <div id="content-ir-text">
+          <a class="anchor" name="q3"></a>
+          <h1>Where is the UPE office?</h1>
+          <p>Room 346 at Soda Hall.  Check our office hours page for when it's open.</p>
+        </div>
+      </div>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+$(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+{% endblock %}
