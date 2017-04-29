@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^', include('website.urls')),
 
     url(r'^officers/$', 'users.views.officers', name='officers'),
+    url(r'^officehours/$', 'users.views.officers2', name='officehours'),
     url(r'^members/$', 'users.views.members', name='members'),
     url(r'^members/filter/$', 'users.views.members_filter', name='members_filter'),
     url(r'^interest/$', 'users.views.interest', name='interest'),

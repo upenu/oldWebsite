@@ -34,6 +34,30 @@ def officers(request):
         'logged_in': request.user.is_authenticated()})
     return HttpResponse(template.render(context))
 
+def officers2(request):
+    template = loader.get_template('users/officers2.html')
+    officers = UserProfile.objects.filter(user_type=3, approved=True)
+    for position in OfficerPosition.positions.values():
+        position.users = []
+
+    for officer in officers:
+        officer_profile_list = OfficerProfile.objects.filter(user=officer.user, term=CURRENT_SEMESTER[0])
+        if len(officer_profile_list) != 0:
+             OfficerPosition.positions[officer_profile_list[0].position].users.append(officer)
+
+    context = RequestContext(request,
+        {'positions': OfficerPosition.positions.values(),
+        'title': 'Officers',
+        'current_semester': CURRENT_SEMESTER[1],
+        'logged_in': request.user.is_authenticated()})
+    return HttpResponse(template.render(context))
+
+
+
+
+
+
+
 def members(request):
     template = loader.get_template('users/members.html')
     members = UserProfile.objects.filter(user_type=2, approved=True)
@@ -243,6 +267,16 @@ def myprofile(request):
             #bio_form = ChangeBioForm(request.POST)
             up.officer_profile.bio = request.POST['value']
             up.officer_profile.save()
+
+        elif request.POST['name'] == 'Submit OHtimes':
+            #bio_form = ChangeBioForm(request.POST)
+            up.officer_profile.ohtime = request.POST['value']
+            up.officer_profile.save()
+        elif request.POST['name'] == 'Submit OHclasses':
+            #bio_form = ChangeBioForm(request.POST)
+            up.officer_profile.ohclasses = request.POST['value']
+            up.officer_profile.save()
+
         elif request.POST['name'] == 'email':
             user.email = request.POST['value']
             user.save()

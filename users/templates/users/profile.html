@@ -65,8 +65,49 @@
                    
                </a>
                 </div>
+             
             </div>
         </div>
+ <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                                <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Edit your Officer Bio</h4>
+                        </div>
+                    <form action="{% url "myprofile" %}" method="post" >
+                                            {% csrf_token %}
+                                                <p><textarea rows="4" cols="50" name ="value" >
+                                                {{ up.officer_profile.ohtime }}</textarea></p>
+                                                  <input type="submit" name = "name" value ="Submit OHtimes">
+                                                </form>
+
+               </a>
+                </div>
+
+            </div>
+        </div>
+<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                                <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Edit your Officer Bio</h4>
+                        </div>
+                    <form action="{% url "myprofile" %}" method="post" >
+                                            {% csrf_token %}
+                                                <p><textarea rows="4" cols="50" name ="value" >
+                                                {{ up.officer_profile.ohclasses }}</textarea></p>
+                                                  <input type="submit" name = "name" value ="Submit OHclasses">
+                                                </form>
+
+               </a>
+                </div>
+
+            </div>
+        </div>
+
+
 		
     </div>
     <div class="personal-info-container">
@@ -138,6 +179,16 @@
 		<li><i class="fa fa-comment"></i> Officer Bio: <a href = "#" data-toggle="modal" data-target="#myModal2">
               Edit
             </a> </i></li>
+              <li><i class="fa fa-comment"></i> Office Hours: <a href = "#" data-toggle="modal" data-target="#myModal3">
+              Edit
+            </a> </i></li>
+
+            <li><i class="fa fa-comment"></i> Office Hour classes: <a href = "#" data-toggle="modal" data-target="#myModal4">
+              Edit
+            </a> </i></li>
+
+              <li>{{  up.officer_profile.ohclasses }}</li>
+
 		{% endif %}
                 <!-- <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#resume-modal">
                   Upload New Resume
