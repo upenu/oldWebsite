@@ -1,0 +1,77 @@
+{% extends "website/header_footer.html" %}
+{% load staticfiles %}
+{% load filters %}
+{% block javascript %}
+    <title>UPE Candidate Checkoff</title>
+
+    <link href="{% static "website/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "website/css/officer.css" %}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{% static "website/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "website/js/officer.js" %}"></script>
+    <script src="{% static "website/js/officer_candidate_list.js" %}"></script>
+{% endblock %}
+{% block content %}
+<!-- MAIN -->
+<div id="main-wrapper">
+  <div id="main-inner-wrapper">
+    <!-- <nav class="navbar navbar-default">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Officer Portal</a></li>
+        <li><a href="#">Pending Approvals</a></li>
+        <li><a href="#">Candidate Lists</a></li>
+      </ul>
+    </nav> -->
+
+    <h1 style="text-align: center"><u>Officer Portal</u></h1>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Candidate Name</th>
+          <th>GM1 Attendance</th>
+          <th>GM2 Attendance</th>
+          <th>GM3 Attendance</th>
+          <th>Social Attendance 1</th>
+          <th>Social Attendance 2</th>
+          <th>Professional Event 1</th>
+          <th>Professional Event 2</th>
+          <th>Technical Interview</th>
+          <th>Officer Challenge</th>
+          <th>Officer Chat 1</th>
+          <th>Officer Chat 2</th>
+          <th>Update Information</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for candidate in candidates %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <form action="/requirements/" method="post">
+              {% csrf_token %}
+              <input type="hidden" value = "{{candidate.user.username}}" name="candidate">
+              <td>{{candidate.user.first_name}} {{candidate.user.last_name}}</td>
+              <td><input type="checkbox" name='gm1' {% if requirements|get_item:candidate|get_item:'gm1' %}checked{% endif %}/>    &nbsp;   </td>
+              <td><input type="checkbox" name='gm2' {% if requirements|get_item:candidate|get_item:'gm2' %}checked{% endif %}/>    &nbsp;   </td>
+              <td><input type="checkbox" name='gm3' {% if requirements|get_item:candidate|get_item:'gm3' %}checked{% endif %}/>    &nbsp;   </td>
+              <td><input type="checkbox" name='s1' {% if requirements|get_item:candidate|get_item:'s1' %}checked{% endif %}/>    &nbsp;   </td>
+              <td><input type="checkbox" name='s2' {% if requirements|get_item:candidate|get_item:'s2' %}checked{% endif %}/>    &nbsp;   </td>
+              <td><input type="checkbox" name='p1' {% if requirements|get_item:candidate|get_item:'p1' %}checked{% endif %}/>    &nbsp;   </td>
+              <td><input type="checkbox" name='p2' {% if requirements|get_item:candidate|get_item:'p2' %}checked{% endif %}/>    &nbsp;   </td>
+              <td><input type="checkbox" name='i' {% if requirements|get_item:candidate|get_item:'i' %}checked{% endif %}/>    &nbsp;   </td>
+              <td><input type="checkbox" name='c' {% if requirements|get_item:candidate|get_item:'c' %}checked{% endif %}/>    &nbsp;   </td>
+              <td><input type="checkbox" name='oc1' {% if requirements|get_item:candidate|get_item:'oc1' %}checked{% endif %}/>    &nbsp;   </td>
+              <td><input type="checkbox" name='oc2' {% if requirements|get_item:candidate|get_item:'oc2' %}checked{% endif %}/>    &nbsp;   </td>
+              <td><input type="submit" value="Update"></td>
+            </form>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<!-- ENDS MAIN -->
+
+{% endblock %}

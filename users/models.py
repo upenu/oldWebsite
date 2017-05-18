@@ -54,15 +54,85 @@ class UserProfile(models.Model):
 
 # EVERYTHING BELOW IS FOR LATER.
 
-class CandidateProfile(models.Model):
-    user = models.OneToOneField(User)
+class CandidateProfile(models.Model): # update CandidateProfile model with necessary fields
+    user = models.OneToOneField(User) # get candidate name from user
+    gm1 = models.BooleanField(default=False)
+    gm2 = models.BooleanField(default=False)
+    gm3 = models.BooleanField(default=False)
+    s1 = models.BooleanField(default=False) # social 1
+    s2 = models.BooleanField(default=False) # social 2
+    p1 = models.BooleanField(default=False) # prof dev 1
+    p2 = models.BooleanField(default=False) # prof dev 2
+    i = models.BooleanField(default=False) # interview
+    c = models.BooleanField(default=False) # challenge
+    oc1 = models.BooleanField(default=False) # officer chat 1
+    oc2 = models.BooleanField(default=False) # officer chat 2
 
-    def get_progress(self):
-        pass
+    # def get_progress(self):
+    #     total = 11 # 3 gms + 2 social + 2 prof + 1 interview + 1 challenge + 2 chats
+    #     count = 0
+    #     if self.gm1 == True:
+    #         count += 1
+    #     if self.gm2 == True:
+    #         count += 1
+    #     if self.gm3 == True:
+    #         count += 1
+    #     if self.technicalInterview == True:
+    #         count += 1
+    #     if self.officerChallenge == True:
+    #         count += 1
+    #     count += self.officerChatCount2
+    #     return count == total
 
 
     def __str__(self):
         return self.user.first_name + " " + self.user.last_name
+
+    def get_gm1(self):
+        return self.gm1
+    def get_gm2(self):
+        return self.gm2
+    def get_gm3(self):
+        return self.gm3
+    def get_s1(self):
+        return self.s1
+    def get_s2(self):
+        return self.s2
+    def get_p1(self):
+        return self.p1
+    def get_p2(self):
+        return self.p2
+    def get_c(self):
+        return self.c
+    def get_i(self):
+        return self.i
+    def get_oc1(self):
+        return self.oc1
+    def get_oc2(self):
+        return self.oc2
+
+    def update_gm1(self, newVal):
+        self.gm1 = newVal
+    def update_gm2(self, newVal):
+        self.gm2 = newVal
+    def update_gm3(self, newVal):
+        self.gm3 = newVal
+    def update_s1(self, newVal):
+        self.s1 = newVal
+    def update_s2(self, newVal):
+        self.s2 = newVal
+    def update_p1(self, newVal):
+        self.p1 = newVal
+    def update_p2(self, newVal):
+        self.p2 = newVal
+    def update_c(self, newVal):
+        self.c = newVal
+    def update_i(self, newVal):
+        self.i = newVal
+    def update_oc1(self, newVal):
+        self.oc1 = newVal
+    def update_oc2(self, newVal):
+        self.oc2 = newVal
 
 class OfficerProfile(models.Model):
     OFFICER_POSITION_CHOICES = tuple((position.index, position.full_name)
@@ -75,7 +145,7 @@ class OfficerProfile(models.Model):
     position = models.IntegerField(max_length=1, choices=OFFICER_POSITION_CHOICES, default=1)
     term = models.CharField(max_length=5, choices=TERM, default='S15', verbose_name='Officer term')
     bio = models.TextField(default='Check back soon!')
-     
+
     #office_hours = models.ManyToManyField('OfficeHour', blank=True)
     #classes_taken = models.ManyToManyField('BerkeleyClass', through='OfficerClass')
 
@@ -297,7 +367,7 @@ class BerkeleyClass(models.Model):
     req_type = models.CharField(max_length=3, choices=REQUIREMENT_TYPE, default='SOC')
 
     def __str__(self):
-        return self.req_dict[self.req_type] 
+        return self.req_dict[self.req_type]
 
 class Completion(models.Model):
     candidate = models.ForeignKey('CandidateProfile')
