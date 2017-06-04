@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{% static "website/css/hover.css" %}" type="text/css" media="screen" />
     {% endblock %}
     <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
-    
+
     {% block javascript %}
     <script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
     {% endblock %}
@@ -57,7 +57,12 @@
             <a href="/ir">Industry Relations</a>
             <ul id="subnav-4" class="subnav">
                 <li><a href="/ir">FAQ</a></li>
-            </ul>            
+            </ul>
+          </li>
+          <li class="header-section">
+            {% if user.is_authenticated %}
+            <a href="/requirements">Requirements</a>
+            {% endif %}
           </li>
           <li class="header-section pull-right">
             {% if user.is_authenticated %}
@@ -72,7 +77,7 @@
             {% else %}
             <a href="/login">Login</a>
             {% endif %}
-          </li>          
+          </li>
         </ul>
       </div>
       <!-- MENU -->
@@ -100,7 +105,7 @@
             <div class="top-col">
               <div class="top-col-title"><span>About Us</span></div>
               <div class="top-col-info">
-                Upsilon Pi Epsilon is the first and only international honor society for the Computing Sciences (CS). The UC Berkeley chapter launched in 1995 and upholds the tradition of academic excellence by honoring the top tier of CS students. We are a student group acting independently of the University of California. We take full responsibility for our organization and this web site. 
+                Upsilon Pi Epsilon is the first and only international honor society for the Computing Sciences (CS). The UC Berkeley chapter launched in 1995 and upholds the tradition of academic excellence by honoring the top tier of CS students. We are a student group acting independently of the University of California. We take full responsibility for our organization and this web site.
               </div>
               </div>
             <div class="top-col">
@@ -121,7 +126,7 @@
             </div>
             </div>
             <div class="top-col">
-              <div class="top-col-title"><span>Follow Us</span></div> 
+              <div class="top-col-title"><span>Follow Us</span></div>
               <div class="top-col-info">
                 <div id="name">Social Media</div>
                   <ul id="footer-icons">

@@ -165,3 +165,154 @@ def _send_confirmation_email(slot):
         [interviewer_email, student_email],
         fail_silently=False,
     )
+
+def str_to_bool(s):
+    if s == None:
+        return False
+    if s.lower() == 'on':
+        return True
+    return False
+
+def requirements(request):
+    # handle form submission
+    requester = UserProfile.objects.get(user=request.user)
+
+    if requester.user_type == 3:
+        if request.method == 'POST':
+            gm1 = str_to_bool(request.POST.get('gm1'))
+            gm2 = str_to_bool(request.POST.get('gm2'))
+            gm3 = str_to_bool(request.POST.get('gm3'))
+            s1 = str_to_bool(request.POST.get('s1'))
+            s2 = str_to_bool(request.POST.get('s2'))
+            p1 = str_to_bool(request.POST.get('p1'))
+            p2 = str_to_bool(request.POST.get('p2'))
+            i = str_to_bool(request.POST.get('i'))
+            c = str_to_bool(request.POST.get('c'))
+            oc1 = str_to_bool(request.POST.get('oc1'))
+            oc2 = str_to_bool(request.POST.get('oc2'))
+            candidate_username = request.POST.get('candidate')
+            user = User.objects.get(username = candidate_username)
+            candidate = CandidateProfile.objects.get(user = user)
+
+            # update requirements
+            if gm1 != candidate.get_gm1():
+                candidate.gm1 = gm1
+            if gm2 != candidate.get_gm2():
+                candidate.gm2 = gm2
+            if gm3 != candidate.get_gm3():
+                candidate.gm3 = gm3
+            if s1 != candidate.get_s1():
+                candidate.s1 = s1
+            if s2 != candidate.get_s2():
+                candidate.s2 = s2
+            if p1 != candidate.get_p1():
+                candidate.p1 = p1
+            if p2 != candidate.get_p2():
+                candidate.p2 = p2
+            if i != candidate.get_i():
+                candidate.i = i
+            if c != candidate.get_c():
+                candidate.c = c
+            if oc1 != candidate.get_oc1():
+                candidate.oc1 = oc1
+            if oc2 != candidate.get_oc2():
+                candidate.oc2 = oc2
+            candidate.save()
+
+        candidates = []
+        completion = {}
+        for up in UserProfile.objects.filter(user_type=1):
+            cp = CandidateProfile.objects.get(user=up.user)
+            reqs = {}
+            if cp.get_gm1():
+                reqs['gm1'] = True
+            else:
+                reqs['gm1'] = False
+            if cp.get_gm2():
+                reqs['gm2'] = True
+            else:
+                reqs['gm2'] = False
+            if cp.get_gm3():
+                reqs['gm3'] = True
+            else:
+                reqs['gm3'] = False
+            if cp.get_s1():
+                reqs['s1'] = True
+            else:
+                reqs['s1'] = False
+            if cp.get_s2():
+                reqs['s2'] = True
+            else:
+                reqs['s2'] = False
+            if cp.get_p1():
+                reqs['p1'] = True
+            else:
+                reqs['p1'] = False
+            if cp.get_p2():
+                reqs['p2'] = True
+            else:
+                reqs['p2'] = False
+            if cp.get_i():
+                reqs['i'] = True
+            else:
+                reqs['i'] = False
+            if cp.get_c():
+                reqs['c'] = True
+            else:
+                reqs['c'] = False
+            if cp.get_oc1():
+                reqs['oc1'] = True
+            else:
+                reqs['oc1'] = False
+            if cp.get_oc2():
+                reqs['oc2'] = True
+            else:
+                reqs['oc2'] = False
+
+            completion[cp] = reqs
+            candidates.append(cp)
+
+        return render(request, 'website/officer_requirements_view.html', {'candidates': candidates, 'requirements': completion})
+    else:
+        cp = CandidateProfile.objects.get(user=request.user)
+        gm1color = 'red'
+        if cp.get_gm1():
+            gm1color = 'green'
+        gm2color = 'red'
+        if cp.get_gm2():
+            gm2color = 'green'
+        gm3color = 'red'
+        if cp.get_gm3():
+            gm3color = 'green'
+        s1color = 'red'
+        if cp.get_s1():
+            s1color = 'green'
+        s2color = 'red'
+        if cp.get_s2():
+            s2color = 'green'
+        p1color = 'red'
+        if cp.get_p1():
+            p1color = 'green'
+        p2color = 'red'
+        if cp.get_p2():
+            p2color = 'green'
+        icolor = 'red'
+        if cp.get_i():
+            icolor = 'green'
+        ccolor = 'red'
+        if cp.get_c():
+            ccolor = 'green'
+        oc1color = 'red'
+        if cp.get_oc1():
+            oc1color = 'green'
+        oc2color = 'red'
+        if cp.get_oc2():
+            oc2color = 'green'
+        return render(request, 'website/candidate_requirements_view.html', {'gm1': gm1color, 'gm2': gm2color, 'gm3': gm3color, 's1': s1color, 's2': s2color, 'p1': p1color, 'p2': p2color, 'i': icolor, 'c': ccolor, 'oc1': oc1color, 'oc2': oc2color, 'first_name': request.user.first_name, 'last_name': request.user.last_name})
+
+def verify_requirements(request):
+    return render(request, 'website/officer_requirements_view.html', {})
+
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)

@@ -1,0 +1,81 @@
+{% extends "website/header_footer.html" %}
+{% load staticfiles %}
+{% load filters %}
+{% block javascript %}
+    <title>UPE Candidate Checkoff</title>
+
+    <link href="{% static "website/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "website/css/officer.css" %}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{% static "website/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "website/js/officer.js" %}"></script>
+    <script src="{% static "website/js/officer_candidate_list.js" %}"></script>
+{% endblock %}
+{% block content %}
+<!-- MAIN -->
+<div id="main-wrapper">
+  <div id="main-inner-wrapper" style="padding-top: 2em">
+
+    <!-- <nav class="navbar navbar-default">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Candidate Portal</a></li>
+        <li><a href="#">General Requirement List</a></li>
+        <li><a href="#">Committee Requirement List</a></li>
+      </ul>
+    </nav> -->
+    <h3 style="text-align: center; padding-bottom: 1em">Requirements for: {{first_name}} {{last_name}}</h3>
+
+    <table class="table" style="border: 2px solid #dddddd">
+      <thead>
+        <tr>
+          <th>General Meeting 1</th>
+          <td style="background-color: {{gm1}}"></td>
+        </tr>
+        <tr>
+          <th>General Meeting 2</th>
+          <td style="background-color: {{gm2}}"></td>
+        </tr>
+        <tr>
+          <th>General Meeting 3</th>
+          <td style="background-color: {{gm3}}"></td>
+        </tr>
+        <tr>
+          <th>Social Requirement 1</th>
+          <td style="background-color: {{s1}}"></td>
+        </tr>
+        <tr>
+          <th>Social Requirement 2</th>
+          <td style="background-color: {{s2}}"></td>
+        </tr>
+        <tr>
+          <th>Professional Development Event 1</th>
+          <td style="background-color: {{p1}}"></td>
+        </tr>
+        <tr>
+          <th>Professional Development Event 2</th>
+          <td style="background-color: {{p2}}"></td>
+        </tr>
+        <tr>
+          <th>Technical Interview</th>
+          <td style="background-color: {{i}}"></td>
+        </tr>
+        <tr>
+          <th>Officer Challenge</th>
+          <td style="background-color: {{c}}"></td>
+        </tr>
+        <tr>
+          <th>Officer Chat 1</th>
+          <td style="background-color: {{oc1}}"></td>
+        </tr>
+        <tr>
+          <th>Officer Chat 2</th>
+          <td style="background-color: {{oc2}}"></td>
+        </tr>
+      </thead>
+    </table>
+
+  </div>
+</div>
+<!-- ENDS MAIN -->
+
+{% endblock %}
