@@ -85,13 +85,13 @@ a {
 
 #main-ir-inner-wrapper {
   width: 990px;
-  height: 1630px;
+  /*height: 1630px;*/
   margin: 0px auto 30px auto;
 }
 
 #content-ir-wrapper {
   background-color: #fff;
-  padding: 20px 0 40px;
+  padding: 20px 0 80px;
   margin: 35px auto;
   box-shadow: 0 0 10px #bfbeba;
   -moz-box-shadow: 0 0 10px #bfbeba;
@@ -112,7 +112,7 @@ a {
 }
 
 #content-ir-wrap {
-  height: 1450px;
+  /*height: 1450px;*/
 }
 
 #content-ir-text {

@@ -1,0 +1,117 @@
+{% extends "website/header_footer.html" %}
+{% load staticfiles %}
+{% block javascript %}
+  <link rel="shortcut icon" href="{% static "website/favicon.ico" %}" type="image/x-icon">
+  <link rel=icon href="{% static "website/favicon.ico" %}" type="image/x-icon">
+
+  <script src="{% static "website/js/landingpage_banner_custom.js" %}"></script>
+  <script src="{% static "website/js/landingpage_main_custom.js" %}"></script>
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+
+<div id="main-wrapper">
+  <div id="main-ir-inner-wrapper">
+    <div id="content-ir-wrapper">
+      <div id="content-ir-header-wrapper">
+        <h1>Prof Dev: Frequently Asked Questions</h1>
+      </div>
+      <div id="content-ir-wrap">
+
+        <div id="content-ir-text">
+          <a href="#q1">How can I improve my resume?</a><br>
+          <a href="#q2">How do I receive a resume critique?</a><br>
+          <a href="#q3">How can I prepare for a technical interview?</a><br>
+          <a href="#q4">How do I borrow a book from UPE's Lending Library?</a><br>
+          <a href="#q5">What can I expect from a mock interview through UPE?</a><br>
+          <a href="#q6">How do I sign up for a mock interview?</a>
+        </div>
+          
+        <div id="content-ir-text">
+          <a class="anchor" name="q1"></a>
+          <h1>How can I improve my resume?</h1>
+          <p>You can get your resume critiqued through UPE for more specific feedback, but in general:<br>
+          <u>Style:</u>
+          <ul>
+            <li>Make sure your resume is free of typos</li>
+            <li>Keep the design clean.  For example, include enough whitespace between content and don't include too many colors so that your resume is not a strain on the eyes.  Also don't make the text too small.</li>
+            <li>Have some hierarchical organization, separating sections with headers naming each section.</li>
+            <li>Place your name and contact info at the very top.  Make sure that your name is large and that your contact info is easy to find.</li>
+            <li>Try to fill your resume up to exactly one page</li>
+          </ul>
+          <u>Content</u>
+          <ul>
+            <li>Only list experiences, achievements, and activities you started or continued in college</li>
+            <li>Include information most relevant to the job you are applying for</li>
+            <li>Make sure to specifically describe you contributions, not just the general description of your job/role.</li>
+          </ul>
+          </p>
+        </div>
+        <div id="content-ir-text">
+          <a class="anchor" name="q2"></a>
+          <h1>How do I receive a resume critique?</h1>
+          <p>Drop by the UPE office (346 Soda) during office hours (Mon-Fri 10am - 4pm), or send your resume to <a href="mailto:profdev@upe.berkeley.edu">profdev@upe.berkeley.edu</a> with the title "[UPE] Resume Critique Request"</p>
+        </div>
+        <div id="content-ir-text">
+          <a class="anchor" name="q3"></a>
+          <h1>How can I prepare for a technical interview?</h1>
+          <p>We recommend reading and working through books such as <a href="https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844">Introduction to Algorithms</a>, <a href="https://www.amazon.com/Algorithms-Sanjoy-Dasgupta/dp/0073523402">Algorithms</a>, <a href="https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/098478280X">Cracking the Coding Interview</a>, and <a href="https://www.amazon.com/Pragmatic-Programmer-Journeyman-Master/dp/020161622X">The Pragmatic Programmer</a> (all of which are available through UPE's Lending Library, drop by the office if you'd like to borrow a book!).  You can also practice coding problems on sites like <a href="https://www.hackerrank.com/">HackerRank</a> and <a href="https:/leetcode.com/">LeetCode</a>.  We also offer mock interview sessions so that you can practice doing problems on a whiteboard under interview conditions.</p>
+        </div>
+        <div id="content-ir-text">
+          <a class="anchor" name="q4"></a>
+          <h1>How do I borrow a book from UPE's Lending Library?</h1>
+          <p>To checkout a book from our library, go to the office and pay an officer (by Venmo or cash) the cost of the book you would like to check out.  Fill out the checkout form at this <a href="https://tinyurl.com/UPELibraryCheckout"> link</a>.  You can borrow the book for up to two weeks, at which point you must return the book in good condition to get your money back.  If you fail to return the book within two weeks, or if the book is damaged, we reserve the right to keep the money paid.</p>
+        </div>
+        <div id="content-ir-text">
+          <a class="anchor" name="q5"></a>
+          <h1>What can I expect from a mock interview through UPE?</h1>
+          <p>A member of UPE's professional committee will give you a coding problem to work out on the board, like during real technical interviews.  You will have 30-45 minutes to work through the problem, and then the UPE member will give you feedback on how you can improve.  Some general tips include:
+          <ul>
+            <li>Talking to your interviewer.  In particular, make sure to ask clarifying questions after receiving the problem and explain your thought process while you are working through the problem</li>
+            <li>Using a programming language that you are very comfortable with.  We recommend using Python, since it's fairly concise and easy to read.</li>
+          </ul>
+          </p>
+        </div>
+        <div id="content-ir-text">
+          <a class="anchor" name="q6"></a>
+          <h1>How do I sign up for a mock interview?</h1>
+          <p>Sign up for an interview slot on our calendar <a href="http://upe.berkeley.edu/interview/">here</a>, or if the open times on the calendar don't work, please send your availability to <a href="mailto:profdev@upe.berkeley.edu">profdev@upe.berkeley.edu</a> with the title "[UPE] Mock Interview Request."
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+$(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+{% endblock %}
