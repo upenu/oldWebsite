@@ -1,34 +1,119 @@
 {% load staticfiles %}
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="https://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Upsilon Pi Epsilon</title>
     <link rel="shortcut icon" type="image/x-icon" href="{% static "website/whale.ico" %}"/>
     <link rel="icon" type="image/x-icon" href="{% static "website/whale.ico" %}"/>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static "website/css/header_footer.css" %}">
     {% block stylesheets %}
-    <link rel="stylesheet" href="{% static "website/css/reset.css" %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static "website/css/full_style.css" %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static "website/css/header_style.css" %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static "upe_calendar/css/calendar_style.css" %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static "website/css/banner_style.css" %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static "website/css/main_style.css" %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static "website/css/footer_style.css" %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static "website/css/slider_custom.css" %}" type="text/css" media="screen" />
-    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static "website/css/hover.css" %}" type="text/css" media="screen" />
     {% endblock %}
-    <link href='https://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
-    
-    {% block javascript %}
-    <script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
-    {% endblock %}
-
   </head>
   <body>
+  	  <nav class="navbar navbar-custom">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#upe-nav" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">UPE</a>
+            </div>
+            <div class="collapse navbar-collapse" id="upe-nav">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        About <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/">Organization</a></li>
+                            <li><a href="/members">Members</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Student Services <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/oh">Office Hours</a></li>
+                            <li><a href="/interview">Professional Development</a></li>
+                            <li><a href="/">Lending Library</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/ir">Industrial Relations</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+			          {% if user.is_authenticated %}
+			          <li><a href="/myprofile"><span class="glyphicon glyphicon-user"></span>{{ user.first_name }} {{ user.last_name }}</a></li>
+			          <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			          {% else %}
+			          <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+			          <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			          {% endif %}
+        		</ul> 
+            </div>
+        </div>
+    </nav>
+  	  <!-- <nav class="navbar navbar-custom navbar-fixed-top">
+	    <div class="container">
+	      <div class="navbar-header">
+	        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#upeNavBar" aria-expanded="false" aria-controls="navbar">
+	          <span class="sr-only">Toggle Navigation</span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	        </button>
+	        <a class="navbar-brand" href="/"><span>ΥΠΕ</span></a>
+	      </div>
+	      <div class="navbar-collapse collapse" id="upeNavBar">
+	        <ul class="nav navbar-nav">
+	          <li class="dropdown">
+	            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+	            <ul class="dropdown-menu">
+	              <li><a href="/officers">Officers</a></li>
+	              <li><a href="/members">Members</a></li>
+	              <li><a href="/alumni">Alumni</a></li>
+	            </ul>
+	          </li>
+	          <li class="dropdown">
+	            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Student Services <span class="caret"></span></a>
+	            <ul class="dropdown-menu">
+	              <li><a href="/oh">Office Hours</a></li>
+	              <li><a href="/interview">Technical Interviews</a></li>
+	            </ul>
+	          </li>
+	          <li class="dropdown">
+	            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Industry Relations <span class="caret"></span></a>
+	            <ul class="dropdown-menu">
+	              <li><a href="/ir">FAQ</a></li>
+	            </ul>
+	          </li>         
+	        </ul>
+	        <ul class="nav navbar-nav navbar-right">
+	          {% if user.is_authenticated %}
+	          <li><a href="/myprofile"><span class="glyphicon glyphicon-user"></span>{{ user.first_name }} {{ user.last_name }}</a></li>
+	          <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+	          {% else %}
+	          <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+	          <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	          {% endif %}
+	        </ul>        
+	      </div>
+	    </div>
+	  </nav> -->
     <!-- HEADER -->
-    <header id="header-wrapper">
+<!--     <header id="header-wrapper">
       <div id="header-content">
         <ul class="nav">
           <li id="brand-section">
@@ -75,19 +160,56 @@
             {% endif %}
           </li>          
         </ul>
-      </div>
+      </div> -->
       <!-- MENU -->
       <!-- ENDS MENU -->
-    </header>
+<!--     </header> -->
     <!-- ENDS HEADER -->
-  <div id="main-content-wrapper">
-    {% block content %}
+    <div id="main-content-wrapper">
+      {% block content %}
 
-    {% endblock %}
-  </div>
+      {% endblock %}
+    </div>
 
     <!-- FOOTER -->
-    <div id="footer-wrapper">
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="row">
+                <div class="col-md-4">
+                      <h4 class="col-heading"><span>Our Sponsors</span></h4>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="col-heading"><span>Contact Us</span></h4>
+                    <div>
+                        <strong>Office</strong><br>
+                        346 Soda Hall <br>
+                        Berkeley, CA 94704 <br><br>
+                        <strong>Office Hours</strong><br>
+                        Weekdays 10am-5pm <br><br>
+                        <strong>E-mail</strong><br>
+                        officers@upe.berkeley.edu <br>
+                    </div>                        
+                </div>
+                <div class="col-md-4">
+                    <h4 class="col-heading"><span>Follow Us</span></h4>
+                    <div style="display: inline-block; padding: 30px 30px">
+                        <a href="https://www.facebook.com/ucbupe">
+                            <img src="img/fb-white.png" class="footer-icon">
+                        </a>
+                    </div>
+                    <div style="display: inline-block; padding: 30px 10px">
+                        <a href="https://www.instagram.com/upe_berkeley/">
+                            <img src="img/ig-white.png" class="footer-icon">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid footer-copyright-container">
+              <span class="footer-copyright-text">Copyright &#169; 2017 Upsilon Pi Epsilon @ UC Berkeley</span>
+        </div>
+    </footer>
+    <!-- <div id="footer-wrapper">
       <div id="footer-content">
         <div id="footer-sponsor">
           <h1>Our Sponsors</h1>
@@ -154,7 +276,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- ENDS FOOTER -->
   </body>
 </html>

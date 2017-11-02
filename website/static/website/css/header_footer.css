@@ -1,0 +1,53 @@
+.navbar-custom {
+	background: #445367;
+}
+
+.navbar-custom a, 
+.navbar-custom .dropdown-menu>li>a,
+.navbar-custom ul.dropdown-menu {
+	background: #445367;
+	color: white;
+}
+
+.navbar-custom .navbar-toggle .icon-bar {
+	background-color: white;
+}
+
+.navbar-custom .nav>li>a:hover,
+.navbar-custom .open>a,
+.navbar-custom .open>a:hover,
+.navbar-custom .open>a:focus {
+	background-color: #2C3847;
+}
+
+body {
+	background-color: #F2F9FD;
+}
+
+.footer {
+	background: #667A96;
+	color: white;
+	font-size: 14px;
+}
+
+.footer-copyright-container {
+	background: #445367;
+	text-align: right;
+}
+
+.footer-copyright-text {
+	height: 50px;
+	vertical-align: middle;
+	line-height: 50px;
+}
+
+.footer-container .col-heading:after {
+  content: "";
+  display: block;
+  border-bottom: 2px solid #CCC;
+  margin-top: 10px;
+}
+
+.footer-container .row {
+	margin-bottom: 20px;
+}
