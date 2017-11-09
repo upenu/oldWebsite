@@ -58,9 +58,9 @@
 <!-- ENDS BANNER -->
 
 <!-- MAIN -->
-<div id="main-wrapper">
+<div id="clearfix">
   <div id="main-inner-wrapper">
-    <div id="content-wrapper">
+    <div id="content-wrapper" class="clearfix">
       <div id="content-header-wrapper">
         <h1>Upholding academic excellence</h1>
         <p>Upsilon Pi Epsilon is the first and only international honor society for the Computing Sciences. The UC Berkeley chapter, launched in 1995, honors the top tier of Computer Science students on campus.</p>
@@ -97,34 +97,29 @@
       </div>
     </div>
     {% if events %}
-    <div id="events-OH-wrapper">
-      <div id="events-wrapper">
-        <div id="events-title-wrapper">
-          <div id="events-title">Upcoming Events</div>
-        </div>
-        <div id="events-content-wrapper">
-          <div class="events-list-description">
-          </div>
-          <div id="events-list-wrapper">
-            {% for event in events %}
-            <div class="events-list-item float">
-                <h1>{{ event.name }}</h1>
-                <p><span>Date:</span> {{ event.start_timestamp|todate|date:"m/d/y" }}</br><span>Time:</span> {{ event.start_timestamp|todate|date:"g:i A" }} </br><span>Location:</span> {{ event.location }}</p>
-                <div class="description">
-                  <div class="events-list-description-image" style="background-image: url({{ event.banner }});"></div>
-                  <div class="description-text">
-                    <h1>{{ event.name }}</h1>
-                    <p>{% autoescape off %}
-                      {{ event.description }}
-                    {% endautoescape %}</p>
-                  </div>
-                </div>
+    <section class="event-display container-fluid">
+      <div class="row">
+        {% for event in events %}
+        <div class="event-wrapper col-12 col-md-4">
+          <div class="event card">
+            <div class="card-header">
+              {{ event.start_timestamp|todate|date:"m/d/y" }}, {{ event.start_timestamp|todate|date:"g:i A" }} @ {{ event.location }}
             </div>
-            {% endfor %}
+            <img class="event-banner card-img-top" src="{{ event.banner }}" alt="banner image">
+            <div class="card-body">
+              <h3 class="card-title display-3">{{ event.name }}</h3>
+              <p class="card-text">
+                {% autoescape off %}
+                {{ event.description }}
+                {% endautoescape %}
+              </p>
+              <a href="#" class="btn btn-primary">See Facebook event</a>
+            </div>
           </div>
         </div>
+        {% endfor %}
       </div>
-    </div>
+    </section>
     {% endif %}
     <div id="twitter-feed-wrapper">
         <div id="twitter-wrapper">
