@@ -279,31 +279,20 @@ class BerkeleyClass(models.Model):
     def name(self):
         return self.class_dict[self.class_name]
 
-"""class Requirement(models.Model):
-
+class Requirement(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=500, blank=True, null=True)
     candidates = models.ManyToManyField('CandidateProfile', through='Completion')
-    REQUIREMENT_TYPE = (
-        ('SOC', 'Social'),
-        ('PRO', 'Professional'),
-        ('IND', 'Individual'),
-        ('FAM', 'Family'),
-        ('ACM', 'ACM Payment'),
-        ('INI', 'Initiation Attendance'),
-        ('GM', 'General Meetings')
-    )
-    req_dict = dict(REQUIREMENT_TYPE)
-    req_type = models.CharField(max_length=3, choices=REQUIREMENT_TYPE, default='SOC')
+    num_required = models.IntegerField()
 
     def __str__(self):
-        return self.req_dict[self.req_type] 
+        return self.name
 
 class Completion(models.Model):
     candidate = models.ForeignKey('CandidateProfile')
-    requirement = models.ForeignKey('Requirement')
-    completed = models.BooleanField(default=False)
-    date_completed = models.DateField(default=date.today)"""
+    requirement = models.ForeignKey('Requirement', null=True)
+    num_completed = models.IntegerField(default=0)
+    note = models.CharField(max_length=100, default="")
 
-class Completion(models.Model):
-    candidate = models.ForeignKey('CandidateProfile')
+    def __str__(self):
+        return "{}: {}".format(self.candidate, self.requirement)
