@@ -58,7 +58,15 @@ class CandidateProfile(models.Model):
     user = models.OneToOneField(User)
 
     def get_progress(self):
-        pass
+        completions = self.completion_set.all()
+        progress = []
+        for c in completions:
+            comp_dict = {}
+            comp_dict['name'] = c.requirement.name
+            comp_dict['required'] = c.requirement.num_required
+            comp_dict['completed'] = c.num_completed
+            progress.append(comp_dict)
+        return progress
 
 
     def __str__(self):
@@ -291,8 +299,8 @@ class Requirement(models.Model):
 class Completion(models.Model):
     candidate = models.ForeignKey('CandidateProfile')
     requirement = models.ForeignKey('Requirement', null=True)
-    num_completed = models.IntegerField(default=0)
     note = models.CharField(max_length=100, default="")
+    date_completed = models.DateField(default=date.today)
 
     def __str__(self):
         return "{}: {}".format(self.candidate, self.requirement)

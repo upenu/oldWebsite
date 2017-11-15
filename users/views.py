@@ -445,4 +445,12 @@ def requirements(request):
     return render_to_response('users/requirements.html',
             context_instance=RequestContext(request,{'req_dict': req_dict, 'up':up}))
 """
+@login_required
+@user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 1, login_url='/login/')
+def progress(request):
+    user = request.user
+    user_profile = UserProfile.objects.get(user = user)
+    candidate_profile = user_profile.candidate_profile
+    progress = candidate_profile.get_progress()
+    return render(request, 'users/progress.html', {"progress": progress})
 
