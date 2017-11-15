@@ -18,19 +18,12 @@
 {% endblock %}
 {% block content %}
 <div class="container">
-  <h1>Candidate Progress</h1>
-  {% for r in progress %}
-    <h2>{{ r.req.name }} (Completed {{ r.completions| length }}/{{ r.req.num_required }})</h2>
-    <table class="table">
-    <tbody>
-    {% for c in r.completions %}
-      <tr>
-      <th>Completed on {{ c.date_completed }} ({{ c.note }})</th>
-      </tr>
-    {% endfor %}
-    </tbody>
-    </table>
-  {% endfor %}
+  <h1>Requirements</h1>
+  <form action="/requirements/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
 </div>
 {% endblock %}
 

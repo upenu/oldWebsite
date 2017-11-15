@@ -454,3 +454,19 @@ def progress(request):
     progress = candidate_profile.get_progress()
     return render(request, 'users/progress.html', {"progress": progress})
 
+@login_required
+@user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
+def requirements(request):
+    if request.method == 'POST':
+        form = CompletionForm(request.POST)
+        if form.is_valid():
+            req = form.cleaned_data['requirement']
+            note = form.cleaned_data['note']
+            for c in form.cleaned_data['candidates']:
+                Completion.objects.create(candidate=c, requirement=req, note=note)
+            return HttpResponse("lolxd")
+    else:
+        form = CompletionForm()
+
+    return render(request, 'users/requirements.html', {'form': form})
+

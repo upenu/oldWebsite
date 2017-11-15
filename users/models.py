@@ -59,14 +59,10 @@ class CandidateProfile(models.Model):
 
     def get_progress(self):
         completions = self.completion_set.all()
-        progress = []
+        progress = {req.id: {"req": req, "completions": []} for req in Requirement.objects.all()}
         for c in completions:
-            comp_dict = {}
-            comp_dict['name'] = c.requirement.name
-            comp_dict['required'] = c.requirement.num_required
-            comp_dict['completed'] = c.num_completed
-            progress.append(comp_dict)
-        return progress
+            progress[c.requirement_id]["completions"].append(c)
+        return list(progress.values())
 
 
     def __str__(self):
@@ -303,4 +299,4 @@ class Completion(models.Model):
     date_completed = models.DateField(default=date.today)
 
     def __str__(self):
-        return "{}: {}".format(self.candidate, self.requirement)
+        return "{}: {} ({})".format(self.candidate, self.requirement, self.note)

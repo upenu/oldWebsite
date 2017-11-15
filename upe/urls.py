@@ -38,5 +38,6 @@ urlpatterns = patterns('',
         'document_root': settings.STATIC_ROOT,
     }),
     url(r'^progress/$', 'users.views.progress', name='progress'),
+    url(r'^requirements/$', 'users.views.requirements', name='requirements')
 
 )
