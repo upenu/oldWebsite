@@ -52,6 +52,13 @@ class UserProfile(models.Model):
             if self.committee == tup[0]:
                 return tup[1]
 
+    def convert_to_member(self):
+        cp = self.candidate_profile
+        self.candidate_profile = None
+        self.user_type = 2
+        self.save()
+        cp.delete()
+
 # EVERYTHING BELOW IS FOR LATER.
 
 class CandidateProfile(models.Model):
@@ -64,6 +71,9 @@ class CandidateProfile(models.Model):
             progress[c.requirement_id]["completions"].append(c)
         return list(progress.values())
 
+    def is_finished(self):
+        progress = self.get_progress()
+        return all([len(r["completions"]) >= r["req"].num_required for r in progress])
 
     def __str__(self):
         return self.user.first_name + " " + self.user.last_name

@@ -458,15 +458,29 @@ def progress(request):
 @user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
 def requirements(request):
     if request.method == 'POST':
-        form = CompletionForm(request.POST)
-        if form.is_valid():
-            req = form.cleaned_data['requirement']
-            note = form.cleaned_data['note']
-            for c in form.cleaned_data['candidates']:
-                Completion.objects.create(candidate=c, requirement=req, note=note)
-            return HttpResponse("lolxd")
+        if "sigh" in request.POST:
+            form = CompletionForm(request.POST)
+            if form.is_valid():
+                req = form.cleaned_data['requirement']
+                note = form.cleaned_data['note']
+                for c in form.cleaned_data['candidates']:
+                    Completion.objects.create(candidate=c, requirement=req, note=note)
+                return HttpResponse("lolxd")
+        else:
+            form = CompletionForm()
+            for x in request.POST:
+                try:
+                    candidate_id = int(x)
+                except:
+                    continue
+            user_prof = UserProfile.objects.get(candidate_profile_id = candidate_id)
+            user_prof.convert_to_member()
     else:
         form = CompletionForm()
 
-    return render(request, 'users/requirements.html', {'form': form})
+    candidates = CandidateProfile.objects.all()
+    finished = [c for c in candidates if c.is_finished()]
+
+    return render(request, 'users/requirements.html', {
+        'form': form, 'finished': finished, 'candidates': candidates})
 

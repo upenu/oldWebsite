@@ -22,8 +22,20 @@
   <form action="/requirements/" method="post">
     {% csrf_token %}
     {{ form }}
-    <input type="submit" value="Submit" />
-</form>
+    <input type="submit" name="sigh" value="Submit" />
+  </form>
+  <h1>Finished Candidates</h1>
+  {% for c in finished %}
+    {{ c }}
+    <form action="/requirements/" method="post">
+      {% csrf_token %}
+      <input type="submit" name="{{ c.id }}" value="Convert to Member" />
+    </form>
+  {% endfor %}
+  <h1>All Candidates</h1>
+  {% for c in candidates %}
+    {{ c }}<br>
+  {% endfor %}
 </div>
 {% endblock %}
 
