@@ -24,6 +24,7 @@
     {{ form }}
     <input type="submit" name="sigh" value="Submit" />
   </form>
+  {% if finished|length != 0 %}
   <h1>Finished Candidates</h1>
   {% for c in finished %}
     {{ c }}
@@ -32,6 +33,7 @@
       <input type="submit" name="{{ c.id }}" value="Convert to Member" />
     </form>
   {% endfor %}
+  {% endif %}
   <h1>All Candidates</h1>
   {% for c in candidates %}
     {{ c }}<br>

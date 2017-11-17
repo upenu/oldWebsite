@@ -449,8 +449,7 @@ def requirements(request):
 @user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 1, login_url='/login/')
 def progress(request):
     user = request.user
-    user_profile = UserProfile.objects.get(user = user)
-    candidate_profile = user_profile.candidate_profile
+    candidate_profile = CandidateProfile.objects.get(user = user)
     progress = candidate_profile.get_progress()
     return render(request, 'users/progress.html', {"progress": progress})
 
