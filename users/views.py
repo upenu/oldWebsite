@@ -478,9 +478,16 @@ def requirements(request):
     else:
         form = CompletionForm()
 
-    candidates = CandidateProfile.objects.all()
+
+    search = SearchForm()
+    if search.query:
+        name = search.query.split(' ')
+        candidates = CandidateProfile.objects.filter(user.first_name=first).filter(user.last_name=last)
+    else:
+        candidates = CandidateProfile.objects.all()
+    
     finished = [c for c in candidates if c.is_finished()]
 
     return render(request, 'users/requirements.html', {
-        'form': form, 'finished': finished, 'candidates': candidates})
+        'form': form, 'search_form' = search, 'finished': finished, 'candidates': candidates})
 
