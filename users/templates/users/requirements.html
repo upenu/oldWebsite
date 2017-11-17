@@ -24,6 +24,11 @@
     {{ form }}
     <input type="submit" name="sigh" value="Submit" />
   </form>
+  <h1>Search Candidates</h1>
+  <form action="/requirements/" method='post'>
+    {{ search_form }}
+    <input type='submit'/>
+  </form>
   {% if finished|length != 0 %}
   <h1>Finished Candidates</h1>
   {% for c in finished %}

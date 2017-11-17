@@ -141,6 +141,11 @@ def register(request):
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
+            if profile.user_type == 1:
+                cp = CandidateProfile.objects.create(user=user)
+                cp.name = user.first_name + " " + user.last_name
+                cp.save()
+                profile.candidate_profile = cp
             profile.save()
             registered = True
             send_mail(user.first_name + " " + user.last_name + " registered for a UPE account.", "You can approve this person after logging in at upe.berkeley.edu/approval_dashboard", "website_approval@upe.berkeley.edu", ["website_approval@upe.berkeley.edu"], fail_silently=True)
@@ -456,30 +461,36 @@ def progress(request):
 @login_required
 @user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
 def requirements(request):
-    if request.method == 'POST':
-        if "sigh" in request.POST:
-            form = CompletionForm(request.POST)
-            if form.is_valid():
-                req = form.cleaned_data['requirement']
-                note = form.cleaned_data['note']
-                for c in form.cleaned_data['candidates']:
-                    Completion.objects.create(candidate=c, requirement=req, note=note)
-                return HttpResponse("lolxd")
-        else:
-            form = CompletionForm()
-            for x in request.POST:
-                try:
-                    candidate_id = int(x)
-                except:
-                    continue
-            user_prof = UserProfile.objects.get(candidate_profile_id = candidate_id)
-            user_prof.convert_to_member()
+    if request.method == 'POST' and 'sigh' in request.POST:
+        form = CompletionForm(request.POST)
+        if form.is_valid():
+            req = form.cleaned_data['requirement']
+            note = form.cleaned_data['note']
+            for c in form.cleaned_data['candidates']:
+                Completion.objects.create(candidate=c, requirement=req, note=note)
+            return HttpResponse("lolxd")
     else:
         form = CompletionForm()
-
-    candidates = CandidateProfile.objects.all()
+    if request.method == 'POST' and "search" in request.POST:
+        search_form = SearchForm(request.POST)
+        if search_form.is_valid():
+            candidates = CandidateProfile.objects.filter(name__search=search_form.cleaned_data['query'])
+    else:
+        candidates = CandidateProfile.objects.all()
+        search = SearchForm()
+    """:
+        form = CompletionForm()
+        for x in request.POST:
+            try:
+                candidate_id = int(x)
+            except:
+                continue
+        user_prof = UserProfile.objects.get(candidate_profile_id = candidate_id)
+        user_prof.convert_to_member()"""
+    
+    
     finished = [c for c in candidates if c.is_finished()]
 
     return render(request, 'users/requirements.html', {
-        'form': form, 'finished': finished, 'candidates': candidates})
+        'form': form, 'search_form': search, 'finished': finished, 'candidates': candidates})
 

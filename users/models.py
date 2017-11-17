@@ -63,6 +63,7 @@ class UserProfile(models.Model):
 
 class CandidateProfile(models.Model):
     user = models.OneToOneField(User)
+    name = models.CharField(max_length=100, null=True, blank=True)
 
     def get_progress(self):
         completions = self.completion_set.all()
