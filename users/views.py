@@ -470,34 +470,39 @@ def candidate_progress(request, candidate_profile_id):
     return render(request, 'users/progress.html', {"progress": progress, "edit": True})
 
 @login_required
-@user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
 def requirements(request):
-    if request.method == 'POST' and 'sigh' in request.POST:
-        form = CompletionForm(request.POST)
-        if form.is_valid():
-            req = form.cleaned_data['requirement']
-            note = form.cleaned_data['note']
-            for c in form.cleaned_data['candidates']:
-                Completion.objects.create(candidate=c, requirement=req, note=note)
-    else:
-        form = CompletionForm()
-    if request.method == 'POST' and "search" in request.POST:
-        search_form = SearchForm(request.POST)
-        if search_form.is_valid():
-            candidates = CandidateProfile.objects.filter(name__search=search_form.cleaned_data['query'])
-    else:
-        candidates = CandidateProfile.objects.all()
-        search = SearchForm()
-    if request.method == 'POST' and 'convert' in request.POST: # UGH FIGURE OUT CHECKBOX
-        new_members = request.POST['convert']
-        for c in request.POST.getlist('convert'):
-            candidate_id = int(c)
-            user_prof = UserProfile.objects.get(candidate_profile_id = candidate_id)
-            user_prof.convert_to_member()
-    
-    
-    finished = [c for c in candidates if c.is_finished()]
+    user_profile = UserProfile.objects.get(user=request.user)
+    if user_profile.user_type == 1: # candidates can view requirements
+        return progress(request)
+    elif user_profile.user_type == 3: # officers can edit requirement stuff
+        if request.method == 'POST' and 'sigh' in request.POST:
+            form = CompletionForm(request.POST)
+            if form.is_valid():
+                req = form.cleaned_data['requirement']
+                note = form.cleaned_data['note']
+                for c in form.cleaned_data['candidates']:
+                    Completion.objects.create(candidate=c, requirement=req, note=note)
+        else:
+            form = CompletionForm()
+        if request.method == 'POST' and "search" in request.POST:
+            search_form = SearchForm(request.POST)
+            if search_form.is_valid():
+                candidates = CandidateProfile.objects.filter(name__search=search_form.cleaned_data['query'])
+        else:
+            candidates = CandidateProfile.objects.all()
+            search = SearchForm()
+        if request.method == 'POST' and 'convert' in request.POST: # UGH FIGURE OUT CHECKBOX
+            new_members = request.POST['convert']
+            for c in request.POST.getlist('convert'):
+                candidate_id = int(c)
+                user_prof = UserProfile.objects.get(candidate_profile_id = candidate_id)
+                user_prof.convert_to_member()
+        
+        
+        finished = [c for c in candidates if c.is_finished()]
 
-    return render(request, 'users/requirements.html', {
-        'form': form, 'search_form': search, 'finished': finished, 'candidates': candidates})
+        return render(request, 'users/requirements.html', {
+            'form': form, 'search_form': search, 'finished': finished, 'candidates': candidates})
+    else: # else, just default to the home page
+        return render(request, 'website/index.html')
 

@@ -6,6 +6,7 @@ class CompletionForm(forms.Form):
     requirement = forms.ModelChoiceField(label="requirement", queryset=Requirement.objects.all()) 
     candidates = forms.ModelMultipleChoiceField(label="candidates", queryset=CandidateProfile.objects.all())
     note = forms.CharField(label="note", max_length=140)
+
 class SearchForm(forms.Form):
     query = forms.CharField(widget=forms.Textarea)
 

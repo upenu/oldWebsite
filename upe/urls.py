@@ -37,7 +37,6 @@ urlpatterns = patterns('',
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.STATIC_ROOT,
     }),
-    url(r'^progress/$', 'users.views.progress', name='progress'),
     url(r'^requirements/$', 'users.views.requirements', name='requirements'),
     url(r'^requirements/(?P<candidate_profile_id>[0-9]+)/$', 'users.views.candidate_progress', name='candidate_progress')
 

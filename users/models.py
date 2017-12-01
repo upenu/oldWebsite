@@ -313,7 +313,7 @@ class Completion(models.Model):
     candidate = models.ForeignKey('CandidateProfile')
     requirement = models.ForeignKey('Requirement', null=True)
     note = models.CharField(max_length=100, default="")
-    date_completed = models.DateField(default=date.today)
+    date_completed = models.DateField(auto_now_add=True, blank=True)
 
     def __str__(self):
         return "{}: {} ({})".format(self.candidate, self.requirement, self.note)
