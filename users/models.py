@@ -59,6 +59,12 @@ class UserProfile(models.Model):
         self.save()
         cp.delete()
 
+    def reset_candidate(self):
+        self.user_type = 1
+        self.candidate_profile = CandidateProfile.objects.create(
+            user=self.user, name=str(self))
+        self.save()
+
 # EVERYTHING BELOW IS FOR LATER.
 
 class CandidateProfile(models.Model):

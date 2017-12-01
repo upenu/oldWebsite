@@ -21,15 +21,19 @@
   <h1>Candidate Progress</h1>
   {% for r in progress %}
     <h2>{{ r.req.name }} (Completed {{ r.completions| length }}/{{ r.req.num_required }})</h2>
-    <table class="table">
-    <tbody>
-    {% for c in r.completions %}
-      <tr>
-      <th>Completed on {{ c.date_completed }} ({{ c.note }})</th>
-      </tr>
-    {% endfor %}
-    </tbody>
-    </table>
+    {% if edit and r.completions|length != 0 %}
+      <form method="post">
+      {% csrf_token %}
+        {% for c in r.completions %}
+          <input type="checkbox" name="delete" value="{{ c.id }}">Completed on {{ c.date_completed }} ({{ c.note }})<br>
+        {% endfor %}
+        <input type="submit" onclick="window.alert('r u sure bout dat');" value="Delete">
+      </form>
+    {% else %}
+      {% for c in r.completions %}
+        Completed on {{ c.date_completed }} ({{ c.note }})<br>
+      {% endfor %}
+    {% endif %}
   {% endfor %}
 </div>
 {% endblock %}

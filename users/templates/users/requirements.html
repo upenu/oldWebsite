@@ -27,21 +27,21 @@
   <h1>Search Candidates</h1>
   <form action="/requirements/" method='post'>
     {{ search_form }}
-    <input type='submit'/>
+    <input type='submit' name="search"/>
   </form>
   {% if finished|length != 0 %}
   <h1>Finished Candidates</h1>
-  {% for c in finished %}
-    {{ c }}
-    <form action="/requirements/" method="post">
-      {% csrf_token %}
-      <input type="submit" name="{{ c.id }}" value="Convert to Member" />
-    </form>
-  {% endfor %}
+  <form action="/requirements/" method="post">
+  {% csrf_token %}
+    {% for c in finished %}
+      <input type="checkbox" name="convert" value="{{ c.id }}">{{ c }}<br>
+    {% endfor %}
+    <input type="submit" onclick="window.alert('r u sure bout dat');" value="Convert to Member">
+  </form>
   {% endif %}
   <h1>All Candidates</h1>
   {% for c in candidates %}
-    {{ c }}<br>
+    <a href="/requirements/{{ c.id }}">{{ c }}</a><br>
   {% endfor %}
 </div>
 {% endblock %}

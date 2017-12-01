@@ -456,7 +456,18 @@ def progress(request):
     user = request.user
     candidate_profile = CandidateProfile.objects.get(user = user)
     progress = candidate_profile.get_progress()
-    return render(request, 'users/progress.html', {"progress": progress})
+    return render(request, 'users/progress.html', {"progress": progress, "edit": False})
+
+@login_required
+@user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
+def candidate_progress(request, candidate_profile_id):
+    if request.method == 'POST':
+        lolxd = []
+        for c in request.POST.getlist('delete'):
+            Completion.objects.get(pk=int(c)).delete()
+    candidate_profile = CandidateProfile.objects.get(pk = candidate_profile_id)
+    progress = candidate_profile.get_progress()
+    return render(request, 'users/progress.html', {"progress": progress, "edit": True})
 
 @login_required
 @user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
@@ -468,7 +479,6 @@ def requirements(request):
             note = form.cleaned_data['note']
             for c in form.cleaned_data['candidates']:
                 Completion.objects.create(candidate=c, requirement=req, note=note)
-            return HttpResponse("lolxd")
     else:
         form = CompletionForm()
     if request.method == 'POST' and "search" in request.POST:
@@ -478,15 +488,12 @@ def requirements(request):
     else:
         candidates = CandidateProfile.objects.all()
         search = SearchForm()
-    """:
-        form = CompletionForm()
-        for x in request.POST:
-            try:
-                candidate_id = int(x)
-            except:
-                continue
-        user_prof = UserProfile.objects.get(candidate_profile_id = candidate_id)
-        user_prof.convert_to_member()"""
+    if request.method == 'POST' and 'convert' in request.POST: # UGH FIGURE OUT CHECKBOX
+        new_members = request.POST['convert']
+        for c in request.POST.getlist('convert'):
+            candidate_id = int(c)
+            user_prof = UserProfile.objects.get(candidate_profile_id = candidate_id)
+            user_prof.convert_to_member()
     
     
     finished = [c for c in candidates if c.is_finished()]
