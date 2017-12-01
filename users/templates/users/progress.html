@@ -27,7 +27,7 @@
         {% for c in r.completions %}
           <input type="checkbox" name="delete" value="{{ c.id }}">Completed on {{ c.date_completed }} ({{ c.note }})<br>
         {% endfor %}
-        <input type="submit" onclick="window.alert('r u sure bout dat');" value="Delete">
+        <input type="submit" onclick="return window.confirm('r u sure bout dat');" value="Delete">
       </form>
     {% else %}
       {% for c in r.completions %}
