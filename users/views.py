@@ -5,6 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.mail import send_mail
 from django.conf import settings
+from django.db.models import Q
 
 from datetime import date
 
@@ -17,6 +18,9 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 import json
 import gspread
+
+def about(request):
+    return render(request, 'users/about.html', {})
 
 def officers(request):
     template = loader.get_template('users/officers.html')
@@ -37,14 +41,13 @@ def officers(request):
     return HttpResponse(template.render(context))
 
 def members(request):
-    template = loader.get_template('users/members.html')
-    members = UserProfile.objects.filter(user_type=2, approved=True)
+    members = UserProfile.objects.filter(Q(user_type=2) | Q(user_type=3), approved=True)
 
     for member in members:
         setattr(member, 'position', 'Member')
         setattr(member, 'photo', member.picture)
 
-    context = RequestContext(request,
+    return render(request, 'users/members.html', 
         {'users': members,
         'title': 'Members',
         'logged_in': request.user.is_authenticated(),
@@ -54,7 +57,6 @@ def members(request):
         'member_since_filter_year': '',
         'none_found': False
         })
-    return HttpResponse(template.render(context))
 
 # A filtering capability on the members page that can filter UPE members by graduation year, name, or
 # years of membership to make searching/browsing easier for current members and candidates who are perhaps

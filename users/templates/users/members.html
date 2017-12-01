@@ -1,20 +1,7 @@
 {% extends "website/header_footer.html" %}
 {% load staticfiles %}
-{% block stylesheets %}
-	<link rel="stylesheet" href="{% static "website/css/reset.css" %}" type="text/css" media="screen" />
-	<link rel="stylesheet" href="{% static "website/css/full_style.css" %}" type="text/css" media="screen" />
-	<link rel="stylesheet" href="{% static "website/css/main_style.css" %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static "website/css/header_style.css" %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static "website/css/footer_style.css" %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{% static "website/css/hover.css" %}" type="text/css" media="screen" />
-	<link rel="stylesheet" href="{% static "users/css/officers_members.css" %}" type="text/css" media="screen" />
-	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Arimo:400,700' type='text/css'>
-{% endblock %}
 {% block javascript %}
 <!-- Set pre-existing filters for <select>s for graduation year and member since. Pre-existing filter for name's <input> is done directly in the HTML -->
-	<script src="{% static "website/js/jquery_1.11.0.min.js" %}"></script>
 	<script>
 		var Spring = "Spring";
 		var Fall = "Fall";
@@ -48,11 +35,11 @@
 		<h1>{{ title }}</h1>
 		<form action="{% url 'members_filter' %}" method="post">
 			{% csrf_token %}
-			<p style="margin-bottom: 40px"><span style="font-weight: bold">Filter By</span>: 
-				<span style="margin-left: 10px">
+			<p><span>Filter By</span>: 
+				<span>
 				Name <input type="text" name="membername" placeholder="Search by name" value="{{ name_filter }}">
 				</span>
-				<span style="margin-left: 5px">
+				<span>
 				Graduation Year <select class="filter" name="gradyear">
 					<option></option>
 					<option>2015</option>
@@ -60,7 +47,7 @@
 					<option>2017</option>
 					<option>2018</option>
 				</select>
-				<span style="margin-left: 5px">
+				<span>
 				Member Since <select class="filter" name="membersince">
 					<option></option>
 					<option>Fall 2012</option>
@@ -72,18 +59,18 @@
 					<option>Fall 2015</option>
 				</select>
 				</span>
-				<span style="margin-left: 5px">
+				<span>
 					<button id="filter" type="submit">Filter</button>
 					<a href="{% url 'users.views.members' %}"><button type="button">Clear Filters</button></a>
 				</span>
 			</p>
 		</form>
 	</div>
-	<div id="officer-member-container" style="margin-top: 5px">
+	<div id="officer-member-container">
 		<div id="officer-members">
 			{% if none_found %}
 			<!-- Error message shown if no members matched filter request -->
-				<p style="color: blue">Sorry, no members matched your search. <a href="{% url 'users.views.members' %}">Clear filters?</a></p>
+				<p>Sorry, no members matched your search. <a href="{% url 'users.views.members' %}">Clear filters?</a></p>
 			{% endif %}
 			{% for user in users %}
 				<div class="officer-member grow">

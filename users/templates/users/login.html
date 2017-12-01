@@ -1,36 +1,32 @@
 {% extends "website/header_footer.html" %}
 {% load staticfiles %}
 {% block stylesheets %}
-<link href="bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
-<link rel="stylesheet" href="{% static "website/css/reset.css" %}" type="text/css" media="screen" />
 <link rel="stylesheet" href="{% static "website/css/full_style.css" %}" type="text/css" media="screen" />
-<link rel="stylesheet" href="{% static "website/css/main_style.css" %}" type="text/css" media="screen" />
-<link rel="stylesheet" href="{% static "website/css/header_style.css" %}" type="text/css" media="screen" />
-<link rel="stylesheet" href="{% static "website/css/footer_style.css" %}" type="text/css" media="screen" />
-<link rel="stylesheet" href="{% static "users/css/officers_members.css" %}" type="text/css" media="screen" />
 <link rel="stylesheet" href="{% static "users/css/login.css" %}" type="text/css" media="screen" />
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
 {% endblock %}
 {% block content %}
-<div class="content-container">
-    <span class="login">Login</span>
-    {% if incorrect_log_in %}
-        <span class="error">Username or Password is incorrect</span>
-    {% endif %}
-    <form id="login-form" method="post" action="/login/">
-        {% csrf_token %}
-        Username <input type="text" name="username" value="" size="50" />
-        <br />
-        Password <input type="password" name="password" value="" size="50" />
-        <br />
-        <input type="submit" class="btn-green" value="Login" />
-    </form>
-    <div class="register-container">
-        <ul>
-            <li><span>Not a member yet?</span> <a class="register" href="/register">Register</a></li>
-            <li><span>Forgot your password?</span> <a class="register" href="/accounts/password_reset">Reset Password</a></li>
-        </ul>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <span class="login">Login</span>
+            {% if incorrect_log_in %}
+                <span class="error">Username or Password is incorrect</span>
+            {% endif %}
+            <form id="login-form" method="post" action="/login/">
+                {% csrf_token %}
+                Username <input type="text" name="username" value="" size="50" />
+                <br />
+                Password <input type="password" name="password" value="" size="50" />
+                <br />
+                <input type="submit" class="btn-green" value="Login" />
+            </form>
+            <div class="register-container">
+                <ul>
+                    <li><span>Not a member yet?</span> <a class="register" href="/register">Register</a></li>
+                    <li><span>Forgot your password?</span> <a class="register" href="/accounts/password_reset">Reset Password</a></li>
+                </ul>
+            </div>            
+        </div>        
     </div>
 </div>
 {% endblock %}

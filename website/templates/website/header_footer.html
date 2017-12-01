@@ -12,13 +12,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Bootstrap JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    {% block javascript %}
+    {% endblock %}
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static "website/css/main.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "website/css/header_footer.css" %}">
     {% block stylesheets %}
     {% endblock %}
   </head>
   <body>
+      <!-- START HEADER -->
   	  <nav class="navbar navbar-custom">
         <div class="container">
             <div class="navbar-header">
@@ -37,7 +41,7 @@
                         About <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="/">Organization</a></li>
+                            <li><a href="/about">Organization</a></li>
                             <li><a href="/members">Members</a></li>
                         </ul>
                     </li>
@@ -48,10 +52,18 @@
                         <ul class="dropdown-menu">
                             <li><a href="/oh">Office Hours</a></li>
                             <li><a href="/interview">Professional Development</a></li>
-                            <li><a href="/">Lending Library</a></li>
+                            <li><a href="/library">Lending Library</a></li>
                         </ul>
                     </li>
-                    <li><a href="/ir">Industrial Relations</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Industrial Relations <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/">Indrel Services</a></li>
+                            <li><a href="/ir">FAQ</a></li>
+                        </ul>
+                    </li>                    
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
 			          {% if user.is_authenticated %}
@@ -65,105 +77,6 @@
             </div>
         </div>
     </nav>
-  	  <!-- <nav class="navbar navbar-custom navbar-fixed-top">
-	    <div class="container">
-	      <div class="navbar-header">
-	        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#upeNavBar" aria-expanded="false" aria-controls="navbar">
-	          <span class="sr-only">Toggle Navigation</span>
-	          <span class="icon-bar"></span>
-	          <span class="icon-bar"></span>
-	          <span class="icon-bar"></span>
-	        </button>
-	        <a class="navbar-brand" href="/"><span>ΥΠΕ</span></a>
-	      </div>
-	      <div class="navbar-collapse collapse" id="upeNavBar">
-	        <ul class="nav navbar-nav">
-	          <li class="dropdown">
-	            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
-	            <ul class="dropdown-menu">
-	              <li><a href="/officers">Officers</a></li>
-	              <li><a href="/members">Members</a></li>
-	              <li><a href="/alumni">Alumni</a></li>
-	            </ul>
-	          </li>
-	          <li class="dropdown">
-	            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Student Services <span class="caret"></span></a>
-	            <ul class="dropdown-menu">
-	              <li><a href="/oh">Office Hours</a></li>
-	              <li><a href="/interview">Technical Interviews</a></li>
-	            </ul>
-	          </li>
-	          <li class="dropdown">
-	            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Industry Relations <span class="caret"></span></a>
-	            <ul class="dropdown-menu">
-	              <li><a href="/ir">FAQ</a></li>
-	            </ul>
-	          </li>         
-	        </ul>
-	        <ul class="nav navbar-nav navbar-right">
-	          {% if user.is_authenticated %}
-	          <li><a href="/myprofile"><span class="glyphicon glyphicon-user"></span>{{ user.first_name }} {{ user.last_name }}</a></li>
-	          <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-	          {% else %}
-	          <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-	          <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-	          {% endif %}
-	        </ul>        
-	      </div>
-	    </div>
-	  </nav> -->
-    <!-- HEADER -->
-<!--     <header id="header-wrapper">
-      <div id="header-content">
-        <ul class="nav">
-          <li id="brand-section">
-             <a href="/"><img id="header-icon" src="{% static "website/images/layout/header/upe_whale.png" %}" alt="Workshop"><span id="upe-brand">ΥΠΕ</span></a>
-          </li>
-          <li class="header-section">
-            <a href="/#main-wrapper">About</a>
-            <ul id="subnav-1" class="subnav">
-                <li><a href="/officers">Officers</a></li>
-                <li><a href="/members">Members</a></li>
-                <li><a href="/alumni">Alumni</a></li>
-            </ul>
-          </li>
-          <li class="header-section">
-            <a href="#">Office Hours</a>
-            <ul id="subnav-2" class="subnav">
-                <li><a href="/oh">Office Hours</a></li>
-            </ul>
-          </li>
-          <li class="header-section">
-            <a href="#">Professional Development</a>
-            <ul id="subnav-3" class="subnav">
-                <li><a href="/interview">Technical Interviews</a></li>
-            </ul>
-          </li>
-          <li class="header-section">
-            <a href="/ir">Industry Relations</a>
-            <ul id="subnav-4" class="subnav">
-                <li><a href="/ir">FAQ</a></li>
-            </ul>            
-          </li>
-          <li class="header-section pull-right">
-            {% if user.is_authenticated %}
-            <a href="/logout">Logout</a>
-            {% else %}
-            <a href="/register">Register</a>
-            {% endif %}
-          </li>
-          <li class="header-section pull-right">
-            {% if user.is_authenticated %}
-            <a href="/myprofile">{{ user.first_name }} {{ user.last_name }}</a>
-            {% else %}
-            <a href="/login">Login</a>
-            {% endif %}
-          </li>          
-        </ul>
-      </div> -->
-      <!-- MENU -->
-      <!-- ENDS MENU -->
-<!--     </header> -->
     <!-- ENDS HEADER -->
     <div id="main-content-wrapper">
       {% block content %}
@@ -176,7 +89,10 @@
         <div class="container footer-container">
             <div class="row">
                 <div class="col-md-4">
-                      <h4 class="col-heading"><span>Our Sponsors</span></h4>
+                    <h4 class="col-heading"><span>Our Sponsors</span></h4>
+                        <img src="{% static "website/images/layout/footer/sponsors/asuc-logo.png" %}" alt="Sponsor" class="footer-sponsor">
+                        <a href="https://www.ocf.berkeley.edu"><img class="footer-sponsor" src="https://www.ocf.berkeley.edu/hosting-logos/ocfbadge_mini8.png" alt="Hosted by the OCF">
+                        </a>
                 </div>
                 <div class="col-md-4">
                     <h4 class="col-heading"><span>Contact Us</span></h4>
@@ -192,91 +108,19 @@
                 </div>
                 <div class="col-md-4">
                     <h4 class="col-heading"><span>Follow Us</span></h4>
-                    <div style="display: inline-block; padding: 30px 30px">
                         <a href="https://www.facebook.com/ucbupe">
-                            <img src="img/fb-white.png" class="footer-icon">
+                            <img src="{% static "website/images/icons/fb-white.png" %}" class="footer-icon" alt="UPE Facebook">
                         </a>
-                    </div>
-                    <div style="display: inline-block; padding: 30px 10px">
                         <a href="https://www.instagram.com/upe_berkeley/">
-                            <img src="img/ig-white.png" class="footer-icon">
+                            <img src="{% static "website/images/icons/ig-white.png" %}" class="footer-icon" alt="UPE Instagram">
                         </a>
-                    </div>
                 </div>
             </div>
         </div>
         <div class="container-fluid footer-copyright-container">
-              <span class="footer-copyright-text">Copyright &#169; 2017 Upsilon Pi Epsilon @ UC Berkeley</span>
+              <span class="footer-copyright-text">Copyright &#169; <script type="text/javascript">document.write(new Date().getFullYear());</script> Upsilon Pi Epsilon at the University of California, Berkeley</span>
         </div>
     </footer>
-    <!-- <div id="footer-wrapper">
-      <div id="footer-content">
-        <div id="footer-sponsor">
-          <h1>Our Sponsors</h1>
-          <div id="sponsor-images">
-            <div class="img-col"><img class="sponsor-icon" src="{% static "website/images/layout/footer/sponsors/asuc-logo.png" %}" alt="Sponsor"></div>
-            <div class="img-col"><a href="https://www.ocf.berkeley.edu"><img class="sponsor-icon" src="https://www.ocf.berkeley.edu/hosting-logos/ocfbadge_mini8.png" alt="Hosted by the OCF"></a></div>
-          </div>
-          </div>
-        <div id="footer-top-wrapper">
-          <div id="footer-top">
-            <div class="top-col">
-              <div class="top-col-title"><span>About Us</span></div>
-              <div class="top-col-info">
-                Upsilon Pi Epsilon is the first and only international honor society for the Computing Sciences (CS). The UC Berkeley chapter launched in 1995 and upholds the tradition of academic excellence by honoring the top tier of CS students. We are a student group acting independently of the University of California. We take full responsibility for our organization and this web site. 
-              </div>
-              </div>
-            <div class="top-col">
-              <div class="top-col-title"><span>Upcoming Events</span></div>
-              <div class="top-col-info">
-                {% for event in events %}
-                <div class="events-footer">{{ event.name }}<br>{{ event.start_time|date:"m/d/y" }}<br><br>
-                </div>
-                {% endfor %}
-            </div>
-            </div>
-            <div class="top-col">
-              <div class="top-col-title"><span>Contact Us</span></div>
-              <div class="top-col-info">
-                <div id="name">UPE Office</div>346 Soda Hall<br> Berkeley, CA 94704 <br><br>
-                <div id="name">Open Tutoring Hours</div>Weekdays 10am-4pm <br><br>
-                <div id="name">Email</div>officers@upe.berkeley.edu
-            </div>
-            </div>
-            <div class="top-col">
-              <div class="top-col-title"><span>Follow Us</span></div> 
-              <div class="top-col-info">
-                <div id="name">Social Media</div>
-                  <ul id="footer-icons">
-                    <li class="icon-bar">
-                      <a href="https://twitter.com/berkeleyUPE" target="blank">
-                        <div class="social twitter">
-                          <i class="fa fa-twitter"></i>
-                        </div>
-                      </a>
-                    </li>
-
-                    <li class="icon-bar">
-                      <a href="https://www.facebook.com/ucbupe" target="blank">
-                        <div class="social facebook">
-                          <i class="fa fa-facebook"></i>
-                        </div>
-                      </a>
-                    </li>
-                  </ul>
-              </div>
-          </div>
-        </div>
-        </div>
-        <div id="footer-bottom-wrapper">
-          <div id="footer-bottom">
-            <img id="footer-icon" src="{% static "website/images/layout/header/upe_whale.png" %}" alt="Workshop">
-            <div id="copyright">Copyright © <script type="text/javascript">document.write(new Date().getFullYear());</script>  Upsilon Pi Epsilon at the University of California, Berkeley
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
     <!-- ENDS FOOTER -->
   </body>
 </html>

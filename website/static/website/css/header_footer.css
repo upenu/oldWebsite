@@ -20,10 +20,6 @@
 	background-color: #2C3847;
 }
 
-body {
-	background-color: #F2F9FD;
-}
-
 .footer {
 	background: #667A96;
 	color: white;
@@ -50,4 +46,17 @@ body {
 
 .footer-container .row {
 	margin-bottom: 20px;
+}
+
+.footer-icon {
+    height: 50px;
+    float: left;
+    display: inline-block;
+    padding-top: 10px;
+    padding-right: 20px;
+}
+
+.footer-sponsor {
+	height: 60px;
+	display: block;
 }

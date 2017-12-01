@@ -18,11 +18,6 @@ import calendar
 def index(request):
     template = loader.get_template('website/index.html')
     officers = UserProfile.objects.filter(user_type=3, approved=True)
-
-
-
-    # context = RequestContext(request, { 'officers': officers })
-    # return HttpResponse(template.render(context))
     return render(request, 'website/index.html', { 'officers': officers })
 
 def oh(request):
@@ -30,6 +25,9 @@ def oh(request):
 
 def ir(request):
     return render(request, 'website/ir.html', {})
+
+def library(request):
+    return render(request, 'website/library.html', {})
 """
 def interview(request):
     time_dict = {9: "9:00am - 10:00am", 10: "10:00am - 11:00am", 11: "11:00am - 12:00pm", 12: "12:00pm - 1:00pm", 13: "1:00pm - 2:00pm",
