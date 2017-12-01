@@ -1,18 +1,10 @@
-.event-display {
-
-}
-
-.event-wrapper {
-
-}
-
-.event {
-	margin: 2%;
-}
-
-.event-banner {
-	max-height: 20%;
-}
+/****************************************************************************
+ * START BOOTSTRAP: The following is taken from Bootstrap v4.0.0-beta.2.
+ ****************************************************************************
+ * Copyright 2011-2017 The Bootstrap Authors
+ * Copyright 2011-2017 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE
+ ****************************************************************************/
 
 .card {
   position: relative;
@@ -252,4 +244,87 @@
     display: inline-block;
     width: 100%;
   }
+}
+
+/****************************************************************************
+ * END BOOTSTRAP
+ ****************************************************************************/
+
+.event-display {
+  height: 100%;
+  margin: 20px 0;
+}
+
+.event-display-title {
+  margin: 10px 0 20px 10px;
+  height: 40px;
+}
+
+.event {
+  margin: 0 1%;
+  padding: 20px;
+  background-color: rgba(237, 246, 253);
+  font-family: "Calisto MT Text";
+  height: calc(100vh - 100px);
+  min-height: content;
+  position: relative;
+  border: 1px solid #0B5687;
+  box-shadow: 0 0 10px 0 rgb(11, 86, 135, 0.1) inset;
+}
+
+.event-header, .event-body {
+  background-color: transparent;
+}
+
+.event-header {
+  border-bottom: none;
+}
+
+.event-title {
+  font-family: "Helvetica", sans-serif;
+  font-weight: 500;
+  font-size: 2.3em;
+  border-bottom: none;
+  margin: 10px 0;
+}
+
+.event-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  height: 200px;
+  width: 100%;
+  border-radius: 7px;
+}
+
+.edge-faded {
+  box-shadow:
+    inset 0 0 5px 0 rgba(237, 246, 253, 0.5),
+    inset 0 0 1px 0 rgba(237, 246, 253, 0.9),
+    inset 2px 2px 2px 0 rgba(237, 246, 253, 0.7),
+    inset -2px -2px 2px 0 rgba(237, 246, 253, 0.7),
+    inset 3px 3px 2px 0 rgba(237, 246, 253, 0.3),
+    inset -3px -3px 2px 0 rgba(237, 246, 253, 0.3);
+}
+
+.event-info {
+  font-size: 140%;
+  font-weight: 300;
+  line-height: 110%;
+  font-family: "Helvetica", sans-serif;
+}
+
+.event-description {
+  margin-top: 20px;
+  font-size: 1.1em;
+}
+
+.event-link {
+  color: #356C5C;
+  font-size: 1.3em;
+  font-weight: bold;
+  font-family: "Helvetica", sans-serif;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
 }

@@ -97,29 +97,36 @@
       </div>
     </div>
     {% if events %}
+    <!-- EVENT DISPLAY -->
     <section class="event-display container-fluid">
       <div class="row">
+        <h1 class="event-display-title">Upcoming Events</h1>
+      </div>
+      <div class="row">
         {% for event in events %}
-        <div class="event-wrapper col-12 col-md-4">
+        <div class="col-12 col-md-{{cols_per_event}}">
           <div class="event card">
-            <div class="card-header">
-              {{ event.start_timestamp|todate|date:"m/d/y" }}, {{ event.start_timestamp|todate|date:"g:i A" }} @ {{ event.location }}
+            <div class="event-header card-header">
+              <h3 class="event-title card-title">{{ event.name }}</h3>
             </div>
-            <img class="event-banner card-img-top" src="{{ event.banner }}" alt="banner image">
-            <div class="card-body">
-              <h3 class="card-title display-3">{{ event.name }}</h3>
-              <p class="card-text">
+            <div class="event-image event-banner edge-faded" style="background-image:url('{{event.banner}}');"></div>
+            <div class="event-body card-body">
+              <h4 class="event-info">Date: {{event.start_timestamp|todate|date:"l, M. jS"}}</h4>
+              <h4 class="event-info">Time: {{event.start_timestamp|todate|date:"g:i A"}}</h4>
+              <h4 class="event-info">Location: {{event.location}}</h4>
+              <p class="event-description card-text">
                 {% autoescape off %}
                 {{ event.description }}
                 {% endautoescape %}
               </p>
-              <a href="#" class="btn btn-primary">See Facebook event</a>
+              <a href="https://www.facebook.com/events/{{event.facebookid}}" class="event-link pull-right">See Facebook event &gt;</a>
             </div>
           </div>
         </div>
         {% endfor %}
       </div>
     </section>
+    <!-- END EVENT DISPLAY -->
     {% endif %}
     <div id="twitter-feed-wrapper">
         <div id="twitter-wrapper">

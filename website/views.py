@@ -14,16 +14,27 @@ from django.core.validators import validate_email
 from datetime import datetime
 from datetime import timedelta
 import calendar
+from upe_calendar.models import *
+import time
+
+EVENT_LIMIT = 3
 
 def index(request):
     template = loader.get_template('website/index.html')
     officers = UserProfile.objects.filter(user_type=3, approved=True)
+    events = Event.objects.filter()
+    events = events[:EVENT_LIMIT]
+    events = [event for event in events if event.start_timestamp > (time.time() + 60*60*2)]
 
 
 
     # context = RequestContext(request, { 'officers': officers })
     # return HttpResponse(template.render(context))
-    return render(request, 'website/index.html', { 'officers': officers })
+    return render(request, 'website/index.html', {
+        'officers': officers,
+        'events': events,
+        'cols_per_event': None if len(events) == 0 else int(12/len(events))
+    })
 
 def oh(request):
     return render(request, 'website/oh.html', {})
