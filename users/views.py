@@ -491,7 +491,7 @@ def requirements(request):
             if search_form.is_valid():
                 candidates = CandidateProfile.objects.filter(name__search=search_form.cleaned_data['query'])
         else:
-            candidates = CandidateProfile.objects.all()
+            candidates = CandidateProfile.objects.order_by("name")
             search = SearchForm()
         if request.method == 'POST' and 'convert' in request.POST: # UGH FIGURE OUT CHECKBOX
             new_members = request.POST['convert']
@@ -499,7 +499,6 @@ def requirements(request):
                 candidate_id = int(c)
                 user_prof = UserProfile.objects.get(candidate_profile_id = candidate_id)
                 user_prof.convert_to_member()
-        
         
         finished = [c for c in candidates if c.is_finished()]
 
