@@ -4,7 +4,7 @@ from users.models import *
 
 class CompletionForm(forms.Form):
     requirement = forms.ModelChoiceField(label="requirement", queryset=Requirement.objects.all()) 
-    candidates = forms.ModelMultipleChoiceField(label="candidates", queryset=CandidateProfile.objects.all())
+    candidates = forms.ModelMultipleChoiceField(label="candidates", queryset=CandidateProfile.objects.order_by('name'))
     note = forms.CharField(label="note", max_length=140)
 
 class SearchForm(forms.Form):
