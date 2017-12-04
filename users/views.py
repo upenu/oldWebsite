@@ -484,6 +484,7 @@ def requirements(request):
                 note = form.cleaned_data['note']
                 for c in form.cleaned_data['candidates']:
                     Completion.objects.create(candidate=c, requirement=req, note=note)
+                return HttpResponseRedirect('/requirements/')
         else:
             form = CompletionForm()
         if request.method == 'POST' and "search" in request.POST:
@@ -493,12 +494,13 @@ def requirements(request):
         else:
             candidates = CandidateProfile.objects.order_by("name")
             search = SearchForm()
-        if request.method == 'POST' and 'convert' in request.POST: # UGH FIGURE OUT CHECKBOX
+        if request.method == 'POST' and 'convert' in request.POST:
             new_members = request.POST['convert']
             for c in request.POST.getlist('convert'):
                 candidate_id = int(c)
                 user_prof = UserProfile.objects.get(candidate_profile_id = candidate_id)
                 user_prof.convert_to_member()
+                return HttpResponseRedirect('/requirements/')
         
         finished = [c for c in candidates if c.is_finished()]
 
