@@ -60,7 +60,12 @@ class UserProfile(models.Model):
         cp.delete()
 
     def reset_candidate(self):
+        # mostly used for testing - resets this user to a candidate without any completions
         self.user_type = 1
+        cp = self.candidate_profile
+        self.candidate_profile = None
+        if cp:
+            cp.delete()
         self.candidate_profile = CandidateProfile.objects.create(
             user=self.user, name=str(self))
         self.save()

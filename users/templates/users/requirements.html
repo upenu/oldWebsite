@@ -2,30 +2,16 @@
 {% load staticfiles %}
 {% block stylesheets %}
 
-<link href="{% static 'website/css/bootstrap.min.css' %}" rel="stylesheet">
-<link href="{% static 'website/css/bootstrap-editable.css' %}" rel="stylesheet">
-<link rel="stylesheet" href="{% static "website/css/reset.css" %}" type="text/css" media="screen" />
-<link rel="stylesheet" href="{% static "website/css/full_style.css" %}" type="text/css" media="screen" />
-<link rel="stylesheet" href="{% static "website/css/main_style.css" %}" type="text/css" media="screen" />
-<link rel="stylesheet" href="{% static "website/css/header_style.css" %}" type="text/css" media="screen" />
-<link rel="stylesheet" href="{% static "website/css/footer_style.css" %}" type="text/css" media="screen" />
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="{% static "website/css/hover.css" %}" type="text/css" media="screen" />
-<link rel="stylesheet" href="{% static "users/css/officers_members.css" %}" type="text/css" media="screen" />
-<link rel="stylesheet" href="{% static "users/css/profile.css" %}" type="text/css" media="screen" />
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
-
 <style type="text/css">
-  body {
+  .container {
     color: #2C2C46;
   }
   .col-sm-4 {
     padding: 1em
   }
-  .heading {
+  h1, h2 {
     font-family: Helvetica;
-    text-transform: uppercase;
+    text-transform: capitalize;
   }
   select, [type=text] {
     width: 100%
@@ -33,14 +19,17 @@
   .form-group {
     text-transform: capitalize; 
   }
+  .stuff {
+    font-family: 'Calisto MT';
+  }
 </style>
 {% endblock %}
 {% block content %}
 <div class="container">
-  <h1 class="heading">Requirements</h1>
-  <div class="row">
+  <h1>Requirements</h1>
+  <div class="row stuff">
     <div class="col-sm-4">
-      <h1>Submit completions</h1>
+      <h2>Submit completions</h2>
       <form action="/requirements/" method="post">
         {% csrf_token %}
         {% for field in form %}
@@ -53,7 +42,7 @@
       </form>
     </div>
     <div class="col-sm-4">
-      <h1>Finished Candidates</h1>
+      <h2>Finished Candidates</h2>
       {% if finished|length != 0 %}
         <form action="/requirements/" method="post">
         {% csrf_token %}
@@ -64,7 +53,7 @@
           {% endfor %}
           </div>
           <div class="form-group">
-          <input type="submit" onclick="return window.confirm('r u sure bout dat');" value="Convert to Member">
+          <input type="submit" onclick="return window.confirm('Are you sure?');" value="Convert to Member">
           </div>
         </form>
       {% else %}
@@ -72,7 +61,7 @@
       {% endif %}
     </div>
     <div class="col-sm-4">
-      <h1>All Candidates</h1>
+      <h2>All Candidates</h2>
       {% for c in candidates %}
         <a href="/requirements/{{ c.id }}">{{ c }}</a><br>
       {% endfor %}

@@ -456,7 +456,8 @@ def progress(request):
     user = request.user
     candidate_profile = CandidateProfile.objects.get(user = user)
     progress = candidate_profile.get_progress()
-    return render(request, 'users/progress.html', {"progress": progress, "edit": False})
+    return render(request, 'users/progress.html', {"progress": progress, "edit": False, 
+        "name": candidate_profile.name})
 
 @login_required
 @user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
@@ -467,7 +468,8 @@ def candidate_progress(request, candidate_profile_id):
             Completion.objects.get(pk=int(c)).delete()
     candidate_profile = CandidateProfile.objects.get(pk = candidate_profile_id)
     progress = candidate_profile.get_progress()
-    return render(request, 'users/progress.html', {"progress": progress, "edit": True})
+    return render(request, 'users/progress.html', {"progress": progress, "edit": True,
+        "name": candidate_profile.name})
 
 @login_required
 def requirements(request):

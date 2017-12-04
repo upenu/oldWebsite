@@ -1,40 +1,49 @@
 {% extends "website/header_footer.html" %}
 {% load staticfiles %}
 {% block stylesheets %}
-
-<link href="{% static 'website/css/bootstrap.min.css' %}" rel="stylesheet">
-<link href="{% static 'website/css/bootstrap-editable.css' %}" rel="stylesheet">
-<link rel="stylesheet" href="{% static "website/css/reset.css" %}" type="text/css" media="screen" />
-<link rel="stylesheet" href="{% static "website/css/full_style.css" %}" type="text/css" media="screen" />
-<link rel="stylesheet" href="{% static "website/css/main_style.css" %}" type="text/css" media="screen" />
-<link rel="stylesheet" href="{% static "website/css/header_style.css" %}" type="text/css" media="screen" />
-<link rel="stylesheet" href="{% static "website/css/footer_style.css" %}" type="text/css" media="screen" />
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="{% static "website/css/hover.css" %}" type="text/css" media="screen" />
-<link rel="stylesheet" href="{% static "users/css/officers_members.css" %}" type="text/css" media="screen" />
-<link rel="stylesheet" href="{% static "users/css/profile.css" %}" type="text/css" media="screen" />
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
 {% endblock %}
 {% block content %}
-<div class="container">
-  <h1>Candidate Progress</h1>
-  {% for r in progress %}
-    <h2>{{ r.req.name }} (Completed {{ r.completions| length }}/{{ r.req.num_required }})</h2>
-    {% if edit and r.completions|length != 0 %}
-      <form method="post">
+<style type="text/css">
+  .container {
+    color: #2C2C46;
+    padding: 1em;
+  }
+  .input {
+    padding: 1em;
+  }
+  h1, h2 {
+    font-family: Helvetica;
+    text-transform: capitalize;
+  }
+  .form-group {
+    text-transform: capitalize; 
+  }
+  .stuff {
+    font-family: 'Calisto MT';
+  }
+</style>
+<div class="container stuff">
+  <h1>{{ name }}</h1>
+    {% if edit %}
+    <form method="post">
       {% csrf_token %}
+      {% for r in progress %}
+        <h2>{{ r.req.name }} (Completed {{ r.completions| length }}/{{ r.req.num_required }})</h2>
         {% for c in r.completions %}
-          <input type="checkbox" name="delete" value="{{ c.id }}">Completed on {{ c.date_completed }} ({{ c.note }})<br>
+          <input type="checkbox" name="delete" value="{{ c.id }}"> Completed on {{ c.date_completed }} ({{ c.note }})<br>
         {% endfor %}
-        <input type="submit" onclick="return window.confirm('r u sure bout dat');" value="Delete">
-      </form>
+      {% endfor %}
+      <br>
+      <input type="submit" onclick="return window.confirm('Are you sure?');" value="Delete">
+    </form>
     {% else %}
+    {% for r in progress %}
+        <h2>{{ r.req.name }} (Completed {{ r.completions| length }}/{{ r.req.num_required }})</h2>
       {% for c in r.completions %}
         Completed on {{ c.date_completed }} ({{ c.note }})<br>
       {% endfor %}
+      {% endfor %}
     {% endif %}
-  {% endfor %}
 </div>
 {% endblock %}
 
