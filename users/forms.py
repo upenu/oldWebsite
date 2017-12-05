@@ -15,9 +15,9 @@ class RequirementForm(forms.Form):
     description = forms.CharField(label='description', max_length=500)
     num_required = forms.IntegerField(label='num_required')
 
-class editReqForm(forms.Form):
+class EditReqForm(forms.Form):
     requirement = forms.ModelChoiceField(label="requirement", queryset=Requirement.objects.all()) 
-    delete= forms.BooleanField(label='delete')
+    delete= forms.BooleanField(label='delete', required=False)
     num_required = forms.IntegerField(label='num_required', initial=0)
 
 class UserForm(forms.ModelForm):

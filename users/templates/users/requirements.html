@@ -67,6 +67,7 @@
       {% endfor %}
     </div>
   </div>
+  {% if vp %}
   <div class = 'row stuff'>
     <div class="col-sm-4">
       <h2>Add New Requirements</h2>
@@ -78,8 +79,16 @@
           {{ field }}
         </div>
         {% endfor %}
-        <input type="submit" value="Submit" onclick="return window.confirm('Make sure there are no candidates before submitting new requirements!');" name='updateReqs'/> 
+        <input type="submit" value="Submit" name='updateReqs'/> 
       </form>
+    </div>
+    <div class="col-sm-4">
+        <h2>Current Requirements</h2>
+          <ul>
+          {% for r in reqs %}
+            <li>{{ r }} ({{ r.num_required }} required)</li>
+          {% endfor %}
+          </ul>
     </div>
     <div class="col-sm-4">
         <h2>Edit Requirements</h2>
@@ -91,10 +100,11 @@
             {{ field }}
           </div>
           {% endfor %}
-          <input type="submit" value="Submit" onclick="return window.confirm('Make sure there are no candidates before editing requirements!');" name='editReqs'/> 
+          <input type="submit" value="Submit" name='editReqs'/> 
         </form>
       </div>
   </div>
+  {% endif %}
 </div>
 {% endblock %}
 

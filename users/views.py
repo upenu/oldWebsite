@@ -481,7 +481,7 @@ def requirements(request):
         candidates = CandidateProfile.objects.order_by("name")
         search = SearchForm()
         reqForm = RequirementForm()
-        editForm = editReqForm()
+        editForm = EditReqForm()
         if request.method == 'POST' and 'sigh' in request.POST:
             form = CompletionForm(request.POST)
             if form.is_valid():
@@ -500,7 +500,7 @@ def requirements(request):
                 candidate_id = int(c)
                 user_prof = UserProfile.objects.get(candidate_profile_id = candidate_id)
                 user_prof.convert_to_member()
-                return HttpResponseRedirect('/requirements/')
+            return HttpResponseRedirect('/requirements/')
         elif request.method == 'POST' and 'updateReqs' in request.POST:
             reqform = RequirementForm(request.POST)
             if reqform.is_valid():
@@ -508,8 +508,9 @@ def requirements(request):
                 description = reqform.cleaned_data['description']
                 num = reqform.cleaned_data['num_required']
                 req = Requirement.objects.create(name=name, description=description, num_required=num)
+                return HttpResponseRedirect('/requirements/')
         elif request.method == 'POST' and 'editReqs' in request.POST:
-            editReq = editReqForm(request.POST)
+            editReq = EditReqForm(request.POST)
             if editReq.is_valid():
                 req = editReq.cleaned_data['requirement']
                 delete = editReq.cleaned_data['delete']
@@ -519,9 +520,12 @@ def requirements(request):
                     num = editReq.cleaned_data['num_required']
                     req.num_required = num
                     req.save()
+                return HttpResponseRedirect('/requirements/')
         finished = [c for c in candidates if c.is_finished()]
 
+        vp = user_profile.officer_profile and user_profile.officer_profile.position == 2
         return render(request, 'users/requirements.html', {
-            'form': form, 'search_form': search, 'finished': finished, 'candidates': candidates, 'updateReq': reqForm, 'editReq':editForm})
+            'form': form, 'search_form': search, 'finished': finished, 'candidates': candidates, 
+            'vp': vp, 'updateReq': reqForm, 'editReq':editForm, 'reqs': Requirement.objects.all()})
     else: # else, just default to the home page
         return render(request, 'website/index.html')
