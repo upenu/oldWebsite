@@ -12,9 +12,13 @@ class SearchForm(forms.Form):
 
 class RequirementForm(forms.Form):
     name = forms.CharField(label='name', max_length=100)
-    description = forms.CharField(label='description', widget=forms.Textarea, max_length=500)
+    description = forms.CharField(label='description', max_length=500)
     num_required = forms.IntegerField(label='num_required')
 
+class editReqForm(forms.Form):
+    requirement = forms.ModelChoiceField(label="requirement", queryset=Requirement.objects.all()) 
+    delete= forms.BooleanField(label='delete')
+    num_required = forms.IntegerField(label='num_required', initial=0)
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())

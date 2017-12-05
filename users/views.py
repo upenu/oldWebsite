@@ -481,6 +481,7 @@ def requirements(request):
         candidates = CandidateProfile.objects.order_by("name")
         search = SearchForm()
         reqForm = RequirementForm()
+        editForm = editReqForm()
         if request.method == 'POST' and 'sigh' in request.POST:
             form = CompletionForm(request.POST)
             if form.is_valid():
@@ -507,10 +508,20 @@ def requirements(request):
                 description = reqform.cleaned_data['description']
                 num = reqform.cleaned_data['num_required']
                 req = Requirement.objects.create(name=name, description=description, num_required=num)
-                
+        elif request.method == 'POST' and 'editReqs' in request.POST:
+            editReq = editReqForm(request.POST)
+            if editReq.is_valid():
+                req = editReq.cleaned_data['requirement']
+                delete = editReq.cleaned_data['delete']
+                if delete:
+                    u = req.delete()
+                else: 
+                    num = editReq.cleaned_data['num_required']
+                    req.num_required = num
+                    req.save()
         finished = [c for c in candidates if c.is_finished()]
 
         return render(request, 'users/requirements.html', {
-            'form': form, 'search_form': search, 'finished': finished, 'candidates': candidates, 'updateReq': reqForm})
+            'form': form, 'search_form': search, 'finished': finished, 'candidates': candidates, 'updateReq': reqForm, 'editReq':editForm})
     else: # else, just default to the home page
         return render(request, 'website/index.html')

@@ -68,11 +68,32 @@
     </div>
   </div>
   <div class = 'row stuff'>
-    <form action="/requirements/" method="post">
-      {% csrf_token %}
-      {{ updateReq }}
-      <input type="submit" value="Submit" onclick="return window.confirm('Make sure there are no candidates before submitting new requirements!');" name='updateReqs'/>  
-    </form>
+    <div class="col-sm-4">
+      <h2>Add New Requirements</h2>
+      <form action="/requirements/" method="post">
+        {% csrf_token %}
+        {% for field in updateReq %}
+        <div class="form-group">
+          {{ field.label }}:
+          {{ field }}
+        </div>
+        {% endfor %}
+        <input type="submit" value="Submit" onclick="return window.confirm('Make sure there are no candidates before submitting new requirements!');" name='updateReqs'/> 
+      </form>
+    </div>
+    <div class="col-sm-4">
+        <h2>Edit Requirements</h2>
+        <form action="/requirements/" method="post">
+          {% csrf_token %}
+          {% for field in editReq %}
+          <div class="form-group">
+            {{ field.label }}:
+            {{ field }}
+          </div>
+          {% endfor %}
+          <input type="submit" value="Submit" onclick="return window.confirm('Make sure there are no candidates before editing requirements!');" name='editReqs'/> 
+        </form>
+      </div>
   </div>
 </div>
 {% endblock %}
