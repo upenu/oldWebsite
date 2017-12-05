@@ -67,6 +67,13 @@
       {% endfor %}
     </div>
   </div>
+  <div class = 'row stuff'>
+    <form action="/requirements/" method="post">
+      {% csrf_token %}
+      {{ updateReq }}
+      <input type="submit" value="Submit" onclick="return window.confirm('Make sure there are no candidates before submitting new requirements!');" name='updateReqs'/>  
+    </form>
+  </div>
 </div>
 {% endblock %}
 

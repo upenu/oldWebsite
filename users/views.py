@@ -477,6 +477,10 @@ def requirements(request):
     if user_profile.user_type == 1: # candidates can view requirements
         return progress(request)
     elif user_profile.user_type == 3: # officers can edit requirement stuff
+        form = CompletionForm()
+        candidates = CandidateProfile.objects.order_by("name")
+        search = SearchForm()
+        reqForm = RequirementForm()
         if request.method == 'POST' and 'sigh' in request.POST:
             form = CompletionForm(request.POST)
             if form.is_valid():
@@ -485,27 +489,28 @@ def requirements(request):
                 for c in form.cleaned_data['candidates']:
                     Completion.objects.create(candidate=c, requirement=req, note=note)
                 return HttpResponseRedirect('/requirements/')
-        else:
-            form = CompletionForm()
-        if request.method == 'POST' and "search" in request.POST:
+        elif request.method == 'POST' and "search" in request.POST:
             search_form = SearchForm(request.POST)
             if search_form.is_valid():
-                candidates = CandidateProfile.objects.filter(name__search=search_form.cleaned_data['query'])
-        else:
-            candidates = CandidateProfile.objects.order_by("name")
-            search = SearchForm()
-        if request.method == 'POST' and 'convert' in request.POST:
+                candidates = CandidateProfile.objects.filter(name__search=search_form.cleaned_data['query'])   
+        elif request.method == 'POST' and 'convert' in request.POST:
             new_members = request.POST['convert']
             for c in request.POST.getlist('convert'):
                 candidate_id = int(c)
                 user_prof = UserProfile.objects.get(candidate_profile_id = candidate_id)
                 user_prof.convert_to_member()
                 return HttpResponseRedirect('/requirements/')
-        
+        elif request.method == 'POST' and 'updateReqs' in request.POST:
+            reqform = RequirementForm(request.POST)
+            if reqform.is_valid():
+                name = reqform.cleaned_data['name']
+                description = reqform.cleaned_data['description']
+                num = reqform.cleaned_data['num_required']
+                req = Requirement.objects.create(name=name, description=description, num_required=num)
+                
         finished = [c for c in candidates if c.is_finished()]
 
         return render(request, 'users/requirements.html', {
-            'form': form, 'search_form': search, 'finished': finished, 'candidates': candidates})
+            'form': form, 'search_form': search, 'finished': finished, 'candidates': candidates, 'updateReq': reqForm})
     else: # else, just default to the home page
         return render(request, 'website/index.html')
-

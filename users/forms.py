@@ -10,6 +10,11 @@ class CompletionForm(forms.Form):
 class SearchForm(forms.Form):
     query = forms.CharField(widget=forms.Textarea)
 
+class RequirementForm(forms.Form):
+    name = forms.CharField(label='name', max_length=100)
+    description = forms.CharField(label='description', widget=forms.Textarea, max_length=500)
+    num_required = forms.IntegerField(label='num_required')
+
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
