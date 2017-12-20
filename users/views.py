@@ -143,6 +143,11 @@ def register(request):
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
+            if profile.user_type == 1:
+                cp = CandidateProfile.objects.create(user=user)
+                cp.name = user.first_name + " " + user.last_name
+                cp.save()
+                profile.candidate_profile = cp
             profile.save()
             registered = True
             send_mail(user.first_name + " " + user.last_name + " registered for a UPE account.", "You can approve this person after logging in at upe.berkeley.edu/approval_dashboard", "website_approval@upe.berkeley.edu", ["website_approval@upe.berkeley.edu"], fail_silently=True)
@@ -447,4 +452,82 @@ def requirements(request):
     return render_to_response('users/requirements.html',
             context_instance=RequestContext(request,{'req_dict': req_dict, 'up':up}))
 """
+@login_required
+@user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 1, login_url='/login/')
+def progress(request):
+    user = request.user
+    candidate_profile = CandidateProfile.objects.get(user = user)
+    progress = candidate_profile.get_progress()
+    return render(request, 'users/progress.html', {"progress": progress, "edit": False, 
+        "name": candidate_profile.name})
 
+@login_required
+@user_passes_test(lambda u: UserProfile.objects.get(user=u).user_type == 3, login_url='/login/')
+def candidate_progress(request, candidate_profile_id):
+    if request.method == 'POST':
+        lolxd = []
+        for c in request.POST.getlist('delete'):
+            Completion.objects.get(pk=int(c)).delete()
+    candidate_profile = CandidateProfile.objects.get(pk = candidate_profile_id)
+    progress = candidate_profile.get_progress()
+    return render(request, 'users/progress.html', {"progress": progress, "edit": True,
+        "name": candidate_profile.name})
+
+@login_required
+def requirements(request):
+    user_profile = UserProfile.objects.get(user=request.user)
+    if user_profile.user_type == 1: # candidates can view requirements
+        return progress(request)
+    elif user_profile.user_type == 3: # officers can edit requirement stuff
+        form = CompletionForm()
+        candidates = CandidateProfile.objects.order_by("name")
+        search = SearchForm()
+        reqForm = RequirementForm()
+        editForm = EditReqForm()
+        if request.method == 'POST' and 'sigh' in request.POST:
+            form = CompletionForm(request.POST)
+            if form.is_valid():
+                req = form.cleaned_data['requirement']
+                note = form.cleaned_data['note']
+                for c in form.cleaned_data['candidates']:
+                    Completion.objects.create(candidate=c, requirement=req, note=note)
+                return HttpResponseRedirect('/requirements/')
+        elif request.method == 'POST' and "search" in request.POST:
+            search_form = SearchForm(request.POST)
+            if search_form.is_valid():
+                candidates = CandidateProfile.objects.filter(name__search=search_form.cleaned_data['query'])   
+        elif request.method == 'POST' and 'convert' in request.POST:
+            new_members = request.POST['convert']
+            for c in request.POST.getlist('convert'):
+                candidate_id = int(c)
+                user_prof = UserProfile.objects.get(candidate_profile_id = candidate_id)
+                user_prof.convert_to_member()
+            return HttpResponseRedirect('/requirements/')
+        elif request.method == 'POST' and 'updateReqs' in request.POST:
+            reqform = RequirementForm(request.POST)
+            if reqform.is_valid():
+                name = reqform.cleaned_data['name']
+                description = reqform.cleaned_data['description']
+                num = reqform.cleaned_data['num_required']
+                req = Requirement.objects.create(name=name, description=description, num_required=num)
+                return HttpResponseRedirect('/requirements/')
+        elif request.method == 'POST' and 'editReqs' in request.POST:
+            editReq = EditReqForm(request.POST)
+            if editReq.is_valid():
+                req = editReq.cleaned_data['requirement']
+                delete = editReq.cleaned_data['delete']
+                if delete:
+                    u = req.delete()
+                else: 
+                    num = editReq.cleaned_data['num_required']
+                    req.num_required = num
+                    req.save()
+                return HttpResponseRedirect('/requirements/')
+        finished = [c for c in candidates if c.is_finished()]
+
+        vp = user_profile.officer_profile and user_profile.officer_profile.position == 2
+        return render(request, 'users/requirements.html', {
+            'form': form, 'search_form': search, 'finished': finished, 'candidates': candidates, 
+            'vp': vp, 'updateReq': reqForm, 'editReq':editForm, 'reqs': Requirement.objects.all()})
+    else: # else, just default to the home page
+        return render(request, 'website/index.html')

@@ -52,14 +52,40 @@ class UserProfile(models.Model):
             if self.committee == tup[0]:
                 return tup[1]
 
+    def convert_to_member(self):
+        cp = self.candidate_profile
+        self.candidate_profile = None
+        self.user_type = 2
+        self.save()
+        cp.delete()
+
+    def reset_candidate(self):
+        # mostly used for testing - resets this user to a candidate without any completions
+        self.user_type = 1
+        cp = self.candidate_profile
+        self.candidate_profile = None
+        if cp:
+            cp.delete()
+        self.candidate_profile = CandidateProfile.objects.create(
+            user=self.user, name=str(self))
+        self.save()
+
 # EVERYTHING BELOW IS FOR LATER.
 
 class CandidateProfile(models.Model):
     user = models.OneToOneField(User)
+    name = models.CharField(max_length=100, null=True, blank=True)
 
     def get_progress(self):
-        pass
+        completions = self.completion_set.all()
+        progress = {req.id: {"req": req, "completions": []} for req in Requirement.objects.all()}
+        for c in completions:
+            progress[c.requirement_id]["completions"].append(c)
+        return list(progress.values())
 
+    def is_finished(self):
+        progress = self.get_progress()
+        return all([len(r["completions"]) >= r["req"].num_required for r in progress])
 
     def __str__(self):
         return self.user.first_name + " " + self.user.last_name
@@ -279,31 +305,20 @@ class BerkeleyClass(models.Model):
     def name(self):
         return self.class_dict[self.class_name]
 
-"""class Requirement(models.Model):
-
+class Requirement(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=500, blank=True, null=True)
     candidates = models.ManyToManyField('CandidateProfile', through='Completion')
-    REQUIREMENT_TYPE = (
-        ('SOC', 'Social'),
-        ('PRO', 'Professional'),
-        ('IND', 'Individual'),
-        ('FAM', 'Family'),
-        ('ACM', 'ACM Payment'),
-        ('INI', 'Initiation Attendance'),
-        ('GM', 'General Meetings')
-    )
-    req_dict = dict(REQUIREMENT_TYPE)
-    req_type = models.CharField(max_length=3, choices=REQUIREMENT_TYPE, default='SOC')
+    num_required = models.IntegerField()
 
     def __str__(self):
-        return self.req_dict[self.req_type] 
+        return self.name
 
 class Completion(models.Model):
     candidate = models.ForeignKey('CandidateProfile')
-    requirement = models.ForeignKey('Requirement')
-    completed = models.BooleanField(default=False)
-    date_completed = models.DateField(default=date.today)"""
+    requirement = models.ForeignKey('Requirement', null=True)
+    note = models.CharField(max_length=100, default="")
+    date_completed = models.DateField(auto_now_add=True, blank=True, null=True)
 
-class Completion(models.Model):
-    candidate = models.ForeignKey('CandidateProfile')
+    def __str__(self):
+        return "{}: {} ({})".format(self.candidate, self.requirement, self.note)

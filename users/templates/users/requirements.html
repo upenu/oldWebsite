@@ -1,0 +1,115 @@
+{% extends "website/header_footer.html" %}
+{% load staticfiles %}
+{% block stylesheets %}
+
+<style type="text/css">
+  .container {
+    color: #2C2C46;
+  }
+  .col-sm-4 {
+    padding: 1em
+  }
+  h1, h2 {
+    font-family: Helvetica;
+    text-transform: capitalize;
+  }
+  select, [type=text] {
+    width: 100%
+  }
+  .form-group {
+    text-transform: capitalize; 
+  }
+  .stuff {
+    font-family: 'Calisto MT';
+  }
+</style>
+{% endblock %}
+{% block content %}
+<div class="container">
+  <h1>Requirements</h1>
+  <div class="row stuff">
+    <div class="col-sm-4">
+      <h2>Submit completions</h2>
+      <form action="/requirements/" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+          {{ field.label }}:
+          {{ field }}
+        </div>
+        {% endfor %}
+        <input type="submit" name="sigh" value="Submit" />
+      </form>
+    </div>
+    <div class="col-sm-4">
+      <h2>Finished Candidates</h2>
+      {% if finished|length != 0 %}
+        <form action="/requirements/" method="post">
+        {% csrf_token %}
+          <div class="form-group">
+          {% for c in finished %}
+            <input type="checkbox" name="convert" value="{{ c.id }}">
+            <a href="/requirements/{{ c.id }}"> {{ c }}</a><br>
+          {% endfor %}
+          </div>
+          <div class="form-group">
+          <input type="submit" onclick="return window.confirm('Are you sure?');" value="Convert to Member">
+          </div>
+        </form>
+      {% else %}
+        <p>None</p>
+      {% endif %}
+    </div>
+    <div class="col-sm-4">
+      <h2>All Candidates</h2>
+      {% for c in candidates %}
+        <a href="/requirements/{{ c.id }}">{{ c }}</a><br>
+      {% endfor %}
+    </div>
+  </div>
+  {% if vp %}
+  <div class = 'row stuff'>
+    <div class="col-sm-4">
+      <h2>Add New Requirements</h2>
+      <form action="/requirements/" method="post">
+        {% csrf_token %}
+        {% for field in updateReq %}
+        <div class="form-group">
+          {{ field.label }}:
+          {{ field }}
+        </div>
+        {% endfor %}
+        <input type="submit" value="Submit" name='updateReqs'/> 
+      </form>
+    </div>
+    <div class="col-sm-4">
+        <h2>Current Requirements</h2>
+          <ul>
+          {% for r in reqs %}
+            <li>{{ r }} ({{ r.num_required }} required)</li>
+          {% endfor %}
+          </ul>
+    </div>
+    <div class="col-sm-4">
+        <h2>Edit Requirements</h2>
+        <form action="/requirements/" method="post">
+          {% csrf_token %}
+          {% for field in editReq %}
+          <div class="form-group">
+            {{ field.label }}:
+            {{ field }}
+          </div>
+          {% endfor %}
+          <input type="submit" value="Submit" name='editReqs'/> 
+        </form>
+      </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script src="{% static "website/js/jquery-2.1.1.min.js" %}"></script>
+<script src="{% static "website/js/bootstrap.min.js" %}"></script>
+<script src="{% static 'website/js/bootstrap-editable.js' %}"></script>
+{% endblock %}

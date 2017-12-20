@@ -1,0 +1,51 @@
+{% extends "website/header_footer.html" %}
+{% load staticfiles %}
+{% block stylesheets %}
+{% endblock %}
+{% block content %}
+<style type="text/css">
+  .container {
+    color: #2C2C46;
+  }
+  h1, h2 {
+    font-family: Helvetica;
+    text-transform: capitalize;
+  }
+  .form-group {
+    text-transform: capitalize; 
+  }
+  .stuff {
+    font-family: 'Calisto MT';
+    padding: 1em;
+  }
+</style>
+<div class="container stuff">
+  <h1>{{ name }}</h1>
+    {% if edit %}
+    <form method="post">
+      {% csrf_token %}
+      {% for r in progress %}
+        <h2>{{ r.req.name }} (Completed {{ r.completions| length }}/{{ r.req.num_required }})</h2>
+        {% for c in r.completions %}
+          <input type="checkbox" name="delete" value="{{ c.id }}"> Completed on {{ c.date_completed }} ({{ c.note }})<br>
+        {% endfor %}
+      {% endfor %}
+      <br>
+      <input type="submit" onclick="return window.confirm('Are you sure?');" value="Delete Completions">
+    </form>
+    {% else %}
+    {% for r in progress %}
+        <h2>{{ r.req.name }} (Completed {{ r.completions| length }}/{{ r.req.num_required }})</h2>
+      {% for c in r.completions %}
+        Completed on {{ c.date_completed }} ({{ c.note }})<br>
+      {% endfor %}
+      {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script src="{% static "website/js/jquery-2.1.1.min.js" %}"></script>
+<script src="{% static "website/js/bootstrap.min.js" %}"></script>
+<script src="{% static 'website/js/bootstrap-editable.js' %}"></script>
+{% endblock %}
