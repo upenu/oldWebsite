@@ -2,10 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
 from django.forms.fields import MultipleChoiceField
+from users.storage import OverwriteStorage
 
 from users.utils import *
 
-def user_directory_path(instance, filename):
+def profile_image_path(instance, filename):
     # file will be uploaded to media/profile_images/<filename>
     return 'profile_images/{0}'.format(filename)
 
@@ -33,7 +34,7 @@ class UserProfile(models.Model):
     committee = models.CharField(max_length=50, choices = COMMITTEE_CHOICES, default='NONE',verbose_name = 'What committee are you in?')
     grad_year = models.CharField(max_length=4, choices=GRAD_YEARS, default='15', verbose_name='When are you graduating | When did you graduate?')
     year_joined = models.CharField(max_length=11, choices=YEAR_JOINED, default='F14', verbose_name='When did you join UPE?')
-    picture = models.ImageField(upload_to=user_directory_path, default='/profile_images/spock.jpg')
+    picture = models.ImageField(storage=OverwriteStorage(), upload_to=profile_image_path, default='/profile_images/spock.jpg')
     personal_website = models.CharField(max_length=50, blank=True)
     resume = models.FileField(upload_to='resumes', blank=True, null=True)
     github = models.CharField(max_length=50, blank=True)
