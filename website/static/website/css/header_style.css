@@ -141,7 +141,6 @@
   visibility: hidden;
   position: absolute;
   top:110%;
-  right: -80px;
   width: 200px;
   height: auto;
   opacity: 0;
@@ -168,16 +167,4 @@
   visibility: visible;
   top:100%;
   opacity: 1;
-}
-
-#subnav-1 {
-    right: -135px;
-}
-
-#subnav-2 {
-    right: -65px;
-}
-
-#subnav-3 {
-    right: -51px;
 }
