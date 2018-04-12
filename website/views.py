@@ -6,6 +6,8 @@ from django.contrib.auth import login
 from django.template import Context, Template
 from django.forms import *
 from django.core.serializers.json import DjangoJSONEncoder
+from django.utils import timezone
+from django.db import models
 import json, re
 from users.models import *
 from django.core.mail import send_mail
@@ -13,7 +15,11 @@ from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from datetime import datetime
 from datetime import timedelta
+
 import calendar
+
+
+
 
 def index(request):
     template = loader.get_template('website/index.html')
@@ -165,3 +171,42 @@ def _send_confirmation_email(slot):
         [interviewer_email, student_email],
         fail_silently=False,
     )
+
+
+class Post(models.Model):
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='pic/', blank=True)
+    created_date = models.DateTimeField(
+            default=timezone.now)
+    published_date = models.DateTimeField(
+            blank=True, null=True)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.title
+
+class PostForm(ModelForm):
+
+    class Meta:
+        model = Post
+        fields = ('name', 'description', 'image')
+
+
+
+def post_new(request):
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = PostForm()
+    return render(request, 'website/form_page.html', {'form': form})
