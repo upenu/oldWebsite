@@ -33,8 +33,7 @@ $(document).ready(function() {
 			var times = officer.times;
             var course = officer.courses[j];
 
-            courses += course.replace(' ', '_');
-			tile.addClass(course);
+			tile.addClass(course.replace(' ', '_'));
             courses += course.replace('_', ' ');
 
 			if (j < officer.courses.length - 1) {
