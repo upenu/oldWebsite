@@ -13,3 +13,4 @@ class OfficerAdmin(admin.ModelAdmin):
 admin.site.register(UserProfile)
 admin.site.register(OfficerProfile, OfficerAdmin)
 admin.site.register(InterviewSlot)
+admin.site.register(OfficeHour)

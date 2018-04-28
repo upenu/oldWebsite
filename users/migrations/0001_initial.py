@@ -56,8 +56,6 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, primary_key=True, auto_created=True)),
                 ('position', models.IntegerField(max_length=1, choices=[(1, 'President'), (2, 'Vice President'), (3, 'Secretary'), (4, 'Treasurer'), (5, 'Professional Development'), (6, 'Industrial Relations'), (7, 'Social'), (8, 'Publicity'), (9, 'Technology')], default=1)),
                 ('photo', models.ImageField(upload_to='images/officers/')),
-                ('classes_taken', models.ManyToManyField(to='users.BerkeleyClass', through='users.OfficerClass')),
-                ('office_hours', models.ManyToManyField(to='users.OfficeHour', blank=True)),
                 ('user', models.OneToOneField(to=settings.AUTH_USER_MODEL)),
             ],
         ),
@@ -93,14 +91,6 @@ class Migration(migrations.Migration):
         migrations.RemoveField(
             model_name='officerprofile',
             name='photo',
-        ),
-        migrations.RemoveField(
-            model_name='officerprofile',
-            name='classes_taken',
-        ),
-        migrations.RemoveField(
-            model_name='officerprofile',
-            name='office_hours',
         ),
         migrations.AddField(
             model_name='officerprofile',

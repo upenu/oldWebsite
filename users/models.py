@@ -30,7 +30,7 @@ class UserProfile(models.Model):
     YEAR_JOINED = SEMESTERS
 
     user = models.OneToOneField(User)
-    user_type = models.IntegerField(max_length=1, choices=USER_TYPES, default=1, verbose_name='You are a(n)')
+    user_type = models.IntegerField(choices=USER_TYPES, default=1, verbose_name='You are a(n)')
     committee = models.CharField(max_length=50, choices = COMMITTEE_CHOICES, default='NONE',verbose_name = 'What committee are you in?')
     grad_year = models.CharField(max_length=4, choices=GRAD_YEARS, default='15', verbose_name='When are you graduating | When did you graduate?')
     year_joined = models.CharField(max_length=11, choices=YEAR_JOINED, default='F14', verbose_name='When did you join UPE?')
@@ -77,7 +77,7 @@ class OfficerProfile(models.Model):
 
     user = models.OneToOneField(User)
     position_dict = dict(OFFICER_POSITION_CHOICES)
-    position = models.IntegerField(max_length=1, choices=OFFICER_POSITION_CHOICES, default=1)
+    position = models.IntegerField(choices=OFFICER_POSITION_CHOICES, default=1)
     term = models.CharField(max_length=5, choices=TERM, default='S15', verbose_name='Officer term')
     bio = models.TextField(default='Check back soon!')
      
@@ -144,8 +144,8 @@ class InterviewSlot(models.Model):
         help_text='Please enter a valid officer username as this is used for website queries.')
     student = models.CharField(max_length=50, verbose_name=('Student'), blank=True)
     student_email = models.EmailField(max_length=255, verbose_name=('Student Email'), blank=True)
-    day_of_week = models.IntegerField(max_length=1, choices=DAY_OF_WEEK_CHOICES, default=1)
-    hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=9)
+    day_of_week = models.IntegerField(choices=DAY_OF_WEEK_CHOICES, default=1)
+    hour = models.IntegerField(choices=TIME_OF_DAY_CHOICES, default=9)
     date = models.DateField(verbose_name=('Date'))
 
     @property
@@ -191,10 +191,9 @@ class OfficeHour(models.Model):
     day_dict = dict(DAY_OF_WEEK_CHOICES)
     time_dict = dict(TIME_OF_DAY_CHOICES)
 
-    day_of_week = models.IntegerField(max_length=1, choices=DAY_OF_WEEK_CHOICES, default=1)
-    hour = models.IntegerField(max_length=2, choices=TIME_OF_DAY_CHOICES, default=11)
-    officer_username = models.CharField(max_length=30,
-        help_text='Please enter a valid officer username as this is used for website queries.')
+    day_of_week = models.IntegerField(choices=DAY_OF_WEEK_CHOICES, default=1)
+    hour = models.IntegerField(choices=TIME_OF_DAY_CHOICES, default=11)
+    officer = models.ForeignKey(OfficerProfile)
 
     def __str__(self):
         return self.name() + " " + self.officer_username
@@ -275,7 +274,7 @@ class BerkeleyClass(models.Model):
     )
 
     class_dict = dict(CLASS_CHOICES)
-    class_name = models.IntegerField(max_length=5, choices=CLASS_CHOICES)
+    class_name = models.IntegerField(choices=CLASS_CHOICES)
     officers = models.ManyToManyField('OfficerProfile', through='OfficerClass')
 
     def __str__(self):
