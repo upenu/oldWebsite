@@ -33,6 +33,7 @@ $(document).ready(function() {
 			var times = officer.times;
             var course = officer.courses[j];
 
+            courses += course.replace(' ', '_');
 			tile.addClass(course);
             courses += course.replace('_', ' ');
 
@@ -40,6 +41,7 @@ $(document).ready(function() {
 				courses += ', ';
 			}
         }
+        console.log(courses)
 
 		for (var k = 0; k < times.length; k++) {
             var time = times[k];
@@ -87,6 +89,7 @@ $(document).ready(function() {
 		} else {
 			classFilter = '';
 		}
+		console.log(classFilter);
 		$('.officers-oh').isotope({
 			filter: classFilter+dayFilter
 		});

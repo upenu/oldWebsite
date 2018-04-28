@@ -165,11 +165,11 @@ class InterviewSlot(models.Model):
 
 class OfficeHour(models.Model):
     DAY_OF_WEEK_CHOICES = (
-        ('Mon', 'Monday'),
-        ('Tues', 'Tuesday'),
-        ('Wed', 'Wednesday'),
-        ('Thur', 'Thursday'),
-        ('Fri', 'Friday'),
+        ('Mon', 'Mon'),
+        ('Tues', 'Tues'),
+        ('Wed', 'Wed'),
+        ('Thurs', 'Thurs'),
+        ('Fri', 'Fri'),
     )
     TIME_OF_DAY_CHOICES = (
         (11, '11-12'),
