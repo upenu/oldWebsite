@@ -165,11 +165,11 @@ class InterviewSlot(models.Model):
 
 class OfficeHour(models.Model):
     DAY_OF_WEEK_CHOICES = (
-        (1, 'Monday'),
-        (2, 'Tuesday'),
-        (3, 'Wednesday'),
-        (4, 'Thursday'),
-        (5, 'Friday'),
+        ('Mon', 'Monday'),
+        ('Tues', 'Tuesday'),
+        ('Wed', 'Wednesday'),
+        ('Thur', 'Thursday'),
+        ('Fri', 'Friday'),
     )
     TIME_OF_DAY_CHOICES = (
         (11, '11 AM'),
@@ -254,8 +254,9 @@ class OfficeHour(models.Model):
 
     day_dict = dict(DAY_OF_WEEK_CHOICES)
     time_dict = dict(TIME_OF_DAY_CHOICES)
+    class_dict = dict(CLASS_CHOICES)
 
-    day_of_week = models.IntegerField(choices=DAY_OF_WEEK_CHOICES, default=1)
+    day_of_week = models.CharField(max_length=4, choices=DAY_OF_WEEK_CHOICES, default='Mon')
     hour = models.IntegerField(choices=TIME_OF_DAY_CHOICES, default=11)
     classes = MultiSelectField(choices=CLASS_CHOICES)
     officer = models.ForeignKey(OfficerProfile)
