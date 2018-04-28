@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
-from django.forms.fields import MultipleChoiceField
+from multiselectfield import MultiSelectField
 from users.storage import OverwriteStorage
 
 from users.utils import *
@@ -80,9 +80,6 @@ class OfficerProfile(models.Model):
     position = models.IntegerField(choices=OFFICER_POSITION_CHOICES, default=1)
     term = models.CharField(max_length=5, choices=TERM, default='S15', verbose_name='Officer term')
     bio = models.TextField(default='Check back soon!')
-     
-    #office_hours = models.ManyToManyField('OfficeHour', blank=True)
-    #classes_taken = models.ManyToManyField('BerkeleyClass', through='OfficerClass')
 
     def __str__(self):
         return self.user.first_name + " " + self.user.last_name
@@ -110,10 +107,6 @@ class OfficerProfile(models.Model):
         for i in range(1, len(classes)):
             str += ", " + classes[i].name()
         return str
-
-class OfficerClass(models.Model):
-    berkeley_class = models.ForeignKey('BerkeleyClass')
-    officer = models.ForeignKey('OfficerProfile')
 
 class InterviewSlot(models.Model):
     DAY_OF_WEEK_CHOICES = (
@@ -188,20 +181,6 @@ class OfficeHour(models.Model):
         (17, '5 PM'),
     )
 
-    day_dict = dict(DAY_OF_WEEK_CHOICES)
-    time_dict = dict(TIME_OF_DAY_CHOICES)
-
-    day_of_week = models.IntegerField(choices=DAY_OF_WEEK_CHOICES, default=1)
-    hour = models.IntegerField(choices=TIME_OF_DAY_CHOICES, default=11)
-    officer = models.ForeignKey(OfficerProfile)
-
-    def __str__(self):
-        return self.name() + " " + self.officer.name()
-
-    def name(self):
-        return self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour]
-
-class BerkeleyClass(models.Model):
     CLASS_CHOICES = (
         (10100, 'CS 10'),
         (10610, 'CS 61A'),
@@ -273,15 +252,19 @@ class BerkeleyClass(models.Model):
         (31850, 'Math 185'),
     )
 
-    class_dict = dict(CLASS_CHOICES)
-    class_name = models.IntegerField(choices=CLASS_CHOICES)
-    officers = models.ManyToManyField('OfficerProfile', through='OfficerClass')
+    day_dict = dict(DAY_OF_WEEK_CHOICES)
+    time_dict = dict(TIME_OF_DAY_CHOICES)
+
+    day_of_week = models.IntegerField(choices=DAY_OF_WEEK_CHOICES, default=1)
+    hour = models.IntegerField(choices=TIME_OF_DAY_CHOICES, default=11)
+    classes = MultiSelectField(choices=CLASS_CHOICES)
+    officer = models.ForeignKey(OfficerProfile)
 
     def __str__(self):
-        return self.class_dict[self.class_name]
+        return self.name() + " " + self.officer.name()
 
     def name(self):
-        return self.class_dict[self.class_name]
+        return self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour]
 
 """class Requirement(models.Model):
 
