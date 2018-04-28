@@ -342,7 +342,7 @@ def officehours(request):
         seen_classes = set()
         officer_hours = {'name': name, "times": [], 'courses': []}
         for oh in ohs:
-            officer_hours['times'].append(OfficeHour.time_dict[oh.hour])
+            officer_hours['times'].append({'day': OfficeHour.day_dict[oh.day_of_week], 'time': OfficeHour.time_dict[oh.hour]})
             for course in oh.classes:
                 if course not in seen_classes:
                     officer_hours['courses'].append(OfficeHour.class_dict[int(course)])

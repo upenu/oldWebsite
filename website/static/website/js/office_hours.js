@@ -1,10 +1,10 @@
-$(document).ready(function () {
+$(document).ready(function() {
+	fetch("/officehours").then(t => t.json().then(officers => {
 	$('.officers-oh').isotope({
                 itemSelector: '.tile',
                 layoutMode: 'fitRows'
         });
 
-	var officers = JSON.parse(officeHours);
 	var officerList = $('.officers-oh');
 	var tileString = '<li class=\"tile\">\r\n  <div class=\"officer-oh\">\r\n    <img class=\"image normal\" src=\"\/media\/profile_images\/spock.jpg\">\r\n   <img class=\"image soy\">\r\n    <div class=\"info\">\r\n      <span class=\"name\"><\/span>\r\n      <span class=\"date\"><\/span>\r\n      <ul class=\"classes-skills\">\r\n      <\/ul>\r\n    <\/div>\r\n  <\/div>\r\n<\/li>';
 	var tileTemplate = $(tileString);
@@ -51,8 +51,8 @@ $(document).ready(function () {
                 hours += ', ';
         	}
         }
-		
-        tile.find('.name').html(officer.name); 
+
+        tile.find('.name').html(officer.name);
 		tile.find('.classes-skills').html(courses);
 		tile.find('.date').html(hours);
 
@@ -91,5 +91,6 @@ $(document).ready(function () {
 			filter: classFilter+dayFilter
 		});
 	});
+	}));
 });
 
