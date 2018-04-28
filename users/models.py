@@ -196,7 +196,7 @@ class OfficeHour(models.Model):
     officer = models.ForeignKey(OfficerProfile)
 
     def __str__(self):
-        return self.name() + " " + self.officer_username
+        return self.name() + " " + self.officer.name()
 
     def name(self):
         return self.day_dict[self.day_of_week] + " " + self.time_dict[self.hour]
