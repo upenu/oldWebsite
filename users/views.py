@@ -336,12 +336,17 @@ def officer_approval_dashboard(request):
 
 def officehours(request):
     name_selector = lambda oh: oh.officer.name()
-    office_hours = sorted([oh for oh in OfficeHour.objects.all()], key=name_selector)
+    sorted_office_hours = sorted([oh for oh in OfficeHour.objects.all()], key=name_selector)
     result = []
-    for name, ohs in groupby(office_hours, name_selector):
+    for name, ohs in groupby(sorted_office_hours, name_selector):
         seen_classes = set()
-        officer_hours = {'name': name, "times": [], 'courses': []}
+        officer_hours = {'name': name, "times": [], 'courses': [], 'image': None}
         for oh in ohs:
+            if officer_hours['image'] is None:
+                try:
+                    officer_hours['image'] = oh.officer.user.userprofile.picture.url
+                except:
+                    officer_hours['image'] = '/static/website/images/icons/favicon_whale_new.png'
             officer_hours['times'].append({'day': OfficeHour.day_dict[oh.day_of_week], 'time': OfficeHour.time_dict[oh.hour]})
             for course in oh.classes:
                 if course not in seen_classes:
