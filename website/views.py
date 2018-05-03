@@ -74,6 +74,9 @@ def interview(request):
 def interview(request):
     return render(request, 'website/temp-interview.html', {})
 
+def events(request):
+    return render(request, 'website/events.html', {})
+
 def _get_dates_of_week(now):
     this_week = ['date' for i in range(7)]
     current_day = now.weekday()
