@@ -19,6 +19,15 @@ a {
   margin: 0px auto 30px auto;
 }
 
+#side-feed-wrapper {
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    z-index: 2;
+}
+
 #main-content-wrapper {
   margin-top: 50px;
   min-height: 300px;
